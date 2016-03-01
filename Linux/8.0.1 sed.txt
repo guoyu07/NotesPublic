@@ -1,0 +1,78 @@
+/**
+ * sed [$opt] "$cmd" $file
+ *  $opt
+ *    -n  silent 在一般 sed 的用法中，所有来自 STDIN的资料一般都会被列出到萤幕上。但如果加上 -n 参数后，则只有经过sed 特殊处理的那一行(或者动作)才会被列出来。
+ *    -e  add the script to the commands to be executed
+ *          e.g.  sed -Ei s/^(bind-address|log)/#&/' my.cnf
+ *          ---> & is matching content of this line, log-bin = mysql-bin
+ *    -f  
+ *    -i  edit files in place
+ *    -i SUFFIX   edit files in place, makes backup if SUFFIX supplied
+ *    -r  use regular expressions
+ *  $cmd
+ *    a  append
+ *    c  
+ *    d  delete
+ *    i  insert
+ *    p  print
+ *    s  replace
+ */
+|[a.txt
+# nginx.repo
+
+[nginx]
+name=nginx repo
+baseurl=http://nginx.org/packages/centos/7/$basearch/
+gpgcheck=1
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7
+enabled=1
+]| 
+sh$ sed '1d' a.txt  /* print a.txt buffer after deleting the first line */
+sh$ sed -i '1d' a.txt /* delete the first line to a.txt */
+sh$ sed -i '$d' a.txt   /* delete the last line */
+sh$ sed -i '1,2d' a.txt   /* delete 1 to 2 lines */
+
+sh$ sed '1p' a.txt  /* print the first line of a.txt, then print a.txt */
+sh$ sed -n '1p' a.txt /* just print the first line of a.txt */
+sh$ sed -n '/^gpg/p' a.txt
+|[
+gpgcheck=1
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7
+]|
+
+sh$ sed -i "1a #append a line\n#line2" a.txt
+|[
+# nginx.repo
+#append a line
+#line2
+[nginx]
+name=nginx repo
+baseurl=http://nginx.org/packages/centos/7/$basearch/
+gpgcheck=1
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7
+enabled=1
+]|
+
+sh$ sed -i "1c #rename--append a line--" a.txt  /* replace */
+|[
+#rename--append a line--
+#line2
+# nginx.repo
+
+[nginx]
+name=nginx repo
+baseurl=http://nginx.org/packages/centos/7/$basearch/
+gpgcheck=1
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7
+enabled=1
+]|
+
+/**
+sh$ sed -i '$a #bye' a.txt  
+*/
+sh$ echo -e "\n" >> a.txt /* append to the last new line */
+sh$ sed -i '/^#/d' a.txt  /* remove all line start with # */
+
+
+sh$ sed -i 's/$user/AaronScript/g' b.txt /* replace('$user', 'AaronScript') */
+sh$ sed -i "s/$user/AaronScript/g" b.txt  /* replace($user, 'AaronScript') */

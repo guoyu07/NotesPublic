@@ -1,0 +1,166 @@
+|! Terms !|
+/**
+ * MUST / MUST NOT / SHOULD / SHOULD NOT
+ * @see http://tools.ietf.org/html/rfc2119
+ *  MUST/REQUIRED/SHALL
+ *  MUST NOT/ SHALL NOT
+ *  SHOULD/RECOMMENDED
+ *  SHOULD NOT/NOT RECOMMENDED
+ * @see http://tools.ietf.org/html/rfc4949
+ *  
+ */
+/**
+ *  S = SQL
+ *  A = API
+ */
+A     timeline       /* dynamic information list, e.g. message/timeline */
+A     batch          /* multiple. e.g. comments/show_batch */
+A     count          /* the number, e.g. comments/count */
+AS    archive        /* for backup, e.g. MySQL table: order_archive */
+AS    log            /* for logging, e.g. MySQL table: user_registry_log */
+
+|+ Abbreviation +|
+[fn] function : accepted in keyboard
+
+|+ Doc maker +|
+/**
+ * @var   --> @field  @constant  @define
+ * @param       --> @arg
+ * @param  --> value-result
+ * @return  --> @returns
+ * @throw  
+ * @todo
+ * @see   --> @link @tutorial
+ * @author
+ * @version
+ * @example
+ * @extends --> @derive
+ * @note  -->  @note   @remind @note     
+ * int array bool string
+ 
+ *******************************
+ * @alias Treat a member as if it had a different name.
+ * 
+ */
+|[
+
+char leadPoisoning(int &value_result){
+}
+
+int fart = 5;               // @var
+#define profound 100        // @var  --> @define
+const int markdown = 10;    // @var  --> @constant
+
+enum fuzzy{
+  PERHAPS,    // @var   --> @constant
+};
+union recipe{
+  size_t cuisine;         // @var  --> @field
+};
+
+]|
+
+|! Must/Required/Shall !|
+|+ Standard Operator Precedence[ˈprɛsɪdəns] +|
+/**
+ * @see http://php.net/manual/en/language.operators.precedence.php
+ * @see http://en.cppreference.com/w/cpp/language/operator_precedence
+ * @see http://en.cppreference.com/w/c/language/operator_precedence
+ */
+
++------------------------------------------------------------------------------+
+|L| X++ X-- type()  Cls.prop ClsPtr->prop  
++------------------------------------------------------------------------------+
+|R| !(logic NOT) ~(bitwise NOT)
+|R| *(ptr)  &(address-of)
++------------------------------------------------------------------------------+
+|R| * / %
+|R| +(Addition) -(substraction)
+|R| << >>
+|L| <  >  <=  >=
+| | ==  !==   ===  !==
+|L| &(bitwise AND)
+|L| ^
+|L| |
+|L| &&  AND(MySQL)
+|L| ||  OR(MySQL)
+| | ?:
+|R| = 
+|R| +=  -= 
+|R| *=  /=  .=  %= 
+|R| <<=  >>= 
+|R| &= |= ^=
+|L| ,
++------------------------------------------------------------------------------+ 
+
+|! Should/Recommended !|
+|+ How to put braces +|
+/**
+ *  Upper-camel and next line brace
+ *    namespace and class
+ *  Lower-camel and brace behind
+ *    non-construct/non-destruct functions
+ *  Snake
+ *    local variables
+ * Only braces of namespace and class turn to the next line
+ */
+|[
+namespace Bowtie {
+  class Sewer: public Drain, public Drainage {
+    int sewage;
+    public:
+    Sewer();
+    void sewerage(int exit_val) {
+      if(EXIT_SUCCESS == exit_val) {
+        printf("Success");
+      } else if(EXIT_FAILUE == exit_val) {
+        printf("Failue");
+      }
+    }
+  }
+}
+]|
+
+|+ Indent 4 spaces, no tabs +|
+|- Pros -|
+    Swift official suggestion
+|- Cons -|
+    "Indent 2 spaces, no tabs" is a rule in google shell guider
+    ttp://google.github.io/styleguide/shell.xml?showone=Indentation#Indentation
+    Facebook sets it 1 space; Google sets it 2 spaces;
+    4 spaces is not good for shell and doc commentary. 1 is so short;
+    * It's really good for HTML coding
+
+
+|+ Don't Prepend an underline to private variables +|
+|- Pros -|
+  It's quite not good for writing code when you have no design.
+|- Cons -|
+  It's python standard
+  It's accepted in PHP/C++/C that name a variable begin with an underline
+  Facebook names a private variable to append an underline
+https://github.com/facebook/proxygen/blob/master/proxygen/httpserver/HTTPServer.cpp
+
+
+
+
+
+|+ Right value should be put at left when compare it +|
+if(true == isAready)     // 
+if(true = isAready) //  compiler will indicate error
+
+if(isAready == true) // 
+if(isAready = true) // it's a mistake, but not easy to find
+
+
+
+|+ Declaration Order: variables, methods; private, protected, public +|
+Use the specified order of declarations within a class: private protected public; data  members (variables) before methods.
+|- Pros -|
+It's accepted in Facebook and it's more human readable.
+|- Cons -|
+It's contrary to Google C++ Guider "Declaration Order".
+
+|+ Using i++ instead of ++i +|
+|- Pros -|
+`++i` is not supported in Go-lang

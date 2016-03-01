@@ -1,0 +1,143 @@
+|! Installation !|
+/**
+ * sh$ sudo yum install -y docker
+ */
+sh$ sudo yum remove -y docker*
+sh$ rpm -qa | grep docker
+|[
+docker-selinux-1.8.2-10.el7.centos.x86_64
+]| 
+sh$ rpm -e --nodeps docker-selinux-1.8.2-10.el7.centos.x86_64
+sh$ sudo yum update -y
+sh$ sudo vim /etc/yum.repos.d/docker.repo 
+|[  
+[dockerrepo]
+name=docker
+baseurl=https://yum.dockerproject.org/repo/main/centos/$releasever/
+enabled=1
+gpgcheck=1
+gpgkey=https://yum.dockerproject.org/gpg
+]|
+sh$ sudo yum clean all
+sh$ sudo yum update -y        
+sh$ sudo yum install -y docker-engine
+sh$ sudo chkconfig docker on  
+sh$ sudo systemctl start docker.service
+sh$ sudo usermod -aG docker $USER         /* add you to group docker */
+sh2$ docker ps      /* change to another session */
+
+|! Linux in Docker !|
+/**
+ * docker pull <image[:tag = lasted]>
+ * @see https://docs.docker.com/reference/builder/
+ * @example
+ *  docker pull centos:7      --> pull a centos image and tag it with 7
+ *  docker run -it centos:7 /bin/bash
+ */
+sh$ docker pull centos
+sh$ docker images
+|[
+REPOSITORY     TAG                 IMAGE ID
+lef/nginx             latest              e7beba77db14
+nginx                  latest              ceab60537ad2
+php                     lastest           1fab6e54xadd
+centos                latest              0f73ae75014f
+]|
+/**
+ * docker run -it lef/php /bin/bash
+ */
+sh$ docker run -it centos /bin/bash
+|[
+root@0bdadfsadfas:/#                    <---------- @CONTAINER_ID
+]|
+
+|! Commit Image !|
+sh$ docker ps
+|[
+CONTAINER ID        IMAGE
+0fdc2d1196bb        aa/mysqlslave
+972bce4a356a        aa/nginx
+c23f7842f51c        aa/php
+cba2dc563f04        aa/redis
+17ba9518bb08        aa/mysql
+...
+]|
+/* sh$ docker tag bb06fd8b22f0 aa/nginx:ssl */
+sh$ docker commit -m "comment" -a "Aaron Script" -p 972bce4a356a aaronscript/nginx:ssl
+sh$ docker images
+|[
+REPOSITORY     TAG   IMAGE ID 
+aa-nginx       ssl   bb06fd8b22f0
+]|
+/**
+ * Get an account from https://hub.docker.com/login/
+ */
+sh$ docker login
+|[
+Username:
+Password:
+Email:
+]|
+
+/**
+ * Create a repository https://hub.docker.com/add/repository/
+ *  aaronscript/nginx 
+ */
+sh$ docker push aaronscript/nginx:ssl
+
+sh$ docker pull -t ssl aaronscript/nginx    /* to pull */   
+
+sh$ docker logout
+
+sh$ docker inspect aa/nginx
+
+|+ save images to local file +|
+sh$ docker save -o ~/docker-backup/aaronscript-nginx_ssl.tar aaronscript/nginx
+sh$ docker load -i ~/docker-backup/aaronscript-nginx_ssl.tar    /* to load */
+
+|! Dockerfile !|
+/**
+ * @see https://docs.docker.com/reference/builder/
+ */
+ 
+MAINTAINER <author> 
+ 
+FROM <image>  
+FROM <image>:<tag>         
+FROM <image>@<digest>
+
+/**
+ * ONBUILD and ENTRYPOINT/CMD are NOT supported for ENV variable replacement.
+ */
+ENV BIN_NGINX /usr/bin/nginx     /* variable, or ENV BIN_NGINX=/usr/bin/nginx */
+WORKDIR ${BIN_NGINX}      
+WORKDIR $BIN_NGINX
+WORKDIR ${BIN_NGINX:-/tmp} /* WORKDIR !isset(${BIN_NGINX}) ? /tmp : '' */
+WORKDIR ${BIN_NGINX:+/tmp}   /* WORKDIR isset(${BIN_NGINX}) ? /tmp : '' */
+
+RUN <cmd>            /* run in /bin/sh -c shell form */
+RUN ["<executable>", "<param1>", "<param2>" ...]
+ 
+/**
+ *  ADD redis.tgz /user/lef/Downloads    --> decompress it
+ *  COPY redis.tgz /usr/lef/Downloads    --> /usr/lef/Downloads/redis.tgz
+ */ 
+ADD <source file or URL> <destination in docker>
+COPY <source file or URL> <destination>
+
+CMD ["<excutable>", "<param1>", "<param2>" ...]   /* command in shell */
+ENTRYPOINT ["<excutable>", "<param1>", "<param2>" ...]
+
+EXPOSE <port>
+
+ 
+WORKDIR <path in docker>      /* for RUN, CMD and ENTRYPOINT */
+
+ENV <key> <value>
+
+USER <uid>
+
+/**
+ * sh$ docker run -it --name container-test -h CONTAINER -v dir_host:dir_container
+ */
+VOLUME ["<path in both host and container>"]

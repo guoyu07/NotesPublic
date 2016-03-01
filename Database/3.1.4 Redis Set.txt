@@ -1,0 +1,19 @@
+  unsorted and unrepeatable
+db> SADD $k $v1 ... $vN
+db> SREM $k $m
+db> SPOP $k
+db> SRANDMEMBER $k
+db> SMOVE $scr_k $dst_k $member
+db> SCARD $k    /* count the elements of the set */
+db> SISMEMBER $k $member
+|- Intersection -|
+db> SINTER $k1 ... $kN
+db> SINTERSTORE $dst_k $k1 ... $kN
+
+db> SUNION $k1 ... $kN
+db> SUNIONSTORE $dst_k $k1 ... $kN
+
+db> SDIFF $k1 ... $kN
+db> SDIFFSTORE $dst_k $k1 ... $kN
+
+db> SMEMBERS $k

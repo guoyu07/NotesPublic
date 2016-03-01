@@ -1,0 +1,33 @@
+ 2D array   ==> push pop
+微博关注列表、粉丝列表、消息队列
+db> lpush db-list Redis
+db> lset db-list 0 Rename-Redis
+db> lpush db-list MySQL
+db> lpush db-list MongoDB
+db> LRANGE $k $start $end   /* $end -1 on end of the list */
+db> lrange db-list 1 2
+|[
+  MySQL
+  MongoDB
+]|
+
+db> LINDEX db-list 0
+|[
+Redis
+]|
+db> RPUSH db-list PostgreSQL
+db> LINSERT db-list BEFORE "MongoDB" "Oracle"
+db> LLEN db-list
+
+
+db> LPOP db-list
+db> RPOP db-list
+db> LTRIM $k $start $end
+db> LREM $k $count $v   /* $count 0 on all; others on the number of $v will be removed */
+db> linsert db-list before "MongoDB" "MySQL"
+db> lrem db-list 1 MySQL    /* remove one MySQL */
+
+db> BLPOP $k1 ... $kN $timeout
+db> BRPOP $k1 ... $kN $timeout
+
+
