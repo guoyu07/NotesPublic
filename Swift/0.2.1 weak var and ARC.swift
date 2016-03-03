@@ -1,35 +1,66 @@
 /**
  * Automatic Reference Counting
+ *  Two properties are allowed to be nil, have the potential to cause a strong
+ *      reference cycle. This scenario is best resovled with a `weak` reference.
+ *  One is allowed to be nil and another cannot be nil, have the potential to 
+ *      cause a strong reference cycle. This scenario is best resolved with an
+ *      `unowned` reference.
+ *  Both should ever be nil once initialization is complete. It's useful to
+ *      combine an `unowned` property on one class with an implicitly unwrapped
+ *      optional property on the other class.
  */
 
-class Court {
+class Court {                       // assign a class by reference
     var counsel: String
     init (_ counsel: String) {
         self.counsel = counsel
         print("Court::init(\(self.counsel))")
     }
     deinit {
-        print("Court::deinit(\(counsel))")
+        print("Court::deinit()")
     }
 }
 
-var court:Court? = Court("Arrest")
+struct Glimpse {                    // assign a struct by copying memory
+    var counsel: String
+    init (_ counsel: String) {
+        self.counsel = counsel
+        print("Glimpse::init(\(self.counsel))")
+    }
+}
+
+var court:Court? = Court("Arrest")  // refCourt = 1
+var comply:Court? = court           // refCourt + 1 = 2
 /**
  * Note that an exclamation mark (!) is used to unwrap and access the
  *  instances stored inside the class optional variables.
  */
 print(court!.counsel)
 court!.counsel = "Release"
-court = nil                             // release memory
-print("--- Instance Deallocated ---")
-print(court?.counsel)                   // may court still exists?
+print(comply!.counsel)
+court = nil                         // refCourt - 1 = 1, court: an empty pointer
+print(court?.counsel)               // nil
+print(comply?.counsel)              //
 
 /*
 Court::init(Arrest)
 Arrest
---- Instance Deallocated ---
-Court::deinit(Release)
+Release
+nil
+Optional("Release")
+Court::deinit()
 */
+
+
+var glimpse:Glimpse? = Glimpse("Arrest")    // allocate leap memory
+var grease:Glimpse? = glimpse               // reallocate new leap memory
+glimpse!.counsel = "Release"
+print(grease.counsel)                       // still `Arrest`
+glimpse = nil                               // deallocated this leap memory
+print(comply?.counsel)                      // still `Arrest`
+
+
+
 
 
 var loom:Court? = Court("Arrest")           // ref = 1
@@ -135,7 +166,7 @@ main() {
     defiance?.dissenting = dissenting           // weakRefDissenting = 1
     dissenting?.defiance = defiance             // refDefiance + 1 = 2
     let quibble = Quibble()
-    defiance = nil                              // No work!
+    defiance = nil                              // not works immediately
     let dispute = Quibble()
 }
 
@@ -186,12 +217,6 @@ PRINT:
     Defiance::deinit()
  */
 
-
-
-
-
-
-
 class Dissenting {
     weak var defiance: Defiance?             // weak reference
     deinit {
@@ -208,11 +233,11 @@ class Defiance {
 
 var scale:Dissenting? = Dissenting()    // refDissenting = 1
 var bias:Defiance? = Defiance()         // refDefiance = 1
-scale!.defiance = bias                  // refDefiance + 1 = 2
-bias!.dissenting = scale                // refDissenting + 1 = 2
-scale = nil                             // weak reference, scale.deinit() called
+scale!.defiance = bias                  // weakRefDefiance = 1
+bias!.dissenting = scale                // weakRefDissenting = 1
+scale = nil                             // refDissenting - 1 = 0, scale.deinit()
 print("-- Squeeze --")
-bias = nil
+bias = nil                              // refDefiance - 1 = 0
 print("-- No Memory Leak --")
 /*
  Dissenting::deinit()
@@ -220,6 +245,43 @@ print("-- No Memory Leak --")
  Defiance::deinit()
  -- No Memory Leak --
  */
+
+
+/**
+ * unowned
+ *  Unlike a weak reference, however, an unowned reference is assumed to always
+ *  have a value. Because of this, an unowned reference is always defined as a
+ *  nonoptional type.
+ */
+class Bias {
+    var scale:Scale?
+}
+class Scale {
+    unowned let bias:Bias   // unowned must be contant and nonoptional type
+    init(_ bias:Bias) {
+        self.bias = bias
+    }
+}
+
+main() {
+    var bias:Bias? = Bias()         // refBias = 1
+    bias!.scale = Scale(bias!)      // refScale = 1 + 1 = 2, unownedRefBias = 1
+    bias = nil                      // refBias - 1 = 0, call Bias::scale()
+}
+/*
+destruct
+    bias.scale = Scale()        refScale - 1 = 1
+                                refScale - 1 = 0, call Scale::deinit()
+                                unownedRefBias - 1 = 0
+ */
+
+main() {
+    var bias:Bias? = Bias()         // refBias = 1
+    var scale:Scale? = Scale(bias!) // refScale = 1, unownedRefBias = 1
+    bias?.scale = scale             // refScale + 1 = 2
+    scale = nil                     // refScale - 1 = 1, not works immediately
+}
+
 
 
 
