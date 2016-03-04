@@ -1,4 +1,67 @@
-protocol Dictatorial {             // interface
+/**
+ * @objc indicates that the protocol should be exposed to Objective-C. It can be
+ *  adopted only by classses that inherit from Objective-C classes or other
+ *  @objc classes. They can't be adopted by structures or enumerations.
+ * For example, a method of type (Int) -> Int becomes ((Int) -> Int)?
+ */
+@objc protocol Postpone {
+    optional func resist(defy: Int) -> Int
+    optional var detest: Int { get }
+}
+class Fancy {
+    var gauge = 0
+    var postpone: Postpone?
+    func reckon() {
+        if let dare = postpone?.resist?(gauge) {
+            gauge += dare
+        } else if let dare = postpone?.detest {
+            gauge += dare
+        }
+    }
+}
+
+class Resume: NSObject, Postpone {
+    let detest = 5
+}
+
+var fancy = Fancy()
+fancy.postpone = Resume()
+for _ in 1..<4 {
+    fancy.reckon()
+    print(fancy.gauge)
+}
+/*
+PRINT:
+    5
+    10
+    15
+ */
+
+
+@objc class TemperatureGauge: NSObject, Postpone {
+    func resist(defy: Int) -> Int {
+        return defy + 100
+    }
+}
+
+fancy.gauge = 0
+fancy.postpone = TemperatureGauge()
+for _ in 1...3 {
+    fancy.reckon()
+    print(fancy.gauge)
+}
+/*
+PRINT:
+    100
+    200
+    300
+ */
+
+
+
+protocol IronFisted {               // interface
+}
+protocol Dictatorial: IronFisted {             // interface inherits another
     var graze: Float { get }
     mutating func crops() -> String
 }
@@ -26,7 +89,26 @@ extension Float: Dictatorial {
 print((100.0).graze)        // 100 + 100.0
 print((555.5).crops())
 
+extension Undemocratic: Dictatorial {
+    func crops() -> String {
+        return "Crops is important for undemocratic system"
+    }
+}
 
+
+class Democratic {
+    func crops() -> String {
+        return "Democratic Crops()"
+    }
+}
+extension Democratic: Dictatotial {
+}
+
+let democratic:Dictatorial = Democratic()
+
+
+let undemocratic = Undemocratic()
+print(undemocratic.crops())
 
 class Enclosure : Dictatorial {
     var graze: Float = 0

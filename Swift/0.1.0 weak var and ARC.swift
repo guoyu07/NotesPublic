@@ -283,5 +283,111 @@ main() {
 }
 
 
+class Recital {
+    var audience: Audience?
+    init () {
+        audience = Audience(self)
+    }
+}
+
+class Audience {
+    let recital: Recital?
+    init (_ recital: Recital) {
+        self.recital = recital
+    }
+}
+
+var recital:Recital? = Recital()
+/*
+Construct
+    var recital                             refRecital = 1
+       audience = Audience(self)            refAudience = 1, refRecital + 1 = 2
+--- Memory Leak ---
+ */
+
+
+
+class Recital {
+    var audience: Audience?
+    init () {
+        audience = Audience(self)
+    }
+    
+}
+
+class Audience {
+    unowned let recital: Recital?
+    init (_ recital:Recital) {
+        self.recital = recital
+    }
+}
+
+var recital:Recital? = Recital()
+/*
+Construct
+    var recital                         refRecital = 1
+        audience = Audienct(self)       refAudience = 1, unownedRefRecital = 1
+--- No Memory Leak ---
+ */
+
+
+
+class Syllable {
+    var swampy: Void -> String {            // a closure without binding `self`
+        return "The scale has a bias"
+    }
+    deinit {
+        print("Syllable::deinit()")
+    }
+}
+
+var syllable:Syllable? = Syllable()
+print(syllable.swampy)
+syllable = nil                          // Syllable::deinit() called
+
+
+class Proceed {
+    let dinosaur:String = "Dinosaur"
+    /**
+     * A lazy property means that you can refer to `self` within the default
+     *  closure
+     * Contructing a class
+     *  let/var...
+     *  init()
+     *  lazy...
+     */
+    lazy var petrifact: Void -> String {        // binding `self` to the closure
+        return "Petrifact \(self.dinosaur)"
+    }
+    deinit {
+        print("Proceed::deinit()")
+    }
+}
+
+var proceed:Proceed? = Proceed()
+proceed = nil                                   // memory leak
+/*
+Construct
+    var proceed                                 refProceed = 1
+        lazy Void -> String                     refProceed + 1 = 2
+Destruct
+    proceed = nil                               refProceed - 1 = 1
+    --- Memory Leak ---
+ */
+
+
+class Delectable {
+    let flavorful:String = "Flavorful"
+    var syllable:Syllable = Syllable()
+    lazy var mouthwathering: Void -> String = {
+        [unowned self, weak syllable = self.syllable] in                           // unowned ref
+            return "Delectable \(self.flavorful) " + syllable.swampy()
+    }
+}
+var delectable:Delectable? = Delectable()   // refSyllable = 1
+                                            // , refDelectable = 1
+                                            // , unownedRefDelectable = 1
+                                            // , weakRefSyllable = 1
+delectable = nil                            // works!
 
 
