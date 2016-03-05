@@ -10,7 +10,7 @@ import UIKit
 
 class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate  {
     
-    @IBOutlet weak var currentImage: UIImageView!
+    @IBOutlet var imageView: UIImageView!
     let imagePicker: UIImagePickerController! = UIImagePickerController()
     
     @IBAction func takePhoto(sender: UIAlertAction) {
@@ -30,8 +30,10 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
         print("Got an image")
         if let pickedImage:UIImage = (info[UIImagePickerControllerOriginalImage]) as? UIImage {
-            let selectorToCall = Selector("imageWasSavedSuccessfully:didFinishSavingWithError:context:")
-            UIImageWriteToSavedPhotosAlbum(pickedImage, self, selectorToCall, nil)
+            imageView.contentMode = .ScaleAspectFit
+            imageView.image = pickedImage
+            //let selectorToCall = Selector("imageWasSavedSuccessfully:didFinishSavingWithError:context:")
+            //UIImageWriteToSavedPhotosAlbum(pickedImage, self, selectorToCall, nil)
         }
         imagePicker.dismissViewControllerAnimated(true, completion: {
             // Anything you want to happen when the user saves an image
@@ -73,15 +75,18 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        imagePicker.delegate = self
+        
+        
         let btn = UIButton(frame:CGRect(origin: CGPointMake(10.0, 110.0), size: CGSizeMake(300, 30)))
         btn.setTitle("Take Photo", forState: UIControlState.Normal)
-        btn.backgroundColor = UIColor.grayColor()
+        btn.backgroundColor = UIColor(red: CGFloat(153.0/255), green: CGFloat(222.0/255.0), blue: CGFloat(64.0/255.0), alpha: 1.0)
         btn.addTarget(self, action: "takePhotoBtn:", forControlEvents: UIControlEvents.TouchUpInside)
         self.view.addSubview(btn)
         
-        let imgView = UIImageView(image: UIImage(named: "default.jpeg"))
-        imgView.frame = CGRect(x:10.0, y: 200.0, width:300, height: 300)
-        self.view.addSubview(imgView)
+        imageView = UIImageView(image: UIImage(named: "default.jpeg"))
+        imageView.frame = CGRect(x:10.0, y: 200.0, width:300, height: 300)
+        self.view.addSubview(imageView)
 
     }
 

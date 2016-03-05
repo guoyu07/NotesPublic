@@ -111,3 +111,30 @@ imgView.frame = CGRect(x:100.0, y:100.0, width:120, height: 80)
 self.view.addSubview(imgView)
 
 
+/**
+ * UIImagePickerController: UIImagePickerControllerDelegate, UINavigationControllerDelegate
+ */
+class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    let imagePicker: UIImagePickerController! = UIImagePickerController()
+    @IBAction func loadImage(sender: UIAlertAction){
+        imagePicker.allowsEditing = false
+        /**
+         *  .Camera
+         *  .PhotoLibrary
+         *  .SavedPhotosAlbum
+         */
+        imagePicker.sourceType = .Camera
+        imagePicker.cameraCaptureMode = .Photo
+    }
+    /**
+     * ImagePickerController::didFinishPickingMediaWithInfo
+     * UIImagePickerControllerDelegate::imagePickerController
+     * UIImagePickerControllerDelegate::imagePickerControllerCancel
+     */
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        imagePicker.delegate = self
+    }
+}
+
+
