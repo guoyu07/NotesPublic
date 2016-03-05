@@ -119,9 +119,11 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     @IBAction func loadImage(sender: UIAlertAction){
         imagePicker.allowsEditing = false
         /**
-         *  .Camera
-         *  .PhotoLibrary
-         *  .SavedPhotosAlbum
+         *  enum UIImagePickerControllerSourceType : Int {
+         *      case PhotoLibrary
+         *      case Camera
+         *      case SavedPhotosAlbum
+         *  }
          */
         imagePicker.sourceType = .Camera
         imagePicker.cameraCaptureMode = .Photo

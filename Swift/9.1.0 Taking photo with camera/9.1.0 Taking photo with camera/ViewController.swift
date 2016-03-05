@@ -10,15 +10,20 @@ import UIKit
 
 class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate  {
     
+    var imagePickerSourceType:UIImagePickerControllerSourceType! = .Camera
+    var saveImagePickerFiles: Bool = false
+    
     @IBOutlet var imageView: UIImageView!
     let imagePicker: UIImagePickerController! = UIImagePickerController()
     
     @IBAction func takePhoto(sender: UIAlertAction) {
         if (UIImagePickerController.isSourceTypeAvailable(.Camera)) {
             if UIImagePickerController.availableCaptureModesForCameraDevice(.Rear) != nil {
-                imagePicker.allowsEditing = false
-                imagePicker.sourceType = .Camera
-                imagePicker.cameraCaptureMode = .Photo
+                imagePicker.allowsEditing = true
+                imagePicker.sourceType = self.imagePickerSourceType
+                if(self.imagePickerSourceType == .Camera) {
+                    imagePicker.cameraCaptureMode = .Photo
+                }
                 presentViewController(imagePicker, animated: true, completion: {})
             } else {
                 print("Application cannot access the camera.")
@@ -30,10 +35,12 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
         print("Got an image")
         if let pickedImage:UIImage = (info[UIImagePickerControllerOriginalImage]) as? UIImage {
-            imageView.contentMode = .ScaleAspectFit
             imageView.image = pickedImage
-            //let selectorToCall = Selector("imageWasSavedSuccessfully:didFinishSavingWithError:context:")
-            //UIImageWriteToSavedPhotosAlbum(pickedImage, self, selectorToCall, nil)
+
+            if (self.saveImagePickerFiles && self.imagePickerSourceType == .Camera) {
+                print("saving from .Camera")
+                UIImageWriteToSavedPhotosAlbum(pickedImage, nil, nil, nil)
+            }
         }
         imagePicker.dismissViewControllerAnimated(true, completion: {
             // Anything you want to happen when the user saves an image
@@ -57,13 +64,15 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         
         let takePhotoAction = UIAlertAction(title: "Taking Photo", style: .Default, handler: {
             action in
+            self.imagePickerSourceType = .Camera
             self.takePhoto(action)
         })
         takePhotoAlert.addAction(takePhotoAction)
         
         let takeImageAction = UIAlertAction(title: "Take From album", style: .Default, handler: {
             action in
-            
+            self.imagePickerSourceType = .SavedPhotosAlbum
+            self.takePhoto(action)
         })
         takePhotoAlert.addAction(takeImageAction)
         
@@ -76,7 +85,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     override func viewDidLoad() {
         super.viewDidLoad()
         imagePicker.delegate = self
-        
+        saveImagePickerFiles = true
         
         let btn = UIButton(frame:CGRect(origin: CGPointMake(10.0, 110.0), size: CGSizeMake(300, 30)))
         btn.setTitle("Take Photo", forState: UIControlState.Normal)
@@ -86,6 +95,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         
         imageView = UIImageView(image: UIImage(named: "default.jpeg"))
         imageView.frame = CGRect(x:10.0, y: 200.0, width:300, height: 300)
+        imageView.contentMode = .ScaleAspectFit
         self.view.addSubview(imageView)
 
     }
