@@ -1,5 +1,5 @@
 /**
- * @see https://developer.apple.com/library/ios/documentation/UIKit/Reference/UIKit_Framework/index.html#//apple_ref/doc/uid/TP40006955
+ * @see https://developer.apple.com/library/ios/documentation/UIKit/Reference/UIKit_Framework/index.html
  *
  */
 import UIKit
@@ -74,8 +74,6 @@ self.view.addSubview(btn)
     
     alertController.addAction(cancelAction)
     
-    
-    
     let callActionHandler = { (action:UIAlertAction!) -> Void in
         let alertMessage = UIAlertController(title: "Service Unavailable", message: "Sorry, the call feature is not available yet. Please retry later.", preferredStyle: .Alert)
         
@@ -103,5 +101,13 @@ self.view.addSubview(btn)
     presentViewController(alertController, animated: true, completion: nil)
 }
 
+
+
+/**
+ * UIImageView
+ */
+let imgView = UIImageView(image: UIImage(named: "img.png"))
+imgView.frame = CGRect(x:100.0, y:100.0, width:120, height: 80)
+self.view.addSubview(imgView)
 
 
