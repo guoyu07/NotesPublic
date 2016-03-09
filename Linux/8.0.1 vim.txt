@@ -18,25 +18,9 @@ if you sure the origin file is safe, you can rm -rf the swp file manually
  * vim /etc/vimrc and add the strings below 
  * you can also use :set xxx in vim command mode
  * @notice Mac /usr/share/vim/vimrc
+ * @see https://github.com/AarioAi/Conf/blob/master/vimrc
  */
-set ff=unix   " covert dos file to unix  === dos2unix
-set nu " show line numbers
-set autoindent " auto indent
-set showmode  " show --INSET-- or --REPLACE-- at Bottom-Aaront
-set hlsearch " high light search, vice versus [ :set nohlsearch ]
-set tabstop=4   " The width of a TAB is set to 4.
-                " Still it is a \t. It is just that
-                " Vim will interpret it to be having
-                " a width of 4.
 
-set expandtab  " always uses spaces instead of tab characters
-set softtabstop=4   " Sets the number of columns for a TAB
-set shiftwidth=4 " size of an "indent"
-syntax on " syntax 
-set ruler " show status at Bottom-Right
-if has("gui_macvim")
-  set transparency=10
-endif
 
 /*
  * short cuts of vim command
