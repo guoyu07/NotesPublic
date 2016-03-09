@@ -4,6 +4,21 @@
  */
 import UIKit
 
+import UIKit
+
+class AppDelegate: UIResponder, UIApplicationDelegate {
+    var window: UIWindow?
+    func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+        
+        // change tintColor to orange
+        self.window?.tintColor = UIColor.orangeColor()
+        
+        return true
+    }
+}
+
+
+
 /**
  * You can use two different attributes `@IBDesignable` and `IBInspectable` to
  *  enable live, interactive custom view design in Interface Builder.
@@ -20,6 +35,13 @@ class ExtView: UIView {
         
     }
 }
+
+/**
+ * actions
+ *  .TouchDown                  mouse down
+ *  .TouchUpInside              mouse up
+ */
+
 
 /**
  * UILable
@@ -138,5 +160,11 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         imagePicker.delegate = self
     }
 }
+
+/**
+ * Video
+ */
+
+
 
 
