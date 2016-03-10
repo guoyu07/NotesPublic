@@ -25,3 +25,5 @@ public enum UIControlContentVerticalAlignment : Int {
 UIButton
     .contentHorizontalAlignment = .Left         // text-align: left
     .contentVerticalAlignment = .Center         // vertical-aligin: center
+
+.frame.offsetInPlace(dx: CGFloat, dy: CGFloat) // reset position

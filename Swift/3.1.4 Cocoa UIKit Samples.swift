@@ -18,12 +18,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 }
 
 
-
 /**
- * You can use two different attributes `@IBDesignable` and `IBInspectable` to
- *  enable live, interactive custom view design in Interface Builder.
- * When you create a custom view that inherits from the UIView or the NSView,
- *  you can add the @IBDesignable.
+ * You can use two different attributes `@IBDesignable` and `IBInspectable` 
+ *  to enable live, interactive custom view design in Interface Builder.
+ * When you create a custom view that inherits from the UIView or the 
+ *  NSView, you can add the @IBDesignable.
  */
 @IBDesignable
 class ExtView: UIView {
@@ -126,11 +125,14 @@ self.view.addSubview(btn)
 
 
 /**
- * UIImageView
+ * UIImageView: UIView
+ *  .frame: CGRect
  */
-let imgView = UIImageView(image: UIImage(named: "img.png"))
-imgView.frame = CGRect(x:100.0, y:100.0, width:120, height: 80)
-self.view.addSubview(imgView)
+let img = UIImageView(image: UIImage(named: "img.png"))
+print(img.frame.size)   // (100, 100)
+img.frame = CGRect(x:100.0, y:100.0, width:180, height: 180)
+print(img.frame.size)   // (180, 180)s
+self.view.addSubview(img)
 
 
 /**
