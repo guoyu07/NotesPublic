@@ -77,9 +77,6 @@ class ViewController: UIViewController {
                 print("default")
             }
 
-            
-            
-            
             let standardAvatarBound: [String:CGFloat] = [
                 "top": UIApplication.sharedApplication().statusBarFrame.height + UIScreen.mainScreen().bounds.width / 2 - Conf.Size.avatarRadius,
                 "right": UIScreen.mainScreen().bounds.width / 2 + Conf.Size.avatarRadius,
@@ -183,7 +180,7 @@ class ViewController: UIViewController {
         //self.view.addSubview(avatarArea)
         
         
-        let avatarView = UIImageView(image: UIImage(named: "swift2-1"))
+        let avatarView = UIImageView(image: UIImage(named: "default"))
         let avatarRange = UIScreen.mainScreen().bounds.width
         var avatarX:CGFloat = 0
         var avatarY: CGFloat = UIApplication.sharedApplication().statusBarFrame.height
