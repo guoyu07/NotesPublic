@@ -59,19 +59,23 @@ class ViewController: UIViewController {
                 if (debugVelocity) {
                     print("Ended: velocity: \(recognizer.velocityInView(view))  translation: \(translation)")
                 }
-                let velocityDistance = sqrt(pow(recognizer.velocityInView(view).x, CGFloat(2)) + pow(recognizer.velocityInView(view).y, CGFloat(2)))
+                var velocityDistance = sqrt(pow(recognizer.velocityInView(view).x, CGFloat(2)) + pow(recognizer.velocityInView(view).y, CGFloat(2)))
                 print(velocityDistance)
-                if (velocityDistance > 100) {
+                if (velocityDistance > 50) {
                     let inertiaDelay: NSTimeInterval = 0.5
-                    let inertiaDistance : CGFloat = velocityDistance * CGFloat(inertiaDelay) * 0.02
+                    if (velocityDistance > 1500) {
+                        velocityDistance = 1500
+                    }
+                    // 60HZ = 60 / sec
+                    let inertiaDistance : CGFloat = velocityDistance * CGFloat(inertiaDelay) * (1/60)
                     let inertiaX:CGFloat = self.panAvatarLastTranslation.x * inertiaDistance
                     let inertiaY:CGFloat = self.panAvatarLastTranslation.y * inertiaDistance
                                         //sqrt(pow(inertiaX, CGFloat(2)) + pow(inertiaY, CGFloat(2)))
                     //print("inertiaDelay: \(inertiaDelay)")
-                    UIView.animateWithDuration(inertiaDelay, animations: {
+                    UIView.animateWithDuration(inertiaDelay, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 6, options: UIViewAnimationOptions.AllowUserInteraction, animations: {
                         self.avatar.center.x += inertiaX
                         self.avatar.center.y += inertiaY
-                    })
+                    }, completion: nil)
                 }
             default:
                 print("default")
@@ -128,9 +132,9 @@ class ViewController: UIViewController {
         recognizer.setTranslation(CGPointZero, inView: view)
     }
     
-    func maskAvatar(avatarView: UIView) -> CAShapeLayer{
-        //let avatarView = UIView(avatarView)
-       
+    func maskAvatar(){
+        let maskerView = UIView(frame: CGRect(x:0, y:UIApplication.sharedApplication().statusBarFrame.height, width: UIScreen.mainScreen().bounds.width, height: UIScreen.mainScreen().bounds.width))
+
         let range: CGFloat = UIScreen.mainScreen().bounds.width
         let radius: CGFloat = Conf.Size.avatarRadius
 
@@ -151,9 +155,21 @@ class ViewController: UIViewController {
         let maskLayer = CAShapeLayer()
         maskLayer.path = path
         maskLayer.backgroundColor = UIColor.whiteColor().CGColor
-        maskLayer.fillColor = UIColor.redColor().CGColor
+        maskLayer.fillColor = UIColor.whiteColor().CGColor
         maskLayer.fillRule = kCAFillRuleEvenOdd
-        return maskLayer
+        
+        maskerView.alpha = 0.5
+        maskerView.backgroundColor = UIColor.blackColor()
+        self.view.addSubview(maskerView)
+        maskerView.layer.mask = maskLayer
+        
+        maskerView.addGestureRecognizer(UIPanGestureRecognizer(target: self, action: "moveAvatar:"))
+        maskerView.addGestureRecognizer(UIPinchGestureRecognizer(target: self, action: "resizeAvatar:"))
+        maskerView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: "resizeAvatar:"))
+        maskerView.addGestureRecognizer(UISwipeGestureRecognizer(target: self, action: "swipeAvatar:"))
+        
+
+
     }
  
     override func viewDidLoad() {
@@ -176,11 +192,9 @@ class ViewController: UIViewController {
         self.view.addSubview(saveBtn)
         
       
-        let avatarArea = UIView(frame: CGRect(x:0, y:UIApplication.sharedApplication().statusBarFrame.height, width: UIScreen.mainScreen().bounds.width, height: UIScreen.mainScreen().bounds.width))
-        //self.view.addSubview(avatarArea)
         
         
-        let avatarView = UIImageView(image: UIImage(named: "default"))
+        let avatarView = UIImageView(image: UIImage(named: "swift2-1"))
         let avatarRange = UIScreen.mainScreen().bounds.width
         var avatarX:CGFloat = 0
         var avatarY: CGFloat = UIApplication.sharedApplication().statusBarFrame.height
@@ -209,13 +223,14 @@ class ViewController: UIViewController {
         }
         
         avatarView.frame = CGRect(x: avatarX, y: avatarY, width: avatarWidth, height: avatarHeight)
-
+        
+        
         avatarView.contentMode = .ScaleToFill
         avatarView.userInteractionEnabled = true
-        avatarView.alpha = 0.5
+        //avatarView.alpha = 0.5
         avatarView.backgroundColor = UIColor.blackColor()
         avatarView.clipsToBounds = true
-        //avatarView.layer.mask = maskAvatar(avatarView)
+        maskAvatar()
 
 
         
@@ -224,11 +239,6 @@ class ViewController: UIViewController {
         
         
         
-        avatarView.addGestureRecognizer(UIPanGestureRecognizer(target: self, action: "moveAvatar:"))
-        avatarView.addGestureRecognizer(UIPinchGestureRecognizer(target: self, action: "resizeAvatar:"))
-        avatarView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: "resizeAvatar:"))
-        avatarView.addGestureRecognizer(UISwipeGestureRecognizer(target: self, action: "swipeAvatar:"))
-
         
         self.view.addSubview(avatarView)
         avatar = avatarView
@@ -250,7 +260,7 @@ class ViewController: UIViewController {
         self.view.addSubview(changeAvatarBtn)
         
         
-        let decorationBtnX = avatarArea.frame.width / 2 + margin
+        let decorationBtnX = UIScreen.mainScreen().bounds.width / 2 + margin
         let decorationBtn = UIButton(frame: CGRect(x: decorationBtnX, y: changeAvatarBtnY, width: btnWidth, height: btnHeight))
         decorationBtn.setTitle("Decorate", forState: UIControlState.Normal)
         decorationBtn.opaque = true

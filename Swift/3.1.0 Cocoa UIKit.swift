@@ -66,11 +66,24 @@ NSObject
         .layerClass()
 
         // Animating Views
-        .animatedWithDuration(_ duration: NSTimeInterval  // in seconds
+        .animateWithDuration(_ duration: NSTimeInterval  // in seconds
                               [, delay: NSTimeInterval]   // in seconds
                               [, :UIViewAnimationOptions]
                               animations: () -> Void
                               [, completion: ((Bool) -> Void?)]
+        /**
+         * usingSpringWithDamping
+         *  1 no oscillation, to zero increase oscillation
+         * initialSpringVelocity = total distance / velocity (as you want)
+         *  For smooth start to the animation. E.g. If the distance is 100,
+         *  and you want to match a view of velocity 50pt/s, use a value 0.5
+         */
+        .animateWithDuration(_ duration, delay
+                             , usingSpringWithDamping: CGFloat
+                             , initialSpringVelocity: CGFloat
+                             , options: UIViewAnimationOptions,
+                             , animations
+                             , completion)
 ##      UIImage : UIView : NSObject
             .init(filename: String[, NSBundle?, UITraitCollection?])
             .imageOrientation:UIImageOrientation .size:CGSize 
