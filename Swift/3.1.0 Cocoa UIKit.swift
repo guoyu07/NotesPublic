@@ -18,12 +18,11 @@ UIViewContentMode {ScaleToFill,ScaleAspectFit, ScaleAspectFill, Redraw,
                    BottomRight}
 
 
-
 CGRect(x, y, width, height) -> UIImage
 
 NSObject
 #   UIView : NSObject
-    UIView(frame: CGRect)
+        .init(frame: CGRect)
         /**
          * Configuring the Event-Related Behavior
          */
@@ -73,7 +72,7 @@ NSObject
                               animations: () -> Void
                               [, completion: ((Bool) -> Void?)]
 ##      UIImage : UIView : NSObject
-        UIImage(filename: String[, NSBundle?, UITraitCollection?))
+            .init(filename: String[, NSBundle?, UITraitCollection?])
             .imageOrientation:UIImageOrientation .size:CGSize 
             .scale:CGFloat 
             .flipsForRightToLeftLayoutDirection
@@ -85,12 +84,49 @@ NSObject
             drawAsPatternInRect(:CGRect)
             
 ##      UIImageView : UIView : NSObject
-        UIImageView(img: UIImage? [, highlightedImage: UIImage?])
+            .init(img: UIImage? [, highlightedImage: UIImage?])
             .layer
             .contentMode
             .userInteractionEnabled: Bool
             .clipsToBounds: Bool
 
             
-        
- 
+/**/
+UIGestureRecognizerState {
+    Possible,
+    Began,      // to a continuous gesture
+    Changed,    // to a continuous gesture
+    Ended,      // to a continuous gesture
+    Cancelled,
+    Failed,
+    static var Recognized: UIGestureRecognizerState { get }
+}
+/**/
+#   UIGestureRecognizer : NSObject 
+        .init(target: AnyObject?, action: Selector) -> UIGestureRecognizers
+        .addTarget(_ target, action)
+        .removeTarget(_ target?, action)
+        // Recognizer's State and View
+        .state: UIGestureRecognizerState { get }
+        .view: UIView? { get }
+        .enabled: Bool  whether the gesture recognizer is enabled
+        // Canceling and Delaying Touches
+        .cancelsTouchesInView: Bool
+##      UILongPressGestureRecoginzer : UIGestureRecognizer
+##      UIPanGestureRecognizer : UIGestureRecognizer   
+        /**
+         * A panning(dragging) gesture is continuous. It begins (UIGestureRecognizerStateBegan) when the minimum number of fingers allowed (minimumNumberOfTouches) has moved enough to be considered a pan. It changes (UIGestureRecognizerStateChanged) when a finger moves while at least the minimum number of fingers are pressed down. It ends (UIGestureRecognizerStateEnded) when all fingers are lifted.
+         */
+         .maximumNumberOfTouches   // max number of fingers
+         .miniumNumberOfTouches
+         // Tracking the Location and Velocity
+         .translationInView(_:UIView?) -> CGPoint
+         .setTranslation(_:CGPoint, inView:UIView)
+         .velocityInView(_:UIView?) -> CGPoint   // point per second
+###         UIScreenEdgePanGestureRecognizer : UIPanGestureRecognizer 
+            : UIGestureRecognizer
+            var edges: UIRectEdge   // the acceptable starting edges for
+##      UIPinchGestureRecognizer
+##      UIRotationGestureRecognizer
+##      UISwipeGestureRecognizer
+##      UITapGestureRecgonizer
