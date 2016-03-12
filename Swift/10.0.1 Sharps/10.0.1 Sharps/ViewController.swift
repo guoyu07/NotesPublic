@@ -33,8 +33,49 @@ class ViewController: UIViewController {
         //CGPathAddLineToPoint(self.path, nil, CGRectGetMinX(rect), CGRectGetMaxY(rect))
         CGPathCloseSubpath(self.path)
     }
+    func drawCustomImage(size: CGSize) -> UIImage {
+        // Setup our context
+        let bounds = CGRect(origin: CGPoint.zero, size: size)
+        let opaque = true
+        let scale: CGFloat = 0
+        UIGraphicsBeginImageContextWithOptions(size, opaque, scale)
+        let context = UIGraphicsGetCurrentContext()
+        
+        // Setup complete, do drawing here
+        CGContextSetStrokeColorWithColor(context, UIColor.redColor().CGColor)
+        CGContextSetLineWidth(context, 2.0)
+        
+        CGContextStrokeRect(context, bounds)
+        
+        CGContextBeginPath(context)
+        CGContextMoveToPoint(context, CGRectGetMinX(bounds), CGRectGetMinY(bounds))
+        CGContextAddLineToPoint(context, CGRectGetMaxX(bounds), CGRectGetMaxY(bounds))
+        CGContextMoveToPoint(context, CGRectGetMaxX(bounds), CGRectGetMinY(bounds))
+        CGContextAddLineToPoint(context, CGRectGetMinX(bounds), CGRectGetMaxY(bounds))
+        CGContextStrokePath(context)
+        
+        // Drawing complete, retrieve the finished image and cleanup
+        let image = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return image
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.view.backgroundColor = UIColor.blackColor()
+        let rectFrame = CGRectMake(200, 300, 118, 40)
+        let rectView = UIImageView(frame:rectFrame)
+        rectView.backgroundColor = UIColor.greenColor()
+        self.view.addSubview(rectView)
+        let image = drawCustomImage(CGSize(width:200, height:200))
+        rectView.image = image
+
+        
+        
+        
+        
+        
+        
         
         drawOpenCircle()
         drawTriangle()
@@ -52,7 +93,7 @@ class ViewController: UIViewController {
         img.contentMode = .ScaleToFill
         img.userInteractionEnabled = true
         img.clipsToBounds = true
-        img.backgroundColor = UIColor.blackColor()
+        img.backgroundColor = UIColor.grayColor()
 
         
         

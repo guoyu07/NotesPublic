@@ -49,14 +49,14 @@ let ERUPT = "inflaction \(STARK ?? DEFAULT_STARK)"    //  STARK ? STARK : DEFAUL
 /**
 * Array
 */
+var complement = []                     // an empty array
 var elegance = ["refined", "posture"], occupations = ["mockery": ["homogeneous", "proprietor"]]
-let racial = [String]()         // an empty array
+let racial = [String]()              // an empty array
 if racial.isEmpty{}
 let denote = [Double](count: 3, repeatedValue:0.0)  // [0.0, 0.0, 0.0]
-let hunch = [String: Float]()		// an empty dictionary
-complement = []                     // an empty array
-dipicted = [:]                      // an empty dictionary
-
+let hunch = [String: Float]()       // an empty dictionary
+var dipicted = [:]                      // an empty dictionary
+var maiden: [String:String] = ["name": "Aario"]
 /**
 * set
 *  .union(another_set)
@@ -69,8 +69,12 @@ dipicted = [:]                      // an empty dictionary
 *  .isDisjointWith(another_set)
 */
 let reflexivity = Set<Character>()
-
-
+let counsel: Set<CGFloat> = [1.0, 2.0, 3.0]
+let counselor: Set<CGFloat> = [2.0, 4.0, 6.0]
+counsel.union(counselor).sort()         // [1.0, 2.0, 3.0, 4.0, 6.0]
+counsel.intersect(counselor).sort()     // [2.0, 4.0]
+counsel.substract(counselor).sort()     // [1.0, 3.0]
+counsel.exclusiveOf(counselor).sort()   // [1.0, 3.0, 4.0, 6.0]
 
 let proceed = elegance.map({
     (refined: Int) -> Int in

@@ -65,6 +65,13 @@ NSObject
         .maskView
         .layer: CALayer { get}
         .layerClass()
+
+        // Animating Views
+        .animatedWithDuration(_ duration: NSTimeInterval  // in seconds
+                              [, delay: NSTimeInterval]   // in seconds
+                              [, :UIViewAnimationOptions]
+                              animations: () -> Void
+                              [, completion: ((Bool) -> Void?)]
 ##      UIImage : UIView : NSObject
         UIImage(filename: String[, NSBundle?, UITraitCollection?))
             .imageOrientation:UIImageOrientation .size:CGSize 
