@@ -11,8 +11,93 @@ import UIKit
 class ViewController: UIViewController {
     var tapAvatarCounts: Int8 = 0
     var panAvatarLastTranslation: CGPoint = CGPoint(x: 0.0, y: 0.0)
+    var displayLinkRunTimes:UInt8 = 0
+    var displayLink: CADisplayLink!
     @IBOutlet weak var img: UIImageView!
     @IBOutlet weak var avatar: UIImageView!
+    
+    func avatarElastic() {
+        displayLinkRunTimes++
+        if(displayLinkRunTimes < 30) {      // 60HZ = 60 interval / sec
+            let s:CGFloat = (30 - CGFloat(displayLinkRunTimes)) / CGFloat(30)
+            self.avatar.center.y += self.panAvatarLastTranslation.y * s
+            self.avatar.center.x += self.panAvatarLastTranslation.x * s
+
+//            if (self.panAvatarLastTranslation.x != 0) {
+//                if ((self.avatar.center.x + self.avatar.frame.width / 2) < (UIScreen.mainScreen().bounds.width  / 2) || (self.avatar.center.x - self.avatar.frame.width / 2) > UIScreen.mainScreen().bounds.width) {
+//                    self.panAvatarLastTranslation.x = 0
+//                }
+//            }
+//            if (self.panAvatarLastTranslation.y != 0) {
+//                if ((self.avatar.center.y + self.avatar.frame.height / 2) < (UIApplication.sharedApplication().statusBarFrame.height + UIScreen.mainScreen().bounds.width  / 2) || (self.avatar.center.y - self.avatar.frame.height / 2) > (UIApplication.sharedApplication().statusBarFrame.height + UIScreen.mainScreen().bounds.width / 2)) {
+//                    self.panAvatarLastTranslation.y = 0
+//                }
+//            }
+            if (self.panAvatarLastTranslation.x == 0 && self.panAvatarLastTranslation.y == 0) {
+                self.handleAvatarOutOfBounds()
+                self.displayLink.paused = true
+            }
+            
+        } else {
+            self.handleAvatarOutOfBounds()
+            displayLinkRunTimes = 0
+            self.displayLink.paused = true
+            //self.displayLink.invalidate()
+        }
+    }
+    
+    func handleAvatarOutOfBounds() {
+        let debugOutOfBounds = false
+        
+        let standardAvatarBound: [String:CGFloat] = [
+            "top": UIApplication.sharedApplication().statusBarFrame.height + UIScreen.mainScreen().bounds.width / 2 - Conf.Size.avatarRadius,
+            "right": UIScreen.mainScreen().bounds.width / 2 + Conf.Size.avatarRadius,
+            "bottom": UIApplication.sharedApplication().statusBarFrame.height + UIScreen.mainScreen().bounds.width / 2 + Conf.Size.avatarRadius,
+            "left": UIScreen.mainScreen().bounds.width / 2 - Conf.Size.avatarRadius
+        ]
+        let avatarBound: [String:CGFloat] = [
+            "top": self.avatar.center.y - self.avatar.frame.height / 2,
+            "right": self.avatar.frame.width / 2 + self.avatar.center.x,
+            "bottom": self.avatar.center.y + self.avatar.frame.height / 2,
+            "left": self.avatar.center.x - self.avatar.frame.width / 2
+        ]
+        
+        if (self.panAvatarLastTranslation.x < 0 && avatarBound["right"] < standardAvatarBound["right"]) {
+            UIView.animateWithDuration(0.5, animations: {
+                self.avatar.center.x += (standardAvatarBound["right"]! - avatarBound["right"]!)
+            })
+            if (debugOutOfBounds) {
+                print("Out of right bound")
+            }
+        }
+        
+        if(self.panAvatarLastTranslation.x > 0 && avatarBound["left"] > standardAvatarBound["left"]) {
+            UIView.animateWithDuration(0.5, animations: {
+                self.avatar.center.x -= (avatarBound["left"]! - standardAvatarBound["left"]!)
+            })
+            if (debugOutOfBounds) {
+                print("Out of left bound")
+            }
+        }
+        
+        if(self.panAvatarLastTranslation.y > 0 && avatarBound["top"] > standardAvatarBound["top"]) {
+            UIView.animateWithDuration(0.5, animations: {
+                self.avatar.center.y -= (avatarBound["top"]! - standardAvatarBound["top"]!)
+            })
+            if (debugOutOfBounds) {
+                print("Out of top bound")
+            }
+        }
+        if(self.panAvatarLastTranslation.y < 0 && avatarBound["bottom"] < standardAvatarBound["bottom"]) {
+            UIView.animateWithDuration(0.5, animations: {
+                self.avatar.center.y += (standardAvatarBound["bottom"]! - avatarBound["bottom"]!)
+            })
+            if (debugOutOfBounds) {
+                print("Out of bottom bound")
+            }
+        }
+    }
+    
     
     @IBAction func back(sender: UIButton) {
         
@@ -26,14 +111,13 @@ class ViewController: UIViewController {
     @IBAction func moveAvatar(recognizer:UIPanGestureRecognizer) {
         recognizer.maximumNumberOfTouches = 1
         recognizer.minimumNumberOfTouches = 1
-        let debugOutOfBounds = false
         let debugGestureRecognizer = false
-        let debugVelocity = true
+        let debugVelocity = false
         if (debugGestureRecognizer) {
             print("pan")
         }
         let translation = recognizer.translationInView(self.avatar)
-
+        
         let standardAvatarSize:CGFloat = Conf.Size.avatarRadius * 2
         if (self.avatar.frame.width <  standardAvatarSize) {
             self.avatar.frame = CGRect(origin: self.avatar.frame.origin, size: CGSize(width: standardAvatarSize, height:standardAvatarSize))
@@ -44,7 +128,6 @@ class ViewController: UIViewController {
                 if (debugVelocity) {
                     print("Began: velocity: \(recognizer.velocityInView(view))  translation: \(translation)")
                 }
-                
                 self.panAvatarLastTranslation = translation
                 self.avatar.center = CGPoint(x: self.avatar.center.x + translation.x, y: self.avatar.center.y + translation.y)
             case .Changed:
@@ -60,80 +143,35 @@ class ViewController: UIViewController {
                     print("Ended: velocity: \(recognizer.velocityInView(view))  translation: \(translation)")
                 }
                 let velocityDistance = sqrt(pow(recognizer.velocityInView(view).x, CGFloat(2)) + pow(recognizer.velocityInView(view).y, CGFloat(2)))
-                print(velocityDistance)
+                print("velocityDistance: \(velocityDistance)")
                 if (velocityDistance > 100) {
+                    
                     let inertiaDelay: NSTimeInterval = 0.5
                     let inertiaDistance : CGFloat = velocityDistance * CGFloat(inertiaDelay) * 0.02
-                    let inertiaX:CGFloat = self.panAvatarLastTranslation.x * inertiaDistance
-                    let inertiaY:CGFloat = self.panAvatarLastTranslation.y * inertiaDistance
-                                        //sqrt(pow(inertiaX, CGFloat(2)) + pow(inertiaY, CGFloat(2)))
-                    //print("inertiaDelay: \(inertiaDelay)")
-                    UIView.animateWithDuration(inertiaDelay, animations: {
-                        self.avatar.center.x += inertiaX
-                        self.avatar.center.y += inertiaY
-                    })
+                    let inertiaX:CGFloat = self.panAvatarLastTranslation.x * inertiaDistance / 60
+                    let inertiaY:CGFloat = self.panAvatarLastTranslation.y * inertiaDistance / 60
+                    
+                    
+                    self.displayLinkRunTimes = 0
+                    self.displayLink.paused = false
+                    
+                    
+                    self.panAvatarLastTranslation = CGPoint(x: inertiaX, y: inertiaY)
                 }
             default:
                 print("default")
             }
-
-            let standardAvatarBound: [String:CGFloat] = [
-                "top": UIApplication.sharedApplication().statusBarFrame.height + UIScreen.mainScreen().bounds.width / 2 - Conf.Size.avatarRadius,
-                "right": UIScreen.mainScreen().bounds.width / 2 + Conf.Size.avatarRadius,
-                "bottom": UIApplication.sharedApplication().statusBarFrame.height + UIScreen.mainScreen().bounds.width / 2 + Conf.Size.avatarRadius,
-                "left": UIScreen.mainScreen().bounds.width / 2 - Conf.Size.avatarRadius
-            ]
-            let avatarBound: [String:CGFloat] = [
-                "top": self.avatar.center.y - self.avatar.frame.height / 2,
-                "right": self.avatar.frame.width / 2 + self.avatar.center.x,
-                "bottom": self.avatar.center.y + self.avatar.frame.height / 2,
-                "left": self.avatar.center.x - self.avatar.frame.width / 2
-            ]
-            
-            if (self.panAvatarLastTranslation.x < 0 && avatarBound["right"] < standardAvatarBound["right"]) {
-                UIView.animateWithDuration(0.5, animations: {
-                    self.avatar.center.x += (standardAvatarBound["right"]! - avatarBound["right"]!)
-                })
-                if (debugOutOfBounds) {
-                    print("Out of right bound")
-                }
-            }
-            
-            if(self.panAvatarLastTranslation.x > 0 && avatarBound["left"] > standardAvatarBound["left"]) {
-                UIView.animateWithDuration(0.5, animations: {
-                    self.avatar.center.x -= (avatarBound["left"]! - standardAvatarBound["left"]!)
-                })
-                if (debugOutOfBounds) {
-                    print("Out of left bound")
-                }
-            }
-            
-            if(self.panAvatarLastTranslation.y > 0 && avatarBound["top"] > standardAvatarBound["top"]) {
-                UIView.animateWithDuration(0.5, animations: {
-                    self.avatar.center.y -= (avatarBound["top"]! - standardAvatarBound["top"]!)
-                })
-                if (debugOutOfBounds) {
-                    print("Out of top bound")
-                }
-            }
-            if(self.panAvatarLastTranslation.y < 0 && avatarBound["bottom"] < standardAvatarBound["bottom"]) {
-                UIView.animateWithDuration(0.5, animations: {
-                    self.avatar.center.y += (standardAvatarBound["bottom"]! - avatarBound["bottom"]!)
-                })
-                if (debugOutOfBounds) {
-                    print("Out of bottom bound")
-                }
-            }
+            self.handleAvatarOutOfBounds()
         }
         recognizer.setTranslation(CGPointZero, inView: view)
     }
     
     func maskAvatar(avatarView: UIView) -> CAShapeLayer{
         //let avatarView = UIView(avatarView)
-       
+        
         let range: CGFloat = UIScreen.mainScreen().bounds.width
         let radius: CGFloat = Conf.Size.avatarRadius
-
+        
         // Create a path with the rectangle in it.
         let path = CGPathCreateMutable()
         let rect = CGRectMake(0, 0, range, range)
@@ -155,10 +193,20 @@ class ViewController: UIViewController {
         maskLayer.fillRule = kCAFillRuleEvenOdd
         return maskLayer
     }
- 
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-       
+        
+        
+        displayLink = CADisplayLink(target: self, selector: "avatarElastic")
+        displayLink.frameInterval = 1
+        displayLink.paused = true
+        displayLink.addToRunLoop(NSRunLoop.currentRunLoop(), forMode: NSRunLoopCommonModes)
+        
+        
+        
+        
         let statusBarBg = UIImageView(frame: CGRect(x:0, y:0, width: UIApplication.sharedApplication().statusBarFrame.size.width, height: UIApplication.sharedApplication().statusBarFrame.size.height))
         statusBarBg.backgroundColor = UIColor.blackColor()
         self.view.addSubview(statusBarBg)
@@ -175,12 +223,12 @@ class ViewController: UIViewController {
         saveBtn.setTitle("Save", forState: UIControlState.Normal)
         self.view.addSubview(saveBtn)
         
-      
+        
         let avatarArea = UIView(frame: CGRect(x:0, y:UIApplication.sharedApplication().statusBarFrame.height, width: UIScreen.mainScreen().bounds.width, height: UIScreen.mainScreen().bounds.width))
         //self.view.addSubview(avatarArea)
         
         
-        let avatarView = UIImageView(image: UIImage(named: "default"))
+        let avatarView = UIImageView(image: UIImage(named: "swift2"))
         let avatarRange = UIScreen.mainScreen().bounds.width
         var avatarX:CGFloat = 0
         var avatarY: CGFloat = UIApplication.sharedApplication().statusBarFrame.height
@@ -209,15 +257,15 @@ class ViewController: UIViewController {
         }
         
         avatarView.frame = CGRect(x: avatarX, y: avatarY, width: avatarWidth, height: avatarHeight)
-
+        
         avatarView.contentMode = .ScaleToFill
         avatarView.userInteractionEnabled = true
         avatarView.alpha = 0.5
         avatarView.backgroundColor = UIColor.blackColor()
         avatarView.clipsToBounds = true
         //avatarView.layer.mask = maskAvatar(avatarView)
-
-
+        
+        
         
         
         
@@ -228,11 +276,11 @@ class ViewController: UIViewController {
         avatarView.addGestureRecognizer(UIPinchGestureRecognizer(target: self, action: "resizeAvatar:"))
         avatarView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: "resizeAvatar:"))
         avatarView.addGestureRecognizer(UISwipeGestureRecognizer(target: self, action: "swipeAvatar:"))
-
+        
         
         self.view.addSubview(avatarView)
         avatar = avatarView
-
+        
         
         
         let margin: CGFloat = 20.0
@@ -259,9 +307,9 @@ class ViewController: UIViewController {
         decorationBtn.layer.borderColor = UIColor.grayColor().CGColor
         decorationBtn.layer.borderWidth = 1
         self.view.addSubview(decorationBtn)
-
         
-       
+        
+        
         let decorationY = UIScreen.mainScreen().bounds.width + UIApplication.sharedApplication().statusBarFrame.size.height
         let decorationHeight = UIScreen.mainScreen().bounds.height - decorationY
         
@@ -283,20 +331,22 @@ class ViewController: UIViewController {
         
         self.view.sendSubviewToBack(avatarView)
         //self.view.sendSubviewToBack(avatarView)
-
+        
         self.view.bringSubviewToFront(changeAvatarBtn)
         self.view.bringSubviewToFront(decorationBtn)
         self.view.bringSubviewToFront(backBtn)
         self.view.bringSubviewToFront(saveBtn)
         
-
+        
+        
+        
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-
+    
+    
 }
 
