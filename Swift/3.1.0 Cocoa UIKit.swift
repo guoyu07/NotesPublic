@@ -143,3 +143,34 @@ UIGestureRecognizerState {
 ##      UIRotationGestureRecognizer
 ##      UISwipeGestureRecognizer
 ##      UITapGestureRecgonizer
+
+#       UIBezierPath : NSObject, NSCopying, NSCoding
+        .init(rect:CGRect)  -> UIBezierPath
+        .init(ovalInRect:CGRect)  -> UIBezierPath
+        .init(rounderRect:CGRect, cornerRadius:CGFLoat) -> UIBezierPath
+        .init(roundRect, byRoundingCorners:UIRectCorner, 
+              cornerRadii: CGSize) -> UIBezierPath
+        /**
+         *   180 degree = M_PI radius
+         */
+        .init(arcCenter:CGPoint, radius: CGFloat, startAngle: UIBezierPath,
+              endAngle:CGFloat, clockwise: Bool) -> UIBezierPath
+        convenience init(:CGPath)
+        .bezierPathByReversingPath() -> UIBezierPath
+        // Constructing a Path
+        .moveToPoint(_:CGPoint)
+        .addLineToPoint(_:CGPoint)
+        .addArcWithCenter(_ center, radius, startAngle, endAngle, clockwise)
+        /**
+         *  A cubic Bézier curve
+         *        ■   controlPoint1
+         *       /                    ●  endPoint
+         *      /   ～ ～ ～       ～/ 
+         *     /  ～          ～ ～ /
+         *    ● ～                 ■  controlPoint2
+         *  startPoint(using the moveToPoint)
+         */
+        .addCurveToPoint(_ endPoint:CGPoint, controlPoint1: CGPoint,
+                         controlPoint2)
+        
+        

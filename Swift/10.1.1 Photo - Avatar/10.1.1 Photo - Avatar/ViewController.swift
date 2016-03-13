@@ -9,42 +9,10 @@
 import UIKit
 
 class ViewController: UIViewController {
-    var tapAvatarCounts: Int8 = 0
     var panAvatarLastTranslation: CGPoint = CGPoint(x: 0.0, y: 0.0)
-    var displayLinkRunTimes:UInt8 = 0
-    var displayLink: CADisplayLink!
     @IBOutlet weak var img: UIImageView!
     @IBOutlet weak var avatar: UIImageView!
     
-    func avatarElastic() {
-        displayLinkRunTimes++
-        if(displayLinkRunTimes < 30) {      // 60HZ = 60 interval / sec
-            let s:CGFloat = (30 - CGFloat(displayLinkRunTimes)) / CGFloat(30)
-            self.avatar.center.y += self.panAvatarLastTranslation.y * s
-            self.avatar.center.x += self.panAvatarLastTranslation.x * s
-
-//            if (self.panAvatarLastTranslation.x != 0) {
-//                if ((self.avatar.center.x + self.avatar.frame.width / 2) < (UIScreen.mainScreen().bounds.width  / 2) || (self.avatar.center.x - self.avatar.frame.width / 2) > UIScreen.mainScreen().bounds.width) {
-//                    self.panAvatarLastTranslation.x = 0
-//                }
-//            }
-//            if (self.panAvatarLastTranslation.y != 0) {
-//                if ((self.avatar.center.y + self.avatar.frame.height / 2) < (UIApplication.sharedApplication().statusBarFrame.height + UIScreen.mainScreen().bounds.width  / 2) || (self.avatar.center.y - self.avatar.frame.height / 2) > (UIApplication.sharedApplication().statusBarFrame.height + UIScreen.mainScreen().bounds.width / 2)) {
-//                    self.panAvatarLastTranslation.y = 0
-//                }
-//            }
-            if (self.panAvatarLastTranslation.x == 0 && self.panAvatarLastTranslation.y == 0) {
-                self.handleAvatarOutOfBounds()
-                self.displayLink.paused = true
-            }
-            
-        } else {
-            self.handleAvatarOutOfBounds()
-            displayLinkRunTimes = 0
-            self.displayLink.paused = true
-            //self.displayLink.invalidate()
-        }
-    }
     
     func handleAvatarOutOfBounds() {
         let debugOutOfBounds = false
@@ -185,41 +153,47 @@ class ViewController: UIViewController {
         
         
         CGPathMoveToPoint(path, nil, range / 2 + radius, range / 2 + radius)
+        CGPathAddArc(path, nil, range / 2, range / 2, radius, 0, CGFloat(M_PI * 2), false)
         
-        CGPathAddArc(path, nil, range / 2, range / 2, radius, 0, 3.14 * 2, false)
+
         
         let maskLayer = CAShapeLayer()
         maskLayer.path = path
-        maskLayer.backgroundColor = UIColor.whiteColor().CGColor
-        maskLayer.fillColor = UIColor.whiteColor().CGColor
+        maskLayer.fillColor = UIColor.blackColor().CGColor
+        maskerView.backgroundColor = UIColor.blackColor()
         maskLayer.fillRule = kCAFillRuleEvenOdd
         
         maskerView.alpha = 0.5
-        maskerView.backgroundColor = UIColor.blackColor()
         self.view.addSubview(maskerView)
         maskerView.layer.mask = maskLayer
+        
+        
+        // circle
+        let circlePath = UIBezierPath(arcCenter: CGPoint(x: range / 2,y: range / 2), radius: radius, startAngle: CGFloat(0), endAngle:CGFloat(M_PI * 2), clockwise: true)
+        
+        let shapeLayer = CAShapeLayer()
+        shapeLayer.path = circlePath.CGPath
+        
+        //change the fill color
+        shapeLayer.fillColor = UIColor.clearColor().CGColor
+        //you can change the stroke color
+        shapeLayer.strokeColor = UIColor.whiteColor().CGColor
+        //you can change the line width
+        shapeLayer.lineWidth = 3.0
+
+        
+        
+        maskerView.layer.addSublayer(shapeLayer)
         
         maskerView.addGestureRecognizer(UIPanGestureRecognizer(target: self, action: "moveAvatar:"))
         maskerView.addGestureRecognizer(UIPinchGestureRecognizer(target: self, action: "resizeAvatar:"))
         maskerView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: "resizeAvatar:"))
         maskerView.addGestureRecognizer(UISwipeGestureRecognizer(target: self, action: "swipeAvatar:"))
-        
-
-
     }
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
-        displayLink = CADisplayLink(target: self, selector: "avatarElastic")
-        displayLink.frameInterval = 1
-        displayLink.paused = true
-        displayLink.addToRunLoop(NSRunLoop.currentRunLoop(), forMode: NSRunLoopCommonModes)
-        
-        
-        
         
         let statusBarBg = UIImageView(frame: CGRect(x:0, y:0, width: UIApplication.sharedApplication().statusBarFrame.size.width, height: UIApplication.sharedApplication().statusBarFrame.size.height))
         statusBarBg.backgroundColor = UIColor.blackColor()

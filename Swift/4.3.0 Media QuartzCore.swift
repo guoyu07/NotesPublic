@@ -2,7 +2,6 @@
  * @see https://developer.apple.com/library/ios/documentation/GraphicsImaging/Reference/QuartzCoreRefCollection/index.html
  */
 
-NSObject
 #   CALayer : NSObject
 ##      CADisplayLink
         /**
@@ -19,6 +18,56 @@ NSObject
 ##      CASharpLayer : CALayer : NSObject
             .path: CGPath?
             .fillColor: CGColor?
+            /**
+             *  kCAFillRulNonZero
+             *   Count each left-to-right path as + 1 and each right-to-left
+             *   path as -1. 0 is outside, nonzero inside
+             *  kCAFillRuleEvenOdd
+             *   Count the total number of path crossings. Even is outside, 
+             *   odd is inside.
+             *      +----------------+
+             *      |////////////////|
+             *      |//+----------+//|
+             *      |//|  +-----+ |//|
+             *      |//|  |/////| |//|
+             *      |//|  +-----+ |//|
+             *      |//+----------+//|
+             *      |////////////////|
+             *      +----------------+
+             */
             .fillRule: String   
                 kCAFillRuleNonZero
                 kCAFillRuleEvenOdd
+            /**
+             *  kCALineCapButt      ---------
+             *  kCALineCapRound     •--------•
+             *  kCALineCapSquare    ▪--------▪ 
+             */
+            .lineWidth: CGFloat
+            .lineCap: String
+                kCALineCapButt
+                kCALineCapRound
+                kCALineCapSquare
+            .lineDashPattern: [NSNumber]?
+            .lineDashPhase: CGFloat
+            /**
+             *  kCALineJoinMiter
+             *      /\
+             *     / \
+             *  kCALineJoinRound
+             *      ⌒ 
+             *     / \
+             *    /  \
+             *  kCALineJoinBevel
+             *      -
+             *     / \
+             *    /  \
+             */
+            .lineJoin: String
+                kCALineJoinMiter
+                kCALineJoinRound
+                kCALineJoinBevel
+            .miterLimit: CGFloat
+            .strokeColor： CGColor?
+            .strokeStart: CGFloat
+            .strokeEnd: CGFloat

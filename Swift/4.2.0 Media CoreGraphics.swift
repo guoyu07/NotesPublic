@@ -1,10 +1,11 @@
 /**
  * @see https://developer.apple.com/library/ios/documentation/GraphicsImaging/Reference/CGPath/index.html#//apple_ref/doc/uid/TP30000959
  */
-CGPath
+# CGPath : NSObject
     // Creating and Managing Paths
     CGPathCreateMutable() -> CGMutablePath
     
+
     // Modifying Quartz Paths
     /**
      * x, y: the x,y of the center point of the arc
