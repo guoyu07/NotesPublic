@@ -142,7 +142,6 @@ class ViewController: UIViewController {
                 if (debugVelocity) {
                     print("Ended: velocity: \(recognizer.velocityInView(view))  translation: \(translation)")
                 }
-<<<<<<< HEAD
                 var velocityDistance = sqrt(pow(recognizer.velocityInView(view).x, CGFloat(2)) + pow(recognizer.velocityInView(view).y, CGFloat(2)))
                 print(velocityDistance)
                 if (velocityDistance > 50) {
@@ -160,23 +159,6 @@ class ViewController: UIViewController {
                         self.avatar.center.x += inertiaX
                         self.avatar.center.y += inertiaY
                     }, completion: nil)
-=======
-                let velocityDistance = sqrt(pow(recognizer.velocityInView(view).x, CGFloat(2)) + pow(recognizer.velocityInView(view).y, CGFloat(2)))
-                print("velocityDistance: \(velocityDistance)")
-                if (velocityDistance > 100) {
-                    
-                    let inertiaDelay: NSTimeInterval = 0.5
-                    let inertiaDistance : CGFloat = velocityDistance * CGFloat(inertiaDelay) * 0.02
-                    let inertiaX:CGFloat = self.panAvatarLastTranslation.x * inertiaDistance / 60
-                    let inertiaY:CGFloat = self.panAvatarLastTranslation.y * inertiaDistance / 60
-                    
-                    
-                    self.displayLinkRunTimes = 0
-                    self.displayLink.paused = false
-                    
-                    
-                    self.panAvatarLastTranslation = CGPoint(x: inertiaX, y: inertiaY)
->>>>>>> origin
                 }
             default:
                 print("default")
@@ -186,15 +168,9 @@ class ViewController: UIViewController {
         recognizer.setTranslation(CGPointZero, inView: view)
     }
     
-<<<<<<< HEAD
     func maskAvatar(){
         let maskerView = UIView(frame: CGRect(x:0, y:UIApplication.sharedApplication().statusBarFrame.height, width: UIScreen.mainScreen().bounds.width, height: UIScreen.mainScreen().bounds.width))
 
-=======
-    func maskAvatar(avatarView: UIView) -> CAShapeLayer{
-        //let avatarView = UIView(avatarView)
-        
->>>>>>> origin
         let range: CGFloat = UIScreen.mainScreen().bounds.width
         let radius: CGFloat = Conf.Size.avatarRadius
         
@@ -261,19 +237,7 @@ class ViewController: UIViewController {
         saveBtn.setTitle("Save", forState: UIControlState.Normal)
         self.view.addSubview(saveBtn)
         
-<<<<<<< HEAD
-      
-        
-        
-        let avatarView = UIImageView(image: UIImage(named: "swift2-1"))
-=======
-        
-        let avatarArea = UIView(frame: CGRect(x:0, y:UIApplication.sharedApplication().statusBarFrame.height, width: UIScreen.mainScreen().bounds.width, height: UIScreen.mainScreen().bounds.width))
-        //self.view.addSubview(avatarArea)
-        
-        
-        let avatarView = UIImageView(image: UIImage(named: "swift2"))
->>>>>>> origin
+        let avatarView = UIImageView(image: UIImage(named: "long"))
         let avatarRange = UIScreen.mainScreen().bounds.width
         var avatarX:CGFloat = 0
         var avatarY: CGFloat = UIApplication.sharedApplication().statusBarFrame.height
@@ -303,38 +267,13 @@ class ViewController: UIViewController {
         
         avatarView.frame = CGRect(x: avatarX, y: avatarY, width: avatarWidth, height: avatarHeight)
         
-<<<<<<< HEAD
-        
-=======
->>>>>>> origin
         avatarView.contentMode = .ScaleToFill
         avatarView.userInteractionEnabled = true
         //avatarView.alpha = 0.5
         avatarView.backgroundColor = UIColor.blackColor()
         avatarView.clipsToBounds = true
-<<<<<<< HEAD
         maskAvatar()
 
-
-=======
-        //avatarView.layer.mask = maskAvatar(avatarView)
-        
-        
->>>>>>> origin
-        
-        
-        
-        
-        
-        
-<<<<<<< HEAD
-=======
-        avatarView.addGestureRecognizer(UIPanGestureRecognizer(target: self, action: "moveAvatar:"))
-        avatarView.addGestureRecognizer(UIPinchGestureRecognizer(target: self, action: "resizeAvatar:"))
-        avatarView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: "resizeAvatar:"))
-        avatarView.addGestureRecognizer(UISwipeGestureRecognizer(target: self, action: "swipeAvatar:"))
-        
->>>>>>> origin
         
         self.view.addSubview(avatarView)
         avatar = avatarView
