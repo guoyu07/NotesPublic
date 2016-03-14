@@ -21,16 +21,57 @@ UIViewContentMode {ScaleToFill,ScaleAspectFit, ScaleAspectFill, Redraw,
 NSObject
 #   UIResponder
 ##  UIView : UIReponder
-    .init(frame: CGRect)
+struct UIViewAnimationOptions : OptionSetType {
+    LayoutSubViews,             // animated along with parent
+
     /**
-     * Configuring the Event-Related Behavior
+     * 
      */
+    AllUserInteraction,
+    BeginFromCurrentState,      
+    Repeat,
+    Autoreverse,
+    OverrideInheritedDuration,
+    OverrideInheritedCurve,
+    AllowAnimatedContent,
+    ShowHideTransitionViews,
+    OverrideInheritedOptions,
+    CurveEaseInOut,
+    CurveEaseIn,
+    CurveEaseOut,
+    CurveLinear,
+    TransitionNone,
+    TransitionFlipFromLeft,
+    TransitionFlipFromRight,
+    TransitionCurlUp,
+    TransitionCurlDown,
+    TransitionCrossDissolve,
+    TransitionFlipFromTop,
+    TransitionFlipFromBotton
+}
+struct UIViewAutoresizing : OptionSetType {
+    None,FlexibleLeftMargin,FlexibleWidth,FlexibleRightMargin,FlexibleTopMargin,
+    FlexibleHeight,FlexibleBottomMargin
+}
+struct UIViewAnimationCurve : Int {
+    EaseInOut,EaseIn,EaseOut,Linear
+}
+    .init(frame: CGRect)
+    .backgroundColor
+    .hidden
+    .alpha
+    .opaque
+    .tintColor
+    .tintAdjustmentMode
+    .clipsToBounds
+    .clearsContextBeforeDrawing
+    .maskView
+    .layer
+    .layClass()
+    // Configuring the Event-Related Behavior
     .userInteractionEnabled: Bool
     .multipleTouchEnabled: Bool
     .exclusiveTouch: Bool
-
-    .alpha .backgroundColor .hidden .opaque
-    .tintColor .tintAdjustmentMode:UIViewTintAdjustmentMode
 
     // Conguring the Bounds and Frame Rectagles
     .frame: CGRect
@@ -56,7 +97,31 @@ NSObject
     .contentMode: UIViewContentMode
     .sizeThatFits(_:)
     .sizeToFit()
+    
+    // Laying out Subviews
+    .layoutSubviews()
+    .setNeedsLayouts()
+    .layoutIfNeeded()
+    .requiresConstraintBasedLayout()
+    .translatesAutoresizingMaskIntoConstraints
+    
+    // Creating Constraints Using Layout Anchors
+    .bottomAnchor
+    
+    // Aligning Views in Auto Layout
 
+    // Drawing and Updating the View
+    .drawRect(_:)
+    .setNeedsDisplay()
+    .setNeedsDisplayInRect(:_)
+    .contentScaleFactor
+    .tintColorDidChange()
+    
+    // Managing Gesture Recognizers
+    .addGestureRecognizer(_:UIGestureRecoginzer)
+    .removeGestureRecognizer(_:UIGestureRecognizer)
+    .gestureRecognizers: [UIGestureRecoginzer]?
+    .gestureRecognizerShouldBegin(_:UIGestureRecoginzer)
 
     .clipsToBounds
     .clearsContextBeforeDrawing
@@ -83,13 +148,89 @@ NSObject
                          , options: UIViewAnimationOptions,
                          , animations
                          , completion)
+
+    // Configuring the Resizing Behavior
+    .autoresizingMask: UIViewAutoresizing   //the resize way to fit superview's
+    .autoresizesSubviews: Bool              // whether resize subviews
+    .sizeToFit()
+
+    // Observing Focus
+    .canBecomeFocused() -> Bool
+    .focused : Bool { get }
+    .inheritedAnimationDuration() -> NSTimeInterval
+    
+    
+### UIControl : UIView
+enum UIControlContentVerticalAlignment {Center,Top,Bottom,Fill}
+enum UIControlContentHorizontalAlignment {Center,Left,Right,Fill}
+struct UIControlEvents: OptionSetType {
+    init(rawValue: UInt)
+    TouchDown
+    TouchDownRepeat
+    TouchDragInside
+    TouchDragOutside
+    TouchDragEnter
+    TouchDrageExit
+    TouchUpInside
+    TouchUpOutside
+    TouchCancel
+    ValueChanged
+    PrimaryActionTrigged
+    EditingDidBegin
+    EditingChanged
+    EditingDidEnd
+    EditingDidEndOnExit
+    AllTouchEvents
+    AllEditingEvents
+    ApplicationReserved
+    SystemReserved
+    AllEvents
+}
+struct UIControlState: OptionSetType {
+    init(rawValue:UInt)
+    Normal,Highlighted,Disabled,Selected,Focused,Application,Reserved
+}
+    // Setting and Getting Control Attributes
+    .state: UIControlState { get }
+    .enabled: Bool
+    .selected: Bool
+    .highlighted: Bool
+    .contentVerticalAlignment: UIControlContentVerticalAlignment
+    .contentHorizontalAlignment: UIControlContentHorizontalAlignment
+    
+    // Tracking Touches and Redrawing Controls
+    
+    
+####UIButton : UIControl : UIView
+enum UIButtonType {
+    Custom,System,DetailDisclosure,InfoLight,InfoDark,ContactAdd,
+    static var RoundedRect:UIButtonType { get }
+             }
+        .init(type:UIButtonType)
+        .titleLabel
+        .titleForState(_:UIControlState) -> String?
         
+
 ### UIImageView : UIView : NSObject
-        .init(:UIImage? [, highlightedImage: UIImage?])
+        .init(image:UIImage? [, highlightedImage: UIImage?])
+        .image: UIImage?
+        .hightedImage
         .layer
         .contentMode
-        .userInteractionEnabled: Bool
+        .userInteractionEnabled: Bool   // whether listen event queue
+        .highlighted: Bool  // whether the image is highlighted
+        .tintColor          // tint color in the view hierachy
+
         .clipsToBounds: Bool
+
+        // Animating
+        .animationImages: [UIImage]?
+        .highlightedAnimationImages
+        .animationDuration
+        .animationRepeatCount
+        .startAnimating()
+        .stopAnimating()
+        .isAnimating()
 
 /**/
 UIImageOrientation {Up,Down,Left,Right,?Mirrored}        

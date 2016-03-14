@@ -8,4 +8,3 @@
 }
  
 uiView.addGestureRecognizer(UIPanGestureRecognizer(target: self, action: "drag: ")
-UIGestureRecognizer(

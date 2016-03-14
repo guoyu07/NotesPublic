@@ -184,10 +184,13 @@ class ViewController: UIViewController {
         
         maskerView.layer.addSublayer(shapeLayer)
         
-        maskerView.addGestureRecognizer(UIPanGestureRecognizer(target: self, action: "moveAvatar:"))
-        maskerView.addGestureRecognizer(UIPinchGestureRecognizer(target: self, action: "resizeAvatar:"))
-        maskerView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: "resizeAvatar:"))
-        maskerView.addGestureRecognizer(UISwipeGestureRecognizer(target: self, action: "swipeAvatar:"))
+        maskerView.addGestureRecognizer(UIPanGestureRecognizer(target: self, action: #selector(ViewController.moveAvatar(_:))))
+        maskerView.addGestureRecognizer(UIPinchGestureRecognizer(target: self, action: #selector(ViewController.resizeAvatar(_:))))
+        maskerView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(ViewController.resizeAvatar(_:))))
+        maskerView.addGestureRecognizer(UISwipeGestureRecognizer(target: self, action: #selector(ViewController.swipeAvatar(_:))))
+    }
+    @IBAction func disableSaveBtn(sender: UIButton) {
+        tracingMethods(#file, #function, #line)
     }
     @IBAction func saveAvatar(sender: UIButton) {
         let avatarMaskCenter:CGPoint = CGPoint(x: UIScreen.mainScreen().bounds.width / 2, y: UIApplication.sharedApplication().statusBarFrame.height + UIScreen.mainScreen().bounds.width / 2)
@@ -228,12 +231,13 @@ class ViewController: UIViewController {
         backBtn.setTitle("< Back", forState: UIControlState.Normal)
         backBtn.contentHorizontalAlignment = .Left
         backBtn.contentVerticalAlignment = .Center
-        backBtn.addTarget(self, action: "back:", forControlEvents: UIControlEvents.TouchUpInside)
+        backBtn.addTarget(self, action: #selector(ViewController.back(_:)), forControlEvents: UIControlEvents.TouchUpInside)
         self.view.addSubview(backBtn)
         
         let saveBtn = UIButton(frame: CGRect(x: UIScreen.mainScreen().bounds.width - 60, y: UIApplication.sharedApplication().statusBarFrame.height, width: 60, height: 30))
         saveBtn.setTitle("Save", forState: UIControlState.Normal)
-        saveBtn.addTarget(self, action: "saveAvatar:", forControlEvents: UIControlEvents.TouchUpInside)
+        saveBtn.addTarget(self, action: #selector(ViewController.disableSaveBtn(_:)), forControlEvents: UIControlEvents.TouchDown)
+        saveBtn.addTarget(self, action: #selector(ViewController.saveAvatar(_:)), forControlEvents: UIControlEvents.TouchUpInside)
         self.view.addSubview(saveBtn)
         
         let avatarView = UIImageView(image: UIImage(named: "long"))
