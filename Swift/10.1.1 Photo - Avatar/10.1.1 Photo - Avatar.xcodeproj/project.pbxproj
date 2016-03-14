@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0073FD1D1C96B3E8004F5B5A /* Debug.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0073FD1C1C96B3E8004F5B5A /* Debug.swift */; };
 		00B6EF831C9004A100E8EE59 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00B6EF821C9004A100E8EE59 /* AppDelegate.swift */; };
 		00B6EF851C9004A100E8EE59 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00B6EF841C9004A100E8EE59 /* ViewController.swift */; };
 		00B6EF881C9004A100E8EE59 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 00B6EF861C9004A100E8EE59 /* Main.storyboard */; };
@@ -35,6 +36,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0073FD1C1C96B3E8004F5B5A /* Debug.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Debug.swift; sourceTree = "<group>"; };
 		00B6EF7F1C9004A100E8EE59 /* 10.1.1 Photo - Avatar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "10.1.1 Photo - Avatar.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		00B6EF821C9004A100E8EE59 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		00B6EF841C9004A100E8EE59 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -106,6 +108,7 @@
 				00B6EF8B1C9004A100E8EE59 /* LaunchScreen.storyboard */,
 				00B6EF8E1C9004A100E8EE59 /* Info.plist */,
 				00B6EFB01C90075800E8EE59 /* Conf.swift */,
+				0073FD1C1C96B3E8004F5B5A /* Debug.swift */,
 			);
 			path = "10.1.1 Photo - Avatar";
 			sourceTree = "<group>";
@@ -263,6 +266,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				00B6EFB11C90075800E8EE59 /* Conf.swift in Sources */,
+				0073FD1D1C96B3E8004F5B5A /* Debug.swift in Sources */,
 				00B6EF851C9004A100E8EE59 /* ViewController.swift in Sources */,
 				00B6EF831C9004A100E8EE59 /* AppDelegate.swift in Sources */,
 			);
@@ -491,6 +495,7 @@
 				00B6EFA91C9004A100E8EE59 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		00B6EFAA1C9004A100E8EE59 /* Build configuration list for PBXNativeTarget "10.1.1 Photo - AvatarTests" */ = {
 			isa = XCConfigurationList;
@@ -499,6 +504,7 @@
 				00B6EFAC1C9004A100E8EE59 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		00B6EFAD1C9004A100E8EE59 /* Build configuration list for PBXNativeTarget "10.1.1 Photo - AvatarUITests" */ = {
 			isa = XCConfigurationList;
@@ -507,6 +513,7 @@
 				00B6EFAF1C9004A100E8EE59 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

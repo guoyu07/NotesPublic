@@ -16,7 +16,6 @@ class ViewController: UIViewController {
     
     
     func handleAvatarOutOfBounds() {
-        let debugOutOfBounds = false
         
         let standardAvatarBound: [String:CGFloat] = [
             "top": UIApplication.sharedApplication().statusBarFrame.height + UIScreen.mainScreen().bounds.width / 2 - Conf.Size.avatarSize.height / 2,
@@ -35,7 +34,7 @@ class ViewController: UIViewController {
             UIView.animateWithDuration(0.5, animations: {
                 self.avatar.center.x += (standardAvatarBound["right"]! - avatarBound["right"]!)
             })
-            if (debugOutOfBounds) {
+            if (Debug.Avatar.debugIsOutOfBounds) {
                 print("Out of right bound")
             }
         }
@@ -44,7 +43,7 @@ class ViewController: UIViewController {
             UIView.animateWithDuration(0.5, animations: {
                 self.avatar.center.x -= (avatarBound["left"]! - standardAvatarBound["left"]!)
             })
-            if (debugOutOfBounds) {
+            if (Debug.Avatar.debugIsOutOfBounds) {
                 print("Out of left bound")
             }
         }
@@ -53,7 +52,7 @@ class ViewController: UIViewController {
             UIView.animateWithDuration(0.5, animations: {
                 self.avatar.center.y -= (avatarBound["top"]! - standardAvatarBound["top"]!)
             })
-            if (debugOutOfBounds) {
+            if (Debug.Avatar.debugIsOutOfBounds) {
                 print("Out of top bound")
             }
         }
@@ -61,7 +60,7 @@ class ViewController: UIViewController {
             UIView.animateWithDuration(0.5, animations: {
                 self.avatar.center.y += (standardAvatarBound["bottom"]! - avatarBound["bottom"]!)
             })
-            if (debugOutOfBounds) {
+            if (Debug.Avatar.debugIsOutOfBounds) {
                 print("Out of bottom bound")
             }
         }
@@ -80,9 +79,7 @@ class ViewController: UIViewController {
     @IBAction func moveAvatar(recognizer:UIPanGestureRecognizer) {
         recognizer.maximumNumberOfTouches = 1
         recognizer.minimumNumberOfTouches = 1
-        let debugGestureRecognizer = false
-        let debugVelocity = false
-        if (debugGestureRecognizer) {
+        if (Debug.Avatar.recognizeGestures) {
             print("pan")
         }
         let translation = recognizer.translationInView(self.avatar)
@@ -93,13 +90,13 @@ class ViewController: UIViewController {
         if let view = recognizer.view {
             switch recognizer.state {
             case .Began:
-                if (debugVelocity) {
+                if (Debug.Avatar.panningVelocity) {
                     print("Began: velocity: \(recognizer.velocityInView(view))  translation: \(translation)")
                 }
                 self.panAvatarLastTranslation = translation
                 self.avatar.center = CGPoint(x: self.avatar.center.x + translation.x, y: self.avatar.center.y + translation.y)
             case .Changed:
-                if (debugVelocity) {
+                if (Debug.Avatar.panningVelocity) {
                     print("Changed: velocity: \(recognizer.velocityInView(view))  translation: \(translation)")
                 }
                 if (translation != CGPoint(x: 0.0, y: 0.0)) {
@@ -107,11 +104,13 @@ class ViewController: UIViewController {
                 }
                 self.avatar.center = CGPoint(x: self.avatar.center.x + translation.x, y: self.avatar.center.y + translation.y)
             case .Ended:
-                if (debugVelocity) {
-                    print("Ended: velocity: \(recognizer.velocityInView(view))  translation: \(translation)")
-                }
                 var velocityDistance = sqrt(pow(recognizer.velocityInView(view).x, CGFloat(2)) + pow(recognizer.velocityInView(view).y, CGFloat(2)))
-                print(velocityDistance)
+                
+                if (Debug.Avatar.panningVelocity) {
+                    print("Ended: velocity: \(recognizer.velocityInView(view))  translation: \(translation)")
+                    print("velocityDistance: \(velocityDistance)")
+                }
+                
                 if (velocityDistance > 50) {
                     let inertiaDelay: NSTimeInterval = 0.5
                     if (velocityDistance > 1500) {
@@ -195,24 +194,23 @@ class ViewController: UIViewController {
         let cropingCenter = CGPoint(x: avatarMaskCenter.x - self.avatar.frame.origin.x, y: avatarMaskCenter.y - self.avatar.frame.origin.y)
         let cropingOrigin = CGPoint(x: cropingCenter.x - Conf.Size.avatarSize.width / 2, y: cropingCenter.y - Conf.Size.avatarSize.height / 2)
         
-        print("screenCenter=(\(UIScreen.mainScreen().bounds.width / 2), \(UIApplication.sharedApplication().statusBarFrame.height + UIScreen.mainScreen().bounds.width / 2)) center=\(self.avatar.center) size=\(self.avatar.frame.size)")
-        
-        print(cropingOrigin)
         if let avatarImg:CGImage? = self.avatar.image!.CGImage! {
             
             
             let imgWidthScale: CGFloat =  originalAvatarSize.width / self.avatar.frame.width
             let imgHeightScale: CGFloat =  originalAvatarSize.height / self.avatar.frame.height
             
-            print(originalAvatarSize)
-            print(imgWidthScale)
-            print(imgHeightScale)
+            if (Debug.Avatar.savingPosition) {
+                print("screenCenter=(\(UIScreen.mainScreen().bounds.width / 2), \(UIApplication.sharedApplication().statusBarFrame.height + UIScreen.mainScreen().bounds.width / 2)) center=\(self.avatar.center) size=\(self.avatar.frame.size)")
+                
+                print(originalAvatarSize)
+                print(imgWidthScale)
+                print(imgHeightScale)
+            }
             let rect: CGRect = CGRectMake(cropingOrigin.x * imgWidthScale, cropingOrigin.y * imgHeightScale, Conf.Size.avatarSize.width * imgWidthScale, Conf.Size.avatarSize.height * imgHeightScale)
-
             
             let imgRef: CGImageRef = CGImageCreateWithImageInRect(avatarImg, rect)!
             let img = UIImage(CGImage: imgRef, scale: 0, orientation: UIImageOrientation.Up)
-            print(img.size)
             UIImageWriteToSavedPhotosAlbum(img, nil, nil, nil)
  
         }
