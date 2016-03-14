@@ -1,6 +1,8 @@
 /**
  * @see https://developer.apple.com/library/ios/documentation/GraphicsImaging/Reference/CGPath/index.html#//apple_ref/doc/uid/TP30000959
  */
+
+struct CGRect {origin:CGPoint, size: CGSize}
 # CGPath : NSObject
     // Creating and Managing Paths
     CGPathCreateMutable() -> CGMutablePath

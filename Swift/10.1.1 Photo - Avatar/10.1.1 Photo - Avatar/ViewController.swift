@@ -12,16 +12,17 @@ class ViewController: UIViewController {
     var panAvatarLastTranslation: CGPoint = CGPoint(x: 0.0, y: 0.0)
     @IBOutlet weak var img: UIImageView!
     @IBOutlet weak var avatar: UIImageView!
+    var originalAvatarSize: CGSize!
     
     
     func handleAvatarOutOfBounds() {
         let debugOutOfBounds = false
         
         let standardAvatarBound: [String:CGFloat] = [
-            "top": UIApplication.sharedApplication().statusBarFrame.height + UIScreen.mainScreen().bounds.width / 2 - Conf.Size.avatarRadius,
-            "right": UIScreen.mainScreen().bounds.width / 2 + Conf.Size.avatarRadius,
-            "bottom": UIApplication.sharedApplication().statusBarFrame.height + UIScreen.mainScreen().bounds.width / 2 + Conf.Size.avatarRadius,
-            "left": UIScreen.mainScreen().bounds.width / 2 - Conf.Size.avatarRadius
+            "top": UIApplication.sharedApplication().statusBarFrame.height + UIScreen.mainScreen().bounds.width / 2 - Conf.Size.avatarSize.height / 2,
+            "right": UIScreen.mainScreen().bounds.width / 2 + Conf.Size.avatarSize.width / 2,
+            "bottom": UIApplication.sharedApplication().statusBarFrame.height + UIScreen.mainScreen().bounds.width / 2 + Conf.Size.avatarSize.height / 2,
+            "left": UIScreen.mainScreen().bounds.width / 2 - Conf.Size.avatarSize.width / 2
         ]
         let avatarBound: [String:CGFloat] = [
             "top": self.avatar.center.y - self.avatar.frame.height / 2,
@@ -86,9 +87,8 @@ class ViewController: UIViewController {
         }
         let translation = recognizer.translationInView(self.avatar)
         
-        let standardAvatarSize:CGFloat = Conf.Size.avatarRadius * 2
-        if (self.avatar.frame.width <  standardAvatarSize) {
-            self.avatar.frame = CGRect(origin: self.avatar.frame.origin, size: CGSize(width: standardAvatarSize, height:standardAvatarSize))
+        if (self.avatar.frame.width <  Conf.Size.avatarSize.width) {
+            self.avatar.frame = CGRect(origin: self.avatar.frame.origin, size: CGSize(width: Conf.Size.avatarSize.width, height:Conf.Size.avatarSize.height))
         }
         if let view = recognizer.view {
             switch recognizer.state {
@@ -140,7 +140,7 @@ class ViewController: UIViewController {
         let maskerView = UIView(frame: CGRect(x:0, y:UIApplication.sharedApplication().statusBarFrame.height, width: UIScreen.mainScreen().bounds.width, height: UIScreen.mainScreen().bounds.width))
 
         let range: CGFloat = UIScreen.mainScreen().bounds.width
-        let radius: CGFloat = Conf.Size.avatarRadius
+        let radius: CGFloat = Conf.Size.avatarSize.width / 2
         
         // Create a path with the rectangle in it.
         let path = CGPathCreateMutable()
@@ -190,7 +190,33 @@ class ViewController: UIViewController {
         maskerView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: "resizeAvatar:"))
         maskerView.addGestureRecognizer(UISwipeGestureRecognizer(target: self, action: "swipeAvatar:"))
     }
-    
+    @IBAction func saveAvatar(sender: UIButton) {
+        let avatarMaskCenter:CGPoint = CGPoint(x: UIScreen.mainScreen().bounds.width / 2, y: UIApplication.sharedApplication().statusBarFrame.height + UIScreen.mainScreen().bounds.width / 2)
+        let cropingCenter = CGPoint(x: avatarMaskCenter.x - self.avatar.frame.origin.x, y: avatarMaskCenter.y - self.avatar.frame.origin.y)
+        let cropingOrigin = CGPoint(x: cropingCenter.x - Conf.Size.avatarSize.width / 2, y: cropingCenter.y - Conf.Size.avatarSize.height / 2)
+        
+        print("screenCenter=(\(UIScreen.mainScreen().bounds.width / 2), \(UIApplication.sharedApplication().statusBarFrame.height + UIScreen.mainScreen().bounds.width / 2)) center=\(self.avatar.center) size=\(self.avatar.frame.size)")
+        
+        print(cropingOrigin)
+        if let avatarImg:CGImage? = self.avatar.image!.CGImage! {
+            
+            
+            let imgWidthScale: CGFloat =  originalAvatarSize.width / self.avatar.frame.width
+            let imgHeightScale: CGFloat =  originalAvatarSize.height / self.avatar.frame.height
+            
+            print(originalAvatarSize)
+            print(imgWidthScale)
+            print(imgHeightScale)
+            let rect: CGRect = CGRectMake(cropingOrigin.x * imgWidthScale, cropingOrigin.y * imgHeightScale, Conf.Size.avatarSize.width * imgWidthScale, Conf.Size.avatarSize.height * imgHeightScale)
+
+            
+            let imgRef: CGImageRef = CGImageCreateWithImageInRect(avatarImg, rect)!
+            let img = UIImage(CGImage: imgRef, scale: 0, orientation: UIImageOrientation.Up)
+            print(img.size)
+            UIImageWriteToSavedPhotosAlbum(img, nil, nil, nil)
+ 
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -209,9 +235,11 @@ class ViewController: UIViewController {
         
         let saveBtn = UIButton(frame: CGRect(x: UIScreen.mainScreen().bounds.width - 60, y: UIApplication.sharedApplication().statusBarFrame.height, width: 60, height: 30))
         saveBtn.setTitle("Save", forState: UIControlState.Normal)
+        saveBtn.addTarget(self, action: "saveAvatar:", forControlEvents: UIControlEvents.TouchUpInside)
         self.view.addSubview(saveBtn)
         
         let avatarView = UIImageView(image: UIImage(named: "long"))
+        originalAvatarSize = avatarView.frame.size
         let avatarRange = UIScreen.mainScreen().bounds.width
         var avatarX:CGFloat = 0
         var avatarY: CGFloat = UIApplication.sharedApplication().statusBarFrame.height
@@ -226,8 +254,8 @@ class ViewController: UIViewController {
             if(avatarWidthDif < 0) {
                 avatarWidth = avatarView.frame.width
                 avatarHeight = avatarWidth
-                avatarX = -avatarWidthDif / 2
-                avatarY = -avatarHeightDif / 2
+                avatarX += -avatarWidthDif / 2
+                avatarY += -avatarHeightDif / 2
             }
         } else if (avatarImgProportion > 1) {
             avatarHeight = avatarRange
@@ -239,7 +267,7 @@ class ViewController: UIViewController {
             avatarY += (avatarRange - avatarHeight) / 2
         }
         
-        avatarView.frame = CGRect(x: avatarX, y: avatarY, width: avatarWidth, height: avatarHeight)
+        avatarView.frame = CGRect(x: avatarX, y: UIApplication.sharedApplication().statusBarFrame.height, width: avatarWidth, height: avatarHeight)
         
         avatarView.contentMode = .ScaleToFill
         avatarView.userInteractionEnabled = true

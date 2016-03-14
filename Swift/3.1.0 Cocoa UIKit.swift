@@ -5,12 +5,11 @@
  */
 
 /**
- * https://developer.apple.com/library/ios/documentation/UIKit/Reference/UIImageView_Class/index.html#//apple_ref/occ/cl/UIImageView
+ * https://developer.apple.com/library/ios/documentation/UIKit/Reference/UIImageView_Class/index.html
  */
 
 color: UIColor
 alpha: CGFloat  0.0...1.0
-UIImageOrientation {Up,Down,Left,Right,?Mirrored}
 UIImageResizingMode {Titl,Stretch}
 UIViewTintAdjustmentMode {Automatic,Normal,Dimmed}
 UIViewContentMode {ScaleToFill,ScaleAspectFit, ScaleAspectFill, Redraw,
@@ -18,90 +17,103 @@ UIViewContentMode {ScaleToFill,ScaleAspectFit, ScaleAspectFill, Redraw,
                    BottomRight}
 
 
-CGRect(x, y, width, height) -> UIImage
 
 NSObject
-#   UIView : NSObject
-        .init(frame: CGRect)
-        /**
-         * Configuring the Event-Related Behavior
-         */
+#   UIResponder
+##  UIView : UIReponder
+    .init(frame: CGRect)
+    /**
+     * Configuring the Event-Related Behavior
+     */
+    .userInteractionEnabled: Bool
+    .multipleTouchEnabled: Bool
+    .exclusiveTouch: Bool
+
+    .alpha .backgroundColor .hidden .opaque
+    .tintColor .tintAdjustmentMode:UIViewTintAdjustmentMode
+
+    // Conguring the Bounds and Frame Rectagles
+    .frame: CGRect
+    .bounds: CGRect
+    .center: CGPoint
+    .transform: CGAffineTransform
+
+    // Managing the View Hierarchy/ˈhaɪərɑ:rki/
+    .superview
+    .subviews
+    .window
+    .addSubview(_:)
+    .insertSubview(_:, [atIndex: Int | aboveSubview: | belowSubview:])
+    .exchangeSubviewAtIndex(_ idx1: Int, withSubviewAtIndex idx2:Int)
+    .bringSubviewToFront(_:)
+    .sendSubviewToBack(_:)
+    .removeFromSuperview()
+    .isDescendantOfView(_:) -> Bool
+
+    // Configuring the Resizing Behavior
+    .autoresizingMask: UIViewAutoresizing
+    .autoresizesSubviews: Bool
+    .contentMode: UIViewContentMode
+    .sizeThatFits(_:)
+    .sizeToFit()
+
+
+    .clipsToBounds
+    .clearsContextBeforeDrawing
+    .maskView
+    .layer: CALayer { get }
+    .layerClass()
+
+    // Animating Views
+    .animateWithDuration(_ duration: NSTimeInterval  // in seconds
+                          [, delay: NSTimeInterval]   // in seconds
+                          [, :UIViewAnimationOptions]
+                          animations: () -> Void
+                          [, completion: ((Bool) -> Void?)]
+    /**
+     * usingSpringWithDamping
+     *  1 no oscillation, to zero increase oscillation
+     * initialSpringVelocity = total distance / velocity (as you want)
+     *  For smooth start to the animation. E.g. If the distance is 100,
+     *  and you want to match a view of velocity 50pt/s, use a value 0.5
+     */
+    .animateWithDuration(_ duration, delay
+                         , usingSpringWithDamping: CGFloat
+                         , initialSpringVelocity: CGFloat
+                         , options: UIViewAnimationOptions,
+                         , animations
+                         , completion)
+        
+### UIImageView : UIView : NSObject
+        .init(:UIImage? [, highlightedImage: UIImage?])
+        .layer
+        .contentMode
         .userInteractionEnabled: Bool
-        .multipleTouchEnabled: Bool
-        .exclusiveTouch: Bool
+        .clipsToBounds: Bool
+
+/**/
+UIImageOrientation {Up,Down,Left,Right,?Mirrored}        
+#   UIImage
+        .init(named filename: String[, NSBundle?, UITraitCollection?])
+        .init?(contentsOfFile:String) -> UIImage
+        .init?(data:NSData) -> UIImage
+        .init?(data:NSData, scale:CGFloat) -> UIImage
         
-        .alpha .backgroundColor .hidden .opaque
-        .tintColor .tintAdjustmentMode:UIViewTintAdjustmentMode
-
-        // Conguring the Bounds and Frame Rectagles
-        .frame: CGRect
-        .bounds: CGRect
-        .center: CGPoint
-        .transform: CGAffineTransform
-
-        // Managing the View Hierarchy/ˈhaɪərɑ:rki/
-        .superview
-        .subviews
-        .window
-        .addSubview(_:)
-        .insertSubview(_:, [atIndex: Int | aboveSubview: | belowSubview:])
-        .exchangeSubviewAtIndex(_ idx1: Int, withSubviewAtIndex idx2:Int)
-        .bringSubviewToFront(_:)
-        .sendSubviewToBack(_:)
-        .removeFromSuperview()
-        .isDescendantOfView(_:) -> Bool
-
-        // Configuring the Resizing Behavior
-        .autoresizingMask: UIViewAutoresizing
-        .autoresizesSubviews: Bool
-        .contentMode: UIViewContentMode
-        .sizeThatFits(_:)
-        .sizeToFit()
-        
-        
-        .clipsToBounds
-        .clearsContextBeforeDrawing
-        .maskView
-        .layer: CALayer { get}
-        .layerClass()
-
-        // Animating Views
-        .animateWithDuration(_ duration: NSTimeInterval  // in seconds
-                              [, delay: NSTimeInterval]   // in seconds
-                              [, :UIViewAnimationOptions]
-                              animations: () -> Void
-                              [, completion: ((Bool) -> Void?)]
         /**
-         * usingSpringWithDamping
-         *  1 no oscillation, to zero increase oscillation
-         * initialSpringVelocity = total distance / velocity (as you want)
-         *  For smooth start to the animation. E.g. If the distance is 100,
-         *  and you want to match a view of velocity 50pt/s, use a value 0.5
+         *  scale: 
+         *  orientation: 
          */
-        .animateWithDuration(_ duration, delay
-                             , usingSpringWithDamping: CGFloat
-                             , initialSpringVelocity: CGFloat
-                             , options: UIViewAnimationOptions,
-                             , animations
-                             , completion)
-##      UIImage : UIView : NSObject
-            .init(filename: String[, NSBundle?, UITraitCollection?])
-            .imageOrientation:UIImageOrientation .size:CGSize 
-            .scale:CGFloat 
-            .flipsForRightToLeftLayoutDirection
-            .resizingMode:UIImageResizingMode
-            .CGImage .CIImage .images .duration .capInsets
-            .alignmentRectInsets .imageAsset .traitCollection .renderingMode
-            drawAtPoint(:CGPoint[, :CGBlendMode, alpha])
-            drawInRect(:CGRect[, :CGBlendMode, alpha])
-            drawAsPatternInRect(:CGRect)
-            
-##      UIImageView : UIView : NSObject
-            .init(img: UIImage? [, highlightedImage: UIImage?])
-            .layer
-            .contentMode
-            .userInteractionEnabled: Bool
-            .clipsToBounds: Bool
+        .init(:CGImage[, scale:CGFloat, orientation:UIImageOrientation)
+        .init(:CIImage[, scale, orientation])
+        .imageOrientation:UIImageOrientation .size:CGSize 
+        .scale:CGFloat 
+        .flipsForRightToLeftLayoutDirection
+        .resizingMode:UIImageResizingMode
+        .CGImage .CIImage .images .duration .capInsets
+        .alignmentRectInsets .imageAsset .traitCollection .renderingMode
+        drawAtPoint(:CGPoint[, :CGBlendMode, alpha])
+        drawInRect(:CGRect[, :CGBlendMode, alpha])
+        drawAsPatternInRect(:CGRect)
 
             
 /**/
@@ -139,12 +151,12 @@ UIGestureRecognizerState {
 ###         UIScreenEdgePanGestureRecognizer : UIPanGestureRecognizer 
             : UIGestureRecognizer
             var edges: UIRectEdge   // the acceptable starting edges for
-##      UIPinchGestureRecognizer
-##      UIRotationGestureRecognizer
-##      UISwipeGestureRecognizer
-##      UITapGestureRecgonizer
+##  UIPinchGestureRecognizer
+##  UIRotationGestureRecognizer
+##  UISwipeGestureRecognizer
+##  UITapGestureRecgonizer
 
-#       UIBezierPath : NSObject, NSCopying, NSCoding
+#   UIBezierPath : NSObject, NSCopying, NSCoding
         .init(rect:CGRect)  -> UIBezierPath
         .init(ovalInRect:CGRect)  -> UIBezierPath
         .init(rounderRect:CGRect, cornerRadius:CGFLoat) -> UIBezierPath

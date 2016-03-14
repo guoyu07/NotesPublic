@@ -10,9 +10,7 @@ import UIKit
 
 struct Conf {
     struct Size {
-        static let avatarRadius:CGFloat = 90.0
-        static let statusBar = UIApplication.sharedApplication().statusBarFrame.size
-        static let screen = UIScreen.mainScreen().bounds
+        static let avatarSize = CGSize(width: 180, height: 180)
     }
     
     struct Theme {
