@@ -1,17 +1,15 @@
-//
-//  ViewController.swift
-//  10.1.1 Photo - Avatar
-//
-//  Created by Aario on 3/9/16.
-//  Copyright © 2016 Aario. All rights reserved.
-//
+
 
 import UIKit
+import Gifu
 
 class ViewController: UIViewController {
     var panAvatarLastTranslation: CGPoint = CGPoint(x: 0.0, y: 0.0)
     @IBOutlet weak var img: UIImageView!
     @IBOutlet weak var avatar: UIImageView!
+    @IBOutlet weak var savingLoading: AnimatableImageView!
+    //@IBOutlet weak var saveBtn: UIButton!
+    
     var originalAvatarSize: CGSize!
     
     
@@ -184,19 +182,21 @@ class ViewController: UIViewController {
         
         maskerView.layer.addSublayer(shapeLayer)
         
-        maskerView.addGestureRecognizer(UIPanGestureRecognizer(target: self, action: #selector(ViewController.moveAvatar(_:))))
-        maskerView.addGestureRecognizer(UIPinchGestureRecognizer(target: self, action: #selector(ViewController.resizeAvatar(_:))))
-        maskerView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(ViewController.resizeAvatar(_:))))
-        maskerView.addGestureRecognizer(UISwipeGestureRecognizer(target: self, action: #selector(ViewController.swipeAvatar(_:))))
+        maskerView.addGestureRecognizer(UIPanGestureRecognizer(target: self, action: "moveAvatar:"))
+        maskerView.addGestureRecognizer(UIPinchGestureRecognizer(target: self, action: "resizeAvatar:"))
+        maskerView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: "resizeAvatar:"))
+        maskerView.addGestureRecognizer(UISwipeGestureRecognizer(target: self, action: "swipeAvatar:"))
     }
     @IBAction func disableSaveBtn(sender: UIButton) {
-        tracingMethods(#file, #function, #line)
+        //tracingMethods(#file, #function, #line)
+        tracingMethods(__FILE__, __FUNCTION__, __LINE__)
     }
     @IBAction func saveAvatar(sender: UIButton) {
+
         let avatarMaskCenter:CGPoint = CGPoint(x: UIScreen.mainScreen().bounds.width / 2, y: UIApplication.sharedApplication().statusBarFrame.height + UIScreen.mainScreen().bounds.width / 2)
         let cropingCenter = CGPoint(x: avatarMaskCenter.x - self.avatar.frame.origin.x, y: avatarMaskCenter.y - self.avatar.frame.origin.y)
         let cropingOrigin = CGPoint(x: cropingCenter.x - Conf.Size.avatarSize.width / 2, y: cropingCenter.y - Conf.Size.avatarSize.height / 2)
-        
+
         if let avatarImg:CGImage? = self.avatar.image!.CGImage! {
             
             
@@ -215,8 +215,41 @@ class ViewController: UIViewController {
             let imgRef: CGImageRef = CGImageCreateWithImageInRect(avatarImg, rect)!
             let img = UIImage(CGImage: imgRef, scale: 0, orientation: UIImageOrientation.Up)
             UIImageWriteToSavedPhotosAlbum(img, nil, nil, nil)
- 
         }
+        
+       
+        handleSaved(sender)
+    }
+    
+    func handleSaved(sender: UIButton) {
+        let alert = UIAlertController(title: "", message: "Saved", preferredStyle: .Alert)
+        let action = UIAlertAction(title: "OK", style: .Default, handler: {
+            action in
+            self.savingLoading?.hidden = true
+            self.savingLoading?.stopAnimatingGIF()
+            sender.hidden = false
+
+        })
+        
+        alert.addAction(action)
+        presentViewController(alert, animated: true, completion: nil)
+
+        
+    }
+    @IBAction func showSavingLoading(sender: UIButton) {
+        if (savingLoading == nil) {
+            let savingLoadingTmp = AnimatableImageView()
+            savingLoadingTmp.animateWithImage(named: "loading2.gif")
+            savingLoadingTmp.frame = CGRect(x: UIScreen.mainScreen().bounds.width - 60, y: UIApplication.sharedApplication().statusBarFrame.height, width:30, height:30)
+            savingLoading = savingLoadingTmp
+            view.addSubview(savingLoading)
+            view.bringSubviewToFront(savingLoading)
+        } else {
+            savingLoading.startAnimatingGIF()
+            savingLoading.hidden = false
+        }
+        
+        sender.hidden = true
     }
     
     override func viewDidLoad() {
@@ -231,14 +264,19 @@ class ViewController: UIViewController {
         backBtn.setTitle("< Back", forState: UIControlState.Normal)
         backBtn.contentHorizontalAlignment = .Left
         backBtn.contentVerticalAlignment = .Center
-        backBtn.addTarget(self, action: #selector(ViewController.back(_:)), forControlEvents: UIControlEvents.TouchUpInside)
+        backBtn.addTarget(self, action: "back: ", forControlEvents: UIControlEvents.TouchUpInside)
         self.view.addSubview(backBtn)
         
         let saveBtn = UIButton(frame: CGRect(x: UIScreen.mainScreen().bounds.width - 60, y: UIApplication.sharedApplication().statusBarFrame.height, width: 60, height: 30))
         saveBtn.setTitle("Save", forState: UIControlState.Normal)
-        saveBtn.addTarget(self, action: #selector(ViewController.disableSaveBtn(_:)), forControlEvents: UIControlEvents.TouchDown)
-        saveBtn.addTarget(self, action: #selector(ViewController.saveAvatar(_:)), forControlEvents: UIControlEvents.TouchUpInside)
+        saveBtn.addTarget(self, action: "showSavingLoading:", forControlEvents: UIControlEvents.TouchDown)
+        saveBtn.addTarget(self, action: "saveAvatar:", forControlEvents: UIControlEvents.TouchUpInside)
         self.view.addSubview(saveBtn)
+        
+       
+        
+        
+        
         
         let avatarView = UIImageView(image: UIImage(named: "long"))
         originalAvatarSize = avatarView.frame.size
@@ -337,8 +375,7 @@ class ViewController: UIViewController {
         self.view.bringSubviewToFront(decorationBtn)
         self.view.bringSubviewToFront(backBtn)
         self.view.bringSubviewToFront(saveBtn)
-        
-        
+
         
         
     }

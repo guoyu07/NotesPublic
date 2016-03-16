@@ -205,7 +205,7 @@ struct UIControlState: OptionSetType {
 enum UIButtonType {
     Custom,System,DetailDisclosure,InfoLight,InfoDark,ContactAdd,
     static var RoundedRect:UIButtonType { get }
-             }
+}
         .init(type:UIButtonType)
         .titleLabel
         .titleForState(_:UIControlState) -> String?
@@ -255,7 +255,14 @@ UIImageOrientation {Up,Down,Left,Right,?Mirrored}
         drawAtPoint(:CGPoint[, :CGBlendMode, alpha])
         drawInRect(:CGRect[, :CGBlendMode, alpha])
         drawAsPatternInRect(:CGRect)
+        
+        // Creating New Images
 
+        /**
+         * to load a gif image
+         */
+        .animatedImageNamed(_ name:String, duration:NSTimeInterval)->UIImage
+        .animatedImageWithImages(_:[UIImage], duration) -> UIImage?
             
 /**/
 UIGestureRecognizerState {

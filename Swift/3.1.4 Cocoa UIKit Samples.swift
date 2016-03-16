@@ -125,14 +125,21 @@ self.view.addSubview(btn)
 
 
 /**
- * UIImageView: UIView
+ * UIImageView: UIView          Assets.xcassets/img.png
  *  .frame: CGRect
  */
 let img = UIImageView(image: UIImage(named: "img.png"))
 print(img.frame.size)   // (100, 100)
 img.frame = CGRect(x:100.0, y:100.0, width:180, height: 180)
 print(img.frame.size)   // (180, 180)s
-self.view.addSubview(img)
+view.addSubview(img)
+
+
+// Resources/img.png
+let imgPath = NSBundle.mainBundle().bundleURL.URLByAppendingPathComponent("img.png")
+let  imgData = NSData(contentsOfURL imgPath)
+let img = UIImageView(data: imageData)
+view.addSubview(img)
 
 
 /**
