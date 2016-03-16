@@ -71,10 +71,26 @@ class ViewController: UIViewController {
         
     }
     
-    @IBAction func pickAvatar(sender: UIButton) {
-        
+    @IBAction func changeAvatarTouchDown(sender: UIButton) {
+        sender.setTitleColor(Theme.Avatar.focusedColor, forState: .Normal)
+    }
+    @IBAction func changeAvatar(sender: UIButton) {
+        sender.setTitleColor(Theme.Avatar.tintColor, forState: .Normal)
+        print("change")
     }
     
+    @IBAction func resizeByDoubleTap(recognizer: UITapGestureRecognizer) {
+        recognizer.numberOfTapsRequired = 2
+        
+        let scale: CGFloat = 1.2
+        
+        UIView.animateWithDuration(0.5, animations: {
+            self.avatar.transform = CGAffineTransformScale(self.avatar.transform, scale, scale)
+            })
+
+        
+        
+    }
     @IBAction func resizeAvatar(recognizer: UIPinchGestureRecognizer) {
         if (Debug.Avatar.recognizeGestures) {
             print("resize")
@@ -213,14 +229,11 @@ class ViewController: UIViewController {
         
         maskerView.addGestureRecognizer(UIPanGestureRecognizer(target: self, action: "moveAvatar:"))
         maskerView.addGestureRecognizer(UIPinchGestureRecognizer(target: self, action: "resizeAvatar:"))
+        maskerView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: "resizeByDoubleTap:"))
         if (enableRotation) {
             maskerView.addGestureRecognizer(UIRotationGestureRecognizer(target: self, action: "rotateAvatar:"))
         }
         maskerView.addGestureRecognizer(UISwipeGestureRecognizer(target: self, action: "swipeAvatar:"))
-    }
-    @IBAction func disableSaveBtn(sender: UIButton) {
-        //tracingMethods(#file, #function, #line)
-        tracingMethods(__FILE__, __FUNCTION__, __LINE__)
     }
     @IBAction func saveAvatar(sender: UIButton) {
 
@@ -365,7 +378,8 @@ class ViewController: UIViewController {
         changeAvatarBtn.layer.borderColor = UIColor.grayColor().CGColor
         changeAvatarBtn.layer.borderWidth = 1
         changeAvatarBtn.layer.opaque = true
-        changeAvatarBtn.addTarget(self, action: "pickAvatar:", forControlEvents: .TouchUpInside)
+        changeAvatarBtn.addTarget(self, action: "changeAvatarTouchDown:", forControlEvents: .TouchDown)
+        changeAvatarBtn.addTarget(self, action: "changeAvatar:", forControlEvents: .TouchUpInside)
         self.view.addSubview(changeAvatarBtn)
         
         

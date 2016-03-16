@@ -20,6 +20,7 @@
 		00B6EFB11C90075800E8EE59 /* Conf.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00B6EFB01C90075800E8EE59 /* Conf.swift */; };
 		00BCBABF1C99302E005BD276 /* default.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 00BCBABE1C99302E005BD276 /* default.jpeg */; };
 		00BCBAC11C993327005BD276 /* loading2.gif in Resources */ = {isa = PBXBuildFile; fileRef = 00BCBAC01C993327005BD276 /* loading2.gif */; };
+		00BCBAC31C99BD3E005BD276 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00BCBAC21C99BD3E005BD276 /* Theme.swift */; };
 		26F236B1CC6886AC0807DE46 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C01CB3CA982E4A1FD6F863D /* Pods.framework */; };
 /* End PBXBuildFile section */
 
@@ -61,6 +62,7 @@
 		00B6EFB01C90075800E8EE59 /* Conf.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Conf.swift; sourceTree = "<group>"; };
 		00BCBABE1C99302E005BD276 /* default.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = default.jpeg; sourceTree = "<group>"; };
 		00BCBAC01C993327005BD276 /* loading2.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = loading2.gif; sourceTree = "<group>"; };
+		00BCBAC21C99BD3E005BD276 /* Theme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		90CF78379C1DC5379BA38DAD /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		9C01CB3CA982E4A1FD6F863D /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F042C7D47D88959CE0702A30 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
@@ -129,6 +131,7 @@
 				00B6EF8E1C9004A100E8EE59 /* Info.plist */,
 				00B6EFB01C90075800E8EE59 /* Conf.swift */,
 				0073FD1C1C96B3E8004F5B5A /* Debug.swift */,
+				00BCBAC21C99BD3E005BD276 /* Theme.swift */,
 			);
 			path = "10.1.1 Photo - Avatar";
 			sourceTree = "<group>";
@@ -369,6 +372,7 @@
 			files = (
 				00B6EFB11C90075800E8EE59 /* Conf.swift in Sources */,
 				0073FD1D1C96B3E8004F5B5A /* Debug.swift in Sources */,
+				00BCBAC31C99BD3E005BD276 /* Theme.swift in Sources */,
 				00B6EF851C9004A100E8EE59 /* ViewController.swift in Sources */,
 				00B6EF831C9004A100E8EE59 /* AppDelegate.swift in Sources */,
 			);
