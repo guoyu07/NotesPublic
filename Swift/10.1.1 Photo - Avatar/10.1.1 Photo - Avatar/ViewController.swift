@@ -11,6 +11,8 @@ class ViewController: UIViewController {
     //@IBOutlet weak var saveBtn: UIButton!
     
     var originalAvatarSize: CGSize!
+    var enableRotation: Bool = false
+
     
     
     func handleAvatarOutOfBounds() {
@@ -68,11 +70,38 @@ class ViewController: UIViewController {
     @IBAction func back(sender: UIButton) {
         
     }
-    @IBAction func resizeAvatar(sender: UIImageView) {
-        //print("Resize OK")
+    
+    @IBAction func pickAvatar(sender: UIButton) {
+        
+    }
+    
+    @IBAction func resizeAvatar(recognizer: UIPinchGestureRecognizer) {
+        if (Debug.Avatar.recognizeGestures) {
+            print("resize")
+        }
+        var scale: CGFloat = recognizer.scale
+        
+        avatar.transform = CGAffineTransformScale(avatar.transform, scale, scale)
+        
+        if (scale < 1 && (avatar.frame.width < Conf.Size.avatarSize.width || avatar.frame.height < Conf.Size.avatarSize.height)) {
+            scale = 2.01 - scale     // zoom out,  ceil(20 - scale * 10) / 10
+            avatar.transform = CGAffineTransformScale(avatar.transform, scale, scale)
+        }
+        recognizer.scale = 1.0
     }
     @IBAction func swipeAvatar(recognizer:UISwipeGestureRecognizer) {
         //print("swipe-avatar")
+    }
+    
+    /**
+     * Rotate may leave something wrong to Pan
+     */
+    @IBAction func rotateAvatar(recognizer: UIRotationGestureRecognizer) {
+        if (Debug.Avatar.recognizeGestures) {
+            print("rotate")
+        }
+        let rotation =  recognizer.velocity * 0.05
+        avatar.transform = CGAffineTransformRotate(avatar.transform, rotation)
     }
     @IBAction func moveAvatar(recognizer:UIPanGestureRecognizer) {
         recognizer.maximumNumberOfTouches = 1
@@ -184,7 +213,9 @@ class ViewController: UIViewController {
         
         maskerView.addGestureRecognizer(UIPanGestureRecognizer(target: self, action: "moveAvatar:"))
         maskerView.addGestureRecognizer(UIPinchGestureRecognizer(target: self, action: "resizeAvatar:"))
-        maskerView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: "resizeAvatar:"))
+        if (enableRotation) {
+            maskerView.addGestureRecognizer(UIRotationGestureRecognizer(target: self, action: "rotateAvatar:"))
+        }
         maskerView.addGestureRecognizer(UISwipeGestureRecognizer(target: self, action: "swipeAvatar:"))
     }
     @IBAction func disableSaveBtn(sender: UIButton) {
@@ -334,6 +365,7 @@ class ViewController: UIViewController {
         changeAvatarBtn.layer.borderColor = UIColor.grayColor().CGColor
         changeAvatarBtn.layer.borderWidth = 1
         changeAvatarBtn.layer.opaque = true
+        changeAvatarBtn.addTarget(self, action: "pickAvatar:", forControlEvents: .TouchUpInside)
         self.view.addSubview(changeAvatarBtn)
         
         
