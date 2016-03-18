@@ -15,7 +15,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     var saveImagePickerFiles: Bool = false
     
     @IBOutlet var imageView: UIImageView!
-    let imagePicker: UIImagePickerController! = UIImagePickerController()
+    @IBOutlet var imagePicker: UIImagePickerController! = UIImagePickerController()
     
     @IBAction func takePhoto(sender: UIAlertAction) {
         if (UIImagePickerController.isSourceTypeAvailable(.Camera)) {
@@ -27,20 +27,20 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
                 }
                 presentViewController(imagePicker, animated: true, completion: {})
             } else {
-                print("Application cannot access the camera.")
+                print("Cannot access the camera.")
             }
         } else {
-            print("Camera inaccessable Application cannot access the camera.")
+            print("Camera inaccessable.")
         }
     }
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
-        print("Got an image")
+        print("Got an image!")
         if let pickedImage:UIImage = (info[UIImagePickerControllerOriginalImage]) as? UIImage {
             imageView.image = pickedImage
             
             if (self.saveImagePickerFiles && self.imagePickerSourceType == .Camera) {
-                print("saving from .Camera")
                 UIImageWriteToSavedPhotosAlbum(pickedImage, nil, nil, nil)
+                print("Saved by .Camera")
             }
         }
         imagePicker.dismissViewControllerAnimated(true, completion: {
@@ -49,9 +49,9 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
     
     func imagePickerControllerDidCancel(picker: UIImagePickerController) {
-        print("User canceled image")
         dismissViewControllerAnimated(true, completion: {
             // Anything you want to happen when the user selects cancel
+            print("User canceled image")
         })
     }
     
@@ -65,7 +65,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         })
         takePhotoAlert.addAction(cancelAction)
         
-        let takePhotoAction = UIAlertAction(title: "Taking Photo", style: .Default, handler: {
+        let takePhotoAction = UIAlertAction(title: "Take Photo", style: .Default, handler: {
             action in
             self.imagePickerSourceType = .Camera
             self.takePhoto(action)
@@ -74,7 +74,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         })
         takePhotoAlert.addAction(takePhotoAction)
         
-        let takeImageAction = UIAlertAction(title: "Take From album", style: .Default, handler: {
+        let takeImageAction = UIAlertAction(title: "Choose from Photos", style: .Default, handler: {
             action in
             self.imagePickerSourceType = .SavedPhotosAlbum
             self.takePhoto(action)

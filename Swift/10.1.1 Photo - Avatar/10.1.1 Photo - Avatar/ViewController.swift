@@ -3,15 +3,16 @@
 import UIKit
 import Gifu
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate  {
     var panAvatarLastTranslation: CGPoint = CGPoint(x: 0.0, y: 0.0)
     @IBOutlet weak var img: UIImageView!
     @IBOutlet weak var avatar: UIImageView!
     @IBOutlet weak var savingLoading: AnimatableImageView!
     //@IBOutlet weak var saveBtn: UIButton!
     
-    var originalAvatarSize: CGSize!
     var enableRotation: Bool = false
+    
+    let photoPicker: UIImagePickerController! = UIImagePickerController()
 
     
     
@@ -76,7 +77,32 @@ class ViewController: UIViewController {
     }
     @IBAction func changeAvatar(sender: UIButton) {
         sender.setTitleColor(Theme.Avatar.tintColor, forState: .Normal)
-        print("change")
+        let changeAvatarAlert = UIAlertController(title:nil, message: nil, preferredStyle: .ActionSheet)
+        changeAvatarAlert.addAction(UIAlertAction(title: "Calcel", style: .Cancel, handler: {
+            action in
+        }))
+        
+        changeAvatarAlert.addAction(UIAlertAction(title: "Take Photo", style: .Default, handler: {
+            action in
+        }))
+        
+        changeAvatarAlert.addAction(UIAlertAction(title: "Choose from Photos", style: .Default, handler: {
+            action in
+            self.photoPicker.allowsEditing = true
+            self.photoPicker.sourceType = .SavedPhotosAlbum
+            self.presentViewController(self.photoPicker, animated: true, completion: nil)
+        }))
+
+        presentViewController(changeAvatarAlert,animated: true, completion: nil)
+    }
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info : [String : AnyObject]) {
+        if let pickedImage : UIImage = (info[UIImagePickerControllerOriginalImage]) as? UIImage {
+            initAvatar(pickedImage)
+        }
+        photoPicker.dismissViewControllerAnimated(true, completion: {
+            // Anything you want to happen when the user saves an image
+        })
+
     }
     
     @IBAction func resizeByDoubleTap(recognizer: UITapGestureRecognizer) {
@@ -238,27 +264,24 @@ class ViewController: UIViewController {
     @IBAction func saveAvatar(sender: UIButton) {
 
         let avatarMaskCenter:CGPoint = CGPoint(x: UIScreen.mainScreen().bounds.width / 2, y: UIApplication.sharedApplication().statusBarFrame.height + UIScreen.mainScreen().bounds.width / 2)
-        let cropingCenter = CGPoint(x: avatarMaskCenter.x - self.avatar.frame.origin.x, y: avatarMaskCenter.y - self.avatar.frame.origin.y)
+        let cropingCenter = CGPoint(x: avatarMaskCenter.x - avatar.frame.origin.x, y: avatarMaskCenter.y - self.avatar.frame.origin.y)
         let cropingOrigin = CGPoint(x: cropingCenter.x - Conf.Size.avatarSize.width / 2, y: cropingCenter.y - Conf.Size.avatarSize.height / 2)
 
-        if let avatarImg:CGImage? = self.avatar.image!.CGImage! {
+        if let img = avatar.image {
+            let imgWidthScale: CGFloat =  img.size.width / avatar.frame.width
+            let imgHeightScale: CGFloat =  img.size.height / avatar.frame.height
+            let rect: CGRect = CGRectMake(ceil(cropingOrigin.x * imgWidthScale), ceil(cropingOrigin.y * imgHeightScale), Conf.Size.avatarSize.width * imgWidthScale, Conf.Size.avatarSize.height * imgHeightScale)
             
-            
-            let imgWidthScale: CGFloat =  originalAvatarSize.width / self.avatar.frame.width
-            let imgHeightScale: CGFloat =  originalAvatarSize.height / self.avatar.frame.height
+            let imgRef: CGImageRef = CGImageCreateWithImageInRect(img.CGImage, rect)!
+            let croppedImg = UIImage(CGImage: imgRef, scale: 1, orientation: .Up)
+            UIImageWriteToSavedPhotosAlbum(croppedImg, nil, nil, nil)
             
             if (Debug.Avatar.savingPosition) {
-                print("screenCenter=(\(UIScreen.mainScreen().bounds.width / 2), \(UIApplication.sharedApplication().statusBarFrame.height + UIScreen.mainScreen().bounds.width / 2)) center=\(self.avatar.center) size=\(self.avatar.frame.size)")
-                
-                print(originalAvatarSize)
-                print(imgWidthScale)
-                print(imgHeightScale)
+                print(rect.origin)
+                print("Size: img=\(img.size) CGImage=(\(CGImageGetWidth(img.CGImage)), \(CGImageGetHeight(img.CGImage))) frame=\(avatar.frame.size)")
+                print("Size: rect=\(rect.size) imgRef=(\(CGImageGetWidth(imgRef)), \(CGImageGetHeight(imgRef))) cropped=\(croppedImg.size)")
+                print("screenCenter=(\(UIScreen.mainScreen().bounds.width / 2), \(UIApplication.sharedApplication().statusBarFrame.height + UIScreen.mainScreen().bounds.width / 2)) center=\(self.avatar.center)")
             }
-            let rect: CGRect = CGRectMake(cropingOrigin.x * imgWidthScale, cropingOrigin.y * imgHeightScale, Conf.Size.avatarSize.width * imgWidthScale, Conf.Size.avatarSize.height * imgHeightScale)
-            
-            let imgRef: CGImageRef = CGImageCreateWithImageInRect(avatarImg, rect)!
-            let img = UIImage(CGImage: imgRef, scale: 0, orientation: UIImageOrientation.Up)
-            UIImageWriteToSavedPhotosAlbum(img, nil, nil, nil)
         }
         
        
@@ -296,8 +319,53 @@ class ViewController: UIViewController {
         sender.hidden = true
     }
     
+    func initAvatar(image: UIImage) {
+        avatar.image = image
+        initAvatarPosition(avatar)
+    }
+    func initAvatarPosition(avatar: UIImageView) {
+        if let img = avatar.image {
+            var avatarX:CGFloat = 0
+            var avatarY: CGFloat = UIApplication.sharedApplication().statusBarFrame.height
+            var avatarWidth:CGFloat = img.size.width
+            var avatarHeight:CGFloat = img.size.height
+            
+            let avatarImgProportion = img.size.width / img.size.height
+            
+            if (img.size.width == img.size.height) {
+                if (img.size.width < Conf.Size.avatarSize.width) {
+                    avatarWidth = Conf.Size.avatarSize.width
+                    avatarHeight = Conf.Size.avatarSize.height
+                }
+            } else if (img.size.width > img.size.height) {
+                if (img.size.height < Conf.Size.avatarSize.height) {
+                    avatarHeight = Conf.Size.avatarSize.height
+                    avatarWidth = avatarImgProportion * avatarHeight
+                }
+            } else {
+                if (img.size.width < Conf.Size.avatarSize.height) {
+                    avatarHeight = Conf.Size.avatarSize.height
+                    avatarWidth = avatarImgProportion * avatarHeight
+                }
+                
+            }
+            
+            if (avatarWidth < UIScreen.mainScreen().bounds.width) {
+                avatarX += (UIScreen.mainScreen().bounds.width - avatarWidth) / 2
+            }
+            if (avatarHeight < UIScreen.mainScreen().bounds.width) {
+                avatarY += (UIScreen.mainScreen().bounds.width - avatarHeight) / 2
+            }
+            
+            print("origin=\(img.size) scale=\(img.scale) CGImage=(\(CGImageGetWidth(img.CGImage)), \(CGImageGetHeight(img.CGImage))) now=\(avatarWidth) \(avatarHeight)")
+            avatar.frame = CGRect(x: avatarX, y: avatarY, width: avatarWidth, height: avatarHeight)
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        photoPicker.delegate = self
         
         let statusBarBg = UIImageView(frame: CGRect(x:0, y:0, width: UIApplication.sharedApplication().statusBarFrame.size.width, height: UIApplication.sharedApplication().statusBarFrame.size.height))
         statusBarBg.backgroundColor = UIColor.blackColor()
@@ -319,40 +387,10 @@ class ViewController: UIViewController {
         
        
         
-        
+
         
         
         let avatarView = UIImageView(image: UIImage(named: "long"))
-        originalAvatarSize = avatarView.frame.size
-        let avatarRange = UIScreen.mainScreen().bounds.width
-        var avatarX:CGFloat = 0
-        var avatarY: CGFloat = UIApplication.sharedApplication().statusBarFrame.height
-        let avatarWidthDif =  avatarView.frame.width - avatarRange
-        let avatarHeightDif =  avatarView.frame.height - avatarRange
-        var avatarWidth:CGFloat = avatarRange
-        var avatarHeight:CGFloat = avatarRange
-        
-        let avatarImgProportion = avatarView.frame.width / avatarView.frame.height
-        
-        if (avatarImgProportion == 1) {
-            if(avatarWidthDif < 0) {
-                avatarWidth = avatarView.frame.width
-                avatarHeight = avatarWidth
-                avatarX += -avatarWidthDif / 2
-                avatarY += -avatarHeightDif / 2
-            }
-        } else if (avatarImgProportion > 1) {
-            avatarHeight = avatarRange
-            avatarWidth = avatarImgProportion * avatarRange
-            avatarX += (avatarRange - avatarWidth) / 2
-        } else {
-            avatarWidth = avatarRange
-            avatarHeight = avatarRange / avatarImgProportion
-            avatarY += (avatarRange - avatarHeight) / 2
-        }
-        
-        avatarView.frame = CGRect(x: avatarX, y: UIApplication.sharedApplication().statusBarFrame.height, width: avatarWidth, height: avatarHeight)
-        
         avatarView.contentMode = .ScaleToFill
         avatarView.userInteractionEnabled = true
         //avatarView.alpha = 0.5
@@ -360,9 +398,9 @@ class ViewController: UIViewController {
         avatarView.clipsToBounds = true
         maskAvatar()
 
-        
-        self.view.addSubview(avatarView)
         avatar = avatarView
+        initAvatarPosition(avatar)
+        self.view.addSubview(avatar)
         
         
         

@@ -1,4 +1,17 @@
 /**
+ * Suggestion for Weak and Strong Outlets
+ *  Outlets should generally be weak, except for those from File's Owner to
+ *  top-level objects in a nib file which should be strong.
+ *  Outlets that you create should will therefore be weak by deault, because
+ *    1. Outlets that you create to, e.g. , subviews of this controller.
+ *    2. The strong outlest are frequently specified by framework classes.
+ */
+class ViewControl {
+    @IBOutlet weak var button : UIButton!
+    @IBOutlet var 
+}
+
+/**
  * Automatic Reference Counting
  *  Two properties are allowed to be nil, have the potential to cause a strong
  *      reference cycle. This scenario is best resovled with a `weak` reference.

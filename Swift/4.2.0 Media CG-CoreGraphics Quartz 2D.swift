@@ -63,3 +63,27 @@ struct CGRect {origin:CGPoint, size: CGSize}
      */
     CGPathAddRect(_:CGMutablePath, _ m:UnsafePointer<CGAffineTransform>, 
                   _ :CGRect)
+
+# CGImage
+    // Creating Bitmap Images
+
+    /**
+     * @notice if CGRect's origin is not a nature number, it'll crop a
+     *  rectangle in the CGImage 1 px wider and 1 px higher than the CGRect
+     *  e.g. 
+     *      let img = UIImageView(image: UIImage(named:"Aario.png"))s
+     *      let cg = img.image.CGImage
+     *      let rect = CGRectMaker(0.1111, 10.6666, 180, 180)
+     *      let im: CGImageRef = CGImageCreateWithImageInRect(cg, rect)
+     *      // it'll crop from (0, 10), 
+     *      //    and calculate from (1, 11), and width 180 
+     *      print(rect.size)                                 // (180, 180)
+     *      print(CGImageGetWidth(im), CGImageGetHeight(im)) // 181,181
+     */
+    .CGImageCreateWithImageInRect(_:CGImage?, _:CGRect) -> CGImage?
+    // Creating an Image Mask
+    // Getting Information
+
+    // UIImage.CGImage
+    .CGImageGetWidth(_:CGImage?) -> Int
+    .CGImageGetHeight(_:CGImage?) -> Int

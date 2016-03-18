@@ -16,7 +16,7 @@ struct Conf {
         struct btnDefault {
             static let defaultColor = bgColor
             
-            static let hoverColor = UIColor(red:0.2431, green:0.5216, blue:0.6196, alpha:0.75)
+            static let hoverColor = UIColor.lightGrayColor()
 
             static let disabledColor = UIColor(red:0.2431, green:0.5216, blue:0.6196, alpha:0.25)
         }

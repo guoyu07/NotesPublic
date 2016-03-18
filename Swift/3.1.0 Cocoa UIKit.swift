@@ -247,7 +247,13 @@ UIImageOrientation {Up,Down,Left,Right,?Mirrored}
         .init(:CGImage[, scale:CGFloat, orientation:UIImageOrientation)
         .init(:CIImage[, scale, orientation])
         .imageOrientation:UIImageOrientation .size:CGSize 
-        .scale:CGFloat 
+
+        /**
+         *  UIImageView.image.size   the origin size of an image
+         *  UIImageView.frame.size   the displaying size of an image  
+         */
+        .size: CGSize { get }
+        .scale:CGFloat          // default 1.0,    scale * size = real size
         .flipsForRightToLeftLayoutDirection
         .resizingMode:UIImageResizingMode
         .CGImage .CIImage .images .duration .capInsets
