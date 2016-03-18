@@ -160,9 +160,9 @@ struct UIViewAnimationCurve : Int {
     .inheritedAnimationDuration() -> NSTimeInterval
     
     
-### UIControl : UIView
-enum UIControlContentVerticalAlignment {Center,Top,Bottom,Fill}
-enum UIControlContentHorizontalAlignment {Center,Left,Right,Fill}
+### UIControl : UIView : UIResponder
+UIControlContentVerticalAlignment {Center,Top,Bottom,Fill}
+UIControlContentHorizontalAlignment {Center,Left,Right,Fill}
 struct UIControlEvents: OptionSetType {
     init(rawValue: UInt)
     TouchDown
@@ -201,7 +201,7 @@ struct UIControlState: OptionSetType {
     // Tracking Touches and Redrawing Controls
     
     
-####UIButton : UIControl : UIView
+####UIButton : UIControl : UIView : UIResponder
 enum UIButtonType {
     Custom,System,DetailDisclosure,InfoLight,InfoDark,ContactAdd,
     static var RoundedRect:UIButtonType { get }
@@ -211,7 +211,7 @@ enum UIButtonType {
         .titleForState(_:UIControlState) -> String?
         
 
-### UIImageView : UIView : NSObject
+### UIImageView : UIView : UIResponder
         .init(image:UIImage? [, highlightedImage: UIImage?])
         .image: UIImage?
         .hightedImage
@@ -232,6 +232,46 @@ enum UIButtonType {
         .stopAnimating()
         .isAnimating()
 
+##  UIViewController
+### UINavigationController
+####UIImagePickerController
+UIImagePickerControllerSourceType {
+    PhotoLibrary    // PhotoLibrary includes SavedPhotosAlbum
+    Camera      // use `cameraDevice` to indicate the specific camera
+    SavedPhotosAlbum
+}
+UIImagePickerControllerCameraCaptureMode { Photo, Video }
+UIImagePickerControllerCameraDevice { Rear, Front }
+UIImagePickerContollerQualityType {
+    TypeHight, TypeMedium, TypeLow, 
+    Type640x480, TypeIFrame1280x720, TypeIFrame960x540
+}
+UIImagePickerControllerCameraFlashMode { Off, Auto, On }
+struct CGAffineTransform {...}  // hold an affine transformation matrix
+    // Setting the Picker Source
+    .availableMediaTypesForSourceType(_:UIImagePickerControllerSourceType)
+    .isSourceTypeAvailable(_:UIImagePickerControllerSourceType) -> Bool
+    .sourceType: UIImagePickerControllerSourceType
+
+    .allowEditing: Bool
+    weak var .delegate: protocol<UIImagePickerControllerDelegate, UINavigationControllerDelegate>?
+    .mediaTypes: [String]
+    .videoQuality: UIImagePickerControllerQualityType
+    .videoMaximumDuration: NSTimeInterval  // sec, default 600 seconds
+    .showCameraControls: Bool
+    .cameraOverlayView: UIView?
+    .cameraViewTransform: CGAffineTransform
+    .cameraDevice: UIImagePickerControllerCameraDevice
+    .isCameraDeviceAvailable(_:UIImagePickerControllerCameraDevice)
+    .availableCaptureModesForCameraDevice(_:UIImagePickerControllerCameraDeive) -> [NSNumber]?
+    .cameraCaptureMode: UIImagePickerControllerCameraCaptureMode
+    .cameraFlashMode: UIImagePickerControllerCameraFlashMode
+    // Capturing Still Images or Movies
+    .takePicture()
+    .startVideoCapture()
+    .stopVideoCapture()
+    
+####UIVideoEditor
 /**/
 UIImageOrientation {Up,Down,Left,Right,?Mirrored}        
 #   UIImage
@@ -338,5 +378,5 @@ UIGestureRecognizerState {
          */
         .addCurveToPoint(_ endPoint:CGPoint, controlPoint1: CGPoint,
                          controlPoint2)
-        
-        
+    
+

@@ -69,7 +69,7 @@ struct CGRect {origin:CGPoint, size: CGSize}
 
     /**
      * @notice if CGRect's origin is not a nature number, it'll crop a
-     *  rectangle in the CGImage 1 px wider and 1 px higher than the CGRect
+     *  rectangle in the CGImage 1 px wider and 1 px taller than the CGRect
      *  e.g. 
      *      let img = UIImageView(image: UIImage(named:"Aario.png"))s
      *      let cg = img.image.CGImage
@@ -87,3 +87,28 @@ struct CGRect {origin:CGPoint, size: CGSize}
     // UIImage.CGImage
     .CGImageGetWidth(_:CGImage?) -> Int
     .CGImageGetHeight(_:CGImage?) -> Int
+
+# CGAffineTransform
+
+/**
+ * Known:
+ *  Any a point(x, y) tranfroms by matrix CGAffineTransform, the tranformed
+ *    point(x', y')   
+ *    [x' y' 1] = [x y 1] * CGAffineTransform
+ *    x' = ax + cy + tx
+ *    y' = bx + dy + ty
+ */
+struct CGAffineTransform {
+    [ a   b  0 ]
+    [ c   d  0 ]
+    [ tx  ty 1 ]
+}
+    /**
+     * @example resize an image to half size
+     *  let img = UIImageView(image: UIImage(named: "Aario.png"))
+     *  let matrix = CGAffineTransform(0.5, 0.5)
+     *  let transformedRect = CGRectApplyAffineTransform(img.frame, matrix)
+     *  
+     */
+    CGRectApplyAffineTransform(_:CGRect, _:CGAffineTransform) -> CGRect
+    

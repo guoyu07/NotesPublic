@@ -146,9 +146,8 @@ view.addSubview(img)
  * UIImagePickerController: UIImagePickerControllerDelegate, UINavigationControllerDelegate
  */
 class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-    let photoPicker: UIImagePickerController! = UIImagePickerController()
+    let imagePicker: UIImagePickerController! = UIImagePickerController()
     @IBAction func choosePhoto(sender: UIAlertAction){
-        photoPicker.allowsEditing = true
         /**
          *  enum UIImagePickerControllerSourceType : Int {
          *      case PhotoLibrary
@@ -156,8 +155,10 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
          *      case SavedPhotosAlbum
          *  }
          */
-        photoPicker.sourceType = .SavedPhotosAlbum
-        presentViewController(photoPicker, animated: true, completion: nil)
+        imagePicker.allowsEditing = true         
+        imagePicker.sourceType = .SavedPhotosAlbum
+        imagePicker.cameraCaptureMode = .Photo        
+        presentViewController(imagePicker, animated: true, completion: nil)
     }
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info : [String : AnyObject]) {
         if let pickedImage : UIImage = (info[UIImagePikerControllerOriginalImage]) as? UIImage {
@@ -172,7 +173,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
      */
     override func viewDidLoad() {
         super.viewDidLoad()
-        photoPicker.delegate = self
+        imagePicker.delegate = self
     }
 }
 
@@ -180,27 +181,24 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
  * Video
  */
 class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-    @IBOutlet var photoPicker: UIImagePickerController! = UIImagePickerController()
+    @IBOutlet var imagePicker: UIImagePickerController! = UIImagePickerController()
     @IBAction func loadImage(sender: UIAlertAction){
-        photoPicker.allowsEditing = false
-        /**
-         *  enum UIImagePickerControllerSourceType : Int {
-         *      case PhotoLibrary
-         *      case Camera
-         *      case SavedPhotosAlbum
-         *  }
-         */
-        photoPicker.sourceType = .Camera
-        photoPicker.cameraCaptureMode = .Photo
-    }
+           }
 
-    @IBAction func takePhoto(sender: UIAlertAction) {
+    @IBAction func pickImage(sender: UIAlertAction) {
         if (UIImagePickerController.isSourceTypeAvaliable(.Camera)) {
             if UIImagePickerController.availableCaptureModesForCameraDevice(.Rear) != nil {
-                photoPicker.allowsEdition = true
-                photoPicker.sourceType = .Camera
-                photoPicker.cameraCaptureMode = .Photo
-                presentViewController(photoPicker, animated: true, completion: nil)
+                /**
+                 *  enum UIImagePickerControllerSourceType : Int {
+                 *      case PhotoLibrary
+                 *      case Camera
+                 *      case SavedPhotosAlbum
+                 *  }
+                 */
+                imagePicker.allowsEdition = true         
+                imagePicker.sourceType = .Camera
+                imagePicker.cameraCaptureMode = .Photo 
+                presentViewController(imagePicker, animated: true, completion: nil)
             } else {
                 print("Cannot access the camera.")
             }
@@ -210,9 +208,10 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
         if let pickedImage : UIImage = (info[UIImagePickerControllerOriginalImage]) as? UIImage {
-            UIImageWriteToSavedPhotosAlbu(pickedImage, nil, nil, nil)
+         
+            UIImageWriteToSavedPhotosAlbum(pickedImage, nil, nil, nil)
         }
-        photoPicker.dismissViewControllerAnimated(true, completion: {
+        imagePicker.dismissViewControllerAnimated(true, completion: {
             // Anything you want to happen when the user saves an image
         })
     }
@@ -229,7 +228,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
      */
     override func viewDidLoad() {
         super.viewDidLoad()
-        photoPicker.delegate = self
+        imagePicker.delegate = self
     }
 }
 

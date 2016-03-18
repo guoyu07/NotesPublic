@@ -28,11 +28,34 @@ A = det(A) = |A| = [...           ]   ∈ R^m*n          a Square Matrix
 
 
 
-
+```
       [a11 a12 a13]
-|A| = [a21 a22 a23] = a11*a22*a33 + a21*a32*a13 + a31*a12*a23 - a31*a22*a13 - a21*a12*a23 - a11*a32*a23
+|A| = [a21 a22 a23] 
       [a31 a32 a33]
 
+    = a11*a22*a33 + a21*a32*a13 + a31*a12*a23 - a31*a22*a13 - a21*a12*a23 - a11*a32*a23
+```
+
+```
+e.g.
+Known:
+                              [ a  b  0 ]
+    Point(x, y) transforms by [ c  d  0 ], get the transformed P(x', y')
+                              [ tx ty 1 ]
+
+Analyze:
+                          [ a  b  0 ]
+    [x' y' 1] = [x y 1] * [ c  d  0 ]
+                          [ tx ty 1 ]
+    x' = ax + cy + tx
+    y' = bx + dy + ty
+
+Solution:
+    c11 = xa + yc + 1*tx    =  ax + cy + tx
+    c12 = xb + yd + 1*ty    =  bx + dy + ty
+    c13 = x*0 + y*0 + 1*1   =  1
+
+```
 
 
 [AB]i,j = ai1*b1j + ai2*b2j + .. + ain*bnj = [n]∑[r=1]Ai,r * Br,j
@@ -63,7 +86,7 @@ so A * B may not equal B * A
 
 
 
-|! Transpose !|
+# Transpose
 /**
  * @see http://www.tongji.edu.cn/~math/xxds/kcja/kcja_b/2-3.htm
  */
