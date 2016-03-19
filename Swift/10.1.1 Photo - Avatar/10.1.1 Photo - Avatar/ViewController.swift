@@ -10,6 +10,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     @IBOutlet weak var savingLoading: AnimatableImageView!
     //@IBOutlet weak var saveBtn: UIButton!
     @IBOutlet weak var maskerView : UIView!
+    @IBOutlet weak var moistAvatarMasker: UIImageView!
 
     var enableRotation: Bool = false
     
@@ -296,13 +297,18 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         if (opaque && maskerView.alpha < 1) {
             maskerView.alpha = 1.0
         } else {
+            moistAvatarMasker.image = nil
             maskerView.alpha = 0.5
         }
     }
     func maskAvatar(){
+        
         let v = UIView(frame: CGRect(x:0, y:UIApplication.sharedApplication().statusBarFrame.height, width: UIScreen.mainScreen().bounds.width, height: UIScreen.mainScreen().bounds.width))
         
         maskerView = v
+        maskerView.backgroundColor = UIColor.blackColor()
+
+        
         let range: CGFloat = UIScreen.mainScreen().bounds.width
         let radius: CGFloat = Conf.Size.avatarSize.width / 2
         
@@ -319,18 +325,26 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         CGPathMoveToPoint(path, nil, range / 2 + radius, range / 2 + radius)
         CGPathAddArc(path, nil, range / 2, range / 2, radius, 0, CGFloat(M_PI * 2), false)
         
+        let maskerFill = CAShapeLayer()
+        maskerFill.path = path
+        maskerFill.fillColor = UIColor.blackColor().CGColor
+        maskerFill.fillRule = kCAFillRuleEvenOdd
+        maskerView.layer.mask = maskerFill
+
+       
+        view.addSubview(maskerView)
+        
+        
+        // moist avatar background
+        let moistAvatarMasker = UIImageView(image: UIImage(named: "default"))
+        moistAvatarMasker.frame = CGRect(origin: CGPoint(x: 0, y: 0), size: maskerView.frame.size)
+        let vsEffect = UIVisualEffectView(effect: UIBlurEffect(style: .Dark))
+        vsEffect.frame = moistAvatarMasker.frame
+        moistAvatarMasker.insertSubview(vsEffect, atIndex: 0)
+        maskerView.insertSubview(moistAvatarMasker, atIndex: 0)
+        self.moistAvatarMasker = moistAvatarMasker
 
         
-        let maskLayer = CAShapeLayer()
-        maskLayer.path = path
-        maskLayer.fillColor = UIColor.blackColor().CGColor
-        maskLayer.fillRule = kCAFillRuleEvenOdd
-        
-        
-        maskerView.backgroundColor = UIColor.blackColor()
-        opaqueMasker(false)
-        maskerView.layer.mask = maskLayer
-        self.view.addSubview(maskerView)
         
         // circle
         let circlePath = UIBezierPath(arcCenter: CGPoint(x: range / 2,y: range / 2), radius: radius, startAngle: CGFloat(0), endAngle:CGFloat(M_PI * 2), clockwise: true)
@@ -355,7 +369,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         if (enableRotation) {
             maskerView.addGestureRecognizer(UIRotationGestureRecognizer(target: self, action: "rotateAvatar:"))
         }
-        maskerView.addGestureRecognizer(UISwipeGestureRecognizer(target: self, action: "swipeAvatar:"))
+        
     }
 
     
@@ -363,7 +377,9 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         //print("centerBefore: \(avatar.center)")
         avatar.image = image
         initAvatarPosition(avatar)
-        opaqueMasker(false)
+        
+        moistAvatarMasker.image = image
+        opaqueMasker(true)
         //print("centerAfter: \(avatar.center)")
     }
     func initAvatarPosition(avatar: UIImageView) {
@@ -451,8 +467,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         super.viewDidLoad()
         
         
-        
-        
         imagePicker.delegate = self
         
         let statusBarBg = UIImageView(frame: CGRect(x:0, y:0, width: UIApplication.sharedApplication().statusBarFrame.size.width, height: UIApplication.sharedApplication().statusBarFrame.size.height))
@@ -478,10 +492,10 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
 
         
         
-        let avatarView = UIImageView(image: UIImage(named: "long"))
+        let avatarView = UIImageView(image: UIImage(named: "default"))
         avatarView.contentMode = .ScaleToFill
         avatarView.userInteractionEnabled = true
-        //avatarView.alpha = 0.5
+        //avatarView.alpha = 1
         avatarView.backgroundColor = UIColor.blackColor()
         avatarView.clipsToBounds = true
         maskAvatar()
@@ -570,6 +584,9 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
                 let patternX: CGFloat = (w + Conf.Size.margin) * CGFloat(i) + Conf.Size.margin
                 let patternOrigin = CGPoint(x: patternX, y: decorationSelectionTitleHeight)
                 
+                patternSelector.userInteractionEnabled = true
+
+                
                 patternSelector.frame = CGRect(origin: patternOrigin, size: CGSize(width: w, height: patternSelectorHeight))
                 patternSelector.addGestureRecognizer(UITapGestureRecognizer(target: self, action: "selectDecoration:"))
                 
@@ -595,6 +612,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         self.view.bringSubviewToFront(decorationBtn)
         self.view.bringSubviewToFront(backBtn)
         self.view.bringSubviewToFront(saveBtn)
+        
         
         
     }
