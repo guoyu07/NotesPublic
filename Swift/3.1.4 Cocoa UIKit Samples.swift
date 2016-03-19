@@ -207,8 +207,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         }
     }
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
-        if let pickedImage : UIImage = (info[UIImagePickerControllerOriginalImage]) as? UIImage {
-         
+        if let pickedImage : UIImage = (info[UIImagePickerControllerOriginalImage]) as? UIImage { 
             UIImageWriteToSavedPhotosAlbum(pickedImage, nil, nil, nil)
         }
         imagePicker.dismissViewControllerAnimated(true, completion: {

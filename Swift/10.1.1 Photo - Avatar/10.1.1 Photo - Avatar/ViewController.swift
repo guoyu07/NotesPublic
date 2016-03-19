@@ -9,7 +9,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     @IBOutlet weak var avatar: UIImageView!
     @IBOutlet weak var savingLoading: AnimatableImageView!
     //@IBOutlet weak var saveBtn: UIButton!
-    
+    @IBOutlet weak var maskerView : UIView!
+
     var enableRotation: Bool = false
     
     let imagePicker: UIImagePickerController! = UIImagePickerController()
@@ -134,8 +135,22 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             let rect: CGRect = CGRectMake(ceil(cropingOrigin.x * imgWidthScale), ceil(cropingOrigin.y * imgHeightScale), Conf.Size.avatarSize.width * imgWidthScale, Conf.Size.avatarSize.height * imgHeightScale)
             
             let imgRef: CGImageRef = CGImageCreateWithImageInRect(img.CGImage, rect)!
-            let croppedImg = UIImage(CGImage: imgRef, scale: 1, orientation: .Up)
-            UIImageWriteToSavedPhotosAlbum(croppedImg, nil, nil, nil)
+            let croppedImg = UIImage(CGImage: imgRef, scale: img.scale, orientation: img.imageOrientation)
+            
+            let imgSize = CGSize(width: Conf.Size.avatarSize.width, height: Conf.Size.avatarSize.width)
+
+            UIGraphicsBeginImageContextWithOptions(imgSize, false, 1.0)
+            croppedImg.drawInRect(CGRect(origin: CGPointZero, size: imgSize))
+            let savingImgContext = UIGraphicsGetCurrentContext()
+            UIGraphicsEndImageContext()
+            
+            if let savingImgRef: CGImageRef = CGBitmapContextCreateImage(savingImgContext) {
+                let savingImg = UIImage(CGImage: savingImgRef, scale: 1.0, orientation: .Up)
+                UIImageWriteToSavedPhotosAlbum(savingImg, nil, nil, nil)
+                initAvatar(savingImg)
+                opaqueMasker(true)
+
+            }
             
             if (Debug.Avatar.savingPosition) {
                 print(rect.origin)
@@ -181,6 +196,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
     
     @IBAction func resizeByDoubleTap(recognizer: UITapGestureRecognizer) {
+        opaqueMasker(false)
         recognizer.numberOfTapsRequired = 2
         
         let scale: CGFloat = 1.2
@@ -193,6 +209,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         
     }
     @IBAction func resizeAvatar(recognizer: UIPinchGestureRecognizer) {
+        opaqueMasker(false)
+
         if (Debug.Avatar.recognizeGestures) {
             print("resize")
         }
@@ -213,6 +231,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
      * Rotate may leave something wrong to Pan
      */
     @IBAction func rotateAvatar(recognizer: UIRotationGestureRecognizer) {
+        opaqueMasker(false)
+
         if (Debug.Avatar.recognizeGestures) {
             print("rotate")
         }
@@ -232,8 +252,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         }
         if let view = recognizer.view {
             switch recognizer.state {
-            //case .Began:
-                
+            case .Began:
+                opaqueMasker(false)
             case .Changed:
                 if (Debug.Avatar.panningVelocity) {
                     print("Changed: velocity: \(recognizer.velocityInView(view))  translation: \(translation)")
@@ -272,9 +292,17 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         recognizer.setTranslation(CGPointZero, inView: view)
     }
     
+    func opaqueMasker(opaque: Bool = false) {
+        if (opaque && maskerView.alpha < 1) {
+            maskerView.alpha = 1.0
+        } else {
+            maskerView.alpha = 0.5
+        }
+    }
     func maskAvatar(){
-        let maskerView = UIView(frame: CGRect(x:0, y:UIApplication.sharedApplication().statusBarFrame.height, width: UIScreen.mainScreen().bounds.width, height: UIScreen.mainScreen().bounds.width))
-
+        let v = UIView(frame: CGRect(x:0, y:UIApplication.sharedApplication().statusBarFrame.height, width: UIScreen.mainScreen().bounds.width, height: UIScreen.mainScreen().bounds.width))
+        
+        maskerView = v
         let range: CGFloat = UIScreen.mainScreen().bounds.width
         let radius: CGFloat = Conf.Size.avatarSize.width / 2
         
@@ -296,13 +324,13 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         let maskLayer = CAShapeLayer()
         maskLayer.path = path
         maskLayer.fillColor = UIColor.blackColor().CGColor
-        maskerView.backgroundColor = UIColor.blackColor()
         maskLayer.fillRule = kCAFillRuleEvenOdd
         
-        maskerView.alpha = 0.5
-        self.view.addSubview(maskerView)
-        maskerView.layer.mask = maskLayer
         
+        maskerView.backgroundColor = UIColor.blackColor()
+        opaqueMasker(false)
+        maskerView.layer.mask = maskLayer
+        self.view.addSubview(maskerView)
         
         // circle
         let circlePath = UIBezierPath(arcCenter: CGPoint(x: range / 2,y: range / 2), radius: radius, startAngle: CGFloat(0), endAngle:CGFloat(M_PI * 2), clockwise: true)
@@ -335,6 +363,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         //print("centerBefore: \(avatar.center)")
         avatar.image = image
         initAvatarPosition(avatar)
+        opaqueMasker(false)
         //print("centerAfter: \(avatar.center)")
     }
     func initAvatarPosition(avatar: UIImageView) {
@@ -346,7 +375,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             
             let avatarImgProportion = img.size.width / img.size.height
             
-            if (img.size.width > UIScreen.mainScreen().bounds.width * 2) {
+            if (img.size.width > UIScreen.mainScreen().bounds.width) {
                 avatarWidth = UIScreen.mainScreen().bounds.width
                 avatarHeight = avatarWidth / avatarImgProportion
             }
@@ -377,6 +406,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             }
             avatar.frame = CGRect(x: avatarX, y: avatarY, width: avatarWidth, height: avatarHeight)
             if (Debug.Avatar.savingPosition) {
+                print("initOrientation: \(img.imageOrientation.rawValue)")
                 print("origin=\(img.size) scale=\(img.scale) CGImage=(\(CGImageGetWidth(img.CGImage)), \(CGImageGetHeight(img.CGImage))) now=\(avatarWidth) \(avatarHeight)")
             }
         }
