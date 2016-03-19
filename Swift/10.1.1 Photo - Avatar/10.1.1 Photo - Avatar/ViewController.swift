@@ -524,43 +524,65 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         
         
         
+        
+        
+
+        
+        let decorationNavHeight:CGFloat = 38
+        let decorationNavY = UIScreen.mainScreen().bounds.height - decorationNavHeight
+        
+        let decorationNav = UIImageView(frame: CGRect(x: 0, y: decorationNavY, width: UIScreen.mainScreen().bounds.width, height: decorationNavHeight))
+        decorationNav.backgroundColor = UIColor(white: 0.88888888, alpha: 1)
+        self.view.addSubview(decorationNav)
+        
+        
+        
+        
         let decorationY = UIScreen.mainScreen().bounds.width + UIApplication.sharedApplication().statusBarFrame.size.height
-        let decorationHeight = UIScreen.mainScreen().bounds.height - decorationY
+        let decorationHeight = UIScreen.mainScreen().bounds.height - decorationY - decorationNavHeight
         
         let decorationBg = UIImageView(frame: CGRect(x: 0, y: decorationY, width: UIApplication.sharedApplication().statusBarFrame.width, height: decorationHeight))
         decorationBg.tintColor = UIColor.blackColor()
         decorationBg.backgroundColor = UIColor.whiteColor()
         self.view.addSubview(decorationBg)
         
-        let decorationSelectionTitle = UILabel(frame:CGRect(origin: CGPointMake(10.0, 10.0), size: CGSizeMake(180, 50)))
+        
+        let decorationSelectionTitleHeight: CGFloat = 50.0
+        let decorationSelectionTitle = UILabel(frame:CGRect(origin: CGPointMake(Conf.Size.margin, Conf.Size.margin), size: CGSizeMake(200, decorationSelectionTitleHeight - Conf.Size.margin * 2)))
         decorationSelectionTitle.text = "SELECT DECORATION"
         decorationSelectionTitle.tintColor = UIColor.blackColor()
-        decorationSelectionTitle.font = UIFont(name:"HelveticaNeue-Bold", size: 16.0)
+        decorationSelectionTitle.font = UIFont(name:"HelveticaNeue", size: 18.0)
         decorationBg.addSubview(decorationSelectionTitle)
         
-        let patterSelectorSize = CGSize(width: 80.0, height: 160.0)
+        
+        
+        let patternSelectorHeight = UIScreen.mainScreen().bounds.height - UIApplication.sharedApplication().statusBarFrame.height - UIScreen.mainScreen().bounds.width - decorationNavHeight - decorationSelectionTitleHeight - Conf.Size.margin
+        
         var i : Int = 0
-        for pattern in decorationPatterns {
-            let patternX: CGFloat = (patterSelectorSize.width + 10) * CGFloat(i) + 10
-            let patternOrigin = CGPoint(x: patternX, y: CGFloat(60))
-            let patterSelector = UIImageView(image: UIImage(named: "default.jpeg"))
-            patterSelector.frame = CGRect(origin: patternOrigin, size: patterSelectorSize)
-            patterSelector.addGestureRecognizer(UITapGestureRecognizer(target: self, action: "selectDecoration:"))
+        for _ in decorationPatterns {
             
-            decorationBg.addSubview(patterSelector)
-            decorationBg.bringSubviewToFront(patterSelector)
+            let patternSelector = UIImageView(image: UIImage(named: "test.jpg"))
+            if let p = patternSelector.image {
+                let propotion = p.size.width / p.size.height
+                let w = propotion * patternSelectorHeight
+                
+                
+                let patternX: CGFloat = (w + Conf.Size.margin) * CGFloat(i) + Conf.Size.margin
+                let patternOrigin = CGPoint(x: patternX, y: decorationSelectionTitleHeight)
+                
+                patternSelector.frame = CGRect(origin: patternOrigin, size: CGSize(width: w, height: patternSelectorHeight))
+                patternSelector.addGestureRecognizer(UITapGestureRecognizer(target: self, action: "selectDecoration:"))
+                
+                decorationBg.addSubview(patternSelector)
+                //decorationBg.bringSubviewToFront(patternSelector)
+            }
             i++
         }
-        
-        
 
         
-        let decorationNavHeight:CGFloat = 30
-        let decorationNavY = UIScreen.mainScreen().bounds.height - decorationNavHeight
         
-        let decorationNav = UIImageView(frame: CGRect(x: 0, y: decorationNavY, width: UIScreen.mainScreen().bounds.width, height: decorationNavHeight))
-        decorationNav.backgroundColor = UIColor.lightGrayColor()
-        self.view.addSubview(decorationNav)
+        
+        
         
         self.view.backgroundColor = UIColor.blackColor()
         self.view.tintColor = UIColor.whiteColor()

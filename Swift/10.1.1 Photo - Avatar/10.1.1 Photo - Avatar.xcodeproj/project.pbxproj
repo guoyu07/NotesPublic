@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		003944BF1C9D40D400953EB8 /* decoration1.gif in Resources */ = {isa = PBXBuildFile; fileRef = 003944BE1C9D40D400953EB8 /* decoration1.gif */; };
+		003944C11C9D5F8600953EB8 /* test.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 003944C01C9D5F8600953EB8 /* test.jpg */; };
 		0073FD1D1C96B3E8004F5B5A /* Debug.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0073FD1C1C96B3E8004F5B5A /* Debug.swift */; };
 		007A47691C9C2BD300C71C12 /* Aa.swift in Sources */ = {isa = PBXBuildFile; fileRef = 007A47681C9C2BD300C71C12 /* Aa.swift */; };
 		007A476B1C9C2E8200C71C12 /* ErrorHandle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 007A476A1C9C2E8200C71C12 /* ErrorHandle.swift */; };
@@ -46,6 +47,7 @@
 
 /* Begin PBXFileReference section */
 		003944BE1C9D40D400953EB8 /* decoration1.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = decoration1.gif; sourceTree = "<group>"; };
+		003944C01C9D5F8600953EB8 /* test.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = test.jpg; sourceTree = "<group>"; };
 		0073FD1C1C96B3E8004F5B5A /* Debug.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Debug.swift; sourceTree = "<group>"; };
 		007A47681C9C2BD300C71C12 /* Aa.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Aa.swift; sourceTree = "<group>"; };
 		007A476A1C9C2E8200C71C12 /* ErrorHandle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorHandle.swift; sourceTree = "<group>"; };
@@ -165,6 +167,7 @@
 		00BCBABB1C992432005BD276 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				003944C01C9D5F8600953EB8 /* test.jpg */,
 				003944BE1C9D40D400953EB8 /* decoration1.gif */,
 				00BCBAC01C993327005BD276 /* loading2.gif */,
 				00BCBABE1C99302E005BD276 /* default.jpeg */,
@@ -304,6 +307,7 @@
 				00B6EF8D1C9004A100E8EE59 /* LaunchScreen.storyboard in Resources */,
 				009EF5D51C97F017005A24CD /* Assets.xcassets in Resources */,
 				00BCBABF1C99302E005BD276 /* default.jpeg in Resources */,
+				003944C11C9D5F8600953EB8 /* test.jpg in Resources */,
 				003944BF1C9D40D400953EB8 /* decoration1.gif in Resources */,
 				008AA1DA1C9841E500A1D41C /* Cartfile in Resources */,
 				00B6EF881C9004A100E8EE59 /* Main.storyboard in Resources */,
