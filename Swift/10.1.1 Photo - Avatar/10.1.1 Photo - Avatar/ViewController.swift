@@ -114,6 +114,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info : [String : AnyObject]) {
         if let pickedImage : UIImage = (info[UIImagePickerControllerOriginalImage]) as? UIImage {
             initAvatar(pickedImage)
+            opaqueMasker(false)
             if (self.imagePicker.sourceType == .Camera) {
                 UIImageWriteToSavedPhotosAlbum(pickedImage, nil, nil, nil)
             }
@@ -376,10 +377,10 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     func initAvatar(image: UIImage) {
         //print("centerBefore: \(avatar.center)")
         avatar.image = image
-        initAvatarPosition(avatar)
         
         moistAvatarMasker.image = image
-        opaqueMasker(true)
+        initAvatarPosition(avatar)
+        
         //print("centerAfter: \(avatar.center)")
     }
     func initAvatarPosition(avatar: UIImageView) {
@@ -460,7 +461,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
     
     @IBAction func selectDecoration(recoginzer: UITapGestureRecognizer) {
-        recoginzer.numberOfTapsRequired = 1
+        //recoginzer.numberOfTapsRequired = 1
         print("llo")
     }
     override func viewDidLoad() {
@@ -499,9 +500,11 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         avatarView.backgroundColor = UIColor.blackColor()
         avatarView.clipsToBounds = true
         maskAvatar()
+        
 
         avatar = avatarView
         initAvatarPosition(avatar)
+        opaqueMasker(true)
         self.view.addSubview(avatar)
         
         
@@ -573,25 +576,26 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         let patternSelectorHeight = UIScreen.mainScreen().bounds.height - UIApplication.sharedApplication().statusBarFrame.height - UIScreen.mainScreen().bounds.width - decorationNavHeight - decorationSelectionTitleHeight - Conf.Size.margin
         
         var i : Int = 0
-        for _ in decorationPatterns {
+        for pattern in decorationPatterns {
             
             let patternSelector = UIImageView(image: UIImage(named: "test.jpg"))
             if let p = patternSelector.image {
-                let propotion = p.size.width / p.size.height
-                let w = propotion * patternSelectorHeight
+                let proportion = p.size.width / p.size.height
+                let w = proportion * patternSelectorHeight
                 
                 
                 let patternX: CGFloat = (w + Conf.Size.margin) * CGFloat(i) + Conf.Size.margin
                 let patternOrigin = CGPoint(x: patternX, y: decorationSelectionTitleHeight)
                 
                 patternSelector.userInteractionEnabled = true
-
+                patternSelector.accessibilityLabel = "pattern"
+                patternSelector.accessibilityValue = pattern
                 
                 patternSelector.frame = CGRect(origin: patternOrigin, size: CGSize(width: w, height: patternSelectorHeight))
                 patternSelector.addGestureRecognizer(UITapGestureRecognizer(target: self, action: "selectDecoration:"))
                 
                 decorationBg.addSubview(patternSelector)
-                //decorationBg.bringSubviewToFront(patternSelector)
+                decorationBg.bringSubviewToFront(patternSelector)
             }
             i++
         }

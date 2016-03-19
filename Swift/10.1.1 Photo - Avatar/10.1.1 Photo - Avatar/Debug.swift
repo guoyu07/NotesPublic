@@ -14,7 +14,7 @@ struct Debug {
         static var recognizeGestures = false
         static var debugIsOutOfBounds = false
         static var panningVelocity = false
-        static var savingPosition = true
+        static var savingPosition = false
     }
 }
 
