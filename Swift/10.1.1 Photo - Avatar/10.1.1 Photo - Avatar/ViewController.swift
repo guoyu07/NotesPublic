@@ -412,8 +412,46 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         }
     }
     
+    var hasDecoration: Bool = false
+    var decorationPatterns : [String] = ["decoration1.gif", "decoration1.gif", "decoration1.gif", ]
+    var pickedDecorationPattern : String? = nil
+    @IBOutlet weak var decorateBtn: UIButton!
+    @IBOutlet weak var decorationView: AnimatableImageView!
+    @IBAction func decorate(sender: UIButton) {
+        if (decorationView == nil) {
+            let decView = AnimatableImageView()
+            decView.animateWithImage(named: decorationPatterns[0])
+            decView.frame = CGRect(x: (UIScreen.mainScreen().bounds.width - Conf.Size.avatarSize.width) / 2, y: UIApplication.sharedApplication().statusBarFrame.height + (UIScreen.mainScreen().bounds.width - Conf.Size.avatarSize.height) / 2, width: Conf.Size.avatarSize.width, height:Conf.Size.avatarSize.height)
+            decView.hidden = true
+            view.addSubview(decView)
+            view.bringSubviewToFront(decView)
+            decorationView = decView
+        }
+        
+        if (pickedDecorationPattern != nil && decorationPatterns.contains((pickedDecorationPattern)!)) {
+            decorationView.animateWithImage(named: pickedDecorationPattern!)
+            pickedDecorationPattern = nil
+        }
+        if (!hasDecoration) {
+            decorateBtn.setTitle("Origin", forState: .Normal)
+            decorationView.hidden = false
+        } else {
+            decorateBtn.setTitle("Decorate", forState: .Normal)
+            decorationView.hidden = true
+        }
+        
+        hasDecoration = !hasDecoration
+    }
+    
+    @IBAction func selectDecoration(recoginzer: UITapGestureRecognizer) {
+        recoginzer.numberOfTapsRequired = 1
+        print("llo")
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
+        
         
         imagePicker.delegate = self
         
@@ -427,13 +465,13 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         backBtn.contentHorizontalAlignment = .Left
         backBtn.contentVerticalAlignment = .Center
         backBtn.addTarget(self, action: "back: ", forControlEvents: UIControlEvents.TouchUpInside)
-        self.view.addSubview(backBtn)
+        view.addSubview(backBtn)
         
         let saveBtn = UIButton(frame: CGRect(x: UIScreen.mainScreen().bounds.width - 60, y: UIApplication.sharedApplication().statusBarFrame.height, width: 60, height: 30))
-        saveBtn.setTitle("Save", forState: UIControlState.Normal)
+        saveBtn.setTitle("Save", forState: .Normal)
         saveBtn.addTarget(self, action: "showSavingLoading:", forControlEvents: UIControlEvents.TouchDown)
         saveBtn.addTarget(self, action: "saveAvatar:", forControlEvents: UIControlEvents.TouchUpInside)
-        self.view.addSubview(saveBtn)
+        view.addSubview(saveBtn)
         
        
         
@@ -479,7 +517,10 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         decorationBtn.layer.cornerRadius = 13
         decorationBtn.layer.borderColor = UIColor.grayColor().CGColor
         decorationBtn.layer.borderWidth = 1
+        decorationBtn.addTarget(self, action: "decorate:", forControlEvents: .TouchUpInside)
         self.view.addSubview(decorationBtn)
+        decorateBtn = decorationBtn
+
         
         
         
@@ -487,9 +528,32 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         let decorationHeight = UIScreen.mainScreen().bounds.height - decorationY
         
         let decorationBg = UIImageView(frame: CGRect(x: 0, y: decorationY, width: UIApplication.sharedApplication().statusBarFrame.width, height: decorationHeight))
+        decorationBg.tintColor = UIColor.blackColor()
         decorationBg.backgroundColor = UIColor.whiteColor()
         self.view.addSubview(decorationBg)
         
+        let decorationSelectionTitle = UILabel(frame:CGRect(origin: CGPointMake(10.0, 10.0), size: CGSizeMake(180, 50)))
+        decorationSelectionTitle.text = "SELECT DECORATION"
+        decorationSelectionTitle.tintColor = UIColor.blackColor()
+        decorationSelectionTitle.font = UIFont(name:"HelveticaNeue-Bold", size: 16.0)
+        decorationBg.addSubview(decorationSelectionTitle)
+        
+        let patterSelectorSize = CGSize(width: 80.0, height: 160.0)
+        var i : Int = 0
+        for pattern in decorationPatterns {
+            let patternX: CGFloat = (patterSelectorSize.width + 10) * CGFloat(i) + 10
+            let patternOrigin = CGPoint(x: patternX, y: CGFloat(60))
+            let patterSelector = UIImageView(image: UIImage(named: "default.jpeg"))
+            patterSelector.frame = CGRect(origin: patternOrigin, size: patterSelectorSize)
+            patterSelector.addGestureRecognizer(UITapGestureRecognizer(target: self, action: "selectDecoration:"))
+            
+            decorationBg.addSubview(patterSelector)
+            decorationBg.bringSubviewToFront(patterSelector)
+            i++
+        }
+        
+        
+
         
         let decorationNavHeight:CGFloat = 30
         let decorationNavY = UIScreen.mainScreen().bounds.height - decorationNavHeight
@@ -509,7 +573,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         self.view.bringSubviewToFront(decorationBtn)
         self.view.bringSubviewToFront(backBtn)
         self.view.bringSubviewToFront(saveBtn)
-
         
         
     }

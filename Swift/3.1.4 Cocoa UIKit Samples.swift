@@ -4,8 +4,6 @@
  */
 import UIKit
 
-import UIKit
-
 class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
@@ -48,8 +46,9 @@ class ExtView: UIView {
  *  CGSizeMake(width: Float, height: Float)
  */
 
-let label = UILable(frame:CGRect(origin: CGPointMake(10.0, 50.0), size: CGSizeMake(150, 50)))
+let label = UILabel(frame:CGRect(origin: CGPointMake(10.0, 50.0), size: CGSizeMake(150, 50)))
 label.text = "Instantaneous"
+label.font = UIFont(name:"HelveticaNeue-Bold", size: 16.0)
 self.view.addSubview(label)
 
 
