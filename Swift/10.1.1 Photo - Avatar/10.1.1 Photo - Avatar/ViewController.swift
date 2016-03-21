@@ -195,9 +195,9 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         sender.hidden = true
     }
     
-    func resizeByDoubleTap(recognizer: UITapGestureRecognizer) {
+    func resizeByDoubleTap(sender: UITapGestureRecognizer) {
         opaqueMasker(false)
-        recognizer.numberOfTapsRequired = 2
+        sender.numberOfTapsRequired = 2
         
         let scale: CGFloat = 1.2
         
@@ -208,13 +208,13 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         
         
     }
-    func resizeAvatar(recognizer: UIPinchGestureRecognizer) {
+    func resizeAvatar(sender: UIPinchGestureRecognizer) {
         opaqueMasker(false)
 
         if (Debug.Avatar.recognizeGestures) {
             print("resize")
         }
-        var scale: CGFloat = recognizer.scale
+        var scale: CGFloat = sender.scale
         
         avatar.transform = CGAffineTransformScale(avatar.transform, scale, scale)
         
@@ -222,7 +222,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             scale = 2.01 - scale     // zoom out,  ceil(20 - scale * 10) / 10
             avatar.transform = CGAffineTransformScale(avatar.transform, scale, scale)
         }
-        recognizer.scale = 1.0
+        sender.scale = 1.0
         handleAvatarOutOfBounds()
     }
 
@@ -230,41 +230,41 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     /**
      * Rotate may leave something wrong to Pan
      */
-    func rotateAvatar(recognizer: UIRotationGestureRecognizer) {
+    func rotateAvatar(sender: UIRotationGestureRecognizer) {
         opaqueMasker(false)
 
         if (Debug.Avatar.recognizeGestures) {
             print("rotate")
         }
-        let rotation =  recognizer.velocity * 0.05
+        let rotation =  sender.velocity * 0.05
         avatar.transform = CGAffineTransformRotate(avatar.transform, rotation)
     }
-    func moveAvatar(recognizer:UIPanGestureRecognizer) {
-        recognizer.maximumNumberOfTouches = 1
-        recognizer.minimumNumberOfTouches = 1
+    func moveAvatar(sender:UIPanGestureRecognizer) {
+        sender.maximumNumberOfTouches = 1
+        sender.minimumNumberOfTouches = 1
         if (Debug.Avatar.recognizeGestures) {
             print("pan")
         }
-        let translation = recognizer.translationInView(self.avatar)
+        let translation = sender.translationInView(self.avatar)
         
         if (self.avatar.frame.width <  Conf.Size.avatarSize.width) {
             self.avatar.frame = CGRect(origin: self.avatar.frame.origin, size: CGSize(width: Conf.Size.avatarSize.width, height:Conf.Size.avatarSize.height))
         }
-        if let view = recognizer.view {
-            switch recognizer.state {
+        if let view = sender.view {
+            switch sender.state {
             case .Began:
                 opaqueMasker(false)
             case .Changed:
                 if (Debug.Avatar.panningVelocity) {
-                    print("Changed: velocity: \(recognizer.velocityInView(view))  translation: \(translation)")
+                    print("Changed: velocity: \(sender.velocityInView(view))  translation: \(translation)")
                 }
                 panAvatarLastTranslation = translation
                 self.avatar.center = CGPoint(x: self.avatar.center.x + translation.x, y: self.avatar.center.y + translation.y)
             case .Ended:
-                var velocityDistance = sqrt(pow(recognizer.velocityInView(view).x, CGFloat(2)) + pow(recognizer.velocityInView(view).y, CGFloat(2)))
+                var velocityDistance = sqrt(pow(sender.velocityInView(view).x, CGFloat(2)) + pow(sender.velocityInView(view).y, CGFloat(2)))
                 
                 if (Debug.Avatar.panningVelocity) {
-                    print("Ended: velocity: \(recognizer.velocityInView(view))  translation: \(translation)")
+                    print("Ended: velocity: \(sender.velocityInView(view))  translation: \(translation)")
                     print("velocityDistance: \(velocityDistance)")
                 }
                 
@@ -289,14 +289,12 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             }
             self.handleAvatarOutOfBounds()
         }
-        recognizer.setTranslation(CGPointZero, inView: view)
+        sender.setTranslation(CGPointZero, inView: view)
     }
     
     func opaqueMasker(opaque: Bool = false) {
         if (opaque) {
-            if (maskerView.alpha < 1) {
-                maskerView.alpha = 1.0
-            }
+            maskerView.alpha = 1.0
         } else {
             moistAvatarMasker.image = nil
             maskerView.alpha = 0.5
