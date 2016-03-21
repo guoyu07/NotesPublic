@@ -11,34 +11,17 @@ import UIKit
 
 class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate  {
     
-    var imagePickerSourceType:UIImagePickerControllerSourceType! = .Camera
     var saveImagePickerFiles: Bool = false
     
-    @IBOutlet var imageView: UIImageView!
-    @IBOutlet var imagePicker: UIImagePickerController! = UIImagePickerController()
+    var imageView: UIImageView!
+    var imagePicker: UIImagePickerController! = UIImagePickerController()
     
-    @IBAction func takePhoto(sender: UIAlertAction) {
-        if (UIImagePickerController.isSourceTypeAvailable(.Camera)) {
-            if UIImagePickerController.availableCaptureModesForCameraDevice(.Rear) != nil {
-                imagePicker.allowsEditing = true
-                imagePicker.sourceType = self.imagePickerSourceType
-                if(self.imagePickerSourceType == .Camera) {
-                    imagePicker.cameraCaptureMode = .Photo
-                }
-                presentViewController(imagePicker, animated: true, completion: {})
-            } else {
-                print("Cannot access the camera.")
-            }
-        } else {
-            print("Camera inaccessable.")
-        }
-    }
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
         print("Got an image!")
         if let pickedImage:UIImage = (info[UIImagePickerControllerOriginalImage]) as? UIImage {
             imageView.image = pickedImage
             
-            if (self.saveImagePickerFiles && self.imagePickerSourceType == .Camera) {
+            if (self.saveImagePickerFiles && imagePicker.sourceType == .Camera) {
                 UIImageWriteToSavedPhotosAlbum(pickedImage, nil, nil, nil)
                 print("Saved by .Camera")
             }
@@ -55,7 +38,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         })
     }
     
-    @IBAction func takePhotoBtn(sender: UIButton) {
+    func takePhotoBtn(sender: UIButton) {
         sender.backgroundColor = Conf.Theme.btnDefault.hoverColor
         
         let takePhotoAlert = UIAlertController(title: "Aario Ai", message: "To be, and to be myself!", preferredStyle: .ActionSheet)
@@ -67,19 +50,30 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         
         let takePhotoAction = UIAlertAction(title: "Take Photo", style: .Default, handler: {
             action in
-            self.imagePickerSourceType = .Camera
-            self.takePhoto(action)
             sender.backgroundColor = Conf.Theme.btnDefault.defaultColor
+            
+            if (UIImagePickerController.isSourceTypeAvailable(.Camera)) {
+                if UIImagePickerController.availableCaptureModesForCameraDevice(.Rear) != nil {
+                    self.imagePicker.allowsEditing = true
+                    self.imagePicker.sourceType = .Camera
+                    self.imagePicker.cameraCaptureMode = .Photo
+                    self.presentViewController(self.imagePicker, animated: true, completion: {})
+                } else {
+                    print("Cannot access the camera.")
+                }
+            } else {
+                print("Camera inaccessable.")
+            }
 
         })
         takePhotoAlert.addAction(takePhotoAction)
         
         let takeImageAction = UIAlertAction(title: "Choose from Photos", style: .Default, handler: {
             action in
-            self.imagePickerSourceType = .SavedPhotosAlbum
-            self.takePhoto(action)
             sender.backgroundColor = Conf.Theme.btnDefault.defaultColor
 
+            self.imagePicker.sourceType = .SavedPhotosAlbum
+            self.presentViewController(self.imagePicker, animated: true, completion: {})
         })
         takePhotoAlert.addAction(takeImageAction)
         

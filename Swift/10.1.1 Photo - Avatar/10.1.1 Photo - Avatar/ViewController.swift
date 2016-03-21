@@ -4,16 +4,15 @@ import UIKit
 import Gifu
 
 class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate  {
-    var panAvatarLastTranslation: CGPoint = CGPoint(x: 0.0, y: 0.0)
-    @IBOutlet weak var img: UIImageView!
-    @IBOutlet weak var avatar: UIImageView!
-    @IBOutlet weak var savingLoading: AnimatableImageView!
-    //@IBOutlet weak var saveBtn: UIButton!
-    @IBOutlet weak var maskerView : UIView!
-    @IBOutlet weak var moistAvatarMasker: UIImageView!
-
-    var enableRotation: Bool = false
+    weak var img: UIImageView!
+    weak var avatar: UIImageView!
+    weak var savingLoading: AnimatableImageView!
+    //weak var saveBtn: UIButton!
+    weak var maskerView : UIView!
+    weak var moistAvatarMasker: UIImageView!
     
+    var panAvatarLastTranslation: CGPoint = CGPoint(x: 0.0, y: 0.0)
+    var enableRotation: Bool = false
     let imagePicker: UIImagePickerController! = UIImagePickerController()
 
     
@@ -70,15 +69,15 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
     
     
-    @IBAction func back(sender: UIButton) {
+    func back(sender: UIButton) {
         
     }
     
-    @IBAction func changeAvatarTouchDown(sender: UIButton) {
+    func changeAvatarTouchDown(sender: UIButton) {
         sender.setTitleColor(Theme.Avatar.focusedColor, forState: .Normal)
     }
     
-    @IBAction func changeAvatar(sender: UIButton) {
+    func changeAvatar(sender: UIButton) {
         sender.setTitleColor(Theme.Avatar.tintColor, forState: .Normal)
         let changeAvatarAlert = UIAlertController(title:nil, message: nil, preferredStyle: .ActionSheet)
         changeAvatarAlert.addAction(UIAlertAction(title: "Calcel", style: .Cancel, handler: {
@@ -125,7 +124,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
 
     }
     
-    @IBAction func saveAvatar(sender: UIButton) {
+    func saveAvatar(sender: UIButton) {
         
         let avatarMaskCenter:CGPoint = CGPoint(x: UIScreen.mainScreen().bounds.width / 2, y: UIApplication.sharedApplication().statusBarFrame.height + UIScreen.mainScreen().bounds.width / 2)
         let cropingCenter = CGPoint(x: avatarMaskCenter.x - avatar.frame.origin.x, y: avatarMaskCenter.y - self.avatar.frame.origin.y)
@@ -151,7 +150,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
                 UIImageWriteToSavedPhotosAlbum(savingImg, nil, nil, nil)
                 initAvatar(savingImg)
                 opaqueMasker(true)
-
             }
             
             if (Debug.Avatar.savingPosition) {
@@ -181,7 +179,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         
         
     }
-    @IBAction func showSavingLoading(sender: UIButton) {
+    func showSavingLoading(sender: UIButton) {
         if (savingLoading == nil) {
             let savingLoadingTmp = AnimatableImageView()
             savingLoadingTmp.animateWithImage(named: "loading2.gif")
@@ -197,7 +195,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         sender.hidden = true
     }
     
-    @IBAction func resizeByDoubleTap(recognizer: UITapGestureRecognizer) {
+    func resizeByDoubleTap(recognizer: UITapGestureRecognizer) {
         opaqueMasker(false)
         recognizer.numberOfTapsRequired = 2
         
@@ -210,7 +208,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         
         
     }
-    @IBAction func resizeAvatar(recognizer: UIPinchGestureRecognizer) {
+    func resizeAvatar(recognizer: UIPinchGestureRecognizer) {
         opaqueMasker(false)
 
         if (Debug.Avatar.recognizeGestures) {
@@ -232,7 +230,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     /**
      * Rotate may leave something wrong to Pan
      */
-    @IBAction func rotateAvatar(recognizer: UIRotationGestureRecognizer) {
+    func rotateAvatar(recognizer: UIRotationGestureRecognizer) {
         opaqueMasker(false)
 
         if (Debug.Avatar.recognizeGestures) {
@@ -241,7 +239,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         let rotation =  recognizer.velocity * 0.05
         avatar.transform = CGAffineTransformRotate(avatar.transform, rotation)
     }
-    @IBAction func moveAvatar(recognizer:UIPanGestureRecognizer) {
+    func moveAvatar(recognizer:UIPanGestureRecognizer) {
         recognizer.maximumNumberOfTouches = 1
         recognizer.minimumNumberOfTouches = 1
         if (Debug.Avatar.recognizeGestures) {
@@ -295,8 +293,10 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
     
     func opaqueMasker(opaque: Bool = false) {
-        if (opaque && maskerView.alpha < 1) {
-            maskerView.alpha = 1.0
+        if (opaque) {
+            if (maskerView.alpha < 1) {
+                maskerView.alpha = 1.0
+            }
         } else {
             moistAvatarMasker.image = nil
             maskerView.alpha = 0.5
@@ -377,10 +377,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     func initAvatar(image: UIImage) {
         //print("centerBefore: \(avatar.center)")
         avatar.image = image
-        
         moistAvatarMasker.image = image
         initAvatarPosition(avatar)
-        
         //print("centerAfter: \(avatar.center)")
     }
     func initAvatarPosition(avatar: UIImageView) {
@@ -432,9 +430,9 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     var hasDecoration: Bool = false
     var decorationPatterns : [String] = ["decoration1.gif", "decoration1.gif", "decoration1.gif", ]
     var pickedDecorationPattern : String? = nil
-    @IBOutlet weak var decorateBtn: UIButton!
-    @IBOutlet weak var decorationView: AnimatableImageView!
-    @IBAction func decorate(sender: UIButton) {
+    weak var decorateBtn: UIButton!
+    weak var decorationView: AnimatableImageView!
+    func decorate(sender: UIButton) {
         if (decorationView == nil) {
             let decView = AnimatableImageView()
             decView.animateWithImage(named: decorationPatterns[0])
@@ -460,8 +458,9 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         hasDecoration = !hasDecoration
     }
     
-    @IBAction func selectDecoration(recoginzer: UITapGestureRecognizer) {
-        //recoginzer.numberOfTapsRequired = 1
+    func selectDecoration(recoginzer: UITapGestureRecognizer) {
+        recoginzer.numberOfTapsRequired = 1
+        
         print("llo")
     }
     override func viewDidLoad() {
@@ -493,19 +492,23 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
 
         
         
-        let avatarView = UIImageView(image: UIImage(named: "default"))
+        let avatarView = UIImageView()
         avatarView.contentMode = .ScaleToFill
         avatarView.userInteractionEnabled = true
         //avatarView.alpha = 1
         avatarView.backgroundColor = UIColor.blackColor()
         avatarView.clipsToBounds = true
-        maskAvatar()
-        
-
         avatar = avatarView
-        initAvatarPosition(avatar)
-        opaqueMasker(true)
+        maskAvatar()
         self.view.addSubview(avatar)
+
+        if let avatarImg = UIImage(named: "default") {
+            initAvatar(avatarImg)
+            opaqueMasker(true)
+        }
+     
+        
+        
         
         
         
@@ -575,6 +578,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         
         let patternSelectorHeight = UIScreen.mainScreen().bounds.height - UIApplication.sharedApplication().statusBarFrame.height - UIScreen.mainScreen().bounds.width - decorationNavHeight - decorationSelectionTitleHeight - Conf.Size.margin
         
+        decorationBg.userInteractionEnabled = true
         var i : Int = 0
         for pattern in decorationPatterns {
             
@@ -582,7 +586,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             if let p = patternSelector.image {
                 let proportion = p.size.width / p.size.height
                 let w = proportion * patternSelectorHeight
-                
                 
                 let patternX: CGFloat = (w + Conf.Size.margin) * CGFloat(i) + Conf.Size.margin
                 let patternOrigin = CGPoint(x: patternX, y: decorationSelectionTitleHeight)
