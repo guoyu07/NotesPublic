@@ -11,10 +11,12 @@
 		003944C11C9D5F8600953EB8 /* test.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 003944C01C9D5F8600953EB8 /* test.jpg */; };
 		0073FD1D1C96B3E8004F5B5A /* Debug.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0073FD1C1C96B3E8004F5B5A /* Debug.swift */; };
 		007A47691C9C2BD300C71C12 /* Aa.swift in Sources */ = {isa = PBXBuildFile; fileRef = 007A47681C9C2BD300C71C12 /* Aa.swift */; };
-		007A476B1C9C2E8200C71C12 /* ErrorHandle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 007A476A1C9C2E8200C71C12 /* ErrorHandle.swift */; };
 		0080F3811C98BC6F002208D0 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 0080F3801C98BC6F002208D0 /* Podfile */; };
 		008AA1DA1C9841E500A1D41C /* Cartfile in Resources */ = {isa = PBXBuildFile; fileRef = 008AA1D91C9841E500A1D41C /* Cartfile */; };
 		009EF5D51C97F017005A24CD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 009EF5D41C97F017005A24CD /* Assets.xcassets */; };
+		00A2BCE31CA067D0003B4227 /* SweetAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00A2BCE21CA067D0003B4227 /* SweetAlert.swift */; };
+		00A2BCE71CA06D80003B4227 /* Converter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00A2BCE61CA06D80003B4227 /* Converter.swift */; };
+		00A2BCE91CA06DBF003B4227 /* Notifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00A2BCE81CA06DBF003B4227 /* Notifier.swift */; };
 		00B6EF831C9004A100E8EE59 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00B6EF821C9004A100E8EE59 /* AppDelegate.swift */; };
 		00B6EF851C9004A100E8EE59 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00B6EF841C9004A100E8EE59 /* ViewController.swift */; };
 		00B6EF881C9004A100E8EE59 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 00B6EF861C9004A100E8EE59 /* Main.storyboard */; };
@@ -50,11 +52,13 @@
 		003944C01C9D5F8600953EB8 /* test.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = test.jpg; sourceTree = "<group>"; };
 		0073FD1C1C96B3E8004F5B5A /* Debug.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Debug.swift; sourceTree = "<group>"; };
 		007A47681C9C2BD300C71C12 /* Aa.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Aa.swift; sourceTree = "<group>"; };
-		007A476A1C9C2E8200C71C12 /* ErrorHandle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorHandle.swift; sourceTree = "<group>"; };
 		0080F3801C98BC6F002208D0 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		008AA1D91C9841E500A1D41C /* Cartfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Cartfile; sourceTree = "<group>"; };
 		009EF5D31C97EFF8005A24CD /* .DS_Store */ = {isa = PBXFileReference; lastKnownFileType = file; name = .DS_Store; path = "10.1.1 Photo - Avatar/Assets.xcassets/.DS_Store"; sourceTree = "<group>"; };
 		009EF5D41C97F017005A24CD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		00A2BCE21CA067D0003B4227 /* SweetAlert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SweetAlert.swift; sourceTree = "<group>"; };
+		00A2BCE61CA06D80003B4227 /* Converter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Converter.swift; sourceTree = "<group>"; };
+		00A2BCE81CA06DBF003B4227 /* Notifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Notifier.swift; sourceTree = "<group>"; };
 		00B6EF7F1C9004A100E8EE59 /* 10.1.1 Photo - Avatar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "10.1.1 Photo - Avatar.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		00B6EF821C9004A100E8EE59 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		00B6EF841C9004A100E8EE59 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -130,6 +134,7 @@
 		00B6EF811C9004A100E8EE59 /* 10.1.1 Photo - Avatar */ = {
 			isa = PBXGroup;
 			children = (
+				00A2BCE21CA067D0003B4227 /* SweetAlert.swift */,
 				00BCBABB1C992432005BD276 /* Resources */,
 				009EF5D41C97F017005A24CD /* Assets.xcassets */,
 				00B6EF821C9004A100E8EE59 /* AppDelegate.swift */,
@@ -141,7 +146,8 @@
 				0073FD1C1C96B3E8004F5B5A /* Debug.swift */,
 				00BCBAC21C99BD3E005BD276 /* Theme.swift */,
 				007A47681C9C2BD300C71C12 /* Aa.swift */,
-				007A476A1C9C2E8200C71C12 /* ErrorHandle.swift */,
+				00A2BCE61CA06D80003B4227 /* Converter.swift */,
+				00A2BCE81CA06DBF003B4227 /* Notifier.swift */,
 			);
 			path = "10.1.1 Photo - Avatar";
 			sourceTree = "<group>";
@@ -385,11 +391,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				00B6EFB11C90075800E8EE59 /* Conf.swift in Sources */,
+				00A2BCE91CA06DBF003B4227 /* Notifier.swift in Sources */,
 				0073FD1D1C96B3E8004F5B5A /* Debug.swift in Sources */,
 				00BCBAC31C99BD3E005BD276 /* Theme.swift in Sources */,
+				00A2BCE31CA067D0003B4227 /* SweetAlert.swift in Sources */,
+				00A2BCE71CA06D80003B4227 /* Converter.swift in Sources */,
 				00B6EF851C9004A100E8EE59 /* ViewController.swift in Sources */,
 				00B6EF831C9004A100E8EE59 /* AppDelegate.swift in Sources */,
-				007A476B1C9C2E8200C71C12 /* ErrorHandle.swift in Sources */,
 				007A47691C9C2BD300C71C12 /* Aa.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -93,10 +93,10 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
                     self.imagePicker.cameraCaptureMode = .Photo
                     self.presentViewController(self.imagePicker, animated: true, completion: nil)
                 } else {
-                    Aa.errorHandle.alert("Cannot access the camera.")
+                    Aa.notifier().error(message: "Cannot access the camera.")
                 }
             } else {
-                Aa.errorHandle.alert("Camera inaccessable.")
+                Aa.notifier().error(message: "Camera inaccessable.")
             }
 
         }))
@@ -161,27 +161,16 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         }
         
         
-        handleSaved(sender)
-    }
-    
-    func handleSaved(sender: UIButton) {
-        let alert = UIAlertController(title: "", message: "Saved", preferredStyle: .Alert)
-        let action = UIAlertAction(title: "OK", style: .Default, handler: {
-            action in
+        Aa.notifier().success(message: "Avatar saved")  {
             self.savingLoading?.hidden = true
             self.savingLoading?.stopAnimatingGIF()
             sender.hidden = false
-            
-        })
-        
-        alert.addAction(action)
-        presentViewController(alert, animated: true, completion: nil)
-        
-        
+        }
     }
+    
     func showSavingLoading(sender: UIButton) {
         if (savingLoading == nil) {
-            let savingLoadingTmp = AnimatableImageView()
+            let savingLoadingTmp = Aa.animatableImageView()
             savingLoadingTmp.animateWithImage(named: "loading2.gif")
             savingLoadingTmp.frame = CGRect(x: UIScreen.mainScreen().bounds.width - 60, y: UIApplication.sharedApplication().statusBarFrame.height, width:30, height:30)
             savingLoading = savingLoadingTmp
@@ -204,9 +193,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         UIView.animateWithDuration(0.5, animations: {
             self.avatar.transform = CGAffineTransformScale(self.avatar.transform, scale, scale)
             })
-
-        
-        
     }
     func resizeAvatar(sender: UIPinchGestureRecognizer) {
         opaqueMasker(false)
@@ -432,7 +418,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     weak var decorationView: AnimatableImageView!
     func decorate(sender: UIButton) {
         if (decorationView == nil) {
-            let decView = AnimatableImageView()
+            let decView = Aa.animatableImageView()
             decView.animateWithImage(named: decorationPatterns[0])
             decView.frame = CGRect(x: (UIScreen.mainScreen().bounds.width - Conf.Size.avatarSize.width) / 2, y: UIApplication.sharedApplication().statusBarFrame.height + (UIScreen.mainScreen().bounds.width - Conf.Size.avatarSize.height) / 2, width: Conf.Size.avatarSize.width, height:Conf.Size.avatarSize.height)
             decView.hidden = true

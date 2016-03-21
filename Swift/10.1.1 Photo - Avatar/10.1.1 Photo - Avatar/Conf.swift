@@ -13,8 +13,5 @@ struct Conf {
         static let avatarSize = CGSize(width: 180, height: 180)
         static let margin: CGFloat = 15
     }
-    
-    struct Theme {
-    
-    }
+
 }
