@@ -2,6 +2,7 @@
 
 import UIKit
 import Gifu
+import Haneke
 
 class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate  {
     weak var img: UIImageView!
@@ -15,7 +16,12 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     var enableRotation: Bool = false
     let imagePicker: UIImagePickerController! = UIImagePickerController()
 
-    
+    override func shouldAutorotate() -> Bool {
+        return false
+    }
+    override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
+        return .Portrait
+    }
     
     func handleAvatarOutOfBounds() {
         
@@ -473,6 +479,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         
        
         
+        
 
         
         
@@ -492,7 +499,23 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         }
      
         
-        
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0)) {
+            let cache = Shared.JSONCache
+            let URL = NSURL(string: "https://api.github.com/users/AarioAi")!
+            
+            cache.fetch(URL: URL).onSuccess {
+                jsonData in
+                if let avatarUrlStr = jsonData.dictionary["avatar_url"] {
+                    if let avatarUrl = NSURL(string: String(avatarUrlStr)) {
+                        self.avatar.hnk_setImageFromURL(avatarUrl, success: {
+                            image -> () in
+                            self.initAvatar(image)
+                            self.opaqueMasker(true)
+                        })
+                    }
+                }
+            }
+        }
         
         
         

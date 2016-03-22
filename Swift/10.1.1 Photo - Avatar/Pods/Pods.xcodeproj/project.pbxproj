@@ -7,118 +7,138 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1374EEC7E67FB73F9240545AC0D66ACA /* FLAnimatedImage-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 44ED7C626B4E9A78C5D584FF048A541B /* FLAnimatedImage-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		1B6DBB7D4EDF238AA2D89608A3F51C03 /* FLAnimatedImageView.h in Headers */ = {isa = PBXBuildFile; fileRef = 7BD329AD75DA4767D7C39424B73842D1 /* FLAnimatedImageView.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		23C38574DD71EE0FD5F9BB962528DD65 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2DB9BC11B88D63B256C673DEC5E1DF7 /* CoreGraphics.framework */; };
-		25E1967A64EE442EA4935B385B52B1D2 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09E5294576BD1BC9CE982B47126F4260 /* Foundation.framework */; };
-		365F6C6EC948E90D8ADB711A2032C8CB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09E5294576BD1BC9CE982B47126F4260 /* Foundation.framework */; };
-		3AB16CF03BBDDB3EE633F7F7E3B8E637 /* Pods-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 2BCC458FDD5F692BBB2BFC64BB5701FC /* Pods-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		4888A76CCC22B207C2B0D3B6741688DA /* UIImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C94EF3CAFBE74B55C3EC2CA59D30E65 /* UIImageExtension.swift */; };
-		4A649E5F7B4737DC7A6645E6EBE61690 /* CGSizeExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36591B50E115FCE5A3EB9723CE4A8D3 /* CGSizeExtension.swift */; };
-		57EB7F801E937056D8EA61707A156023 /* FunctionalHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = E26F44EB41D981F62C416C35F899A8D6 /* FunctionalHelpers.swift */; };
-		694E9EF448880F6119C97B73454DAA91 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D6FFF24C795EA1D18193DAB41DDC9F5 /* ImageIO.framework */; };
-		78905BC064EA7CAE6515516D704002CF /* Gifu.h in Headers */ = {isa = PBXBuildFile; fileRef = FAD1B96E6CD2A84EAEB3A98FD86EDFAE /* Gifu.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		793B3BC18A6BD80D99ACFBE8917F9F89 /* FLAnimatedImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = CE94D0DAF5BFAE710D5467AC76C8F634 /* FLAnimatedImageView.m */; };
-		8250606EFE5388341956CE4456FD9189 /* Pods-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 894E5DA93A9F359521A89826BE6DA777 /* Pods-dummy.m */; };
-		8AA9541169EFB247C2D8443006945E42 /* FLAnimatedImage-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = E19599F617320D4AB9F1EF82B0C62823 /* FLAnimatedImage-dummy.m */; };
-		902AADDCCC48381511DCF083CD9E20C6 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EE05200BE493FA733007A709E5AD2B07 /* QuartzCore.framework */; };
-		942DE51F25BA046A971321558B6BEA5A /* ImageSourceHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 969188E70C11D9B46C1F41B5DBAAF8D4 /* ImageSourceHelpers.swift */; };
-		A0718C652496BAA16F3007BE63680091 /* Gifu-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 26866ABCE350ACB6E45660C3D3857EF4 /* Gifu-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		AAFB9E75081EEE8503740F8E73FC1563 /* Runes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36AC0362F1DD13A372BAA3ACFA421C5F /* Runes.swift */; };
-		AE7C99A546378A3B72C0A2F4B1F1DE56 /* Gifu-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 5396ADC4C64F97059095CC0858D6AE06 /* Gifu-dummy.m */; };
-		B28D9E00358A3BFC146406A9E9D84CCF /* AnimatedFrame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EEA92AEDDAA3EEBF623A5FA1AA70D1E /* AnimatedFrame.swift */; };
-		B3F888A903C9E8B6C17D5FD59576A722 /* ArrayExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 833EE5830DC9D39FB0EA4E2CA26F43D7 /* ArrayExtension.swift */; };
-		B9238977DCF3ED4109DFCACD471AF8F9 /* FLAnimatedImage.h in Headers */ = {isa = PBXBuildFile; fileRef = 52052B65B165B14730F1036AC30DB3F2 /* FLAnimatedImage.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		C5B9CA1D7F1517B31E4C6970C8EC3DCF /* FLAnimatedImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EBF936EB6FFFC4F39BF81C9EF3AC102 /* FLAnimatedImage.m */; };
-		CD50BB7E7708FCBA8DAAB65D3B0E3A04 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09E5294576BD1BC9CE982B47126F4260 /* Foundation.framework */; };
-		CF82ED8D2AAF0100798F74B82004713B /* Animator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B0C9519403A4ED3F261980B0C2535C /* Animator.swift */; };
-		E8E725C145C99E05F90D6F5141B56754 /* AnimatableImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31039ECADF87EFC9EA3059386D34242B /* AnimatableImageView.swift */; };
-		FCB0F77C7778B80972A628569149E8A7 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3495B48D62610363AE17C4AD780977C7 /* MobileCoreServices.framework */; };
+		0BFDE8332EDC136EB44F2932F239F6A9 /* NSHTTPURLResponse+Haneke.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EA5A8F9258A59C4AE4EF955ADE42D97 /* NSHTTPURLResponse+Haneke.swift */; };
+		0D17A4436138A9C9BF411303B0759829 /* DiskFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 342FC4065A1B24BB83EC044B1A65F554 /* DiskFetcher.swift */; };
+		0D58CEC6BC851FA89D18EE5750E1069B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E4E89230EF59BC255123B67864ACF77 /* Foundation.framework */; };
+		0E01E74BF92665F0DAF158E3A9B98129 /* Format.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9C0F68B498F5ADF62341A5C8F2A7D2F /* Format.swift */; };
+		1C32E403CB75EC53CC1930851CF84C8A /* CGSize+Swift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D5FBB9CAFE9F3EB9CF0614CE82BBA12 /* CGSize+Swift.swift */; };
+		2167433F2EE38BF01220E327ED8FAE40 /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AF36D107101E82280F902DE4EE49056 /* Data.swift */; };
+		22A26691C888F2B39FF1D57E686B2CB3 /* Pods-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 894E5DA93A9F359521A89826BE6DA777 /* Pods-dummy.m */; };
+		270520E8E72E32AC313AE621D8A080C3 /* Fetch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74B2DA872DBFBE9941E32E35306A3077 /* Fetch.swift */; };
+		31E488CFE2EB86809B81BC39E2DEF646 /* DiskCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E2446380CA7B1E46604E487583C5336 /* DiskCache.swift */; };
+		462D8125DC7EE0E54681EB7455600A00 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E4E89230EF59BC255123B67864ACF77 /* Foundation.framework */; };
+		488605BD51C85EEA920BE3C7F624842F /* UIImageView+Haneke.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF4AD7287A33332A123E3C97C6229A4F /* UIImageView+Haneke.swift */; };
+		4888A76CCC22B207C2B0D3B6741688DA /* UIImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F14C2D7F9F963278609441146F06C94F /* UIImageExtension.swift */; };
+		4A649E5F7B4737DC7A6645E6EBE61690 /* CGSizeExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A41F6A662EB0594EE0C4E73A5D23C445 /* CGSizeExtension.swift */; };
+		526726400C7D6582C5DA6A6BFAF689F0 /* UIView+Haneke.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205AFE37C91FB61545BB4A491A3311E4 /* UIView+Haneke.swift */; };
+		57EB7F801E937056D8EA61707A156023 /* FunctionalHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55EA29303950181046A3330A6C5F8F20 /* FunctionalHelpers.swift */; };
+		59120F346F4C2F8ADA8BED6A172B94E4 /* Fetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7CB924792DBDB8CA0572BB2131C4938 /* Fetcher.swift */; };
+		66B0884506B229C53ED5E4DA83874C1A /* Pods-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 2BCC458FDD5F692BBB2BFC64BB5701FC /* Pods-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		78905BC064EA7CAE6515516D704002CF /* Gifu.h in Headers */ = {isa = PBXBuildFile; fileRef = 1D7FA6BEC84A171C14E3D31E51AE19BC /* Gifu.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		80537DC1037798BC187946C450CCA9BE /* Haneke.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B2BCB0756E9C8C510D21D646BCE6693 /* Haneke.swift */; };
+		8BFADF0B5074404EB86A5BBAEF3D8D86 /* Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FDE56C5B116D00600907EBE780A2D61 /* Cache.swift */; };
+		941B271BAE995C0E2591538599489B7E /* UIImage+Haneke.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD7179517041B4292598539555C8A154 /* UIImage+Haneke.swift */; };
+		942DE51F25BA046A971321558B6BEA5A /* ImageSourceHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE57CB1A52C58326568B212E40456563 /* ImageSourceHelpers.swift */; };
+		A0718C652496BAA16F3007BE63680091 /* Gifu-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 800BEFB5E966616AE320718D039E48DB /* Gifu-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AAFB9E75081EEE8503740F8E73FC1563 /* Runes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0518824596E04354D486E9EB5A1F33E7 /* Runes.swift */; };
+		AE7C99A546378A3B72C0A2F4B1F1DE56 /* Gifu-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 74BF0A5FF3A8E3FDF43E00E2D32FE3AE /* Gifu-dummy.m */; };
+		B28D9E00358A3BFC146406A9E9D84CCF /* AnimatedFrame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E602C2CB89C2597D34AD24477360B43 /* AnimatedFrame.swift */; };
+		B3F888A903C9E8B6C17D5FD59576A722 /* ArrayExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 547B91DF1D2436EA7C67094AC85B8446 /* ArrayExtension.swift */; };
+		B5D0F9080C2735E422221399AA6892F2 /* NSFileManager+Haneke.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4022ECC6CB164226DBFEB43EF32F753 /* NSFileManager+Haneke.swift */; };
+		C37FCA491E7E9D3CEFDC71E6514AD176 /* String+Haneke.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3EB405FB8B3D7827901B3764D75DBE1 /* String+Haneke.swift */; };
+		CD50BB7E7708FCBA8DAAB65D3B0E3A04 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E4E89230EF59BC255123B67864ACF77 /* Foundation.framework */; };
+		CF82ED8D2AAF0100798F74B82004713B /* Animator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38DAA769F0FEC0E0B4DA80ADFD8FD1F6 /* Animator.swift */; };
+		D172803AB7C600E0004EED188448B772 /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = E70439F9A15DAEBA5CC96A605FCDAB24 /* Log.swift */; };
+		DA0E79C7A898F4F5D8D62B1ADCF67241 /* HanekeSwift-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 94E6000DB263FEA51635540571300024 /* HanekeSwift-dummy.m */; };
+		E5F59EE78A9F139EA2502EEA67B17F85 /* UIButton+Haneke.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D2973A5AFAB61B7E5C914927C6E5827 /* UIButton+Haneke.swift */; };
+		E8E725C145C99E05F90D6F5141B56754 /* AnimatableImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B2920D0E87B8A02038B6D866F7551A0 /* AnimatableImageView.swift */; };
+		EBC23CCE8551B2DDF458DCE761A592B3 /* NetworkFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE565300C982A027D54E13AEC9314EF5 /* NetworkFetcher.swift */; };
+		F1617C553638EBD86F64E16166E39730 /* HanekeSwift-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 5473AF1ABE516FC9BFD3C14486826B56 /* HanekeSwift-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F16A2712075F599788B658E9B34EAEEA /* CryptoSwiftMD5.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDEA73F08EE3327F446BA1B62345CEA2 /* CryptoSwiftMD5.swift */; };
+		FE67C22A54CDF4D547B37B544EB3C596 /* NSURLResponse+Haneke.swift in Sources */ = {isa = PBXBuildFile; fileRef = F65F5392F8A82F47E3FC45ED69A2F1A5 /* NSURLResponse+Haneke.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		D5E12D41E7D1ABEDC50360F29ED23304 /* PBXContainerItemProxy */ = {
+		B12E1FCE7B9C7D246D3E9633705DA125 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 7DDF79495F24B309AF089ACC99FC1151;
+			remoteInfo = HanekeSwift;
+		};
+		F56AD0D0C870A8B7876A5E85787E543C /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = AEA56EBE1B518C71721209FB26701898;
 			remoteInfo = Gifu;
 		};
-		DA8365ACBF1EFBA366E53FE8BB25A00E /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = FE113CEF81C16AA59EC049ACE130BCB2;
-			remoteInfo = FLAnimatedImage;
-		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		09E5294576BD1BC9CE982B47126F4260 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		0C1A0F5EFBA85CAD7A82E527EB77DAD0 /* Gifu.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = Gifu.modulemap; sourceTree = "<group>"; };
-		1754C28751EE7F0B5FFF9E8EB8360CCD /* FLAnimatedImage.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = FLAnimatedImage.modulemap; sourceTree = "<group>"; };
-		26866ABCE350ACB6E45660C3D3857EF4 /* Gifu-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Gifu-umbrella.h"; sourceTree = "<group>"; };
+		0518824596E04354D486E9EB5A1F33E7 /* Runes.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Runes.swift; path = Carthage/Checkouts/Runes/Source/Runes.swift; sourceTree = "<group>"; };
+		08073013F5441E961608221A2BFE7E6F /* HanekeSwift.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = HanekeSwift.modulemap; sourceTree = "<group>"; };
+		1685BBED3B51C96B5B510E85888846BA /* Gifu.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Gifu.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1D7FA6BEC84A171C14E3D31E51AE19BC /* Gifu.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = Gifu.h; path = Source/Gifu.h; sourceTree = "<group>"; };
+		1E602C2CB89C2597D34AD24477360B43 /* AnimatedFrame.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AnimatedFrame.swift; path = Source/AnimatedFrame.swift; sourceTree = "<group>"; };
+		1EA5A8F9258A59C4AE4EF955ADE42D97 /* NSHTTPURLResponse+Haneke.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "NSHTTPURLResponse+Haneke.swift"; path = "Haneke/NSHTTPURLResponse+Haneke.swift"; sourceTree = "<group>"; };
+		205AFE37C91FB61545BB4A491A3311E4 /* UIView+Haneke.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UIView+Haneke.swift"; path = "Haneke/UIView+Haneke.swift"; sourceTree = "<group>"; };
 		2BCC458FDD5F692BBB2BFC64BB5701FC /* Pods-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-umbrella.h"; sourceTree = "<group>"; };
-		2C94EF3CAFBE74B55C3EC2CA59D30E65 /* UIImageExtension.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = UIImageExtension.swift; path = Source/UIImageExtension.swift; sourceTree = "<group>"; };
-		31039ECADF87EFC9EA3059386D34242B /* AnimatableImageView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AnimatableImageView.swift; path = Source/AnimatableImageView.swift; sourceTree = "<group>"; };
-		3495B48D62610363AE17C4AD780977C7 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.0.sdk/System/Library/Frameworks/MobileCoreServices.framework; sourceTree = DEVELOPER_DIR; };
-		36AC0362F1DD13A372BAA3ACFA421C5F /* Runes.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Runes.swift; path = Carthage/Checkouts/Runes/Source/Runes.swift; sourceTree = "<group>"; };
-		4032FBFF19D1EBAD358C1D707550CC66 /* Gifu.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Gifu.xcconfig; sourceTree = "<group>"; };
-		40C3FD0DDF1072C7D122430FA83CE6A8 /* Gifu-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Gifu-prefix.pch"; sourceTree = "<group>"; };
-		44ED7C626B4E9A78C5D584FF048A541B /* FLAnimatedImage-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "FLAnimatedImage-umbrella.h"; sourceTree = "<group>"; };
-		4CF508C31DD4D908DE13F0ED1AF10F37 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		4EEA92AEDDAA3EEBF623A5FA1AA70D1E /* AnimatedFrame.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AnimatedFrame.swift; path = Source/AnimatedFrame.swift; sourceTree = "<group>"; };
-		52052B65B165B14730F1036AC30DB3F2 /* FLAnimatedImage.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FLAnimatedImage.h; path = FLAnimatedImage/FLAnimatedImage.h; sourceTree = "<group>"; };
-		5396ADC4C64F97059095CC0858D6AE06 /* Gifu-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Gifu-dummy.m"; sourceTree = "<group>"; };
-		6FB0D42B30E3D36FF24A766F7D3F42A1 /* FLAnimatedImage-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "FLAnimatedImage-prefix.pch"; sourceTree = "<group>"; };
+		342FC4065A1B24BB83EC044B1A65F554 /* DiskFetcher.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DiskFetcher.swift; path = Haneke/DiskFetcher.swift; sourceTree = "<group>"; };
+		38DAA769F0FEC0E0B4DA80ADFD8FD1F6 /* Animator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Animator.swift; path = Source/Animator.swift; sourceTree = "<group>"; };
+		3AD326545BDAABF788AE9A1FB72C48D7 /* HanekeSwift.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = HanekeSwift.xcconfig; sourceTree = "<group>"; };
+		3D2973A5AFAB61B7E5C914927C6E5827 /* UIButton+Haneke.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UIButton+Haneke.swift"; path = "Haneke/UIButton+Haneke.swift"; sourceTree = "<group>"; };
+		3E4E89230EF59BC255123B67864ACF77 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		4A1AAE17D507D3ECB4DCAD839B72F425 /* Gifu-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Gifu-prefix.pch"; sourceTree = "<group>"; };
+		4B2BCB0756E9C8C510D21D646BCE6693 /* Haneke.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Haneke.swift; path = Haneke/Haneke.swift; sourceTree = "<group>"; };
+		5473AF1ABE516FC9BFD3C14486826B56 /* HanekeSwift-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "HanekeSwift-umbrella.h"; sourceTree = "<group>"; };
+		547B91DF1D2436EA7C67094AC85B8446 /* ArrayExtension.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ArrayExtension.swift; path = Source/ArrayExtension.swift; sourceTree = "<group>"; };
+		55EA29303950181046A3330A6C5F8F20 /* FunctionalHelpers.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FunctionalHelpers.swift; path = Source/FunctionalHelpers.swift; sourceTree = "<group>"; };
+		5D5FBB9CAFE9F3EB9CF0614CE82BBA12 /* CGSize+Swift.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "CGSize+Swift.swift"; path = "Haneke/CGSize+Swift.swift"; sourceTree = "<group>"; };
+		5E2446380CA7B1E46604E487583C5336 /* DiskCache.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DiskCache.swift; path = Haneke/DiskCache.swift; sourceTree = "<group>"; };
+		6A935E25A2101752BBE3D7E95087030C /* Haneke.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Haneke.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6FDE56C5B116D00600907EBE780A2D61 /* Cache.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Cache.swift; path = Haneke/Cache.swift; sourceTree = "<group>"; };
+		74B2DA872DBFBE9941E32E35306A3077 /* Fetch.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Fetch.swift; path = Haneke/Fetch.swift; sourceTree = "<group>"; };
+		74BF0A5FF3A8E3FDF43E00E2D32FE3AE /* Gifu-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Gifu-dummy.m"; sourceTree = "<group>"; };
 		79A9DEDC89FE8336BF5FEDAAF75BF7FC /* Pods.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = Pods.modulemap; sourceTree = "<group>"; };
-		7BD329AD75DA4767D7C39424B73842D1 /* FLAnimatedImageView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FLAnimatedImageView.h; path = FLAnimatedImage/FLAnimatedImageView.h; sourceTree = "<group>"; };
-		7EBF936EB6FFFC4F39BF81C9EF3AC102 /* FLAnimatedImage.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FLAnimatedImage.m; path = FLAnimatedImage/FLAnimatedImage.m; sourceTree = "<group>"; };
-		833EE5830DC9D39FB0EA4E2CA26F43D7 /* ArrayExtension.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ArrayExtension.swift; path = Source/ArrayExtension.swift; sourceTree = "<group>"; };
-		8567FA4CB451D2F710F039F7115D4CA1 /* Gifu.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Gifu.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7AF36D107101E82280F902DE4EE49056 /* Data.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Data.swift; path = Haneke/Data.swift; sourceTree = "<group>"; };
+		800BEFB5E966616AE320718D039E48DB /* Gifu-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Gifu-umbrella.h"; sourceTree = "<group>"; };
 		87B213035BAC5F75386F62D3C75D2342 /* Pods-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-acknowledgements.plist"; sourceTree = "<group>"; };
 		894E5DA93A9F359521A89826BE6DA777 /* Pods-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-dummy.m"; sourceTree = "<group>"; };
-		8A7CA18D5B3B638CDDD95D258D96409B /* FLAnimatedImage.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FLAnimatedImage.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		969188E70C11D9B46C1F41B5DBAAF8D4 /* ImageSourceHelpers.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ImageSourceHelpers.swift; path = Source/ImageSourceHelpers.swift; sourceTree = "<group>"; };
+		94E6000DB263FEA51635540571300024 /* HanekeSwift-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "HanekeSwift-dummy.m"; sourceTree = "<group>"; };
 		977577C045EDA9D9D1F46E2598D19FC7 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Pods.debug.xcconfig; sourceTree = "<group>"; };
-		9D6FFF24C795EA1D18193DAB41DDC9F5 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.0.sdk/System/Library/Frameworks/ImageIO.framework; sourceTree = DEVELOPER_DIR; };
-		A4D9EFBBFCF1F8DAF17CA3D156F27923 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		B11DAB02B4C001A54FE1DDA566051AFD /* FLAnimatedImage.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = FLAnimatedImage.xcconfig; sourceTree = "<group>"; };
-		B2BA63D574A29DC8BC77575865681050 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9B2920D0E87B8A02038B6D866F7551A0 /* AnimatableImageView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AnimatableImageView.swift; path = Source/AnimatableImageView.swift; sourceTree = "<group>"; };
+		9C3087B9C8FA2CDBF1C536A94176718F /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A4022ECC6CB164226DBFEB43EF32F753 /* NSFileManager+Haneke.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "NSFileManager+Haneke.swift"; path = "Haneke/NSFileManager+Haneke.swift"; sourceTree = "<group>"; };
+		A41F6A662EB0594EE0C4E73A5D23C445 /* CGSizeExtension.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CGSizeExtension.swift; path = Source/CGSizeExtension.swift; sourceTree = "<group>"; };
 		BA6428E9F66FD5A23C0A2E06ED26CD2F /* Podfile */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		BDEA73F08EE3327F446BA1B62345CEA2 /* CryptoSwiftMD5.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CryptoSwiftMD5.swift; path = Haneke/CryptoSwiftMD5.swift; sourceTree = "<group>"; };
+		BE565300C982A027D54E13AEC9314EF5 /* NetworkFetcher.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = NetworkFetcher.swift; path = Haneke/NetworkFetcher.swift; sourceTree = "<group>"; };
+		BF74D7FCF75A62F95DFF92B49EBB7D13 /* Gifu.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = Gifu.modulemap; sourceTree = "<group>"; };
+		C7CB924792DBDB8CA0572BB2131C4938 /* Fetcher.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Fetcher.swift; path = Haneke/Fetcher.swift; sourceTree = "<group>"; };
+		C943208D95C252BD253E67424D3E23F5 /* Gifu.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Gifu.xcconfig; sourceTree = "<group>"; };
+		C9C0F68B498F5ADF62341A5C8F2A7D2F /* Format.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Format.swift; path = Haneke/Format.swift; sourceTree = "<group>"; };
 		CBC0F7C552B739C909B650A0F42F7F38 /* Pods-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-resources.sh"; sourceTree = "<group>"; };
-		CE94D0DAF5BFAE710D5467AC76C8F634 /* FLAnimatedImageView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FLAnimatedImageView.m; path = FLAnimatedImage/FLAnimatedImageView.m; sourceTree = "<group>"; };
+		CE57CB1A52C58326568B212E40456563 /* ImageSourceHelpers.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ImageSourceHelpers.swift; path = Source/ImageSourceHelpers.swift; sourceTree = "<group>"; };
+		D03F1E9DF33649B8894DF662506759C3 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D0405803033A2A777B8E4DFA0C1800ED /* Pods-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-acknowledgements.markdown"; sourceTree = "<group>"; };
-		D4B0C9519403A4ED3F261980B0C2535C /* Animator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Animator.swift; path = Source/Animator.swift; sourceTree = "<group>"; };
+		D3EB405FB8B3D7827901B3764D75DBE1 /* String+Haneke.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "String+Haneke.swift"; path = "Haneke/String+Haneke.swift"; sourceTree = "<group>"; };
+		D44F401A2DA3ED573BB053D8243270F3 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA312349A49333542E6F4B36B329960E /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Pods.release.xcconfig; sourceTree = "<group>"; };
-		E19599F617320D4AB9F1EF82B0C62823 /* FLAnimatedImage-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "FLAnimatedImage-dummy.m"; sourceTree = "<group>"; };
-		E26F44EB41D981F62C416C35F899A8D6 /* FunctionalHelpers.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FunctionalHelpers.swift; path = Source/FunctionalHelpers.swift; sourceTree = "<group>"; };
+		DD7179517041B4292598539555C8A154 /* UIImage+Haneke.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UIImage+Haneke.swift"; path = "Haneke/UIImage+Haneke.swift"; sourceTree = "<group>"; };
+		E70439F9A15DAEBA5CC96A605FCDAB24 /* Log.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Log.swift; path = Haneke/Log.swift; sourceTree = "<group>"; };
 		E7F21354943D9F42A70697D5A5EF72E9 /* Pods-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-frameworks.sh"; sourceTree = "<group>"; };
 		E8446514FBAD26C0E18F24A5715AEF67 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		EE05200BE493FA733007A709E5AD2B07 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.0.sdk/System/Library/Frameworks/QuartzCore.framework; sourceTree = DEVELOPER_DIR; };
-		F2DB9BC11B88D63B256C673DEC5E1DF7 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.0.sdk/System/Library/Frameworks/CoreGraphics.framework; sourceTree = DEVELOPER_DIR; };
-		F36591B50E115FCE5A3EB9723CE4A8D3 /* CGSizeExtension.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CGSizeExtension.swift; path = Source/CGSizeExtension.swift; sourceTree = "<group>"; };
-		FAD1B96E6CD2A84EAEB3A98FD86EDFAE /* Gifu.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = Gifu.h; path = Source/Gifu.h; sourceTree = "<group>"; };
+		F14C2D7F9F963278609441146F06C94F /* UIImageExtension.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = UIImageExtension.swift; path = Source/UIImageExtension.swift; sourceTree = "<group>"; };
+		F65F5392F8A82F47E3FC45ED69A2F1A5 /* NSURLResponse+Haneke.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "NSURLResponse+Haneke.swift"; path = "Haneke/NSURLResponse+Haneke.swift"; sourceTree = "<group>"; };
+		FC72A7A9882139B8BAF0CF5019EC6760 /* HanekeSwift-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "HanekeSwift-prefix.pch"; sourceTree = "<group>"; };
+		FF4AD7287A33332A123E3C97C6229A4F /* UIImageView+Haneke.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UIImageView+Haneke.swift"; path = "Haneke/UIImageView+Haneke.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		432A72F3572FD51AFBFA209CE5CB1967 /* Frameworks */ = {
+		2CFD9D25E9743A05DFB2A06EFB1598DC /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				365F6C6EC948E90D8ADB711A2032C8CB /* Foundation.framework in Frameworks */,
+				462D8125DC7EE0E54681EB7455600A00 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		E19D10745E44BBDCE373B12D7C604EAC /* Frameworks */ = {
+		DC6F3167BAEEC168056F22481901B03E /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				23C38574DD71EE0FD5F9BB962528DD65 /* CoreGraphics.framework in Frameworks */,
-				25E1967A64EE442EA4935B385B52B1D2 /* Foundation.framework in Frameworks */,
-				694E9EF448880F6119C97B73454DAA91 /* ImageIO.framework in Frameworks */,
-				FCB0F77C7778B80972A628569149E8A7 /* MobileCoreServices.framework in Frameworks */,
-				902AADDCCC48381511DCF083CD9E20C6 /* QuartzCore.framework in Frameworks */,
+				0D58CEC6BC851FA89D18EE5750E1069B /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -133,75 +153,31 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		010F25D4A5E2F352B288A624F29939D0 /* Support Files */ = {
+		44A0317D7C46F61F78250925EABD7AC5 /* Gifu */ = {
 			isa = PBXGroup;
 			children = (
-				0C1A0F5EFBA85CAD7A82E527EB77DAD0 /* Gifu.modulemap */,
-				4032FBFF19D1EBAD358C1D707550CC66 /* Gifu.xcconfig */,
-				5396ADC4C64F97059095CC0858D6AE06 /* Gifu-dummy.m */,
-				40C3FD0DDF1072C7D122430FA83CE6A8 /* Gifu-prefix.pch */,
-				26866ABCE350ACB6E45660C3D3857EF4 /* Gifu-umbrella.h */,
-				A4D9EFBBFCF1F8DAF17CA3D156F27923 /* Info.plist */,
-			);
-			name = "Support Files";
-			path = "../Target Support Files/Gifu";
-			sourceTree = "<group>";
-		};
-		113D44CE73B96B25030E066E48B05C04 /* FLAnimatedImage */ = {
-			isa = PBXGroup;
-			children = (
-				52052B65B165B14730F1036AC30DB3F2 /* FLAnimatedImage.h */,
-				7EBF936EB6FFFC4F39BF81C9EF3AC102 /* FLAnimatedImage.m */,
-				7BD329AD75DA4767D7C39424B73842D1 /* FLAnimatedImageView.h */,
-				CE94D0DAF5BFAE710D5467AC76C8F634 /* FLAnimatedImageView.m */,
-				81BA5E5439078A2EA9F9E2A062461B6B /* Support Files */,
-			);
-			path = FLAnimatedImage;
-			sourceTree = "<group>";
-		};
-		20B56609144CE204DFA8221F742B2D76 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				8A0D2E4458CB87D128AC420E9C9A5AE1 /* iOS */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		4A1CFC14BE6B6CBD4C3521FA1061C1A9 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				113D44CE73B96B25030E066E48B05C04 /* FLAnimatedImage */,
-				73D024BD9CFFF470647FE191A5D60331 /* Gifu */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
-		73D024BD9CFFF470647FE191A5D60331 /* Gifu */ = {
-			isa = PBXGroup;
-			children = (
-				31039ECADF87EFC9EA3059386D34242B /* AnimatableImageView.swift */,
-				4EEA92AEDDAA3EEBF623A5FA1AA70D1E /* AnimatedFrame.swift */,
-				D4B0C9519403A4ED3F261980B0C2535C /* Animator.swift */,
-				833EE5830DC9D39FB0EA4E2CA26F43D7 /* ArrayExtension.swift */,
-				F36591B50E115FCE5A3EB9723CE4A8D3 /* CGSizeExtension.swift */,
-				E26F44EB41D981F62C416C35F899A8D6 /* FunctionalHelpers.swift */,
-				FAD1B96E6CD2A84EAEB3A98FD86EDFAE /* Gifu.h */,
-				969188E70C11D9B46C1F41B5DBAAF8D4 /* ImageSourceHelpers.swift */,
-				36AC0362F1DD13A372BAA3ACFA421C5F /* Runes.swift */,
-				2C94EF3CAFBE74B55C3EC2CA59D30E65 /* UIImageExtension.swift */,
-				010F25D4A5E2F352B288A624F29939D0 /* Support Files */,
+				9B2920D0E87B8A02038B6D866F7551A0 /* AnimatableImageView.swift */,
+				1E602C2CB89C2597D34AD24477360B43 /* AnimatedFrame.swift */,
+				38DAA769F0FEC0E0B4DA80ADFD8FD1F6 /* Animator.swift */,
+				547B91DF1D2436EA7C67094AC85B8446 /* ArrayExtension.swift */,
+				A41F6A662EB0594EE0C4E73A5D23C445 /* CGSizeExtension.swift */,
+				55EA29303950181046A3330A6C5F8F20 /* FunctionalHelpers.swift */,
+				1D7FA6BEC84A171C14E3D31E51AE19BC /* Gifu.h */,
+				CE57CB1A52C58326568B212E40456563 /* ImageSourceHelpers.swift */,
+				0518824596E04354D486E9EB5A1F33E7 /* Runes.swift */,
+				F14C2D7F9F963278609441146F06C94F /* UIImageExtension.swift */,
+				CF5FE203D1AC1D364B8A03215DD81B77 /* Support Files */,
 			);
 			path = Gifu;
 			sourceTree = "<group>";
 		};
-		74A281A573C0A9B63B48BEDE78B5F7A0 /* Products */ = {
+		722C772A4493EF16AE43F67B566CCECB /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				8A7CA18D5B3B638CDDD95D258D96409B /* FLAnimatedImage.framework */,
-				8567FA4CB451D2F710F039F7115D4CA1 /* Gifu.framework */,
-				B2BA63D574A29DC8BC77575865681050 /* Pods.framework */,
+				44A0317D7C46F61F78250925EABD7AC5 /* Gifu */,
+				7FF2EBFBA062504209B78D380EDB7DEA /* HanekeSwift */,
 			);
-			name = Products;
+			name = Pods;
 			sourceTree = "<group>";
 		};
 		75D98FF52E597A11900E131B6C4E1ADA /* Pods */ = {
@@ -226,37 +202,63 @@
 			isa = PBXGroup;
 			children = (
 				BA6428E9F66FD5A23C0A2E06ED26CD2F /* Podfile */,
-				20B56609144CE204DFA8221F742B2D76 /* Frameworks */,
-				4A1CFC14BE6B6CBD4C3521FA1061C1A9 /* Pods */,
-				74A281A573C0A9B63B48BEDE78B5F7A0 /* Products */,
+				BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */,
+				722C772A4493EF16AE43F67B566CCECB /* Pods */,
+				A3E5827E6A6812A780F16D0CBB7D2DDD /* Products */,
 				B7B80995527643776607AFFA75B91E24 /* Targets Support Files */,
 			);
 			sourceTree = "<group>";
 		};
-		81BA5E5439078A2EA9F9E2A062461B6B /* Support Files */ = {
+		7FF2EBFBA062504209B78D380EDB7DEA /* HanekeSwift */ = {
 			isa = PBXGroup;
 			children = (
-				1754C28751EE7F0B5FFF9E8EB8360CCD /* FLAnimatedImage.modulemap */,
-				B11DAB02B4C001A54FE1DDA566051AFD /* FLAnimatedImage.xcconfig */,
-				E19599F617320D4AB9F1EF82B0C62823 /* FLAnimatedImage-dummy.m */,
-				6FB0D42B30E3D36FF24A766F7D3F42A1 /* FLAnimatedImage-prefix.pch */,
-				44ED7C626B4E9A78C5D584FF048A541B /* FLAnimatedImage-umbrella.h */,
-				4CF508C31DD4D908DE13F0ED1AF10F37 /* Info.plist */,
+				6FDE56C5B116D00600907EBE780A2D61 /* Cache.swift */,
+				5D5FBB9CAFE9F3EB9CF0614CE82BBA12 /* CGSize+Swift.swift */,
+				BDEA73F08EE3327F446BA1B62345CEA2 /* CryptoSwiftMD5.swift */,
+				7AF36D107101E82280F902DE4EE49056 /* Data.swift */,
+				5E2446380CA7B1E46604E487583C5336 /* DiskCache.swift */,
+				342FC4065A1B24BB83EC044B1A65F554 /* DiskFetcher.swift */,
+				74B2DA872DBFBE9941E32E35306A3077 /* Fetch.swift */,
+				C7CB924792DBDB8CA0572BB2131C4938 /* Fetcher.swift */,
+				C9C0F68B498F5ADF62341A5C8F2A7D2F /* Format.swift */,
+				4B2BCB0756E9C8C510D21D646BCE6693 /* Haneke.swift */,
+				E70439F9A15DAEBA5CC96A605FCDAB24 /* Log.swift */,
+				BE565300C982A027D54E13AEC9314EF5 /* NetworkFetcher.swift */,
+				A4022ECC6CB164226DBFEB43EF32F753 /* NSFileManager+Haneke.swift */,
+				1EA5A8F9258A59C4AE4EF955ADE42D97 /* NSHTTPURLResponse+Haneke.swift */,
+				F65F5392F8A82F47E3FC45ED69A2F1A5 /* NSURLResponse+Haneke.swift */,
+				D3EB405FB8B3D7827901B3764D75DBE1 /* String+Haneke.swift */,
+				3D2973A5AFAB61B7E5C914927C6E5827 /* UIButton+Haneke.swift */,
+				DD7179517041B4292598539555C8A154 /* UIImage+Haneke.swift */,
+				FF4AD7287A33332A123E3C97C6229A4F /* UIImageView+Haneke.swift */,
+				205AFE37C91FB61545BB4A491A3311E4 /* UIView+Haneke.swift */,
+				A3BAD914AD503E1592374EC27AC7DFC4 /* Support Files */,
 			);
-			name = "Support Files";
-			path = "../Target Support Files/FLAnimatedImage";
+			path = HanekeSwift;
 			sourceTree = "<group>";
 		};
-		8A0D2E4458CB87D128AC420E9C9A5AE1 /* iOS */ = {
+		A3BAD914AD503E1592374EC27AC7DFC4 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				F2DB9BC11B88D63B256C673DEC5E1DF7 /* CoreGraphics.framework */,
-				09E5294576BD1BC9CE982B47126F4260 /* Foundation.framework */,
-				9D6FFF24C795EA1D18193DAB41DDC9F5 /* ImageIO.framework */,
-				3495B48D62610363AE17C4AD780977C7 /* MobileCoreServices.framework */,
-				EE05200BE493FA733007A709E5AD2B07 /* QuartzCore.framework */,
+				08073013F5441E961608221A2BFE7E6F /* HanekeSwift.modulemap */,
+				3AD326545BDAABF788AE9A1FB72C48D7 /* HanekeSwift.xcconfig */,
+				94E6000DB263FEA51635540571300024 /* HanekeSwift-dummy.m */,
+				FC72A7A9882139B8BAF0CF5019EC6760 /* HanekeSwift-prefix.pch */,
+				5473AF1ABE516FC9BFD3C14486826B56 /* HanekeSwift-umbrella.h */,
+				9C3087B9C8FA2CDBF1C536A94176718F /* Info.plist */,
 			);
-			name = iOS;
+			name = "Support Files";
+			path = "../Target Support Files/HanekeSwift";
+			sourceTree = "<group>";
+		};
+		A3E5827E6A6812A780F16D0CBB7D2DDD /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				1685BBED3B51C96B5B510E85888846BA /* Gifu.framework */,
+				6A935E25A2101752BBE3D7E95087030C /* Haneke.framework */,
+				D44F401A2DA3ED573BB053D8243270F3 /* Pods.framework */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 		B7B80995527643776607AFFA75B91E24 /* Targets Support Files */ = {
@@ -267,16 +269,44 @@
 			name = "Targets Support Files";
 			sourceTree = "<group>";
 		};
+		BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				BF6342C8B29F4CEEA088EFF7AB4DE362 /* iOS */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		BF6342C8B29F4CEEA088EFF7AB4DE362 /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				3E4E89230EF59BC255123B67864ACF77 /* Foundation.framework */,
+			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
+		CF5FE203D1AC1D364B8A03215DD81B77 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				BF74D7FCF75A62F95DFF92B49EBB7D13 /* Gifu.modulemap */,
+				C943208D95C252BD253E67424D3E23F5 /* Gifu.xcconfig */,
+				74BF0A5FF3A8E3FDF43E00E2D32FE3AE /* Gifu-dummy.m */,
+				4A1AAE17D507D3ECB4DCAD839B72F425 /* Gifu-prefix.pch */,
+				800BEFB5E966616AE320718D039E48DB /* Gifu-umbrella.h */,
+				D03F1E9DF33649B8894DF662506759C3 /* Info.plist */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/Gifu";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		0F53437C86350F7BE134DC397F3E0C67 /* Headers */ = {
+		206F03E05EF5256A339B6D503D59FA44 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1374EEC7E67FB73F9240545AC0D66ACA /* FLAnimatedImage-umbrella.h in Headers */,
-				B9238977DCF3ED4109DFCACD471AF8F9 /* FLAnimatedImage.h in Headers */,
-				1B6DBB7D4EDF238AA2D89608A3F51C03 /* FLAnimatedImageView.h in Headers */,
+				F1617C553638EBD86F64E16166E39730 /* HanekeSwift-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -289,17 +319,34 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		F2F0514CE9B1FFF76B3F3766A77098DE /* Headers */ = {
+		A57B1092D27B4BEA9045E9266C2B483B /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3AB16CF03BBDDB3EE633F7F7E3B8E637 /* Pods-umbrella.h in Headers */,
+				66B0884506B229C53ED5E4DA83874C1A /* Pods-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		7DDF79495F24B309AF089ACC99FC1151 /* HanekeSwift */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5B83C2AD137CF6C7F4C5DBE1397C3390 /* Build configuration list for PBXNativeTarget "HanekeSwift" */;
+			buildPhases = (
+				AD75B1F809159184F48646B8441799A0 /* Sources */,
+				DC6F3167BAEEC168056F22481901B03E /* Frameworks */,
+				206F03E05EF5256A339B6D503D59FA44 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = HanekeSwift;
+			productName = HanekeSwift;
+			productReference = 6A935E25A2101752BBE3D7E95087030C /* Haneke.framework */;
+			productType = "com.apple.product-type.framework";
+		};
 		AEA56EBE1B518C71721209FB26701898 /* Gifu */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = B4096C390FF4F7F3535818EA64A6377C /* Build configuration list for PBXNativeTarget "Gifu" */;
@@ -314,43 +361,26 @@
 			);
 			name = Gifu;
 			productName = Gifu;
-			productReference = 8567FA4CB451D2F710F039F7115D4CA1 /* Gifu.framework */;
+			productReference = 1685BBED3B51C96B5B510E85888846BA /* Gifu.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		EBD70F9AF142DAA2CE07DDB05E3ECBD9 /* Pods */ = {
+		B28C3FE35CFDC743D16B9D65B265FA30 /* Pods */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = D0A60E729BB4DFA1A0482380EE4F09CC /* Build configuration list for PBXNativeTarget "Pods" */;
+			buildConfigurationList = 83463AFB28AF107B146CD922C55F352D /* Build configuration list for PBXNativeTarget "Pods" */;
 			buildPhases = (
-				9DD6F199EEBD60C6A675B7156197B45A /* Sources */,
-				432A72F3572FD51AFBFA209CE5CB1967 /* Frameworks */,
-				F2F0514CE9B1FFF76B3F3766A77098DE /* Headers */,
+				0C074E85E06A810993B87C9D1C3F05E9 /* Sources */,
+				2CFD9D25E9743A05DFB2A06EFB1598DC /* Frameworks */,
+				A57B1092D27B4BEA9045E9266C2B483B /* Headers */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				D0820A20852DD279DC3137B4B1ED59D6 /* PBXTargetDependency */,
-				F9B6D2063C32A6A6A655EB45C09F987F /* PBXTargetDependency */,
+				62156BC5F7C7628AE8943DA25A7E25FC /* PBXTargetDependency */,
+				6001A539D37F94D36FAB78FAB6911CFB /* PBXTargetDependency */,
 			);
 			name = Pods;
 			productName = Pods;
-			productReference = B2BA63D574A29DC8BC77575865681050 /* Pods.framework */;
-			productType = "com.apple.product-type.framework";
-		};
-		FE113CEF81C16AA59EC049ACE130BCB2 /* FLAnimatedImage */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 3E4AFDEDCC47C4415CB9B5B395C41321 /* Build configuration list for PBXNativeTarget "FLAnimatedImage" */;
-			buildPhases = (
-				F63393576B334501224376DB8B339904 /* Sources */,
-				E19D10745E44BBDCE373B12D7C604EAC /* Frameworks */,
-				0F53437C86350F7BE134DC397F3E0C67 /* Headers */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = FLAnimatedImage;
-			productName = FLAnimatedImage;
-			productReference = 8A7CA18D5B3B638CDDD95D258D96409B /* FLAnimatedImage.framework */;
+			productReference = D44F401A2DA3ED573BB053D8243270F3 /* Pods.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
@@ -370,18 +400,26 @@
 				en,
 			);
 			mainGroup = 7DB346D0F39D3F0E887471402A8071AB;
-			productRefGroup = 74A281A573C0A9B63B48BEDE78B5F7A0 /* Products */;
+			productRefGroup = A3E5827E6A6812A780F16D0CBB7D2DDD /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				FE113CEF81C16AA59EC049ACE130BCB2 /* FLAnimatedImage */,
 				AEA56EBE1B518C71721209FB26701898 /* Gifu */,
-				EBD70F9AF142DAA2CE07DDB05E3ECBD9 /* Pods */,
+				7DDF79495F24B309AF089ACC99FC1151 /* HanekeSwift */,
+				B28C3FE35CFDC743D16B9D65B265FA30 /* Pods */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXSourcesBuildPhase section */
+		0C074E85E06A810993B87C9D1C3F05E9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				22A26691C888F2B39FF1D57E686B2CB3 /* Pods-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		9ACB6C78F78F1EF04CBFD24FBF52D12C /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -399,45 +437,55 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		9DD6F199EEBD60C6A675B7156197B45A /* Sources */ = {
+		AD75B1F809159184F48646B8441799A0 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8250606EFE5388341956CE4456FD9189 /* Pods-dummy.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		F63393576B334501224376DB8B339904 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				8AA9541169EFB247C2D8443006945E42 /* FLAnimatedImage-dummy.m in Sources */,
-				C5B9CA1D7F1517B31E4C6970C8EC3DCF /* FLAnimatedImage.m in Sources */,
-				793B3BC18A6BD80D99ACFBE8917F9F89 /* FLAnimatedImageView.m in Sources */,
+				8BFADF0B5074404EB86A5BBAEF3D8D86 /* Cache.swift in Sources */,
+				1C32E403CB75EC53CC1930851CF84C8A /* CGSize+Swift.swift in Sources */,
+				F16A2712075F599788B658E9B34EAEEA /* CryptoSwiftMD5.swift in Sources */,
+				2167433F2EE38BF01220E327ED8FAE40 /* Data.swift in Sources */,
+				31E488CFE2EB86809B81BC39E2DEF646 /* DiskCache.swift in Sources */,
+				0D17A4436138A9C9BF411303B0759829 /* DiskFetcher.swift in Sources */,
+				270520E8E72E32AC313AE621D8A080C3 /* Fetch.swift in Sources */,
+				59120F346F4C2F8ADA8BED6A172B94E4 /* Fetcher.swift in Sources */,
+				0E01E74BF92665F0DAF158E3A9B98129 /* Format.swift in Sources */,
+				80537DC1037798BC187946C450CCA9BE /* Haneke.swift in Sources */,
+				DA0E79C7A898F4F5D8D62B1ADCF67241 /* HanekeSwift-dummy.m in Sources */,
+				D172803AB7C600E0004EED188448B772 /* Log.swift in Sources */,
+				EBC23CCE8551B2DDF458DCE761A592B3 /* NetworkFetcher.swift in Sources */,
+				B5D0F9080C2735E422221399AA6892F2 /* NSFileManager+Haneke.swift in Sources */,
+				0BFDE8332EDC136EB44F2932F239F6A9 /* NSHTTPURLResponse+Haneke.swift in Sources */,
+				FE67C22A54CDF4D547B37B544EB3C596 /* NSURLResponse+Haneke.swift in Sources */,
+				C37FCA491E7E9D3CEFDC71E6514AD176 /* String+Haneke.swift in Sources */,
+				E5F59EE78A9F139EA2502EEA67B17F85 /* UIButton+Haneke.swift in Sources */,
+				941B271BAE995C0E2591538599489B7E /* UIImage+Haneke.swift in Sources */,
+				488605BD51C85EEA920BE3C7F624842F /* UIImageView+Haneke.swift in Sources */,
+				526726400C7D6582C5DA6A6BFAF689F0 /* UIView+Haneke.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		D0820A20852DD279DC3137B4B1ED59D6 /* PBXTargetDependency */ = {
+		6001A539D37F94D36FAB78FAB6911CFB /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			name = FLAnimatedImage;
-			target = FE113CEF81C16AA59EC049ACE130BCB2 /* FLAnimatedImage */;
-			targetProxy = DA8365ACBF1EFBA366E53FE8BB25A00E /* PBXContainerItemProxy */;
+			name = HanekeSwift;
+			target = 7DDF79495F24B309AF089ACC99FC1151 /* HanekeSwift */;
+			targetProxy = B12E1FCE7B9C7D246D3E9633705DA125 /* PBXContainerItemProxy */;
 		};
-		F9B6D2063C32A6A6A655EB45C09F987F /* PBXTargetDependency */ = {
+		62156BC5F7C7628AE8943DA25A7E25FC /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = Gifu;
 			target = AEA56EBE1B518C71721209FB26701898 /* Gifu */;
-			targetProxy = D5E12D41E7D1ABEDC50360F29ED23304 /* PBXContainerItemProxy */;
+			targetProxy = F56AD0D0C870A8B7876A5E85787E543C /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		39DFE7D437F3DCF1BD55CBDE0A2749C0 /* Release */ = {
+		5BBC00FA891515A4337DFE7D18C0BD00 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 4032FBFF19D1EBAD358C1D707550CC66 /* Gifu.xcconfig */;
+			baseConfigurationReference = C943208D95C252BD253E67424D3E23F5 /* Gifu.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
@@ -449,74 +497,49 @@
 				GCC_PREFIX_HEADER = "Target Support Files/Gifu/Gifu-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/Gifu/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/Gifu/Gifu.modulemap";
-				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_ENABLE_DEBUG_INFO = YES;
 				PRODUCT_NAME = Gifu;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		4FFBF7D01686DF2474E4A48DE1C6C06F /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = B11DAB02B4C001A54FE1DDA566051AFD /* FLAnimatedImage.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/FLAnimatedImage/FLAnimatedImage-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/FLAnimatedImage/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/FLAnimatedImage/FLAnimatedImage.modulemap";
-				MTL_ENABLE_DEBUG_INFO = NO;
-				PRODUCT_NAME = FLAnimatedImage;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		52905ADB90A531F3F97C595BBA5A1221 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = B11DAB02B4C001A54FE1DDA566051AFD /* FLAnimatedImage.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/FLAnimatedImage/FLAnimatedImage-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/FLAnimatedImage/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/FLAnimatedImage/FLAnimatedImage.modulemap";
-				MTL_ENABLE_DEBUG_INFO = YES;
-				PRODUCT_NAME = FLAnimatedImage;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
 			name = Debug;
 		};
-		5CE5176205D06FF3FFE3DDDA9291E44B /* Debug */ = {
+		74B95146461851ACA46CDFFF21AA98DE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3AD326545BDAABF788AE9A1FB72C48D7 /* HanekeSwift.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/HanekeSwift/HanekeSwift-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/HanekeSwift/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/HanekeSwift/HanekeSwift.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = Haneke;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		A70CDAD61F90AC503C7D04CC22DA2923 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -548,14 +571,41 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				ONLY_ACTIVE_ARCH = YES;
 				STRIP_INSTALLED_PRODUCT = NO;
 				SYMROOT = "${SRCROOT}/../build";
 			};
 			name = Debug;
 		};
-		626BDA1DDDBD8BDA5A2F98FFC5FF3AF6 /* Debug */ = {
+		BBB4FB5074AF70904472427EAB2C66DF /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = C943208D95C252BD253E67424D3E23F5 /* Gifu.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/Gifu/Gifu-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/Gifu/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/Gifu/Gifu.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = Gifu;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		C7BC830929053A011E40936C905E3180 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 977577C045EDA9D9D1F46E2598D19FC7 /* Pods.debug.xcconfig */;
 			buildSettings = {
@@ -568,7 +618,7 @@
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				INFOPLIST_FILE = "Target Support Files/Pods/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MACH_O_TYPE = staticlib;
 				MODULEMAP_FILE = "Target Support Files/Pods/Pods.modulemap";
@@ -586,9 +636,9 @@
 			};
 			name = Debug;
 		};
-		6905AFB8C25235BF066C1527D84630AF /* Debug */ = {
+		D2EB73775E7DBB2BABBB45199E0881EA /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 4032FBFF19D1EBAD358C1D707550CC66 /* Gifu.xcconfig */;
+			baseConfigurationReference = 3AD326545BDAABF788AE9A1FB72C48D7 /* HanekeSwift.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
@@ -597,24 +647,23 @@
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/Gifu/Gifu-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/Gifu/Info.plist";
+				GCC_PREFIX_HEADER = "Target Support Files/HanekeSwift/HanekeSwift-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/HanekeSwift/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/Gifu/Gifu.modulemap";
-				MTL_ENABLE_DEBUG_INFO = YES;
-				PRODUCT_NAME = Gifu;
+				MODULEMAP_FILE = "Target Support Files/HanekeSwift/HanekeSwift.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = Haneke;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
-			name = Debug;
+			name = Release;
 		};
-		74857149DC1E0D599B8A01A78349A926 /* Release */ = {
+		FB45FFD90572718D82AB9092B750F0CA /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -641,14 +690,14 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				STRIP_INSTALLED_PRODUCT = NO;
 				SYMROOT = "${SRCROOT}/../build";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
 		};
-		EA05E473717181D944E7ACF3E7491189 /* Release */ = {
+		FBCC7734F32890C4C567A1B848E167C8 /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = DA312349A49333542E6F4B36B329960E /* Pods.release.xcconfig */;
 			buildSettings = {
@@ -661,7 +710,7 @@
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				INFOPLIST_FILE = "Target Support Files/Pods/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MACH_O_TYPE = staticlib;
 				MODULEMAP_FILE = "Target Support Files/Pods/Pods.modulemap";
@@ -684,17 +733,26 @@
 		2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				5CE5176205D06FF3FFE3DDDA9291E44B /* Debug */,
-				74857149DC1E0D599B8A01A78349A926 /* Release */,
+				A70CDAD61F90AC503C7D04CC22DA2923 /* Debug */,
+				FB45FFD90572718D82AB9092B750F0CA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		3E4AFDEDCC47C4415CB9B5B395C41321 /* Build configuration list for PBXNativeTarget "FLAnimatedImage" */ = {
+		5B83C2AD137CF6C7F4C5DBE1397C3390 /* Build configuration list for PBXNativeTarget "HanekeSwift" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				52905ADB90A531F3F97C595BBA5A1221 /* Debug */,
-				4FFBF7D01686DF2474E4A48DE1C6C06F /* Release */,
+				74B95146461851ACA46CDFFF21AA98DE /* Debug */,
+				D2EB73775E7DBB2BABBB45199E0881EA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		83463AFB28AF107B146CD922C55F352D /* Build configuration list for PBXNativeTarget "Pods" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C7BC830929053A011E40936C905E3180 /* Debug */,
+				FBCC7734F32890C4C567A1B848E167C8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -702,17 +760,8 @@
 		B4096C390FF4F7F3535818EA64A6377C /* Build configuration list for PBXNativeTarget "Gifu" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				6905AFB8C25235BF066C1527D84630AF /* Debug */,
-				39DFE7D437F3DCF1BD55CBDE0A2749C0 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		D0A60E729BB4DFA1A0482380EE4F09CC /* Build configuration list for PBXNativeTarget "Pods" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				626BDA1DDDBD8BDA5A2F98FFC5FF3AF6 /* Debug */,
-				EA05E473717181D944E7ACF3E7491189 /* Release */,
+				5BBC00FA891515A4337DFE7D18C0BD00 /* Debug */,
+				BBB4FB5074AF70904472427EAB2C66DF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

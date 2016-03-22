@@ -1,11 +1,12 @@
 /**
+ * @see https://developer.apple.com/library/ios/documentation/UIKit/Reference/UIKit_Framework/
  * Setting status bar tint color
  *  1. Add `View controller-based status bar appearance` in info.plist
  *  2. UIApplication.sharedApplication().statusBarStyle = .LightContent 
  */
 
 /**
- * https://developer.apple.com/library/ios/documentation/UIKit/Reference/UIImageView_Class/index.html
+ * 
  */
 
 color: UIColor
@@ -20,6 +21,47 @@ UIViewContentMode {ScaleToFill,ScaleAspectFit, ScaleAspectFill, Redraw,
 
 NSObject
 #   UIResponder
+##  UIApplication
+enum UIInterfaceOrientation : Int {
+    Unknown
+    Portrait
+    PortraitUpsideDown
+    LandscapeLeft
+    LandscapeRIght
+}
+struct UIInterfaceOrientationMask : OptionSetType {
+    Portrait
+    LandscapeLeft
+    LandscapeRight
+    PortraitUpsideDown
+    Landscape
+    All
+    AllButUpsideDown
+}
+/*
+Prevent autorotate
+
+class ViewController {
+    override func shouldAutoroate() -> Bool { return false }
+    override func supportInterfaceOrientations() -> UIInterfaceOrientationMask {
+        return .Portrait
+    }
+}
+ */
+
+    .sharedApplication() -> UIApplication   // the singleton app instance
+    .delegate: UIApplicationDelegate?
+    .keyWindow: UIWindow? { get }
+    .windows: [UIWindow] { get }
+    .applicationState: UIApplicationState { get }
+    // App Appearance
+    .statusBarFrame: CGRect { get }     // status bar
+    .statusBarOrientationAnimationDuration: NSTimeInterval { get }
+    .networkActivityIndicatorVisible: Bool
+    .applicationIconBadgeNumber: Int
+    .userInterfaceLayoutDirection: UIUserInterfaceLayoutDirection { get }
+    preferredContentSizeCategory: String { get }
+    
 ##  UIView : UIReponder
 struct UIViewAnimationOptions : OptionSetType {
     LayoutSubViews,             // animated along with parent

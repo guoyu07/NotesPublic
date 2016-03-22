@@ -1,5 +1,7 @@
 import UIKit
 import Gifu
+import Haneke
+
 
 class Aa {
     private static let notifierSingleton = Notifier()            // singleton
@@ -19,5 +21,6 @@ class Aa {
     static func animatableImageView() -> AnimatableImageView {
         return AnimatableImageView()               // Gifu
     }
+    
 
 }

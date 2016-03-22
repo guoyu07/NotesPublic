@@ -4,12 +4,12 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>FLAnimatedImage.xcscheme</key>
+		<key>Gifu.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>Gifu.xcscheme</key>
+		<key>HanekeSwift.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -22,17 +22,17 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>7DDF79495F24B309AF089ACC99FC1151</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>AEA56EBE1B518C71721209FB26701898</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>EBD70F9AF142DAA2CE07DDB05E3ECBD9</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>FE113CEF81C16AA59EC049ACE130BCB2</key>
+		<key>B28C3FE35CFDC743D16B9D65B265FA30</key>
 		<dict>
 			<key>primary</key>
 			<true/>

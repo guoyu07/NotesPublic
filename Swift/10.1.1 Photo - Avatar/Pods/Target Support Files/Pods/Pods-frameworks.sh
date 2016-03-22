@@ -84,10 +84,10 @@ strip_invalid_archs() {
 
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
-  install_framework "Pods/FLAnimatedImage.framework"
   install_framework "Pods/Gifu.framework"
+  install_framework "Pods/Haneke.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
-  install_framework "Pods/FLAnimatedImage.framework"
   install_framework "Pods/Gifu.framework"
+  install_framework "Pods/Haneke.framework"
 fi
