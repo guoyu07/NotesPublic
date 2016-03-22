@@ -156,10 +156,13 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
                 }
             }
             
-            
-            UIImageWriteToSavedPhotosAlbum(croppedImg, nil, nil, nil)
             initAvatar(croppedImg)
             opaqueMasker(true)
+            
+            dispatch_async(dispatch_get_main_queue()) {
+                UIImageWriteToSavedPhotosAlbum(croppedImg, nil, nil, nil)
+            }
+            
             
             
             if (Debug.Avatar.savingPosition) {
@@ -492,7 +495,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0)) {
             let cache = Shared.JSONCache
-            let URL = NSURL(string: "https://api.github.com/users/LefWell")!
+            let URL = NSURL(string: "https://api.github.com/users/AarioAi")!
             cache.fetch(URL: URL).onSuccess {
                 jsonData in
                 if let avatarUrlStr = jsonData.dictionary["avatar_url"] {
