@@ -137,26 +137,30 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         let cropingOrigin = CGPoint(x: cropingCenter.x - Conf.Size.avatarSize.width / 2, y: cropingCenter.y - Conf.Size.avatarSize.height / 2)
         
         if let img = avatar.image {
-            let imgWidthScale: CGFloat =  img.size.width / avatar.frame.width
-            let imgHeightScale: CGFloat =  img.size.height / avatar.frame.height
+            let imgWidthScale: CGFloat =  img.size.width * Conf.Size.avatarScale / avatar.frame.width
+            let imgHeightScale: CGFloat =  img.size.height * Conf.Size.avatarScale / avatar.frame.height
             let rect: CGRect = CGRectMake(ceil(cropingOrigin.x * imgWidthScale), ceil(cropingOrigin.y * imgHeightScale), Conf.Size.avatarSize.width * imgWidthScale, Conf.Size.avatarSize.height * imgHeightScale)
             
             let imgRef: CGImageRef = CGImageCreateWithImageInRect(img.CGImage, rect)!
-            let croppedImg = UIImage(CGImage: imgRef, scale: img.scale, orientation: img.imageOrientation)
+            var croppedImg = UIImage(CGImage: imgRef, scale: img.scale, orientation: img.imageOrientation)
             
-            let imgSize = CGSize(width: Conf.Size.avatarSize.width, height: Conf.Size.avatarSize.width)
-
-            UIGraphicsBeginImageContextWithOptions(imgSize, false, 1.0)
-            croppedImg.drawInRect(CGRect(origin: CGPointZero, size: imgSize))
-            let savingImgContext = UIGraphicsGetCurrentContext()
-            UIGraphicsEndImageContext()
-            
-            if let savingImgRef: CGImageRef = CGBitmapContextCreateImage(savingImgContext) {
-                let savingImg = UIImage(CGImage: savingImgRef, scale: 1.0, orientation: .Up)
-                UIImageWriteToSavedPhotosAlbum(savingImg, nil, nil, nil)
-                initAvatar(savingImg)
-                opaqueMasker(true)
+            if (Conf.Size.saveAvatarFixedSize) {
+                let imgSize = CGSize(width: Conf.Size.avatarSize.width * Conf.Size.avatarScale, height: Conf.Size.avatarSize.width * Conf.Size.avatarScale)
+                UIGraphicsBeginImageContextWithOptions(imgSize, false, 1.0)
+                croppedImg.drawInRect(CGRect(origin: CGPointZero, size: imgSize))
+                let savingImgContext = UIGraphicsGetCurrentContext()
+                UIGraphicsEndImageContext()
+                
+                if let savingImgRef: CGImageRef = CGBitmapContextCreateImage(savingImgContext) {
+                    croppedImg = UIImage(CGImage: savingImgRef, scale: Conf.Size.avatarScale, orientation: .Up)
+                }
             }
+            
+            
+            UIImageWriteToSavedPhotosAlbum(croppedImg, nil, nil, nil)
+            initAvatar(croppedImg)
+            opaqueMasker(true)
+            
             
             if (Debug.Avatar.savingPosition) {
                 print(rect.origin)
@@ -380,27 +384,15 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             
             let avatarImgProportion = img.size.width / img.size.height
             
-            if (img.size.width > UIScreen.mainScreen().bounds.width) {
-                avatarWidth = UIScreen.mainScreen().bounds.width
-                avatarHeight = avatarWidth / avatarImgProportion
-            }
-            
             if (img.size.width == img.size.height) {
-                if (img.size.width < Conf.Size.avatarSize.width) {
-                    avatarWidth = Conf.Size.avatarSize.width
-                    avatarHeight = Conf.Size.avatarSize.height
-                }
+                avatarWidth = Conf.Size.avatarSize.width
+                avatarHeight = Conf.Size.avatarSize.height
             } else if (img.size.width > img.size.height) {
-                if (img.size.height < Conf.Size.avatarSize.height) {
                     avatarHeight = Conf.Size.avatarSize.height
                     avatarWidth = avatarImgProportion * avatarHeight
-                }
             } else {
-                if (img.size.width < Conf.Size.avatarSize.height) {
                     avatarWidth = Conf.Size.avatarSize.width
                     avatarHeight = avatarWidth / avatarImgProportion
-                }
-                
             }
             
             if (avatarWidth < UIScreen.mainScreen().bounds.width) {
@@ -500,22 +492,35 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0)) {
             let cache = Shared.JSONCache
-            let URL = NSURL(string: "https://api.github.com/users/AarioAi")!
-            
+            let URL = NSURL(string: "https://api.github.com/users/LefWell")!
             cache.fetch(URL: URL).onSuccess {
                 jsonData in
                 if let avatarUrlStr = jsonData.dictionary["avatar_url"] {
                     if let avatarUrl = NSURL(string: String(avatarUrlStr)) {
-                        self.avatar.hnk_setImageFromURL(avatarUrl, success: {
+                        let fetcher = NetworkFetcher<UIImage>(URL: avatarUrl)
+                        self.avatar.hnk_setImageFromFetcher(fetcher, success: {
                             image -> () in
-                            self.initAvatar(image)
+                            
+                            let imgSize = CGSize(width: Conf.Size.avatarSize.width * Conf.Size.avatarScale, height: Conf.Size.avatarSize.width * Conf.Size.avatarScale)
+                            UIGraphicsBeginImageContextWithOptions(imgSize, false, 1.0)
+                            image.drawInRect(CGRect(origin: CGPointZero, size: imgSize))
+                            let savingImgContext = UIGraphicsGetCurrentContext()
+                            UIGraphicsEndImageContext()
+                            
+                            var croppedImage = image
+                            if let savingImgRef: CGImageRef = CGBitmapContextCreateImage(savingImgContext) {
+                                croppedImage = UIImage(CGImage: savingImgRef, scale: Conf.Size.avatarScale, orientation: .Up)
+                                self.avatar.image = croppedImage
+                            }
+                            
+                            self.initAvatar(croppedImage)
                             self.opaqueMasker(true)
                         })
+                        
                     }
                 }
             }
         }
-        
         
         
         let margin: CGFloat = 20.0
