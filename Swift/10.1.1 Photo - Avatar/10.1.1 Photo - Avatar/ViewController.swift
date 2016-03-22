@@ -488,14 +488,14 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         maskAvatar()
         self.view.addSubview(avatar)
 
-        if let avatarImg = UIImage(named: "default") {
+        if let avatarImg = UIImage(named: "swift2") {
             initAvatar(avatarImg)
             opaqueMasker(true)
         }
         
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0)) {
             let cache = Shared.JSONCache
-            let URL = NSURL(string: "https://api.github.com/users/LefWell")!
+            let URL = NSURL(string: "https://api.github.com/users/AarioAi")!
             cache.fetch(URL: URL).onSuccess {
                 jsonData in
                 if let avatarUrlStr = jsonData.dictionary["avatar_url"] {
