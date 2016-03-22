@@ -137,8 +137,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         let cropingOrigin = CGPoint(x: cropingCenter.x - Conf.Size.avatarSize.width / 2, y: cropingCenter.y - Conf.Size.avatarSize.height / 2)
         
         if let img = avatar.image {
-            let imgWidthScale: CGFloat =  img.size.width * Conf.Size.avatarScale / avatar.frame.width
-            let imgHeightScale: CGFloat =  img.size.height * Conf.Size.avatarScale / avatar.frame.height
+            let imgWidthScale: CGFloat =  img.size.width * img.scale / avatar.frame.width
+            let imgHeightScale: CGFloat =  img.size.height * img.scale / avatar.frame.height
             let rect: CGRect = CGRectMake(ceil(cropingOrigin.x * imgWidthScale), ceil(cropingOrigin.y * imgHeightScale), Conf.Size.avatarSize.width * imgWidthScale, Conf.Size.avatarSize.height * imgHeightScale)
             
             let imgRef: CGImageRef = CGImageCreateWithImageInRect(img.CGImage, rect)!
@@ -361,11 +361,11 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         
         maskerView.layer.addSublayer(shapeLayer)
         
-        maskerView.addGestureRecognizer(UIPanGestureRecognizer(target: self, action: "moveAvatar:"))
-        maskerView.addGestureRecognizer(UIPinchGestureRecognizer(target: self, action: "resizeAvatar:"))
-        maskerView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: "resizeByDoubleTap:"))
+        maskerView.addGestureRecognizer(UIPanGestureRecognizer(target: self, action: #selector(ViewController.moveAvatar(_:))))
+        maskerView.addGestureRecognizer(UIPinchGestureRecognizer(target: self, action: #selector(ViewController.resizeAvatar(_:))))
+        maskerView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(ViewController.resizeByDoubleTap(_:))))
         if (enableRotation) {
-            maskerView.addGestureRecognizer(UIRotationGestureRecognizer(target: self, action: "rotateAvatar:"))
+            maskerView.addGestureRecognizer(UIRotationGestureRecognizer(target: self, action: #selector(ViewController.rotateAvatar(_:))))
         }
         
     }
@@ -463,13 +463,13 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         backBtn.setTitle("< Back", forState: UIControlState.Normal)
         backBtn.contentHorizontalAlignment = .Left
         backBtn.contentVerticalAlignment = .Center
-        backBtn.addTarget(self, action: "back: ", forControlEvents: UIControlEvents.TouchUpInside)
+        backBtn.addTarget(self, action: #selector(back(_:)), forControlEvents: UIControlEvents.TouchUpInside)
         view.addSubview(backBtn)
         
         let saveBtn = UIButton(frame: CGRect(x: UIScreen.mainScreen().bounds.width - 60, y: UIApplication.sharedApplication().statusBarFrame.height, width: 60, height: 30))
         saveBtn.setTitle("Save", forState: .Normal)
-        saveBtn.addTarget(self, action: "showSavingLoading:", forControlEvents: UIControlEvents.TouchDown)
-        saveBtn.addTarget(self, action: "saveAvatar:", forControlEvents: UIControlEvents.TouchUpInside)
+        saveBtn.addTarget(self, action: #selector(ViewController.showSavingLoading(_:)), forControlEvents: UIControlEvents.TouchDown)
+        saveBtn.addTarget(self, action: #selector(ViewController.saveAvatar(_:)), forControlEvents: UIControlEvents.TouchUpInside)
         view.addSubview(saveBtn)
         
        
@@ -495,7 +495,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0)) {
             let cache = Shared.JSONCache
-            let URL = NSURL(string: "https://api.github.com/users/AarioAi")!
+            let URL = NSURL(string: "https://api.github.com/users/LefWell")!
             cache.fetch(URL: URL).onSuccess {
                 jsonData in
                 if let avatarUrlStr = jsonData.dictionary["avatar_url"] {
@@ -538,8 +538,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         changeAvatarBtn.layer.borderColor = UIColor.grayColor().CGColor
         changeAvatarBtn.layer.borderWidth = 1
         changeAvatarBtn.layer.opaque = true
-        changeAvatarBtn.addTarget(self, action: "changeAvatarTouchDown:", forControlEvents: .TouchDown)
-        changeAvatarBtn.addTarget(self, action: "changeAvatar:", forControlEvents: .TouchUpInside)
+        changeAvatarBtn.addTarget(self, action: #selector(ViewController.changeAvatarTouchDown(_:)), forControlEvents: .TouchDown)
+        changeAvatarBtn.addTarget(self, action: #selector(ViewController.changeAvatar(_:)), forControlEvents: .TouchUpInside)
         self.view.addSubview(changeAvatarBtn)
         
         
@@ -551,7 +551,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         decorationBtn.layer.cornerRadius = 13
         decorationBtn.layer.borderColor = UIColor.grayColor().CGColor
         decorationBtn.layer.borderWidth = 1
-        decorationBtn.addTarget(self, action: "decorate:", forControlEvents: .TouchUpInside)
+        decorationBtn.addTarget(self, action: #selector(ViewController.decorate(_:)), forControlEvents: .TouchUpInside)
         self.view.addSubview(decorationBtn)
         decorateBtn = decorationBtn
 
@@ -609,12 +609,12 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
                 patternSelector.accessibilityValue = pattern
                 
                 patternSelector.frame = CGRect(origin: patternOrigin, size: CGSize(width: w, height: patternSelectorHeight))
-                patternSelector.addGestureRecognizer(UITapGestureRecognizer(target: self, action: "selectDecoration:"))
+                patternSelector.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(ViewController.selectDecoration(_:))))
                 
                 decorationBg.addSubview(patternSelector)
                 decorationBg.bringSubviewToFront(patternSelector)
             }
-            i++
+            i += 1
         }
 
         

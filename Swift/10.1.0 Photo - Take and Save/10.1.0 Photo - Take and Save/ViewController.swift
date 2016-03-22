@@ -92,7 +92,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         btn.setTitle("Take Photo", forState: UIControlState.Normal)
         btn.backgroundColor = Conf.Theme.btnDefault.defaultColor
         
-        btn.addTarget(self, action: "takePhotoBtn:", forControlEvents: UIControlEvents.TouchDown)
+        btn.addTarget(self, action: #selector(ViewController.takePhotoBtn(_:)), forControlEvents: UIControlEvents.TouchDown)
         self.view.addSubview(btn)
         
         imageView = UIImageView(image: UIImage(named: "default.jpeg"))
