@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		003944BF1C9D40D400953EB8 /* decoration1.gif in Resources */ = {isa = PBXBuildFile; fileRef = 003944BE1C9D40D400953EB8 /* decoration1.gif */; };
 		003944C11C9D5F8600953EB8 /* test.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 003944C01C9D5F8600953EB8 /* test.jpg */; };
+		00572BB71CA29F360059FCC8 /* Size.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00572BB61CA29F360059FCC8 /* Size.swift */; };
 		0073FD1D1C96B3E8004F5B5A /* Debug.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0073FD1C1C96B3E8004F5B5A /* Debug.swift */; };
 		007A47691C9C2BD300C71C12 /* Aa.swift in Sources */ = {isa = PBXBuildFile; fileRef = 007A47681C9C2BD300C71C12 /* Aa.swift */; };
 		0080F3811C98BC6F002208D0 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 0080F3801C98BC6F002208D0 /* Podfile */; };
@@ -50,6 +51,7 @@
 /* Begin PBXFileReference section */
 		003944BE1C9D40D400953EB8 /* decoration1.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = decoration1.gif; sourceTree = "<group>"; };
 		003944C01C9D5F8600953EB8 /* test.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = test.jpg; sourceTree = "<group>"; };
+		00572BB61CA29F360059FCC8 /* Size.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Size.swift; sourceTree = "<group>"; };
 		0073FD1C1C96B3E8004F5B5A /* Debug.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Debug.swift; sourceTree = "<group>"; };
 		007A47681C9C2BD300C71C12 /* Aa.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Aa.swift; sourceTree = "<group>"; };
 		0080F3801C98BC6F002208D0 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
@@ -106,6 +108,28 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		00572BB41CA29E9F0059FCC8 /* AaSwift */ = {
+			isa = PBXGroup;
+			children = (
+				00572BB51CA29EC20059FCC8 /* Conf */,
+				00A2BCE81CA06DBF003B4227 /* Notifier.swift */,
+				00A2BCE61CA06D80003B4227 /* Converter.swift */,
+				007A47681C9C2BD300C71C12 /* Aa.swift */,
+			);
+			name = AaSwift;
+			sourceTree = "<group>";
+		};
+		00572BB51CA29EC20059FCC8 /* Conf */ = {
+			isa = PBXGroup;
+			children = (
+				00BCBAC21C99BD3E005BD276 /* Theme.swift */,
+				0073FD1C1C96B3E8004F5B5A /* Debug.swift */,
+				00B6EFB01C90075800E8EE59 /* Conf.swift */,
+				00572BB61CA29F360059FCC8 /* Size.swift */,
+			);
+			name = Conf;
+			sourceTree = "<group>";
+		};
 		00B6EF761C9004A100E8EE59 = {
 			isa = PBXGroup;
 			children = (
@@ -134,6 +158,7 @@
 		00B6EF811C9004A100E8EE59 /* 10.1.1 Photo - Avatar */ = {
 			isa = PBXGroup;
 			children = (
+				00572BB41CA29E9F0059FCC8 /* AaSwift */,
 				00A2BCE21CA067D0003B4227 /* SweetAlert.swift */,
 				00BCBABB1C992432005BD276 /* Resources */,
 				009EF5D41C97F017005A24CD /* Assets.xcassets */,
@@ -142,12 +167,6 @@
 				00B6EF861C9004A100E8EE59 /* Main.storyboard */,
 				00B6EF8B1C9004A100E8EE59 /* LaunchScreen.storyboard */,
 				00B6EF8E1C9004A100E8EE59 /* Info.plist */,
-				00B6EFB01C90075800E8EE59 /* Conf.swift */,
-				0073FD1C1C96B3E8004F5B5A /* Debug.swift */,
-				00BCBAC21C99BD3E005BD276 /* Theme.swift */,
-				007A47681C9C2BD300C71C12 /* Aa.swift */,
-				00A2BCE61CA06D80003B4227 /* Converter.swift */,
-				00A2BCE81CA06DBF003B4227 /* Notifier.swift */,
 			);
 			path = "10.1.1 Photo - Avatar";
 			sourceTree = "<group>";
@@ -396,6 +415,7 @@
 				00BCBAC31C99BD3E005BD276 /* Theme.swift in Sources */,
 				00A2BCE31CA067D0003B4227 /* SweetAlert.swift in Sources */,
 				00A2BCE71CA06D80003B4227 /* Converter.swift in Sources */,
+				00572BB71CA29F360059FCC8 /* Size.swift in Sources */,
 				00B6EF851C9004A100E8EE59 /* ViewController.swift in Sources */,
 				00B6EF831C9004A100E8EE59 /* AppDelegate.swift in Sources */,
 				007A47691C9C2BD300C71C12 /* Aa.swift in Sources */,

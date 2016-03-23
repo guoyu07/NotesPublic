@@ -1,0 +1,13 @@
+use_frameworks!
+platform :ios, '8.0'
+
+pod 'Alamofire'
+pod 'AlamofireImage'
+
+pod 'Gifu'
+pod 'HanekeSwift'
+pod 'SwiftyJSON'
+pod 'OAuthSwift'
+
+## Storage
+pod 'RealmSwift'

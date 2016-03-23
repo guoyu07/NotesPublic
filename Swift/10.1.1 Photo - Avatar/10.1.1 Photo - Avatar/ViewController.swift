@@ -3,6 +3,8 @@
 import UIKit
 import Gifu
 import Haneke
+//import Alamofire
+//import AlamofireImage
 
 class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate  {
     weak var img: UIImageView!
@@ -42,7 +44,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             UIView.animateWithDuration(0.5, animations: {
                 self.avatar.center.x += (standardAvatarBound["right"]! - avatarBound["right"]!)
             })
-            if (Debug.Avatar.debugIsOutOfBounds) {
+            if (Conf.Debug.Avatar.debugIsOutOfBounds) {
                 print("Out of right bound")
             }
         }
@@ -51,7 +53,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             UIView.animateWithDuration(0.5, animations: {
                 self.avatar.center.x -= (avatarBound["left"]! - standardAvatarBound["left"]!)
             })
-            if (Debug.Avatar.debugIsOutOfBounds) {
+            if (Conf.Debug.Avatar.debugIsOutOfBounds) {
                 print("Out of left bound")
             }
         }
@@ -60,7 +62,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             UIView.animateWithDuration(0.5, animations: {
                 self.avatar.center.y -= (avatarBound["top"]! - standardAvatarBound["top"]!)
             })
-            if (Debug.Avatar.debugIsOutOfBounds) {
+            if (Conf.Debug.Avatar.debugIsOutOfBounds) {
                 print("Out of top bound")
             }
         }
@@ -68,7 +70,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             UIView.animateWithDuration(0.5, animations: {
                 self.avatar.center.y += (standardAvatarBound["bottom"]! - avatarBound["bottom"]!)
             })
-            if (Debug.Avatar.debugIsOutOfBounds) {
+            if (Conf.Debug.Avatar.debugIsOutOfBounds) {
                 print("Out of bottom bound")
             }
         }
@@ -80,11 +82,11 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
     
     func changeAvatarTouchDown(sender: UIButton) {
-        sender.setTitleColor(Theme.Avatar.focusedColor, forState: .Normal)
+        sender.setTitleColor(Conf.Theme.Avatar.focusedColor, forState: .Normal)
     }
     
     func changeAvatar(sender: UIButton) {
-        sender.setTitleColor(Theme.Avatar.tintColor, forState: .Normal)
+        sender.setTitleColor(Conf.Theme.Avatar.tintColor, forState: .Normal)
         let changeAvatarAlert = UIAlertController(title:nil, message: nil, preferredStyle: .ActionSheet)
         changeAvatarAlert.addAction(UIAlertAction(title: "Calcel", style: .Cancel, handler: {
             action in
@@ -165,7 +167,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             
             
             
-            if (Debug.Avatar.savingPosition) {
+            if (Conf.Debug.Avatar.savingPosition) {
                 print(rect.origin)
                 print("Size: img=\(img.size) CGImage=(\(CGImageGetWidth(img.CGImage)), \(CGImageGetHeight(img.CGImage))) frame=\(avatar.frame.size)")
                 print("Size: rect=\(rect.size) imgRef=(\(CGImageGetWidth(imgRef)), \(CGImageGetHeight(imgRef))) cropped=\(croppedImg.size)")
@@ -210,7 +212,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     func resizeAvatar(sender: UIPinchGestureRecognizer) {
         opaqueMasker(false)
 
-        if (Debug.Avatar.recognizeGestures) {
+        if (Conf.Debug.Avatar.recognizeGestures) {
             print("resize")
         }
         var scale: CGFloat = sender.scale
@@ -232,7 +234,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     func rotateAvatar(sender: UIRotationGestureRecognizer) {
         opaqueMasker(false)
 
-        if (Debug.Avatar.recognizeGestures) {
+        if (Conf.Debug.Avatar.recognizeGestures) {
             print("rotate")
         }
         let rotation =  sender.velocity * 0.05
@@ -241,7 +243,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     func moveAvatar(sender:UIPanGestureRecognizer) {
         sender.maximumNumberOfTouches = 1
         sender.minimumNumberOfTouches = 1
-        if (Debug.Avatar.recognizeGestures) {
+        if (Conf.Debug.Avatar.recognizeGestures) {
             print("pan")
         }
         let translation = sender.translationInView(self.avatar)
@@ -254,7 +256,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             case .Began:
                 opaqueMasker(false)
             case .Changed:
-                if (Debug.Avatar.panningVelocity) {
+                if (Conf.Debug.Avatar.panningVelocity) {
                     print("Changed: velocity: \(sender.velocityInView(view))  translation: \(translation)")
                 }
                 panAvatarLastTranslation = translation
@@ -262,7 +264,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             case .Ended:
                 var velocityDistance = sqrt(pow(sender.velocityInView(view).x, CGFloat(2)) + pow(sender.velocityInView(view).y, CGFloat(2)))
                 
-                if (Debug.Avatar.panningVelocity) {
+                if (Conf.Debug.Avatar.panningVelocity) {
                     print("Ended: velocity: \(sender.velocityInView(view))  translation: \(translation)")
                     print("velocityDistance: \(velocityDistance)")
                 }
@@ -370,7 +372,40 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         
     }
 
+    func fetchImageByHanekeSwift(infoJsonURL: NSURL) {
+        let cache = Shared.JSONCache
+        cache.fetch(URL: infoJsonURL).onSuccess {
+            jsonData in
+            if let avatarUrlStr = jsonData.dictionary["avatar_url"] {
+                if let avatarUrl = NSURL(string: String(avatarUrlStr)) {
+                    let fetcher = NetworkFetcher<UIImage>(URL: avatarUrl)
+                    self.avatar.hnk_setImageFromFetcher(fetcher, success: {
+                        image -> () in
+                        self.handleRemoteImage(image)
+                    })
+                    
+                }
+            }
+        }
+    }
     
+    func handleRemoteImage(image: UIImage) {
+        let imgSize = CGSize(width: Conf.Size.avatarSize.width * Conf.Size.avatarScale, height: Conf.Size.avatarSize.width * Conf.Size.avatarScale)
+        UIGraphicsBeginImageContextWithOptions(imgSize, false, 1.0)
+        image.drawInRect(CGRect(origin: CGPointZero, size: imgSize))
+        let savingImgContext = UIGraphicsGetCurrentContext()
+        UIGraphicsEndImageContext()
+        
+        var croppedImage = image
+        if let savingImgRef: CGImageRef = CGBitmapContextCreateImage(savingImgContext) {
+            croppedImage = UIImage(CGImage: savingImgRef, scale: Conf.Size.avatarScale, orientation: .Up)
+            self.avatar.image = croppedImage
+        }
+        
+        self.initAvatar(croppedImage)
+        self.opaqueMasker(true)
+    }
+
     func initAvatar(image: UIImage) {
         //print("centerBefore: \(avatar.center)")
         avatar.image = image
@@ -405,7 +440,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
                 avatarY += (UIScreen.mainScreen().bounds.width - avatarHeight) / 2
             }
             avatar.frame = CGRect(x: avatarX, y: avatarY, width: avatarWidth, height: avatarHeight)
-            if (Debug.Avatar.savingPosition) {
+            if (Conf.Debug.Avatar.savingPosition) {
                 print("initOrientation: \(img.imageOrientation.rawValue)")
                 print("origin=\(img.size) scale=\(img.scale) CGImage=(\(CGImageGetWidth(img.CGImage)), \(CGImageGetHeight(img.CGImage))) now=\(avatarWidth) \(avatarHeight)")
             }
@@ -448,6 +483,9 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         
         print("llo")
     }
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -492,38 +530,14 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             initAvatar(avatarImg)
             opaqueMasker(true)
         }
-        
+                
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0)) {
-            let cache = Shared.JSONCache
-            let URL = NSURL(string: "https://api.github.com/users/AarioAi")!
-            cache.fetch(URL: URL).onSuccess {
-                jsonData in
-                if let avatarUrlStr = jsonData.dictionary["avatar_url"] {
-                    if let avatarUrl = NSURL(string: String(avatarUrlStr)) {
-                        let fetcher = NetworkFetcher<UIImage>(URL: avatarUrl)
-                        self.avatar.hnk_setImageFromFetcher(fetcher, success: {
-                            image -> () in
-                            
-                            let imgSize = CGSize(width: Conf.Size.avatarSize.width * Conf.Size.avatarScale, height: Conf.Size.avatarSize.width * Conf.Size.avatarScale)
-                            UIGraphicsBeginImageContextWithOptions(imgSize, false, 1.0)
-                            image.drawInRect(CGRect(origin: CGPointZero, size: imgSize))
-                            let savingImgContext = UIGraphicsGetCurrentContext()
-                            UIGraphicsEndImageContext()
-                            
-                            var croppedImage = image
-                            if let savingImgRef: CGImageRef = CGBitmapContextCreateImage(savingImgContext) {
-                                croppedImage = UIImage(CGImage: savingImgRef, scale: Conf.Size.avatarScale, orientation: .Up)
-                                self.avatar.image = croppedImage
-                            }
-                            
-                            self.initAvatar(croppedImage)
-                            self.opaqueMasker(true)
-                        })
-                        
-                    }
-                }
+            if let infoJsonURL = NSURL(string: "https://api.github.com/users/AarioAi") {
+                self.fetchImageByHanekeSwift(infoJsonURL)
             }
         }
+
+        
         
         
         let margin: CGFloat = 20.0

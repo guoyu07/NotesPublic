@@ -4,3 +4,7 @@ platform :ios, '8.0'
 #pod 'FLAnimatedImage'
 pod 'Gifu'
 pod 'HanekeSwift'
+
+#pod 'Alamofire'
+#pod 'AlamofireImage'
+
