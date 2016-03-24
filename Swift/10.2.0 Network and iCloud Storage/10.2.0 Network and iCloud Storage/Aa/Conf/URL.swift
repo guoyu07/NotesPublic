@@ -5,8 +5,10 @@ extension Conf {
         }
         
         
-        static let test = host.a + "swift/"
-        static let uploadFile = host.a + "swift/uploadFile.php"
+        static let requestJSON = host.a + "swift/"
+        
+        
+        static let uploadFile = host.a + "swift/uploadFile.php?access_token=XXXXXXXXXXXXXXXXXXXXXX"
         
     }
 }

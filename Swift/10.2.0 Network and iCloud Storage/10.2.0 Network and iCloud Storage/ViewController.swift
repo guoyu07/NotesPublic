@@ -15,7 +15,7 @@ import AlamofireImage
 class ViewController: UIViewController {
     
     func request() {
-        Alamofire.request(.GET, Conf.URL.test, parameters: ["name": "Aario"])
+        Alamofire.request(.GET, Conf.URL.requestJSON, parameters: ["name": "Aario"])
             .validate(statusCode: 200..<300)
             //  .validate(contentType: ["application/json"])
             .responseString {
@@ -52,7 +52,7 @@ class ViewController: UIViewController {
                 }
             }
             
-            Alamofire.upload(.POST, Conf.URL.uploadFile, multipartFormData: {
+            Alamofire.upload(.POST, Conf.URL.uploadFile, headers: nil, multipartFormData: {
                 // POST file[]=xxxx&&file[]=xxxxx
                 multipartFormData in
                 multipartFormData.appendBodyPart(fileURL: fileURL, name: "file[]")
