@@ -9,7 +9,7 @@
 
 import UIKit
 import Alamofire
-import AlamofireImage
+//import AlamofireImage
 
 
 class ViewController: UIViewController {
@@ -23,6 +23,7 @@ class ViewController: UIViewController {
             }
             .responseJSON {
                 response in
+                debugPrint(response)
                 print(response.request)  // original URL request
                 print(response.response) // URL response
                 print(response.data)     // server data
@@ -43,8 +44,9 @@ class ViewController: UIViewController {
                 switch filetype {
                 case "jpeg", "jpg":
                     imageData = UIImageJPEGRepresentation(image, 1.0)
-                case "gif":
-                    imageData = UIImagePNGRepresentation(image)
+                //case "gif":   // animated GIF is not supported
+                    //imageData = UIImagePNGRepresentation(image)
+                    //imageData = NSData(contentsOfFile: "animated.gif")
                 case "png":
                     imageData = UIImagePNGRepresentation(image)
                 default:
@@ -52,11 +54,14 @@ class ViewController: UIViewController {
                 }
             }
             
+            let gifURL = NSBundle.mainBundle().URLForResource("animated2", withExtension: "gif")!
+            
             Alamofire.upload(.POST, Conf.URL.uploadFile, headers: nil, multipartFormData: {
                 // POST file[]=xxxx&&file[]=xxxxx
                 multipartFormData in
                 multipartFormData.appendBodyPart(fileURL: fileURL, name: "file[]")
                 multipartFormData.appendBodyPart(data: imageData!, name: "file[]", fileName: "loading2.gif", mimeType: "image/gif")
+                multipartFormData.appendBodyPart(fileURL: gifURL, name: "file[]")
                 },
                              encodingCompletion: {
                                 encodingResult in
@@ -71,8 +76,11 @@ class ViewController: UIViewController {
             })
         }
     }
-    override func viewDidLoad() {
+    
+    
+        override func viewDidLoad() {
         super.viewDidLoad()
+        
         
         //request()
         uploadFile()

@@ -17,7 +17,7 @@ Response
 ```json
 {
     "access_token" : "ACCESS_TOKEN},
-    "expires_in" : 7200
+    "expires_in" : 7200             // Wechat keeps it alive for 7200 sec
 }
 ```
 

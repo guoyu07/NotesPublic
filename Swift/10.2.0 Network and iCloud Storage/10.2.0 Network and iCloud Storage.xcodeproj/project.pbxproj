@@ -27,6 +27,7 @@
 		00B1DB9B1CA2D88800D135B5 /* _0_2_0_Network_and_iCloud_StorageTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00B1DB9A1CA2D88800D135B5 /* _0_2_0_Network_and_iCloud_StorageTests.swift */; };
 		00B1DBA61CA2D88800D135B5 /* _0_2_0_Network_and_iCloud_StorageUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00B1DBA51CA2D88800D135B5 /* _0_2_0_Network_and_iCloud_StorageUITests.swift */; };
 		00B1DBB61CA2D8BB00D135B5 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 00B1DBB51CA2D8BB00D135B5 /* Podfile */; };
+		00D1B8321CA550A9009F8ECF /* animated2.gif in Resources */ = {isa = PBXBuildFile; fileRef = 00D1B8311CA550A9009F8ECF /* animated2.gif */; };
 		4410CCD7D925B358531427F9 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5869A15BD48EA33B9E2D1164 /* Pods.framework */; };
 /* End PBXBuildFile section */
 
@@ -74,6 +75,7 @@
 		00B1DBA51CA2D88800D135B5 /* _0_2_0_Network_and_iCloud_StorageUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = _0_2_0_Network_and_iCloud_StorageUITests.swift; sourceTree = "<group>"; };
 		00B1DBA71CA2D88800D135B5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		00B1DBB51CA2D8BB00D135B5 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		00D1B8311CA550A9009F8ECF /* animated2.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = animated2.gif; sourceTree = "<group>"; };
 		5869A15BD48EA33B9E2D1164 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8ACA36FEB46C4E0AF1858ACA /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		8CB12DACC38EDF7E738B205F /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
@@ -109,6 +111,7 @@
 			isa = PBXGroup;
 			children = (
 				00110F211CA3147A00EC3747 /* loading2.gif */,
+				00D1B8311CA550A9009F8ECF /* animated2.gif */,
 				00110F1F1CA3147000EC3747 /* AarioAi.jpeg */,
 			);
 			name = Resources;
@@ -334,6 +337,7 @@
 				00B1DB8D1CA2D88800D135B5 /* Assets.xcassets in Resources */,
 				00B1DBB61CA2D8BB00D135B5 /* Podfile in Resources */,
 				00110F201CA3147000EC3747 /* AarioAi.jpeg in Resources */,
+				00D1B8321CA550A9009F8ECF /* animated2.gif in Resources */,
 				00110F221CA3147A00EC3747 /* loading2.gif in Resources */,
 				00B1DB881CA2D88800D135B5 /* Main.storyboard in Resources */,
 			);
