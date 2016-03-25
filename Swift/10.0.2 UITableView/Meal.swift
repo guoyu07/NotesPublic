@@ -1,9 +1,14 @@
-//
-//  Meal.swift
-//  10.0.2 UITableView
-//
-//  Created by Aario on 3/26/16.
-//  Copyright © 2016 Luexu.com. All rights reserved.
-//
-
-import Foundation
+import UIKit
+class Meal {
+    let name: String
+    let photo: UIImage?
+    let rating: Int
+    init?(name: String, photo: UIImage?, rating: Int) {
+        self.name = name
+        self.photo = photo
+        self.rating = rating
+        if name.isEmpty || rating < 0 {
+            return nil              // init?()
+        }
+    }
+}
