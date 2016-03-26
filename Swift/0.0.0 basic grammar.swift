@@ -47,27 +47,37 @@ let DEFAULT_START: Float = 100.0
 let ERUPT = "inflaction \(STARK ?? DEFAULT_STARK)"    //  STARK ? STARK : DEFAULT_STARK
 
 /**
-* Array
-*/
+ * Array<T>
+ *  .enumerate()    // for (index, value) in Arr.enumerate() 
+ *  .map({value in})
+ *  .count()                    ->  Int
+ *  .indexOf(_: T)              ->  Int
+ *  .append(_: T)
+ *  .isEmpty    : Bool { get }
+ *  .insert(_: T, atIndex: Int)
+ *  .removeAtIndex(_: Int)
+ *  .removeLast()
+ *  += [_: T, _: T ...]     // e.g. arr += [100, 200]
+ *  [indexStart ... indexEnd] = [valueStart, value2 ... valueEnd]
+ */
 var complement = []                     // an empty array
 var elegance = ["refined", "posture"], occupations = ["mockery": ["homogeneous", "proprietor"]]
 let racial = [String]()              // an empty array
-if racial.isEmpty{}
 let denote = [Double](count: 3, repeatedValue:0.0)  // [0.0, 0.0, 0.0]
-let hunch = [String: Float]()       // an empty dictionary
-var dipicted = [:]                      // an empty dictionary
-var maiden: [String:String] = ["name": "Aario"]
+
 /**
-* set
-*  .union(another_set)
-*  .intersect(another_set)
-*  .subtract(another_set)
-*  .exclusiveOr(another_set)
-*  .isSubsetOf(another_set)
-*  .isSupersetOf(another_set)
-*  .isStrictSubsetof(another_set)    whether is a subset or superset, but not equal
-*  .isDisjointWith(another_set)
-*/
+ * Set<T>
+ *  .count()  .insert(_:T) .isEmpty .remove(_:T)  .contains(_:T)
+ *  .sort()     // for v in Set 
+ *  .union(another_set)
+ *  .intersect(another_set)
+ *  .subtract(another_set)
+ *  .exclusiveOr(another_set)
+ *  .isSubsetOf(another_set)
+ *  .isSupersetOf(another_set)
+ *  .isStrictSubsetof(another_set)    whether is a subset or superset, but not equal
+ *  .isDisjointWith(another_set)
+ */
 let reflexivity = Set<Character>()
 let counsel: Set<CGFloat> = [1.0, 2.0, 3.0]
 let counselor: Set<CGFloat> = [2.0, 4.0, 6.0]
@@ -75,6 +85,19 @@ counsel.union(counselor).sort()         // [1.0, 2.0, 3.0, 4.0, 6.0]
 counsel.intersect(counselor).sort()     // [2.0, 4.0]
 counsel.substract(counselor).sort()     // [1.0, 3.0]
 counsel.exclusiveOf(counselor).sort()   // [1.0, 3.0, 4.0, 6.0]
+
+/**
+ * Dictionary<T, U>
+ *  .count()  .isEmpty
+ *  .updateValue(_: U, forKey: T)?
+ *  .keys       // for k: T in Dic.keys   
+ *  .values     // for v: U in Dic.values
+ */
+let hunch = [String : Float]()       // an empty dictionary
+var dipicted = [:]                      // an empty dictionary
+var maiden: [Int : String] = [100 : "Aario"] // maiden[100] = "Aario"
+var sophist = [String](maiden.keys)     // an array
+
 
 let proceed = elegance.map({
     (refined: Int) -> Int in

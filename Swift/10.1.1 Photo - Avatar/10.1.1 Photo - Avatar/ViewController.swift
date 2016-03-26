@@ -448,14 +448,23 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
     
     var hasDecoration: Bool = false
-    var decorationPatterns : [String] = ["decoration1.gif", "decoration1.gif", "decoration1.gif", ]
-    var pickedDecorationPattern : String? = nil
+    struct DecorationPatternsData {
+        let patternImageName: String
+        init(patternImageName: String) {
+            self.patternImageName = patternImageName
+        }
+    }
+    var decorationPatterns : [DecorationPatternsData] = [DecorationPatternsData(patternImageName: "decoration1.gif"), DecorationPatternsData(patternImageName: "decoration1.gif"), DecorationPatternsData(patternImageName: "decoration1.gif")]
+    
+    var pickedDecorationPattern : DecorationPatternsData? = nil
+    var patternSelectors = [UIButton : DecorationPatternsData]()
+
     weak var decorateBtn: UIButton!
     weak var decorationView: AnimatableImageView!
     func decorate(sender: UIButton) {
         if (decorationView == nil) {
             let decView = Aa.animatableImageView()
-            decView.animateWithImage(named: decorationPatterns[0])
+            decView.animateWithImage(named: decorationPatterns[0].patternImageName)
             decView.frame = CGRect(x: (UIScreen.mainScreen().bounds.width - Conf.Size.avatarSize.width) / 2, y: UIApplication.sharedApplication().statusBarFrame.height + (UIScreen.mainScreen().bounds.width - Conf.Size.avatarSize.height) / 2, width: Conf.Size.avatarSize.width, height:Conf.Size.avatarSize.height)
             decView.hidden = true
             view.addSubview(decView)
@@ -463,25 +472,36 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             decorationView = decView
         }
         
-        if (pickedDecorationPattern != nil && decorationPatterns.contains((pickedDecorationPattern)!)) {
-            decorationView.animateWithImage(named: pickedDecorationPattern!)
-            pickedDecorationPattern = nil
-        }
-        if (!hasDecoration) {
+        if let data = patternSelectors[sender] {        // decoration iamge buttons
+            pickedDecorationPattern = data
+            hasDecoration = true
             decorateBtn.setTitle("Origin", forState: .Normal)
             decorationView.hidden = false
         } else {
-            decorateBtn.setTitle("Decorate", forState: .Normal)
-            decorationView.hidden = true
+            if (!hasDecoration) {
+                decorateBtn.setTitle("Origin", forState: .Normal)
+                decorationView.hidden = false
+            } else {
+                decorateBtn.setTitle("Decorate", forState: .Normal)
+                decorationView.hidden = true
+            }
+            hasDecoration = !hasDecoration
         }
         
-        hasDecoration = !hasDecoration
+        if pickedDecorationPattern != nil {
+            //if decorationPatterns.contains(pickedDecorationPattern!) {
+                decorationView.animateWithImage(named: (pickedDecorationPattern?.patternImageName)!)
+                pickedDecorationPattern = nil
+            //}
+        }
+        
     }
     
-    func selectDecoration(recoginzer: UITapGestureRecognizer) {
-        recoginzer.numberOfTapsRequired = 1
-        
-        print("llo")
+    func selectDecoration(sender: UIButton) {
+        if let data = patternSelectors[sender] {
+            print(data.patternImageName)
+            decorate(sender)
+        }
     }
     
     
@@ -607,28 +627,35 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         let patternSelectorHeight = UIScreen.mainScreen().bounds.height - UIApplication.sharedApplication().statusBarFrame.height - UIScreen.mainScreen().bounds.width - decorationNavHeight - decorationSelectionTitleHeight - Conf.Size.margin
         
         decorationBg.userInteractionEnabled = true
-        var i : Int = 0
-        for pattern in decorationPatterns {
+        
+        
+        
+        for (index, pattern) in decorationPatterns.enumerate() {
             
             let patternSelector = UIImageView(image: UIImage(named: "test.jpg"))
             if let p = patternSelector.image {
                 let proportion = p.size.width / p.size.height
                 let w = proportion * patternSelectorHeight
                 
-                let patternX: CGFloat = (w + Conf.Size.margin) * CGFloat(i) + Conf.Size.margin
+                let patternX: CGFloat = (w + Conf.Size.margin) * CGFloat(index) + Conf.Size.margin
                 let patternOrigin = CGPoint(x: patternX, y: decorationSelectionTitleHeight)
                 
                 patternSelector.userInteractionEnabled = true
                 patternSelector.accessibilityLabel = "pattern"
-                patternSelector.accessibilityValue = pattern
+                patternSelector.accessibilityValue = pattern.patternImageName
                 
                 patternSelector.frame = CGRect(origin: patternOrigin, size: CGSize(width: w, height: patternSelectorHeight))
-                patternSelector.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(ViewController.selectDecoration(_:))))
+                //patternSelector.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(ViewController.selectDecoration(_:))))
                 
                 decorationBg.addSubview(patternSelector)
                 decorationBg.bringSubviewToFront(patternSelector)
+                
+                let decorationBtn = UIButton(frame: patternSelector.frame)
+                decorationBtn.addTarget(self, action: #selector(ViewController.selectDecoration(_:)), forControlEvents: .TouchUpInside)
+                decorationBg.addSubview(decorationBtn)
+                
+                patternSelectors[decorationBtn] = pattern
             }
-            i += 1
         }
 
         
