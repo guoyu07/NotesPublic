@@ -201,7 +201,19 @@ struct UIViewAnimationCurve : Int {
     .focused : Bool { get }
     .inheritedAnimationDuration() -> NSTimeInterval
     
-    
+### UIScrollView : UIView : UIResponder
+    .setContentOffset(_:CGPoint, animated: Bool)
+    .contentOffset: CGPoint = CGPointZero
+    .contentSize: CGSize = CGSizeZero
+    .contentInset: UIEdgeInsets
+
+    // Managing Scrolling
+    .scrollEnabled: Bool
+    .directionalLockEnabled: Bool   // If this property is false, scrolling is permitted in both horizontal and vertical directions. If this property is true and the user begins dragging in one general direction (horizontally or vertically), the scroll view disables scrolling in the other direction. If the drag direction is diagonal, then scrolling will not be locked and the user can drag in any direction until the drag completes.
+#### UICollectionView : UIScrollView
+#### UITableView : UIScrollView : UIView : UIResponder
+#### UITextView : UIScrollView : UIView : UIResponder
+
 ### UIControl : UIView : UIResponder
 UIControlContentVerticalAlignment {Center,Top,Bottom,Fill}
 UIControlContentHorizontalAlignment {Center,Left,Right,Fill}

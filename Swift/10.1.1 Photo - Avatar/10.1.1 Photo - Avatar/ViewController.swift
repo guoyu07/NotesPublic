@@ -6,7 +6,10 @@ import Haneke
 //import Alamofire
 //import AlamofireImage
 
-class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate  {
+class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIScrollViewDelegate  {
+    
+    var scrollView: UIScrollView!
+    
     weak var img: UIImageView!
     weak var avatar: UIImageView!
     weak var savingLoading: AnimatableImageView!
@@ -456,7 +459,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
     var decorationPatterns : [DecorationPatternsData] = [DecorationPatternsData(patternImageName: "decoration1.gif"), DecorationPatternsData(patternImageName: "decoration1.gif"), DecorationPatternsData(patternImageName: "decoration1.gif")]
     
-    var pickedDecorationPattern : DecorationPatternsData? = nil
+    var clickedDecorationBtn : UIButton? = nil
     var patternSelectors = [UIButton : DecorationPatternsData]()
 
     weak var decorateBtn: UIButton!
@@ -473,11 +476,12 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         }
         
         if let data = patternSelectors[sender] {        // decoration iamge buttons
-            pickedDecorationPattern = data
+            clickedDecorationBtn = sender
             hasDecoration = true
             decorateBtn.setTitle("Origin", forState: .Normal)
             decorationView.hidden = false
-        } else {
+            decorationView.animateWithImage(named: data.patternImageName)
+        } else {                        // Decorate/Origin button
             if (!hasDecoration) {
                 decorateBtn.setTitle("Origin", forState: .Normal)
                 decorationView.hidden = false
@@ -485,21 +489,26 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
                 decorateBtn.setTitle("Decorate", forState: .Normal)
                 decorationView.hidden = true
             }
+            
+            if let clickedDecorationBtn = clickedDecorationBtn {
+                if let decorationBtn = patternSelectors[clickedDecorationBtn] {
+                    decorationView.animateWithImage(named: decorationBtn.patternImageName)
+                }
+            }
             hasDecoration = !hasDecoration
         }
         
-        if pickedDecorationPattern != nil {
-            //if decorationPatterns.contains(pickedDecorationPattern!) {
-                decorationView.animateWithImage(named: (pickedDecorationPattern?.patternImageName)!)
-                pickedDecorationPattern = nil
-            //}
-        }
+    
         
     }
     
     func selectDecoration(sender: UIButton) {
         if let data = patternSelectors[sender] {
             print(data.patternImageName)
+            if let clickedBtn = clickedDecorationBtn {
+                clickedBtn.layer.borderWidth = 0
+            }
+            sender.layer.borderWidth = 1.0
             decorate(sender)
         }
     }
@@ -628,8 +637,15 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         
         decorationBg.userInteractionEnabled = true
         
-        
-        
+        scrollView = UIScrollView(frame: CGRect(x:0 ,y:decorationSelectionTitleHeight, width: UIScreen.mainScreen().bounds.width, height: patternSelectorHeight))
+        scrollView.userInteractionEnabled = true
+        scrollView.contentSize.height = patternSelectorHeight
+        //scrollView.backgroundColor = UIColor.redColor()
+        scrollView.showsVerticalScrollIndicator = false
+        scrollView.showsHorizontalScrollIndicator = false
+        scrollView.delegate = self
+
+        decorationBg.addSubview(scrollView)
         for (index, pattern) in decorationPatterns.enumerate() {
             
             let patternSelector = UIImageView(image: UIImage(named: "test.jpg"))
@@ -638,7 +654,9 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
                 let w = proportion * patternSelectorHeight
                 
                 let patternX: CGFloat = (w + Conf.Size.margin) * CGFloat(index) + Conf.Size.margin
-                let patternOrigin = CGPoint(x: patternX, y: decorationSelectionTitleHeight)
+                let patternOrigin = CGPoint(x: patternX, y: 0)
+               
+
                 
                 patternSelector.userInteractionEnabled = true
                 patternSelector.accessibilityLabel = "pattern"
@@ -647,14 +665,23 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
                 patternSelector.frame = CGRect(origin: patternOrigin, size: CGSize(width: w, height: patternSelectorHeight))
                 //patternSelector.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(ViewController.selectDecoration(_:))))
                 
-                decorationBg.addSubview(patternSelector)
-                decorationBg.bringSubviewToFront(patternSelector)
                 
                 let decorationBtn = UIButton(frame: patternSelector.frame)
+                decorationBtn.layer.borderWidth = 0
+                decorationBtn.layer.borderColor = UIColor.orangeColor().CGColor
+                decorationBtn.layer.cornerRadius = 5.0
                 decorationBtn.addTarget(self, action: #selector(ViewController.selectDecoration(_:)), forControlEvents: .TouchUpInside)
-                decorationBg.addSubview(decorationBtn)
+                //decorationBg.addSubview(decorationBtn)
+                
                 
                 patternSelectors[decorationBtn] = pattern
+                scrollView.addSubview(patternSelector)
+                scrollView.bringSubviewToFront(patternSelector)
+
+                scrollView.addSubview(decorationBtn)
+                scrollView.bringSubviewToFront(decorationBtn)
+                scrollView.contentSize.width = patternX + w
+
             }
         }
 
