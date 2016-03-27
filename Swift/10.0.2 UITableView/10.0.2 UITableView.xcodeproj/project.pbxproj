@@ -9,17 +9,18 @@
 /* Begin PBXBuildFile section */
 		0091D2FE1CA58F4E003989E0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0091D2FD1CA58F4E003989E0 /* AppDelegate.swift */; };
 		0091D3001CA58F4E003989E0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0091D2FF1CA58F4E003989E0 /* ViewController.swift */; };
-		0091D3031CA58F4E003989E0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0091D3011CA58F4E003989E0 /* Main.storyboard */; };
 		0091D3061CA58F4E003989E0 /* _0_0_2_UITableView.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0091D3041CA58F4E003989E0 /* _0_0_2_UITableView.xcdatamodeld */; };
-		0091D30B1CA58F4E003989E0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0091D3091CA58F4E003989E0 /* LaunchScreen.storyboard */; };
 		0091D3161CA58F4E003989E0 /* _0_0_2_UITableViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0091D3151CA58F4E003989E0 /* _0_0_2_UITableViewTests.swift */; };
 		0091D3211CA58F4E003989E0 /* _0_0_2_UITableViewUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0091D3201CA58F4E003989E0 /* _0_0_2_UITableViewUITests.swift */; };
 		0091D32F1CA58F5E003989E0 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 0091D32E1CA58F5E003989E0 /* Podfile */; };
-		0091D3411CA5A24C003989E0 /* MealTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0091D3401CA5A24C003989E0 /* MealTableViewCell.swift */; };
-		0091D3431CA5A7E1003989E0 /* MealTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0091D3421CA5A7E1003989E0 /* MealTableViewController.swift */; };
-		0091D3451CA5AC2B003989E0 /* RatingControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0091D3441CA5AC2B003989E0 /* RatingControl.swift */; };
-		0091D3471CA5B47B003989E0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0091D3461CA5B47B003989E0 /* Assets.xcassets */; };
 		0091D34B1CA5B56E003989E0 /* Meal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0091D34A1CA5B56E003989E0 /* Meal.swift */; };
+		00FBD76C1CA7EDE1006A9069 /* MealTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00FBD76B1CA7EDE1006A9069 /* MealTableViewController.swift */; };
+		00FBD76E1CA7EDFC006A9069 /* MealViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00FBD76D1CA7EDFC006A9069 /* MealViewController.swift */; };
+		00FBD7701CA7EE0E006A9069 /* RatingControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00FBD76F1CA7EE0E006A9069 /* RatingControl.swift */; };
+		00FBD7721CA7EE2D006A9069 /* MealTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00FBD7711CA7EE2D006A9069 /* MealTableViewCell.swift */; };
+		00FBD7741CA7EE6C006A9069 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 00FBD7731CA7EE6C006A9069 /* Assets.xcassets */; };
+		00FBD77A1CA7EF5A006A9069 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 00FBD7761CA7EF5A006A9069 /* LaunchScreen.storyboard */; };
+		00FBD77B1CA7EF5A006A9069 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 00FBD7781CA7EF5A006A9069 /* Main.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,9 +44,7 @@
 		0091D2FA1CA58F4E003989E0 /* 10.0.2 UITableView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "10.0.2 UITableView.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0091D2FD1CA58F4E003989E0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0091D2FF1CA58F4E003989E0 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		0091D3021CA58F4E003989E0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		0091D3051CA58F4E003989E0 /* _0_0_2_UITableView.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = _0_0_2_UITableView.xcdatamodel; sourceTree = "<group>"; };
-		0091D30A1CA58F4E003989E0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0091D30C1CA58F4E003989E0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0091D3111CA58F4E003989E0 /* 10.0.2 UITableViewTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "10.0.2 UITableViewTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0091D3151CA58F4E003989E0 /* _0_0_2_UITableViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = _0_0_2_UITableViewTests.swift; sourceTree = "<group>"; };
@@ -54,11 +53,14 @@
 		0091D3201CA58F4E003989E0 /* _0_0_2_UITableViewUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = _0_0_2_UITableViewUITests.swift; sourceTree = "<group>"; };
 		0091D3221CA58F4E003989E0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0091D32E1CA58F5E003989E0 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; };
-		0091D3401CA5A24C003989E0 /* MealTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MealTableViewCell.swift; sourceTree = "<group>"; };
-		0091D3421CA5A7E1003989E0 /* MealTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MealTableViewController.swift; sourceTree = "<group>"; };
-		0091D3441CA5AC2B003989E0 /* RatingControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RatingControl.swift; sourceTree = "<group>"; };
-		0091D3461CA5B47B003989E0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0091D34A1CA5B56E003989E0 /* Meal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Meal.swift; path = ../Meal.swift; sourceTree = "<group>"; };
+		00FBD76B1CA7EDE1006A9069 /* MealTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MealTableViewController.swift; sourceTree = "<group>"; };
+		00FBD76D1CA7EDFC006A9069 /* MealViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MealViewController.swift; sourceTree = "<group>"; };
+		00FBD76F1CA7EE0E006A9069 /* RatingControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RatingControl.swift; sourceTree = "<group>"; };
+		00FBD7711CA7EE2D006A9069 /* MealTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MealTableViewCell.swift; sourceTree = "<group>"; };
+		00FBD7731CA7EE6C006A9069 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		00FBD7771CA7EF5A006A9069 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		00FBD7791CA7EF5A006A9069 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Main.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,17 +112,17 @@
 		0091D2FC1CA58F4E003989E0 /* 10.0.2 UITableView */ = {
 			isa = PBXGroup;
 			children = (
+				00FBD7751CA7EF5A006A9069 /* Base.lproj */,
+				00FBD7731CA7EE6C006A9069 /* Assets.xcassets */,
+				00FBD7711CA7EE2D006A9069 /* MealTableViewCell.swift */,
+				00FBD76F1CA7EE0E006A9069 /* RatingControl.swift */,
+				00FBD76B1CA7EDE1006A9069 /* MealTableViewController.swift */,
+				00FBD76D1CA7EDFC006A9069 /* MealViewController.swift */,
 				0091D34A1CA5B56E003989E0 /* Meal.swift */,
-				0091D3461CA5B47B003989E0 /* Assets.xcassets */,
 				0091D2FD1CA58F4E003989E0 /* AppDelegate.swift */,
 				0091D2FF1CA58F4E003989E0 /* ViewController.swift */,
-				0091D3011CA58F4E003989E0 /* Main.storyboard */,
-				0091D3421CA5A7E1003989E0 /* MealTableViewController.swift */,
-				0091D3091CA58F4E003989E0 /* LaunchScreen.storyboard */,
 				0091D30C1CA58F4E003989E0 /* Info.plist */,
 				0091D3041CA58F4E003989E0 /* _0_0_2_UITableView.xcdatamodeld */,
-				0091D3401CA5A24C003989E0 /* MealTableViewCell.swift */,
-				0091D3441CA5AC2B003989E0 /* RatingControl.swift */,
 			);
 			path = "10.0.2 UITableView";
 			sourceTree = "<group>";
@@ -141,6 +143,15 @@
 				0091D3221CA58F4E003989E0 /* Info.plist */,
 			);
 			path = "10.0.2 UITableViewUITests";
+			sourceTree = "<group>";
+		};
+		00FBD7751CA7EF5A006A9069 /* Base.lproj */ = {
+			isa = PBXGroup;
+			children = (
+				00FBD7761CA7EF5A006A9069 /* LaunchScreen.storyboard */,
+				00FBD7781CA7EF5A006A9069 /* Main.storyboard */,
+			);
+			path = Base.lproj;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -250,10 +261,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0091D30B1CA58F4E003989E0 /* LaunchScreen.storyboard in Resources */,
+				00FBD77A1CA7EF5A006A9069 /* LaunchScreen.storyboard in Resources */,
 				0091D32F1CA58F5E003989E0 /* Podfile in Resources */,
-				0091D3471CA5B47B003989E0 /* Assets.xcassets in Resources */,
-				0091D3031CA58F4E003989E0 /* Main.storyboard in Resources */,
+				00FBD7741CA7EE6C006A9069 /* Assets.xcassets in Resources */,
+				00FBD77B1CA7EF5A006A9069 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -278,12 +289,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0091D3431CA5A7E1003989E0 /* MealTableViewController.swift in Sources */,
-				0091D3411CA5A24C003989E0 /* MealTableViewCell.swift in Sources */,
+				00FBD76E1CA7EDFC006A9069 /* MealViewController.swift in Sources */,
 				0091D34B1CA5B56E003989E0 /* Meal.swift in Sources */,
+				00FBD76C1CA7EDE1006A9069 /* MealTableViewController.swift in Sources */,
+				00FBD7701CA7EE0E006A9069 /* RatingControl.swift in Sources */,
+				00FBD7721CA7EE2D006A9069 /* MealTableViewCell.swift in Sources */,
 				0091D3061CA58F4E003989E0 /* _0_0_2_UITableView.xcdatamodeld in Sources */,
 				0091D3001CA58F4E003989E0 /* ViewController.swift in Sources */,
-				0091D3451CA5AC2B003989E0 /* RatingControl.swift in Sources */,
 				0091D2FE1CA58F4E003989E0 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -320,20 +332,20 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		0091D3011CA58F4E003989E0 /* Main.storyboard */ = {
+		00FBD7761CA7EF5A006A9069 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				0091D3021CA58F4E003989E0 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		0091D3091CA58F4E003989E0 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				0091D30A1CA58F4E003989E0 /* Base */,
+				00FBD7771CA7EF5A006A9069 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		00FBD7781CA7EF5A006A9069 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				00FBD7791CA7EF5A006A9069 /* Base */,
+			);
+			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -513,6 +525,7 @@
 				0091D3271CA58F4E003989E0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		0091D3281CA58F4E003989E0 /* Build configuration list for PBXNativeTarget "10.0.2 UITableViewTests" */ = {
 			isa = XCConfigurationList;
@@ -521,6 +534,7 @@
 				0091D32A1CA58F4E003989E0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		0091D32B1CA58F4E003989E0 /* Build configuration list for PBXNativeTarget "10.0.2 UITableViewUITests" */ = {
 			isa = XCConfigurationList;
@@ -529,6 +543,7 @@
 				0091D32D1CA58F4E003989E0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
