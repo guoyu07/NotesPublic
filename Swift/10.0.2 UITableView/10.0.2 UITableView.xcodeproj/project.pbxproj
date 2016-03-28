@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		0091D2FE1CA58F4E003989E0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0091D2FD1CA58F4E003989E0 /* AppDelegate.swift */; };
-		0091D3001CA58F4E003989E0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0091D2FF1CA58F4E003989E0 /* ViewController.swift */; };
 		0091D3061CA58F4E003989E0 /* _0_0_2_UITableView.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0091D3041CA58F4E003989E0 /* _0_0_2_UITableView.xcdatamodeld */; };
 		0091D3161CA58F4E003989E0 /* _0_0_2_UITableViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0091D3151CA58F4E003989E0 /* _0_0_2_UITableViewTests.swift */; };
 		0091D3211CA58F4E003989E0 /* _0_0_2_UITableViewUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0091D3201CA58F4E003989E0 /* _0_0_2_UITableViewUITests.swift */; };
@@ -43,7 +42,6 @@
 /* Begin PBXFileReference section */
 		0091D2FA1CA58F4E003989E0 /* 10.0.2 UITableView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "10.0.2 UITableView.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0091D2FD1CA58F4E003989E0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		0091D2FF1CA58F4E003989E0 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		0091D3051CA58F4E003989E0 /* _0_0_2_UITableView.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = _0_0_2_UITableView.xcdatamodel; sourceTree = "<group>"; };
 		0091D30C1CA58F4E003989E0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0091D3111CA58F4E003989E0 /* 10.0.2 UITableViewTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "10.0.2 UITableViewTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -120,7 +118,6 @@
 				00FBD76D1CA7EDFC006A9069 /* MealViewController.swift */,
 				0091D34A1CA5B56E003989E0 /* Meal.swift */,
 				0091D2FD1CA58F4E003989E0 /* AppDelegate.swift */,
-				0091D2FF1CA58F4E003989E0 /* ViewController.swift */,
 				0091D30C1CA58F4E003989E0 /* Info.plist */,
 				0091D3041CA58F4E003989E0 /* _0_0_2_UITableView.xcdatamodeld */,
 			);
@@ -295,7 +292,6 @@
 				00FBD7701CA7EE0E006A9069 /* RatingControl.swift in Sources */,
 				00FBD7721CA7EE2D006A9069 /* MealTableViewCell.swift in Sources */,
 				0091D3061CA58F4E003989E0 /* _0_0_2_UITableView.xcdatamodeld in Sources */,
-				0091D3001CA58F4E003989E0 /* ViewController.swift in Sources */,
 				0091D2FE1CA58F4E003989E0 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

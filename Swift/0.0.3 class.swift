@@ -5,8 +5,10 @@
  * For example, a method of type (Int) -> Int becomes ((Int) -> Int)?
  */
 @objc protocol Postpone {
+    // If you want to have a protocol with optional methods, you must prefix the protocol with the @objc tag 
     optional func resist(defy: Int) -> Int
     optional var detest: Int { get }
+    optional var transit: Int { get }
 }
 class Fancy {
     var gauge = 0
@@ -21,14 +23,19 @@ class Fancy {
 }
 
 class Resume: NSObject, Postpone {
-    let detest = 5
+    @objc var detest = 5  
+    @objc let transit = 10      // let var  == var { get }
 }
 
-var fancy = Fancy()
-fancy.postpone = Resume()
+
+
+
+
+var postponeProtocol = Fancy()
+postponeProtocol.postpone = Resume()
 for _ in 1..<4 {
-    fancy.reckon()
-    print(fancy.gauge)
+    (postponeProtocol as! Fancy).reckon()
+    print(postponeProtocol.gauge)
 }
 /*
 PRINT:
