@@ -20,6 +20,9 @@ class Fancy {
             gauge += dare
         }
     }
+    func onlyAllowOverriden() {
+        assert(false, "Method should be overriden")
+    }
 }
 
 class Resume: NSObject, Postpone {

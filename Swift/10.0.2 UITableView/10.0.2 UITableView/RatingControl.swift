@@ -18,8 +18,8 @@ class RatingControl: UIView {
         }
     }
     var ratingButtons = [UIButton]()
-    var spacing: Int = 5
-    var stars: Int = 5
+    var spacing = 5
+    var stars = 5
 
     // MARK: Initialization
 
@@ -31,7 +31,7 @@ class RatingControl: UIView {
         
         for _ in 0..<5 {
             let button = UIButton()
-
+            
             button.setImage(emptyStarImage, forState: .Normal)
             button.setImage(filledStarImage, forState: .Selected)
             button.setImage(filledStarImage, forState: [.Highlighted, .Selected])
@@ -68,6 +68,7 @@ class RatingControl: UIView {
     
     func ratingButtonTapped(button: UIButton) {
         rating = ratingButtons.indexOf(button)! + 1
+        
         updateButtonSelectionStates()
     }
     
