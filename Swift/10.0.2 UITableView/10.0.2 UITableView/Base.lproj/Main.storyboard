@@ -5,7 +5,6 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
-        <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
     </dependencies>
     <scenes>
         <!--Your Meals-->
@@ -54,14 +53,11 @@
                     </tableView>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Your Meals" id="eSY-WF-TJg">
-                        <rightBarButtonItems>
-                            <barButtonItem systemItem="add" id="5IV-og-BzF">
-                                <connections>
-                                    <segue destination="v04-W0-ww0" kind="presentation" identifier="AddItem" id="7q5-IT-HBe"/>
-                                </connections>
-                            </barButtonItem>
-                            <barButtonItem systemItem="trash" id="o3M-EY-fUU"/>
-                        </rightBarButtonItems>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="5IV-og-BzF">
+                            <connections>
+                                <segue destination="v04-W0-ww0" kind="presentation" identifier="AddItem" id="7q5-IT-HBe"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                 </tableViewController>
