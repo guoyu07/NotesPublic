@@ -1,18 +1,50 @@
-/**
- * @see https://en.wikipedia.org/wiki/Matrix_(mathematics)
+[Matrix](https://en.wikipedia.org/wiki/Matrix_\(mathematics\))
  * @see https://zh.wikipedia.org/wiki/%E8%A1%8C%E5%88%97%E5%BC%8F
  * @see http://www.tongji.edu.cn/~math/xxds/kcja/kcja_a/01.htm
- * @see http://www2.edu-edu.com.cn/lesson_crs78/self/j_0022/soft/ch0605.html
+[］http://www2.edu-edu.com.cn/lesson_crs78/self/j_0022/soft/ch0605.html
  */
 
 
-      
-
+```
 A = [3 5 7]          1 * n    a Row Vector
 
     [3]   
 A = [5]            m * 1     a Column Vector
     [7]
+
+A = [a11]   |A| = a11                1x1 Square Matrix 
+
+
+    [a11 a12]
+A = [a21 a22]     |A| = a11 * a22 - a12 * a21
+
+
+    [a11 a12 a13]
+A = [a21 a22 a23] 
+    [a31 a32 a33]   
+
+                [a22 a23]           [a12 a13]           [a12 a13]
+    |A| = a11 * [a32 a33]  -  a21 * [a32 a33]  +  a31 * [a22 a23]
+
+        = a11*a22*a33 - a11*a23*a32 - a21*a12*a33 + a21*a13*a32
+            + a31 * a12 * 23 - a31 * a13 * a22
+    
+        = a11*a22*a33 + a21*a32*a13 + a31*a12*a23
+            - a31*a22*a13 - a21*a12*a23 - a11*a32*a23
+
+    [a11 a12 a13 a14]
+    [a21 a22 a23 a24]
+A = [a31 a32 a33 a34]
+    [a41 a42 a43 a44]
+    
+                [a22 a23 a24]         [a12 a13 a14]
+   |A| = a11 *  [a32 a33 a34] - a21 * [a32 a33 a34]
+                [a42 a43 a44]         [a42 a43 a44]
+        
+                [a12 a13 a14]         [a12 a13 a14]
+         + a31* [a22 a23 a24] - a41 * [a22 a23 a24]
+                [a42 a43 a44]         [a32 a33 a34]
+
 
 |A| = det(A) = ∑[σ∈Sn]sgn(σ)[n]T[i=1]Xi,σ(i)  
  
@@ -22,18 +54,8 @@ A = det(A) = |A| = [...           ]   ∈ R^m*n          a Square Matrix
                    [...           ]
                    [am1 am2 .. amn]
 
-      [a11 a12]
-|A| = [a21 a22]  = a11 * a22 - a12 * a21
 
 
-
-
-```
-      [a11 a12 a13]
-|A| = [a21 a22 a23] 
-      [a31 a32 a33]
-
-    = a11*a22*a33 + a21*a32*a13 + a31*a12*a23 - a31*a22*a13 - a21*a12*a23 - a11*a32*a23
 ```
 
 ```
@@ -84,7 +106,32 @@ so A * B may not equal B * A
 [1 100 ] * [1 0 0] =  [102  3 4]
 [0 10  ]              [10   0 0]
 
+# Linear Transformations
+```
+    E---I-------------------• C(a+c, b+d)
+    |   |                  /|
+    G---• D(c,d)          / |  
+    |  /                 /  |   
+    |-/---------B(a, b)-•   J    
+    |/                  |   |
+  A •-------------------H---F-------
 
+Analyze:
+    S_square_1 = S_triangle_ADG + S_triangle_BJC
+    S_square_2 = S_triangle_IDC + S_triangle_AHB
+    
+    S_parallelogram_ABCD = S_ACEF - S_square_1 - S_square_2 
+                        - S_square_EGDI - S_square_BHJF
+        = (a+c) * (b+d) - a*b - c*d - c*b - c*b
+        = ab + ad + cb + cd - ab - cd - 2*cb
+        = ad - cb
+
+        [a c]
+    A = [b d] 
+
+    S_parallelogram = |A| = ad - cb
+
+```
 
 # Transpose
 /**
