@@ -577,7 +577,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         let changeAvatarBtn = UIButton(frame: CGRect(x: changeAvatarBtnX, y: changeAvatarBtnY, width: btnWidth, height: btnHeight))
         changeAvatarBtn.setTitle("Change", forState: UIControlState.Normal)
         changeAvatarBtn.opaque = true
-        changeAvatarBtn.layer.cornerRadius = 13
+        changeAvatarBtn.layer.cornerRadius = btnHeight / 2
         changeAvatarBtn.layer.borderColor = UIColor.grayColor().CGColor
         changeAvatarBtn.layer.borderWidth = 1
         changeAvatarBtn.layer.opaque = true
@@ -588,7 +588,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         
         let decorationBtnX = UIScreen.mainScreen().bounds.width / 2 + margin
         let decorationBtn = UIButton(frame: CGRect(x: decorationBtnX, y: changeAvatarBtnY, width: btnWidth, height: btnHeight))
-        decorationBtn.setTitle("Decorate", forState: UIControlState.Normal)
+        decorationBtn.setTitle("Decorate", forState: .Normal)
         decorationBtn.opaque = true
         decorationBtn.layer.opaque = true
         decorationBtn.layer.cornerRadius = 13
