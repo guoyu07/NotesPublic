@@ -20,9 +20,9 @@ class IndexViewController: UIViewController {
         tabBarItem.title = "首页"
         
         
-        tabBarItem.image = UIImage(named: Conf.Assets.TabBar.Index.normal)
+        tabBarItem.image = UIImage(named: Conf.Assets.Tab.index)
         
-        tabBarItem.selectedImage = UIImage(named: Conf.Assets.TabBar.Index.selected)
+        tabBarItem.selectedImage = UIImage(named: Conf.Assets.Tab.indexSelected)
         
         // the red hint on the right-top
         //self.tabBarItem.badgeValue = "5"

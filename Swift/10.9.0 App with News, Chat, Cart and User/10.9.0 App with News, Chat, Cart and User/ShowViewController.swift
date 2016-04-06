@@ -19,9 +19,9 @@ class ShowViewController: UIViewController {
         tabBarItem.title = "晒单"
         
         
-        tabBarItem.image = UIImage(named: Conf.Assets.TabBar.Show.normal)
+        tabBarItem.image = UIImage(named: Conf.Assets.Tab.show)
         
-        tabBarItem.selectedImage = UIImage(named: Conf.Assets.TabBar.Show.selected)
+        tabBarItem.selectedImage = UIImage(named: Conf.Assets.Tab.showSelected)
         
         // the red hint on the right-top
         //self.tabBarItem.badgeValue = "5"

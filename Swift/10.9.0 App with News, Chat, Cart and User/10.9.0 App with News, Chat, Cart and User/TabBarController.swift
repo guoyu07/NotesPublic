@@ -9,7 +9,7 @@
 import UIKit
 class TabBarController: UITabBarController {
     override func viewDidLoad() {
-        viewControllers = [IndexViewController(), ChatViewController(), CartViewController(), UserViewController()]
+        viewControllers = [IndexViewController(), ChatViewController(), CartViewController(), ShowViewController(), UserViewController()]
         
         for ctrl in viewControllers! {
             let _ = ctrl.view

@@ -12,15 +12,19 @@ class UserViewController: UIViewController {
     
     
     func settingView(sender: UIButton) {
-        print("Setting")
+        presentViewController(UserSignUpViewController(), animated:true, completion:nil)
     }
     
     func signUpView(sender: UIButton) {
-        print("SIGN UP")
+        presentViewController(UserSignUpViewController(), animated:true, completion:nil)
     }
     
     func signInView(sender: UIButton) {
-        print("SIGN IN")
+       // let storyBoard = UIStoryboard(name: "Main", bundle:nil)
+    
+        //let nextViewController = storyBoard.instantiateViewControllerWithIdentifier("nextView") as! UserSignInViewController
+        presentViewController(UserSignInViewController(), animated:true, completion:nil)
+
     }
     
     func topView() {
@@ -75,15 +79,15 @@ class UserViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor.whiteColor()
-        title="标题"
+        title="我的"
         //print(tabBarController == parentViewController)
         
-        tabBarItem.title = "我"
+        tabBarItem.title = "我的"
         
         
-        tabBarItem.image = UIImage(named: Conf.Assets.TabBar.User.normal)
+        tabBarItem.image = UIImage(named: Conf.Assets.Tab.user)
         
-        tabBarItem.selectedImage = UIImage(named: Conf.Assets.TabBar.User.selected)
+        tabBarItem.selectedImage = UIImage(named: Conf.Assets.Tab.userSelected)
         
         // the red hint on the right-top
         self.tabBarItem.badgeValue = "5"

@@ -15,8 +15,8 @@ class CartViewController: UIViewController {
         
         view.backgroundColor = UIColor.cyanColor()
         tabBarItem.title = "商城"
-        tabBarItem.image = UIImage(named: Conf.Assets.TabBar.Cart.normal)
-        tabBarItem.selectedImage = UIImage(named: Conf.Assets.TabBar.Cart.selected)
+        tabBarItem.image = UIImage(named: Conf.Assets.Tab.cart)
+        tabBarItem.selectedImage = UIImage(named: Conf.Assets.Tab.cartSelected)
         
     }
     

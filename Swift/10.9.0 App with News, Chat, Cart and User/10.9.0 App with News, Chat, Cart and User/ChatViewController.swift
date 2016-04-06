@@ -18,9 +18,9 @@ class ChatViewController: UIViewController {
         tabBarItem.title = "咨询"
         
         
-        tabBarItem.image = UIImage(named: Conf.Assets.TabBar.Chat.normal)
+        tabBarItem.image = UIImage(named: Conf.Assets.Tab.chat)
         
-        tabBarItem.selectedImage = UIImage(named: Conf.Assets.TabBar.Chat.selected)
+        tabBarItem.selectedImage = UIImage(named: Conf.Assets.Tab.chatSelected)
         
         // the red hint on the right-top
         //self.tabBarItem.badgeValue = "5"
