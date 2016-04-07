@@ -11,21 +11,47 @@ import UIKit
 
 class IndexViewController: UIViewController {
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        view.backgroundColor = UIColor.yellowColor()
-        title="标题"
+    func segmentActions() {
+        
+    }
+    
+    func nav() {
+        let segCtrl = UISegmentedControl(items: [UIImage(named: "tabFanhui")!, UIImage(named: "tabFanhuiPress")!])
+        segCtrl.frame = CGRectMake(0, 0, 90, 40)
+        //segCtrl.segmentedControlStyle = .UISegmentedControlStyleBar
+        segCtrl.momentary  = true
+        segCtrl.addTarget(self, action: #selector(IndexViewController.segmentActions), forControlEvents: .TouchDown)
+        //let segBarItem = UIBarButtonItem(customView: segCtrl)
+        //navigationItem.rightBarButtonItem = segBarItem
+        navigationItem.titleView = segCtrl
+        
+        title = "首页"
+        
+        //navigationController?.hidesBarsOnTap = true
+        
         //print(tabBarController == parentViewController)
         
-        tabBarItem.title = "首页"
+        //navigationController?.tabBarItem.title = "首3页"
         
         
-        tabBarItem.image = UIImage(named: Conf.Assets.Tab.index)
+        //navigationController?.tabBarItem.image = UIImage(named: Conf.Assets.Tab.index)
         
-        tabBarItem.selectedImage = UIImage(named: Conf.Assets.Tab.indexSelected)
+        //navigationController?.tabBarItem.selectedImage = UIImage(named: Conf.Assets.Tab.indexSelected)
         
         // the red hint on the right-top
-        //self.tabBarItem.badgeValue = "5"
+        //navigationController?.tabBarItem.badgeValue = "5"
+
+    }
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        view.backgroundColor = UIColor.redColor()
+        
+        nav()
+        
+        
+        let t = UILabel(frame: CGRect(x: 100, y: 100, width: 50, height: 50))
+        t.text = "DDD"
+        view.addSubview(t)
     }
     
     override func didReceiveMemoryWarning() {

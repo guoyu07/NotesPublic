@@ -12,19 +12,12 @@ class ShowViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = UIColor.blueColor()
-        title="标题"
-        //print(tabBarController == parentViewController)
-        
-        tabBarItem.title = "晒单"
-        
-        
+        view.backgroundColor = UIColor.redColor()
         tabBarItem.image = UIImage(named: Conf.Assets.Tab.show)
-        
         tabBarItem.selectedImage = UIImage(named: Conf.Assets.Tab.showSelected)
+        tabBarItem.title = "晒单"
+
         
-        // the red hint on the right-top
-        //self.tabBarItem.badgeValue = "5"
     }
     
     override func didReceiveMemoryWarning() {

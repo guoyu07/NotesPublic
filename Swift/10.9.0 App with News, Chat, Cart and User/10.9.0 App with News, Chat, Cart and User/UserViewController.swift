@@ -30,15 +30,16 @@ class UserViewController: UIViewController {
     func topView() {
         //let topBg = UIImage(named: "")
         let topBg = UIView()
-        topBg.frame = CGRect(x:0, y:0, width: UIScreen.mainScreen().bounds.width,height: 500)
+        topBg.frame = CGRect(x:0, y:0, width: UIScreen.mainScreen().bounds.width,height: 200)
         topBg.backgroundColor = UIColor.purpleColor()
         view.addSubview(topBg)
         view.sendSubviewToBack(topBg)
 
         
         let top = UIView(frame: topBg.frame)
-        top.frame.origin.y = UIApplication.sharedApplication().statusBarFrame.height
+        top.frame.origin.y = (navigationController?.navigationBar.bounds.height)! + UIApplication.sharedApplication().statusBarFrame.height
         top.frame.size.height -= top.frame.origin.y
+        top.backgroundColor = UIColor.greenColor()
         topBg.addSubview(top)
         
         
@@ -82,15 +83,9 @@ class UserViewController: UIViewController {
         title="我的"
         //print(tabBarController == parentViewController)
         
-        tabBarItem.title = "我的"
-        
-        
-        tabBarItem.image = UIImage(named: Conf.Assets.Tab.user)
-        
-        tabBarItem.selectedImage = UIImage(named: Conf.Assets.Tab.userSelected)
-        
-        // the red hint on the right-top
-        self.tabBarItem.badgeValue = "5"
+        let t = UILabel(frame: CGRect(x: 100, y: 100, width: 50, height: 50))
+        t.text = "DDD"
+        view.addSubview(t)
         
         
         topView()

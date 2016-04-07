@@ -29,6 +29,8 @@
 		007820351CB4D9FC00388FC0 /* Notifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0078202A1CB4D9FC00388FC0 /* Notifier.swift */; };
 		007820361CB4D9FC00388FC0 /* SweetAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0078202C1CB4D9FC00388FC0 /* SweetAlert.swift */; };
 		0078203A1CB4DA5300388FC0 /* Assets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 007820391CB4DA5300388FC0 /* Assets.swift */; };
+		00975DB51CB6051F00239075 /* IndexNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00975DB41CB6051F00239075 /* IndexNavigationController.swift */; };
+		00975DB71CB6083D00239075 /* UserNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00975DB61CB6083D00239075 /* UserNavigationController.swift */; };
 		00EC9C6F1CB5707A00573E7A /* Conf.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00EC9C6E1CB5707A00573E7A /* Conf.swift */; };
 		00EC9C711CB5772800573E7A /* UserSignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00EC9C701CB5772800573E7A /* UserSignInViewController.swift */; };
 		00EC9C731CB57F0500573E7A /* UserSignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00EC9C721CB57F0500573E7A /* UserSignUpViewController.swift */; };
@@ -80,6 +82,8 @@
 		0078202A1CB4D9FC00388FC0 /* Notifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Notifier.swift; sourceTree = "<group>"; };
 		0078202C1CB4D9FC00388FC0 /* SweetAlert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SweetAlert.swift; sourceTree = "<group>"; };
 		007820391CB4DA5300388FC0 /* Assets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Assets.swift; path = "10.9.0 App with News, Chat, Cart and User/AaSwift/Assets.swift"; sourceTree = SOURCE_ROOT; };
+		00975DB41CB6051F00239075 /* IndexNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IndexNavigationController.swift; sourceTree = "<group>"; };
+		00975DB61CB6083D00239075 /* UserNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserNavigationController.swift; sourceTree = "<group>"; };
 		00EC9C6E1CB5707A00573E7A /* Conf.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Conf.swift; sourceTree = "<group>"; };
 		00EC9C701CB5772800573E7A /* UserSignInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserSignInViewController.swift; sourceTree = "<group>"; };
 		00EC9C721CB57F0500573E7A /* UserSignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserSignUpViewController.swift; sourceTree = "<group>"; };
@@ -143,6 +147,8 @@
 				007820141CB4CA5700388FC0 /* TabBarController.swift */,
 				0078201A1CB4CB1100388FC0 /* ChatViewController.swift */,
 				007820161CB4CA7700388FC0 /* IndexViewController.swift */,
+				00975DB41CB6051F00239075 /* IndexNavigationController.swift */,
+				00975DB61CB6083D00239075 /* UserNavigationController.swift */,
 				0078201E1CB4CCD800388FC0 /* ShowViewController.swift */,
 				0078201C1CB4CBC900388FC0 /* UserViewController.swift */,
 				00EC9C701CB5772800573E7A /* UserSignInViewController.swift */,
@@ -369,11 +375,13 @@
 				007820361CB4D9FC00388FC0 /* SweetAlert.swift in Sources */,
 				007820341CB4D9FC00388FC0 /* Converter.swift in Sources */,
 				0078202E1CB4D9FC00388FC0 /* Aa.swift in Sources */,
+				00975DB71CB6083D00239075 /* UserNavigationController.swift in Sources */,
 				007820321CB4D9FC00388FC0 /* Theme.swift in Sources */,
 				00EC9C731CB57F0500573E7A /* UserSignUpViewController.swift in Sources */,
 				0078203A1CB4DA5300388FC0 /* Assets.swift in Sources */,
 				007820311CB4D9FC00388FC0 /* Size.swift in Sources */,
 				007820351CB4D9FC00388FC0 /* Notifier.swift in Sources */,
+				00975DB51CB6051F00239075 /* IndexNavigationController.swift in Sources */,
 				00EC9C711CB5772800573E7A /* UserSignInViewController.swift in Sources */,
 				00781FEC1CB4C9E200388FC0 /* _0_9_0_App_with_News__Chat__Cart_and_User.xcdatamodeld in Sources */,
 				0078201F1CB4CCD800388FC0 /* ShowViewController.swift in Sources */,

@@ -9,10 +9,26 @@
 import UIKit
 class TabBarController: UITabBarController {
     override func viewDidLoad() {
-        viewControllers = [IndexViewController(), ChatViewController(), CartViewController(), ShowViewController(), UserViewController()]
+        
+        let indexViewCtrl = IndexViewController()
+        let indexNavCtrl = IndexNavigationController(rootViewController: indexViewCtrl)
+        
+        let userViewCtrl = UserViewController()
+        let userNavCtrl = UserNavigationController(rootViewController: userViewCtrl)
+        
+        viewControllers = [indexNavCtrl, ChatViewController(), CartViewController(), ShowViewController(), userNavCtrl]
+        
+        
+        //hidesBottomBarWhenPushed = true
         
         for ctrl in viewControllers! {
             let _ = ctrl.view
         }
+        
+        for nav in [indexNavCtrl, userNavCtrl] {
+            let _ = nav.topViewController!.view
+        }
+        
+            
     }
 }
