@@ -11,6 +11,10 @@ import UIKit
 class UserViewController: UIViewController {
     
     
+    func tableViews() {
+        _ = UITableViewController()
+    }
+    
     func settingView(sender: UIButton) {
         presentViewController(UserSignUpViewController(), animated:true, completion:nil)
     }
@@ -76,6 +80,10 @@ class UserViewController: UIViewController {
 
     }
     
+    func tableView() {
+        let userTableViewController = UserTableViewController()
+        view.addSubview(userTableViewController.view)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -89,6 +97,7 @@ class UserViewController: UIViewController {
         
         
         topView()
+        tableViews()
     }
     
     override func didReceiveMemoryWarning() {

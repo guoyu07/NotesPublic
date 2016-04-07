@@ -31,6 +31,12 @@
 		0078203A1CB4DA5300388FC0 /* Assets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 007820391CB4DA5300388FC0 /* Assets.swift */; };
 		00975DB51CB6051F00239075 /* IndexNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00975DB41CB6051F00239075 /* IndexNavigationController.swift */; };
 		00975DB71CB6083D00239075 /* UserNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00975DB61CB6083D00239075 /* UserNavigationController.swift */; };
+		00975DB91CB64FC600239075 /* UserTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00975DB81CB64FC600239075 /* UserTableViewController.swift */; };
+		00975DBB1CB6504100239075 /* UserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00975DBA1CB6504100239075 /* UserTableViewCell.swift */; };
+		00975DC01CB654F600239075 /* IndexTestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00975DBF1CB654F600239075 /* IndexTestViewController.swift */; };
+		00975DCC1CB65F3600239075 /* AaRatingControlEmptyStar.png in Resources */ = {isa = PBXBuildFile; fileRef = 00975DCA1CB65F3600239075 /* AaRatingControlEmptyStar.png */; };
+		00975DCD1CB65F3600239075 /* AaRatingControlFilledStar.png in Resources */ = {isa = PBXBuildFile; fileRef = 00975DCB1CB65F3600239075 /* AaRatingControlFilledStar.png */; };
+		00975DD01CB6602C00239075 /* RatingControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00975DCF1CB6602C00239075 /* RatingControlView.swift */; };
 		00EC9C6F1CB5707A00573E7A /* Conf.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00EC9C6E1CB5707A00573E7A /* Conf.swift */; };
 		00EC9C711CB5772800573E7A /* UserSignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00EC9C701CB5772800573E7A /* UserSignInViewController.swift */; };
 		00EC9C731CB57F0500573E7A /* UserSignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00EC9C721CB57F0500573E7A /* UserSignUpViewController.swift */; };
@@ -84,6 +90,12 @@
 		007820391CB4DA5300388FC0 /* Assets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Assets.swift; path = "10.9.0 App with News, Chat, Cart and User/AaSwift/Assets.swift"; sourceTree = SOURCE_ROOT; };
 		00975DB41CB6051F00239075 /* IndexNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IndexNavigationController.swift; sourceTree = "<group>"; };
 		00975DB61CB6083D00239075 /* UserNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserNavigationController.swift; sourceTree = "<group>"; };
+		00975DB81CB64FC600239075 /* UserTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserTableViewController.swift; sourceTree = "<group>"; };
+		00975DBA1CB6504100239075 /* UserTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserTableViewCell.swift; sourceTree = "<group>"; };
+		00975DBF1CB654F600239075 /* IndexTestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IndexTestViewController.swift; sourceTree = "<group>"; };
+		00975DCA1CB65F3600239075 /* AaRatingControlEmptyStar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AaRatingControlEmptyStar.png; sourceTree = "<group>"; };
+		00975DCB1CB65F3600239075 /* AaRatingControlFilledStar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AaRatingControlFilledStar.png; sourceTree = "<group>"; };
+		00975DCF1CB6602C00239075 /* RatingControlView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RatingControlView.swift; sourceTree = "<group>"; };
 		00EC9C6E1CB5707A00573E7A /* Conf.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Conf.swift; sourceTree = "<group>"; };
 		00EC9C701CB5772800573E7A /* UserSignInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserSignInViewController.swift; sourceTree = "<group>"; };
 		00EC9C721CB57F0500573E7A /* UserSignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserSignUpViewController.swift; sourceTree = "<group>"; };
@@ -137,6 +149,9 @@
 		00781FE21CB4C9E200388FC0 /* 10.9.0 App with News, Chat, Cart and User */ = {
 			isa = PBXGroup;
 			children = (
+				00975DBE1CB651D400239075 /* View */,
+				00975DBD1CB651CF00239075 /* Controller */,
+				00975DBC1CB651C500239075 /* Model */,
 				007820201CB4D9FC00388FC0 /* AaSwift */,
 				00781FE31CB4C9E200388FC0 /* AppDelegate.swift */,
 				00781FE71CB4C9E200388FC0 /* Main.storyboard */,
@@ -144,16 +159,6 @@
 				00781FEF1CB4C9E200388FC0 /* LaunchScreen.storyboard */,
 				00781FF21CB4C9E200388FC0 /* Info.plist */,
 				00781FEA1CB4C9E200388FC0 /* _0_9_0_App_with_News__Chat__Cart_and_User.xcdatamodeld */,
-				007820141CB4CA5700388FC0 /* TabBarController.swift */,
-				0078201A1CB4CB1100388FC0 /* ChatViewController.swift */,
-				007820161CB4CA7700388FC0 /* IndexViewController.swift */,
-				00975DB41CB6051F00239075 /* IndexNavigationController.swift */,
-				00975DB61CB6083D00239075 /* UserNavigationController.swift */,
-				0078201E1CB4CCD800388FC0 /* ShowViewController.swift */,
-				0078201C1CB4CBC900388FC0 /* UserViewController.swift */,
-				00EC9C701CB5772800573E7A /* UserSignInViewController.swift */,
-				00EC9C721CB57F0500573E7A /* UserSignUpViewController.swift */,
-				007820181CB4CA9E00388FC0 /* CartViewController.swift */,
 			);
 			path = "10.9.0 App with News, Chat, Cart and User";
 			sourceTree = "<group>";
@@ -179,6 +184,8 @@
 		007820201CB4D9FC00388FC0 /* AaSwift */ = {
 			isa = PBXGroup;
 			children = (
+				00975DCE1CB6602C00239075 /* Components */,
+				00975DC91CB65F3600239075 /* Resources */,
 				007820211CB4D9FC00388FC0 /* Aa */,
 			);
 			path = AaSwift;
@@ -223,6 +230,105 @@
 				007820391CB4DA5300388FC0 /* Assets.swift */,
 			);
 			name = AutoGenerated;
+			sourceTree = "<group>";
+		};
+		00975DBC1CB651C500239075 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		00975DBD1CB651CF00239075 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				007820141CB4CA5700388FC0 /* TabBarController.swift */,
+				00975DC51CB6595800239075 /* Cart */,
+				00975DC41CB6594F00239075 /* Chat */,
+				00975DC31CB6594000239075 /* Show */,
+				00975DC21CB6590A00239075 /* User */,
+				00975DC11CB6590500239075 /* Index */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		00975DBE1CB651D400239075 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		00975DC11CB6590500239075 /* Index */ = {
+			isa = PBXGroup;
+			children = (
+				007820161CB4CA7700388FC0 /* IndexViewController.swift */,
+				00975DBF1CB654F600239075 /* IndexTestViewController.swift */,
+				00975DB41CB6051F00239075 /* IndexNavigationController.swift */,
+			);
+			name = Index;
+			sourceTree = "<group>";
+		};
+		00975DC21CB6590A00239075 /* User */ = {
+			isa = PBXGroup;
+			children = (
+				00975DB61CB6083D00239075 /* UserNavigationController.swift */,
+				00EC9C721CB57F0500573E7A /* UserSignUpViewController.swift */,
+				00975DBA1CB6504100239075 /* UserTableViewCell.swift */,
+				00975DB81CB64FC600239075 /* UserTableViewController.swift */,
+				00EC9C701CB5772800573E7A /* UserSignInViewController.swift */,
+				0078201C1CB4CBC900388FC0 /* UserViewController.swift */,
+			);
+			name = User;
+			sourceTree = "<group>";
+		};
+		00975DC31CB6594000239075 /* Show */ = {
+			isa = PBXGroup;
+			children = (
+				0078201E1CB4CCD800388FC0 /* ShowViewController.swift */,
+			);
+			name = Show;
+			sourceTree = "<group>";
+		};
+		00975DC41CB6594F00239075 /* Chat */ = {
+			isa = PBXGroup;
+			children = (
+				0078201A1CB4CB1100388FC0 /* ChatViewController.swift */,
+			);
+			name = Chat;
+			sourceTree = "<group>";
+		};
+		00975DC51CB6595800239075 /* Cart */ = {
+			isa = PBXGroup;
+			children = (
+				007820181CB4CA9E00388FC0 /* CartViewController.swift */,
+			);
+			name = Cart;
+			sourceTree = "<group>";
+		};
+		00975DC91CB65F3600239075 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				00975DD11CB6603D00239075 /* Components */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		00975DCE1CB6602C00239075 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				00975DCF1CB6602C00239075 /* RatingControlView.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		00975DD11CB6603D00239075 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				00975DCA1CB65F3600239075 /* AaRatingControlEmptyStar.png */,
+				00975DCB1CB65F3600239075 /* AaRatingControlFilledStar.png */,
+			);
+			name = Components;
 			sourceTree = "<group>";
 		};
 		00EC9C6D1CB5707A00573E7A /* AbIf */ = {
@@ -340,6 +446,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				00975DCC1CB65F3600239075 /* AaRatingControlEmptyStar.png in Resources */,
+				00975DCD1CB65F3600239075 /* AaRatingControlFilledStar.png in Resources */,
 				00781FF11CB4C9E200388FC0 /* LaunchScreen.storyboard in Resources */,
 				00781FEE1CB4C9E200388FC0 /* Assets.xcassets in Resources */,
 				00781FE91CB4C9E200388FC0 /* Main.storyboard in Resources */,
@@ -371,21 +479,25 @@
 				007820151CB4CA5700388FC0 /* TabBarController.swift in Sources */,
 				007820301CB4D9FC00388FC0 /* Debug.swift in Sources */,
 				007820331CB4D9FC00388FC0 /* URL.swift in Sources */,
+				00975DBB1CB6504100239075 /* UserTableViewCell.swift in Sources */,
 				00EC9C6F1CB5707A00573E7A /* Conf.swift in Sources */,
 				007820361CB4D9FC00388FC0 /* SweetAlert.swift in Sources */,
 				007820341CB4D9FC00388FC0 /* Converter.swift in Sources */,
 				0078202E1CB4D9FC00388FC0 /* Aa.swift in Sources */,
 				00975DB71CB6083D00239075 /* UserNavigationController.swift in Sources */,
 				007820321CB4D9FC00388FC0 /* Theme.swift in Sources */,
+				00975DC01CB654F600239075 /* IndexTestViewController.swift in Sources */,
 				00EC9C731CB57F0500573E7A /* UserSignUpViewController.swift in Sources */,
 				0078203A1CB4DA5300388FC0 /* Assets.swift in Sources */,
 				007820311CB4D9FC00388FC0 /* Size.swift in Sources */,
+				00975DD01CB6602C00239075 /* RatingControlView.swift in Sources */,
 				007820351CB4D9FC00388FC0 /* Notifier.swift in Sources */,
 				00975DB51CB6051F00239075 /* IndexNavigationController.swift in Sources */,
 				00EC9C711CB5772800573E7A /* UserSignInViewController.swift in Sources */,
 				00781FEC1CB4C9E200388FC0 /* _0_9_0_App_with_News__Chat__Cart_and_User.xcdatamodeld in Sources */,
 				0078201F1CB4CCD800388FC0 /* ShowViewController.swift in Sources */,
 				007820191CB4CA9E00388FC0 /* CartViewController.swift in Sources */,
+				00975DB91CB64FC600239075 /* UserTableViewController.swift in Sources */,
 				00781FE41CB4C9E200388FC0 /* AppDelegate.swift in Sources */,
 				0078201B1CB4CB1100388FC0 /* ChatViewController.swift in Sources */,
 				007820171CB4CA7700388FC0 /* IndexViewController.swift in Sources */,

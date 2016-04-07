@@ -49,9 +49,9 @@ class IndexViewController: UIViewController {
         nav()
         
         
-        let t = UILabel(frame: CGRect(x: 100, y: 100, width: 50, height: 50))
-        t.text = "DDD"
-        view.addSubview(t)
+        let testViewCtrl = IndexTestViewController()
+        //addChildViewController(testViewCtrl)
+        view.addSubview(testViewCtrl.view)
     }
     
     override func didReceiveMemoryWarning() {
