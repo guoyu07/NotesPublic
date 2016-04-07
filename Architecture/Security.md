@@ -1,5 +1,5 @@
 # Uniform Services
-In order for safety, check app key as possible
+For security, check app key and token as possible
 
 ```
 Params:
