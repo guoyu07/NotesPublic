@@ -18,7 +18,7 @@ class UserNavigationController: UINavigationController {
         
         
         
-        hidesBarsOnTap = true
+        //hidesBarsOnTap = true
         //viewControllers = []
         view.backgroundColor = UIColor.yellowColor()
         

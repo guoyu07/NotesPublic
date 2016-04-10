@@ -20,7 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         //sleep(5)
         
-        NSThread.sleepForTimeInterval(1)
+        //NSThread.sleepForTimeInterval(1)
         
         return true
     }

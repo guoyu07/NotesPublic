@@ -16,7 +16,7 @@ class TabBarController: UITabBarController {
         let userViewCtrl = UserViewController()
         let userNavCtrl = UserNavigationController(rootViewController: userViewCtrl)
         
-        viewControllers = [indexNavCtrl, ChatViewController(), CartViewController(), ShowViewController(), userNavCtrl]
+        viewControllers = [indexNavCtrl, UserTableViewController(), CartViewController(), ShowViewController(), userNavCtrl]
         
         
         //hidesBottomBarWhenPushed = true

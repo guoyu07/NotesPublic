@@ -98,6 +98,12 @@ class UserViewController: UIViewController {
         
         topView()
         tableViews()
+        
+        let tableViewController = UserTableViewController()
+        tableViewController.view.frame = CGRect(x:0, y:100, width: view.frame.width, height: 200)
+        addChildViewController(tableViewController)
+        view.addSubview(tableViewController.view)
+
     }
     
     override func didReceiveMemoryWarning() {

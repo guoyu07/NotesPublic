@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		003285FA1CB9A1A600BEB72D /* UserTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 003285F91CB9A1A600BEB72D /* UserTableViewCell.xib */; };
+		004FD59A1CB7A98D0057CAF7 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 004FD5991CB7A98D0057CAF7 /* Podfile */; };
+		006B9C461CBA234D008E6086 /* UserTableViewList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 006B9C451CBA234D008E6086 /* UserTableViewList.swift */; };
+		006B9C4B1CBA3EB8008E6086 /* Triangle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 006B9C4A1CBA3EB8008E6086 /* Triangle.swift */; };
+		006B9C501CBA41AC008E6086 /* SharedTableViewCellComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 006B9C4F1CBA41AC008E6086 /* SharedTableViewCellComponents.swift */; };
 		00781FE41CB4C9E200388FC0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00781FE31CB4C9E200388FC0 /* AppDelegate.swift */; };
 		00781FE91CB4C9E200388FC0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 00781FE71CB4C9E200388FC0 /* Main.storyboard */; };
 		00781FEC1CB4C9E200388FC0 /* _0_9_0_App_with_News__Chat__Cart_and_User.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 00781FEA1CB4C9E200388FC0 /* _0_9_0_App_with_News__Chat__Cart_and_User.xcdatamodeld */; };
@@ -60,6 +65,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		003285F91CB9A1A600BEB72D /* UserTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserTableViewCell.xib; sourceTree = "<group>"; };
+		004FD5991CB7A98D0057CAF7 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; };
+		006B9C451CBA234D008E6086 /* UserTableViewList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserTableViewList.swift; sourceTree = "<group>"; };
+		006B9C4A1CBA3EB8008E6086 /* Triangle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Triangle.swift; sourceTree = "<group>"; };
+		006B9C4F1CBA41AC008E6086 /* SharedTableViewCellComponents.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SharedTableViewCellComponents.swift; sourceTree = "<group>"; };
 		00781FE01CB4C9E200388FC0 /* 10.9.0 App with News, Chat, Cart and User.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "10.9.0 App with News, Chat, Cart and User.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		00781FE31CB4C9E200388FC0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		00781FE81CB4C9E200388FC0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -126,9 +136,34 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		006B9C421CBA220E008E6086 /* User */ = {
+			isa = PBXGroup;
+			children = (
+				006B9C451CBA234D008E6086 /* UserTableViewList.swift */,
+			);
+			name = User;
+			sourceTree = "<group>";
+		};
+		006B9C491CBA3E34008E6086 /* Icons */ = {
+			isa = PBXGroup;
+			children = (
+				006B9C4A1CBA3EB8008E6086 /* Triangle.swift */,
+			);
+			name = Icons;
+			sourceTree = "<group>";
+		};
+		006B9C4C1CBA3EF2008E6086 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				006B9C4F1CBA41AC008E6086 /* SharedTableViewCellComponents.swift */,
+			);
+			name = Shared;
+			sourceTree = "<group>";
+		};
 		00781FD71CB4C9E200388FC0 = {
 			isa = PBXGroup;
 			children = (
+				004FD5991CB7A98D0057CAF7 /* Podfile */,
 				00781FE21CB4C9E200388FC0 /* 10.9.0 App with News, Chat, Cart and User */,
 				00781FFA1CB4C9E200388FC0 /* 10.9.0 App with News, Chat, Cart and UserTests */,
 				007820051CB4C9E200388FC0 /* 10.9.0 App with News, Chat, Cart and UserUITests */,
@@ -235,6 +270,7 @@
 		00975DBC1CB651C500239075 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				006B9C421CBA220E008E6086 /* User */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -255,6 +291,7 @@
 		00975DBE1CB651D400239075 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				006B9C4C1CBA3EF2008E6086 /* Shared */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -275,6 +312,7 @@
 				00975DB61CB6083D00239075 /* UserNavigationController.swift */,
 				00EC9C721CB57F0500573E7A /* UserSignUpViewController.swift */,
 				00975DBA1CB6504100239075 /* UserTableViewCell.swift */,
+				003285F91CB9A1A600BEB72D /* UserTableViewCell.xib */,
 				00975DB81CB64FC600239075 /* UserTableViewController.swift */,
 				00EC9C701CB5772800573E7A /* UserSignInViewController.swift */,
 				0078201C1CB4CBC900388FC0 /* UserViewController.swift */,
@@ -317,6 +355,7 @@
 		00975DCE1CB6602C00239075 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				006B9C491CBA3E34008E6086 /* Icons */,
 				00975DCF1CB6602C00239075 /* RatingControlView.swift */,
 			);
 			path = Components;
@@ -446,8 +485,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				004FD59A1CB7A98D0057CAF7 /* Podfile in Resources */,
 				00975DCC1CB65F3600239075 /* AaRatingControlEmptyStar.png in Resources */,
 				00975DCD1CB65F3600239075 /* AaRatingControlFilledStar.png in Resources */,
+				003285FA1CB9A1A600BEB72D /* UserTableViewCell.xib in Resources */,
 				00781FF11CB4C9E200388FC0 /* LaunchScreen.storyboard in Resources */,
 				00781FEE1CB4C9E200388FC0 /* Assets.xcassets in Resources */,
 				00781FE91CB4C9E200388FC0 /* Main.storyboard in Resources */,
@@ -491,8 +532,11 @@
 				0078203A1CB4DA5300388FC0 /* Assets.swift in Sources */,
 				007820311CB4D9FC00388FC0 /* Size.swift in Sources */,
 				00975DD01CB6602C00239075 /* RatingControlView.swift in Sources */,
+				006B9C461CBA234D008E6086 /* UserTableViewList.swift in Sources */,
+				006B9C501CBA41AC008E6086 /* SharedTableViewCellComponents.swift in Sources */,
 				007820351CB4D9FC00388FC0 /* Notifier.swift in Sources */,
 				00975DB51CB6051F00239075 /* IndexNavigationController.swift in Sources */,
+				006B9C4B1CBA3EB8008E6086 /* Triangle.swift in Sources */,
 				00EC9C711CB5772800573E7A /* UserSignInViewController.swift in Sources */,
 				00781FEC1CB4C9E200388FC0 /* _0_9_0_App_with_News__Chat__Cart_and_User.xcdatamodeld in Sources */,
 				0078201F1CB4CCD800388FC0 /* ShowViewController.swift in Sources */,

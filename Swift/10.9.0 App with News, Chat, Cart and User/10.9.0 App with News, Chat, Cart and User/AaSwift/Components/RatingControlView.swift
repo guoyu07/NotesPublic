@@ -1,8 +1,6 @@
 import UIKit
 
 class RatingControlView: UIView {
-    static var ratingImageName = "AaRatingControlEmptyStart.png"
-    static var unrateImageName = "AaRatingControlEmptyStart.png"
     // MARK: Properties
     
     var rating = 0 {
@@ -19,8 +17,8 @@ class RatingControlView: UIView {
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         
-        let filledStarImage = UIImage(named: ratingImageName)
-        let emptyStarImage = UIImage(named: unrateImageName)
+        let filledStarImage = UIImage(named:  "AaRatingControlEmptyStart.png")
+        let emptyStarImage = UIImage(named: "AaRatingControlEmptyStart.png")
         
         for _ in 0..<5 {
             let button = UIButton()
