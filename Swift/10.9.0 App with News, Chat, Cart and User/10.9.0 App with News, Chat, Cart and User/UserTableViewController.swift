@@ -9,23 +9,29 @@
 import UIKit
 class UserTableViewController: UITableViewController {
     
+    
     var cells = [UserTableViewList]()
     
+    //let avatarViewController
     let rowHeight: CGFloat = 90
     //var ulTableView = UITableView()
     let cellIdentifier = "UserTableViewCell"
     
     func loadData() {
         let photo1 = UIImage(named: "icon_album")!
-        let cell1 = UserTableViewList(name: "Caprese Salad", photo: photo1, rating: 4)!
+        let cell1 = UserTableViewList(name: "我的订单", photo: photo1, rating: 4)!
         
         let photo2 = UIImage(named: "ic_g_airplane")!
-        let cell2 = UserTableViewList(name: "Chicken and Potatoes", photo: photo2, rating: 5)!
+        let cell2 = UserTableViewList(name: "我的财富", photo: photo2, rating: 5)!
         
         let photo3 = UIImage(named: "icon_credits")!
-        let cell3 = UserTableViewList(name: "Pasta with Meatballs", photo: photo3, rating: 3)!
+        let cell3 = UserTableViewList(name: "售后客服", photo: photo3, rating: 3)!
         
-         cells += [cell1, cell2, cell3]
+        
+        let photo4 = UIImage(named: "ic_newseting")!
+        let cell4 = UserTableViewList(name: "设置", photo: photo4, rating: 3)!
+        
+         cells += [cell1, cell2, cell3, cell4]
         tableView.reloadData()
 
     }
@@ -34,17 +40,37 @@ class UserTableViewController: UITableViewController {
         
         automaticallyAdjustsScrollViewInsets = false
         
+        let loadingBg = UIImageView(image: UIImage(named: "img_loding1"))
+        loadingBg.frame = CGRectMake(tableView.frame.width - 8, 8, 16, 16)
+        tableView.backgroundView = loadingBg
+            
+        
         //tableView.layoutMargins = UIEdgeInsets(top: 9, left:9, bottom: 9, right: 9)
         
        // tableView.contentInset = UIEdgeInsets(top: 9, left:9, bottom: 9, right: 9)
 
         tableView.rowHeight = Conf.Size.TableView.cellHeight + Conf.Size.TableView.cellMargins.top + Conf.Size.TableView.cellMargins.top
         
-        tableView.backgroundColor = UIColor.purpleColor()
-        tableView.separatorStyle = .None
-        tableView.cellLayoutMarginsFollowReadableWidth = false
+        //tableView.backgroundColor = UIColor.purpleColor()
+        //tableView.separatorStyle = .None
+        //tableView.cellLayoutMarginsFollowReadableWidth = false
         tableView.registerClass(UserTableViewCell.self, forCellReuseIdentifier: cellIdentifier)
+        
+        
+        
+        refreshControl = UIRefreshControl()
+        
+        refreshControl?.addTarget(self, action: #selector(UserTableViewController.refreshData), forControlEvents: .ValueChanged)
+        refreshControl?.attributedTitle = NSAttributedString(string: "松开后自动刷新")
+        tableView.addSubview(refreshControl!)
+        tableView.sendSubviewToBack(refreshControl!)
+        
         loadData()
+        
+    }
+    
+    func refreshData() {
+        print("refreshData")
     }
     
     override func didReceiveMemoryWarning() {
@@ -67,10 +93,7 @@ class UserTableViewController: UITableViewController {
     
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        // Table view cells are reused and should be dequeued using a cell identifier.
-        
-        let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as! UserTableViewCell
-        
+        let cell = UserTableViewCell(style: .Default, reuseIdentifier: "userCell")
         let cellData = cells[indexPath.row]
         //cell.nameLabel.text = cellData.name
         

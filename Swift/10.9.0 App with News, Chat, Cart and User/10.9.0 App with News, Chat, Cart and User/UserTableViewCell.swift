@@ -25,7 +25,7 @@ class UserTableViewCell: UITableViewCell {
         contentView.addSubview(imageView!)
         
         contentView.addSubview(detailImageView)
-        backgroundColor = UIColor.brownColor()
+        //backgroundColor = UIColor.brownColor()
         //separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: -100)
         //separatorInset = UIEdgeInsetsZero
     }

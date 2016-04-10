@@ -100,7 +100,7 @@ class UserViewController: UIViewController {
         tableViews()
         
         let tableViewController = UserTableViewController()
-        tableViewController.view.frame = CGRect(x:0, y:100, width: view.frame.width, height: 200)
+        tableViewController.view.frame = CGRect(x:0, y:180, width: view.frame.width, height: 200)
         addChildViewController(tableViewController)
         view.addSubview(tableViewController.view)
 
