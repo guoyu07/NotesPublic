@@ -13,7 +13,7 @@ class TabBarController: UITabBarController {
         let indexViewCtrl = IndexViewController()
         let indexNavCtrl = IndexNavigationController(rootViewController: indexViewCtrl)
         
-        let userViewCtrl = UserViewController()
+        let userViewCtrl = UserTableViewController()
         let userNavCtrl = UserNavigationController(rootViewController: userViewCtrl)
         
         viewControllers = [indexNavCtrl, UserTableViewController(), CartViewController(), ShowViewController(), userNavCtrl]

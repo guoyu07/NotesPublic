@@ -40,10 +40,13 @@ class UserTableViewController: UITableViewController {
         
         automaticallyAdjustsScrollViewInsets = false
         
-        let loadingBg = UIImageView(image: UIImage(named: "img_loding1"))
-        loadingBg.frame = CGRectMake(tableView.frame.width - 8, 8, 16, 16)
-        tableView.backgroundView = loadingBg
-            
+        
+        //let avatarViewController = UserAvatarViewController()
+        //addChildViewController(avatarViewController)
+        //tableView.addSubview(avatarViewController.view)
+        
+        
+        
         
         //tableView.layoutMargins = UIEdgeInsets(top: 9, left:9, bottom: 9, right: 9)
         
@@ -51,8 +54,8 @@ class UserTableViewController: UITableViewController {
 
         tableView.rowHeight = Conf.Size.TableView.cellHeight + Conf.Size.TableView.cellMargins.top + Conf.Size.TableView.cellMargins.top
         
-        //tableView.backgroundColor = UIColor.purpleColor()
-        //tableView.separatorStyle = .None
+        tableView.backgroundColor = UIColor.lightGrayColor()
+        tableView.separatorStyle = .None
         //tableView.cellLayoutMarginsFollowReadableWidth = false
         tableView.registerClass(UserTableViewCell.self, forCellReuseIdentifier: cellIdentifier)
         
@@ -63,7 +66,14 @@ class UserTableViewController: UITableViewController {
         refreshControl?.addTarget(self, action: #selector(UserTableViewController.refreshData), forControlEvents: .ValueChanged)
         refreshControl?.attributedTitle = NSAttributedString(string: "松开后自动刷新")
         tableView.addSubview(refreshControl!)
-        tableView.sendSubviewToBack(refreshControl!)
+        //tableView.sendSubviewToBack(refreshControl!)
+        
+        let bg = UIImageView(image: UIImage(named: "img_loding1"))
+        bg.frame = CGRectMake(tableView.frame.width - 8, 8, 16, 16)
+        tableView.backgroundView = bg
+        tableView.sendSubviewToBack(bg)
+
+        
         
         loadData()
         
