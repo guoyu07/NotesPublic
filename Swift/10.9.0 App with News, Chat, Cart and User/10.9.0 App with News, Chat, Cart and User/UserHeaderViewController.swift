@@ -1,5 +1,5 @@
 //
-//  UserAvatarViewController.swift
+//  UserHeaderViewController.swift
 //  10.9.0 App with News, Chat, Cart and User
 //
 //  Created by Aario on 4/10/16.
@@ -7,7 +7,7 @@
 //
 
 import UIKit
-class UserAvatarViewController: UIViewController {
+class UserHeaderViewController: UIViewController {
     func settingView(sender: UIButton) {
         presentViewController(UserSignUpViewController(), animated:true, completion:nil)
     }
@@ -50,7 +50,7 @@ class UserAvatarViewController: UIViewController {
         settingBtn.opaque = true
         settingBtn.layer.opaque = true
         settingBtn.setTitle("设置", forState: .Normal)
-        settingBtn.addTarget(self, action: #selector(UserAvatarViewController.settingView(_:)), forControlEvents: .TouchDown)
+        settingBtn.addTarget(self, action: #selector(UserHeaderViewController.settingView(_:)), forControlEvents: .TouchDown)
         
         top.addSubview(settingBtn)
         
@@ -60,13 +60,13 @@ class UserAvatarViewController: UIViewController {
         let signBtnSize = CGSize(width: 100, height: 50)
         let signUpBtn = UIButton(frame: CGRect(origin: CGPoint(x: CGFloat(0), y: CGFloat(0)), size: signBtnSize))
         signUpBtn.setTitle("注册", forState: .Normal)
-        signUpBtn.addTarget(self, action: #selector(UserAvatarViewController.signUpView(_:)), forControlEvents: .TouchDown)
+        signUpBtn.addTarget(self, action: #selector(UserHeaderViewController.signUpView(_:)), forControlEvents: .TouchDown)
         top.addSubview(signUpBtn)
         
         
         let signInBtn = UIButton(frame: CGRect(origin: CGPoint(x:100, y:0), size: signBtnSize))
         signInBtn.setTitle("登陆", forState: .Normal)
-        signInBtn.addTarget(self, action: #selector(UserAvatarViewController.signInView(_:)), forControlEvents: .TouchDown)
+        signInBtn.addTarget(self, action: #selector(UserHeaderViewController.signInView(_:)), forControlEvents: .TouchDown)
         top.addSubview(signInBtn)
         
         

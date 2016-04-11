@@ -1,3 +1,35 @@
+import UIKit
+class UserLoginData<T> {
+    var avatar: UIImage = UIImage(named: "icon_xiro")!
+    var username: String
+    var nickname: String?
+    init(username: String, avatarResource: T? = nil, nickname: String? = nil) {
+        self.username = username
+        
+        if avatarResource != nil {
+            if (avatarResource is String.Type){  // named
+                avatar = UIImage(named: String(avatarResource))!
+            } else if(avatarResource is UIImage.Type) {
+                avatar = avatarResource as! UIImage
+            }
+        }
+        
+        self.nickname = nickname == nil ? username : nickname
+    }
+}
+
+class Properties {
+   static var slip = "Static"
+   var slip = "Memeber"
+   func glitter() {
+       print(self.dynamicType.slip)   // Static self. is necessary
+       print(Properties.slip)         // Static
+       print(slip)
+   }
+}
+let p = Properties()
+p.dynamicType.slip = "Static Changing"
+Properties.slip = "Static Changing 2"
 /**
  * @objc indicates that the protocol should be exposed to Objective-C. It can be
  *  adopted only by classses that inherit from Objective-C classes or other

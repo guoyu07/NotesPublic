@@ -21,7 +21,7 @@ class UserTableViewCell: UITableViewCell {
         backgroundColor = UIColor.whiteColor()
 
         //layoutMargins = UIEdgeInsets(top: 9, left:29, bottom: 9, right: 9)
-        contentView.preservesSuperviewLayoutMargins = true
+        contentView.preservesSuperviewLayoutMargins = false
         //contentView.addSubview(nameLabel)
         contentView.addSubview(textLabel!)
         contentView.addSubview(imageView!)
@@ -39,7 +39,7 @@ class UserTableViewCell: UITableViewCell {
         let context = UIGraphicsGetCurrentContext()
         CGContextSetFillColorWithColor(context, UIColor.whiteColor().CGColor)
         CGContextFillRect(context, rect)
-        CGContextSetStrokeColorWithColor(context, UIColor.lightGrayColor().CGColor)
+        CGContextSetStrokeColorWithColor(context, UIColor.init(red: 0xE2/255.0, green: 0xE2/255.0, blue: 0xE2/255.0, alpha: 1).CGColor)
         CGContextStrokeRect(context, CGRectMake(0, rect.size.height - 1, rect.size.width, 1))
         
     }

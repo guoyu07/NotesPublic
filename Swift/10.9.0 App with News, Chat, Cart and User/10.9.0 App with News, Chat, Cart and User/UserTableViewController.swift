@@ -12,8 +12,8 @@ class UserTableViewController: UITableViewController {
     
     var cells = [UserTableViewList]()
     
-    //let avatarViewController
-    let rowHeight: CGFloat = 90
+    
+   
     //var ulTableView = UITableView()
     let cellIdentifier = "UserTableViewCell"
     
@@ -35,8 +35,14 @@ class UserTableViewController: UITableViewController {
         tableView.reloadData()
 
     }
+    
+    func handleNavigation() {
+        title = "我的"
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        handleNavigation()
         
         automaticallyAdjustsScrollViewInsets = false
         
@@ -52,7 +58,6 @@ class UserTableViewController: UITableViewController {
         
        // tableView.contentInset = UIEdgeInsets(top: 9, left:9, bottom: 9, right: 9)
 
-        tableView.rowHeight = Conf.Size.TableView.cellHeight + Conf.Size.TableView.cellMargins.top + Conf.Size.TableView.cellMargins.top
         
         tableView.backgroundColor = UIColor.lightGrayColor()
         tableView.separatorStyle = .None
@@ -66,7 +71,7 @@ class UserTableViewController: UITableViewController {
         refreshControl?.addTarget(self, action: #selector(UserTableViewController.refreshData), forControlEvents: .ValueChanged)
         refreshControl?.attributedTitle = NSAttributedString(string: "松开后自动刷新")
         tableView.addSubview(refreshControl!)
-        //tableView.sendSubviewToBack(refreshControl!)
+        tableView.sendSubviewToBack(refreshControl!)
         
         let bg = UIImageView(image: UIImage(named: "img_loding1"))
         bg.frame = CGRectMake(tableView.frame.width - 8, 8, 16, 16)
@@ -89,7 +94,7 @@ class UserTableViewController: UITableViewController {
     // MARK: - Table view data source
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 1
+        return 2
     }
     //override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
    //     return 90
@@ -97,22 +102,62 @@ class UserTableViewController: UITableViewController {
 
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return cells.count
+        switch section {
+        case 0 :
+            return 1
+        case 1 :
+            return cells.count
+        default :
+            return 0
+        }
+    }
+    
+    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        switch indexPath.section {
+        case 0:
+            return 100
+        case 1:
+            return Conf.Size.TableView.cellHeight + Conf.Size.TableView.cellMargins.top + Conf.Size.TableView.cellMargins.top
+        default:
+            return 0
+        }
+    }
+    override func tableView(tableView: UITableView, heightForFooterInSection section: NSInteger) -> CGFloat {
+        return 44
+    }
+    
+    override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String {
+        return "header title"
+    }
+    
+    override func tableView(tableView: UITableView, titleForFooterInSection section: Int) -> String {
+        return "footter title"
     }
     
     
     
+    
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = UserTableViewCell(style: .Default, reuseIdentifier: "userCell")
-        let cellData = cells[indexPath.row]
-        //cell.nameLabel.text = cellData.name
         
-        cell.textLabel!.text = cellData.name
-        
-        cell.imageView!.image = cellData.photo
-        
-        //cell.imageView!.image =
-        return cell
+        if (indexPath.section == 0) {
+            let cell = UserHeaderLoginedTableViewCell(style: .Default, reuseIdentifier: "UserAvatarTableViewCell")
+            //cell.dynamicType.username = "Aario"
+            //cell.dynamicType.nickname = "Aario"
+            //UserAvatarTableViewCell.username = "Aario"
+            //UserAvatarTableViewCell.nickname = "Aario"
+            cell.textLabel!.text = "Aario"
+            //cell.detailTextLabel!.text = "APP ID: Aario"
+            
+            cell.imageView!.image = UIImage(named: "icon_accounts")!
+            
+            return cell
+        } else {
+            let cell = UserTableViewCell(style: .Default, reuseIdentifier: "UserTableViewCell")
+            let cellData = cells[indexPath.row]
+            cell.textLabel!.text = cellData.name
+            cell.imageView!.image = cellData.photo
+            return cell
+        }
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
