@@ -10,11 +10,21 @@
 import UIKit
 class UserHeaderLoginedTableViewCell: UITableViewCell {
     
+    var membershipLevelImageView: UIImageView!
+    var moreImageView: UIImageView!
     
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
         backgroundColor = UIColor.whiteColor()
+        
+        
+        membershipLevelImageView = UIImageView(image: UIImage(named: "icon_v0"))
+        
+        moreImageView = UIImageView(image: UIImage(named: "icon_enterlevel"))
+        
+        contentView.addSubview(membershipLevelImageView)
+        contentView.addSubview(moreImageView)
         contentView.addSubview(imageView!)
         
         contentView.addSubview(textLabel!)
@@ -38,9 +48,15 @@ class UserHeaderLoginedTableViewCell: UITableViewCell {
         
     }
     override func layoutSubviews() {
-        imageView!.frame = CGRectMake(0, 0, 90, 90)
-        textLabel!.frame = CGRectMake(0, 0, 200, 20)
+       
+        let cellMargin: CGFloat = 20
+        let avatarDiameter = frame.height - 2 * cellMargin
+        imageView!.frame = CGRectMake(cellMargin, cellMargin, avatarDiameter, avatarDiameter)
+        textLabel!.frame = CGRectMake(avatarDiameter + 2 * cellMargin, cellMargin, 200, 20)
         //detailTextLabel!.frame = CGRectMake(0, 0, 300, 40)
+        
+        membershipLevelImageView.frame = CGRectMake(frame.width - 30, cellMargin, 16,16)
+        moreImageView.frame = CGRectMake(frame.width - 10, cellMargin, 16, 16)
     }
     
     

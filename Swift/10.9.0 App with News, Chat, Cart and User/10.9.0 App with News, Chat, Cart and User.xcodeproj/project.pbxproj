@@ -11,6 +11,7 @@
 		006B21EC1CBB828100D48213 /* UserHeaderLoginedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 006B21EB1CBB828100D48213 /* UserHeaderLoginedTableViewCell.swift */; };
 		006B21EE1CBB90E300D48213 /* UserLoginData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 006B21ED1CBB90E300D48213 /* UserLoginData.swift */; };
 		006B21F01CBBA66400D48213 /* UseHeaderNotLoginedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 006B21EF1CBBA66400D48213 /* UseHeaderNotLoginedTableViewCell.swift */; };
+		006B21F31CBBF1D100D48213 /* UserSettingTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 006B21F21CBBF1D100D48213 /* UserSettingTableViewController.swift */; };
 		006B9C461CBA234D008E6086 /* UserTableViewList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 006B9C451CBA234D008E6086 /* UserTableViewList.swift */; };
 		006B9C4B1CBA3EB8008E6086 /* Triangle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 006B9C4A1CBA3EB8008E6086 /* Triangle.swift */; };
 		006B9C501CBA41AC008E6086 /* SharedTableViewCellComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 006B9C4F1CBA41AC008E6086 /* SharedTableViewCellComponents.swift */; };
@@ -26,7 +27,6 @@
 		007820171CB4CA7700388FC0 /* IndexViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 007820161CB4CA7700388FC0 /* IndexViewController.swift */; };
 		007820191CB4CA9E00388FC0 /* CartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 007820181CB4CA9E00388FC0 /* CartViewController.swift */; };
 		0078201B1CB4CB1100388FC0 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0078201A1CB4CB1100388FC0 /* ChatViewController.swift */; };
-		0078201D1CB4CBC900388FC0 /* UserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0078201C1CB4CBC900388FC0 /* UserViewController.swift */; };
 		0078201F1CB4CCD800388FC0 /* ShowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0078201E1CB4CCD800388FC0 /* ShowViewController.swift */; };
 		0078202E1CB4D9FC00388FC0 /* Aa.swift in Sources */ = {isa = PBXBuildFile; fileRef = 007820221CB4D9FC00388FC0 /* Aa.swift */; };
 		007820301CB4D9FC00388FC0 /* Debug.swift in Sources */ = {isa = PBXBuildFile; fileRef = 007820251CB4D9FC00388FC0 /* Debug.swift */; };
@@ -72,6 +72,7 @@
 		006B21EB1CBB828100D48213 /* UserHeaderLoginedTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserHeaderLoginedTableViewCell.swift; sourceTree = "<group>"; };
 		006B21ED1CBB90E300D48213 /* UserLoginData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserLoginData.swift; sourceTree = "<group>"; };
 		006B21EF1CBBA66400D48213 /* UseHeaderNotLoginedTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UseHeaderNotLoginedTableViewCell.swift; sourceTree = "<group>"; };
+		006B21F21CBBF1D100D48213 /* UserSettingTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserSettingTableViewController.swift; sourceTree = "<group>"; };
 		006B9C451CBA234D008E6086 /* UserTableViewList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserTableViewList.swift; sourceTree = "<group>"; };
 		006B9C4A1CBA3EB8008E6086 /* Triangle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Triangle.swift; sourceTree = "<group>"; };
 		006B9C4F1CBA41AC008E6086 /* SharedTableViewCellComponents.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SharedTableViewCellComponents.swift; sourceTree = "<group>"; };
@@ -93,7 +94,6 @@
 		007820161CB4CA7700388FC0 /* IndexViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IndexViewController.swift; sourceTree = "<group>"; };
 		007820181CB4CA9E00388FC0 /* CartViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CartViewController.swift; sourceTree = "<group>"; };
 		0078201A1CB4CB1100388FC0 /* ChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
-		0078201C1CB4CBC900388FC0 /* UserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserViewController.swift; sourceTree = "<group>"; };
 		0078201E1CB4CCD800388FC0 /* ShowViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowViewController.swift; sourceTree = "<group>"; };
 		007820221CB4D9FC00388FC0 /* Aa.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Aa.swift; sourceTree = "<group>"; };
 		007820251CB4D9FC00388FC0 /* Debug.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Debug.swift; sourceTree = "<group>"; };
@@ -142,6 +142,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		006B21F11CBBF17B00D48213 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				006B21F21CBBF1D100D48213 /* UserSettingTableViewController.swift */,
+			);
+			name = Settings;
+			sourceTree = "<group>";
+		};
 		006B9C421CBA220E008E6086 /* User */ = {
 			isa = PBXGroup;
 			children = (
@@ -317,6 +325,7 @@
 		00975DC21CB6590A00239075 /* User */ = {
 			isa = PBXGroup;
 			children = (
+				006B21F11CBBF17B00D48213 /* Settings */,
 				00975DB61CB6083D00239075 /* UserNavigationController.swift */,
 				00EC9C721CB57F0500573E7A /* UserSignUpViewController.swift */,
 				00975DBA1CB6504100239075 /* UserTableViewCell.swift */,
@@ -325,7 +334,6 @@
 				00975DB81CB64FC600239075 /* UserTableViewController.swift */,
 				006B9C511CBA9599008E6086 /* UserHeaderViewController.swift */,
 				00EC9C701CB5772800573E7A /* UserSignInViewController.swift */,
-				0078201C1CB4CBC900388FC0 /* UserViewController.swift */,
 			);
 			name = User;
 			sourceTree = "<group>";
@@ -526,8 +534,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				006B21EE1CBB90E300D48213 /* UserLoginData.swift in Sources */,
-				0078201D1CB4CBC900388FC0 /* UserViewController.swift in Sources */,
 				007820151CB4CA5700388FC0 /* TabBarController.swift in Sources */,
+				006B21F31CBBF1D100D48213 /* UserSettingTableViewController.swift in Sources */,
 				007820301CB4D9FC00388FC0 /* Debug.swift in Sources */,
 				007820331CB4D9FC00388FC0 /* URL.swift in Sources */,
 				006B21EC1CBB828100D48213 /* UserHeaderLoginedTableViewCell.swift in Sources */,

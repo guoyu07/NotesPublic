@@ -10,11 +10,11 @@ import UIKit
 class UserTableViewList: NSObject, NSCoding {
     // MARK: Properties
     
-    //var nextViewController
+    var nextViewController: UIViewController?
     
     var name: String
     var photo: UIImage?
-    var rating: Int
+    var cellBadgeValue: Int?
     
     // MARK: Archiving Paths
     
@@ -31,38 +31,26 @@ class UserTableViewList: NSObject, NSCoding {
     
     // MARK: Initialization
     
-    init?(name: String, photo: UIImage?, rating: Int) {
+    init?(name: String, photo: UIImage? = nil, nextViewController: UIViewController? = nil, cellBadgeValue: Int? = nil) {
         // Initialize stored properties.
         self.name = name
         self.photo = photo
-        self.rating = rating
-        
+        self.cellBadgeValue = cellBadgeValue
+        self.nextViewController = nextViewController
         super.init()
         
-        // Initialization should fail if there is no name or if the rating is negative.
-        if name.isEmpty || rating < 0 {
-            return nil
-        }
     }
     
     // MARK: NSCoding
     
     func encodeWithCoder(aCoder: NSCoder) {
-        aCoder.encodeObject(name, forKey: PropertyKey.nameKey)
-        aCoder.encodeObject(photo, forKey: PropertyKey.photoKey)
-        aCoder.encodeInteger(rating, forKey: PropertyKey.ratingKey)
+
     }
     
     required convenience init?(coder aDecoder: NSCoder) {
-        let name = aDecoder.decodeObjectForKey(PropertyKey.nameKey) as! String
-        
-        // Because photo is an optional property of Meal, use conditional cast.
-        let photo = aDecoder.decodeObjectForKey(PropertyKey.photoKey) as? UIImage
-        
-        let rating = aDecoder.decodeIntegerForKey(PropertyKey.ratingKey)
-        
-        // Must call designated initializer.
-        self.init(name: name, photo: photo, rating: rating)
+        let name = "TEST"
+        let photo = UIImage(named: "icon_xiro")
+        self.init(name: name, photo: photo)
     }
     
 }
