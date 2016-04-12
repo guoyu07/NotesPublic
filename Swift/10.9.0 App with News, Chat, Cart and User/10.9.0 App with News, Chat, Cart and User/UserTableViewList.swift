@@ -10,20 +10,49 @@ import UIKit
 class UserTableViewList: NSObject, NSCoding {
     // MARK: Properties
     
+    var savingFilename : String? {
+        set {
+            if newValue != nil {
+                saveData(self)
+            }
+        }
+        get {
+            return self.savingFilename
+        }
+    }
+    
+    var didSelectRowAction: Selector?
     var nextViewController: UIViewController?
     
     var name: String
     var photo: UIImage?
     var cellBadgeValue: Int?
     
-    // MARK: Archiving Paths
     
     static let DocumentsDirectory = NSFileManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask).first!
-    static let ArchiveURL = DocumentsDirectory.URLByAppendingPathComponent("meals")
+    static let ArchiveURL = DocumentsDirectory.URLByAppendingPathComponent("TableViewData", isDirectory: true).URLByAppendingPathComponent("sss.tbvData")
+    
+    
+    func saveData(data: UserTableViewList) {
+        let isSuccessfulSave = NSKeyedArchiver.archiveRootObject(data, toFile: UserTableViewList.ArchiveURL.path!)
+        if !isSuccessfulSave {
+            print("Failed to save meals...")
+        }
+    }
+    
+    func loadData() -> [UserTableViewList]? {
+        return NSKeyedUnarchiver.unarchiveObjectWithFile(UserTableViewList.ArchiveURL.path!) as? [UserTableViewList]
+    }
     
     // MARK: Types
     
     struct PropertyKey {
+        static let imageViewKey = ""
+        static let textLabelKey = ""
+        static let detailLabelKey = ""
+        static let accessoryViewKey = ""
+        
+        
         static let nameKey = "name"
         static let photoKey = "photo"
         static let ratingKey = "rating"
@@ -44,7 +73,7 @@ class UserTableViewList: NSObject, NSCoding {
     // MARK: NSCoding
     
     func encodeWithCoder(aCoder: NSCoder) {
-
+        aCoder.encodeObject(name, forKey: PropertyKey.nameKey)
     }
     
     required convenience init?(coder aDecoder: NSCoder) {

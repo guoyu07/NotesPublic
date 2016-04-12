@@ -44,6 +44,17 @@ class UserTableViewController: UITableViewController {
         title = "我的"
     }
     override func viewDidLoad() {
+        
+        //print(NSFileManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask).first!)
+        let desktopURL = NSURL(fileURLWithPath: "/Users/aa/Library/Test")
+        do {
+            let tmpURL = try NSFileManager.defaultManager().URLForDirectory(.ItemReplacementDirectory, inDomain: .UserDomainMask, appropriateForURL: desktopURL, create: true)
+            print(tmpURL)
+        } catch {
+            print("EEE")
+        }
+
+        
         super.viewDidLoad()
         
         handleNavigation()
@@ -153,7 +164,7 @@ class UserTableViewController: UITableViewController {
             //cell.dynamicType.nickname = "Aario"
             //UserAvatarTableViewCell.username = "Aario"
             //UserAvatarTableViewCell.nickname = "Aario"
-            cell.textLabel!.text = "Aario"
+            cell.textLabel!.text = "Aario " + String(indexPath.row)
             //cell.detailTextLabel!.text = "APP ID: Aario"
             
             cell.imageView!.image = UIImage(named: "icon_accounts")!
@@ -179,11 +190,11 @@ class UserTableViewController: UITableViewController {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
         
         if (indexPath.section == 2) {
-            if let nextViewController = cells[indexPath.row].nextViewController {
+            if let nextViewController = systemSettings[indexPath.row].nextViewController {
                 navigationController?.pushViewController(nextViewController, animated: true)
             }
         } else {
-            if let nextViewController = systemSettings[indexPath.row].nextViewController {
+            if let nextViewController = cells[indexPath.row].nextViewController {
                 navigationController?.pushViewController(nextViewController, animated: true)
             }
             

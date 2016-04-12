@@ -178,9 +178,17 @@ class UserSettingTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
         
-        let row = indexPath.row
-        print(row)
-        navigationController?.pushViewController(UserSignInViewController(), animated: true)
+        if (indexPath.section == 2) {
+            if let nextViewController = systemSettings[indexPath.row].nextViewController {
+                navigationController?.pushViewController(nextViewController, animated: true)
+            }
+        } else {
+            if let nextViewController = cells[indexPath.row].nextViewController {
+                navigationController?.pushViewController(nextViewController, animated: true)
+            }
+            
+        }
+
     }
     
     

@@ -9,12 +9,10 @@
 import UIKit
 class UserTableViewCell: UITableViewCell {
     
-    let imageSize = CGSize(width: CGFloat(24), height: CGFloat(24))
     
     //var nameLabel: UILabel! = UILabel()
     
-    var detailImageView = UIImageView(image: UIImage(named: "icon_entersetting"))
-  
+    //var detailImageView =
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
@@ -26,7 +24,9 @@ class UserTableViewCell: UITableViewCell {
         contentView.addSubview(textLabel!)
         contentView.addSubview(imageView!)
         
-        contentView.addSubview(detailImageView)
+        accessoryView = UIImageView(image: UIImage(named: "icon_entersetting"))
+
+        contentView.addSubview(accessoryView!)
         //separatorInset = UIEdgeInsets(top: 10, left: 10, bottom: 0, right: -100)
         //separatorInset = UIEdgeInsetsZero
     }
@@ -50,7 +50,7 @@ class UserTableViewCell: UITableViewCell {
 
         textLabel!.frame = CGRectMake(imageView!.frame.width + Conf.Size.TableView.cellMargins.left, 0, 200, 24)
         
-        detailImageView.frame = CGRectMake(frame.width - Conf.Size.TableView.cellHeight, (Conf.Size.TableView.cellHeight - Conf.Size.TableView.detailViewImageSize.height) / 2, Conf.Size.TableView.detailViewImageSize.width, Conf.Size.TableView.detailViewImageSize.height)
+        accessoryView!.frame = CGRectMake(frame.width - Conf.Size.TableView.cellHeight, (Conf.Size.TableView.cellHeight - Conf.Size.TableView.detailViewImageSize.height) / 2, Conf.Size.TableView.detailViewImageSize.width, Conf.Size.TableView.detailViewImageSize.height)
     }
 
 

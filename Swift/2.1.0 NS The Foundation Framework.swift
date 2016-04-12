@@ -47,3 +47,64 @@
     .URLsForResourcesWithExtension(_ ext?, subdirectory?) -> [NSURL]?
 
 
+
+    
+# NSFileManager
+enum NSSearchPathDirectory : UInt {
+    ApplicationDirectory            // /Applications
+    DemoApplicationDirectory        // unsupported applications
+    DeveloperApplicationDirectory   // /Developer/Applications
+    AdminApplicationDirectory       
+    LibraryDirectory                // /Library
+    DeveloperDirectory              // /Developer
+    UserDirectory                   // /Users
+    DocumentationDirectory
+    DocumentDirectory               
+    CoreServiceDirectory            // System/Library/CoreServices
+    AutosavedInformationDirectory   // Library/Autosave
+    DesktopDirectory
+    CachesDirectory
+    ApplicationSupportDirectory
+    DownloadsDirectory
+    InputMethodsDirectory
+    MoviesDirectory
+    MusicDirectory
+    PicturesDirectory
+    PrinterDescriptionDirectory
+    SharedPublicDirectory
+    PreferencePanesDirectory
+    ApplicationScriptsDirectory
+    ItemReplacementDirectory
+    AllApplicationsDirectory
+    AllLibrariesDirectory
+    TrashDirectory    
+}
+
+struct NSSearchPathDomainMask : OptionSetType {
+    UserDomainMask      // user's home directory, personal items
+    LocalDomainMask     // available to everyone on this machine
+    NetworkDomainMask   // available on network (/Network)
+    SystemDomainMask    // Provided by Apple, can't be modified(/System)
+    AllDomainsMask
+}
+    .defaultManager() -> NSFileManager  // return the shared file manager
+    
+    // Locating System Directories
+
+    /**
+     * Locates (and optionally creats) a directory
+        let desktopURL = NSURL(fileURLWithPath: "/Users/aa/Library/Test")
+        do {
+            let tmpURL = try NSFileManager.defaultManager().URLForDirectory(.ItemReplacementDirectory, inDomain: .UserDomainMask, appropriateForURL: desktopURL, create: true)
+            print(tmpURL)
+        } catch {
+        }
+        // It creates a new temporary directory in the form of `file:///Users/aa/Library/(A%20Document%20Being%20Saved%20By%2010.9.0%20App%20with%20News,%20Chat,%20Cart%20and%20User%204)/`
+     */
+    .URLForDirectory(_: NSSearchPathDirectory, 
+                    inDomain domain: NSSearchPathDomainMask,
+                    appropriateForURL url: NSURL?, 
+                    create shouldCreate: Bool) throws -> NSURL
+    
+    .URLsForDirectory(_: NSSearchPathDirectory,
+                      inDomain domainMask) -> [NSURL]

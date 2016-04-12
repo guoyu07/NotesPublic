@@ -2,9 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:Empty.xib">
-   </FileRef>
-   <FileRef
       location = "group:10.9.0 App with News, Chat, Cart and User.xcodeproj">
    </FileRef>
    <FileRef

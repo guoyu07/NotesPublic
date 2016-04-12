@@ -142,6 +142,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		000367131CBCB93F005B2F5E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
 		006B21F11CBBF17B00D48213 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
@@ -245,6 +252,7 @@
 		007820211CB4D9FC00388FC0 /* Aa */ = {
 			isa = PBXGroup;
 			children = (
+				000367131CBCB93F005B2F5E /* Model */,
 				00EC9C6D1CB5707A00573E7A /* AbIf */,
 				007820221CB4D9FC00388FC0 /* Aa.swift */,
 				007820291CB4D9FC00388FC0 /* Converter.swift */,
