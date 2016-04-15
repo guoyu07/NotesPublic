@@ -1,5 +1,5 @@
 .DS_Store
 *.~$lock
 
-# avoid the swift `Pods/.../R*.swift` which may crash the git on Windows
-Pods/
+# Fuck the file name /SQLite/Extensions/R*Tree.swift on Windows  
+#/SQLite
