@@ -2,4 +2,4 @@
 *.~$lock
 
 # Fuck the file name /SQLite/Extensions/R*Tree.swift on Windows  
-#/SQLite
+/SQLite
