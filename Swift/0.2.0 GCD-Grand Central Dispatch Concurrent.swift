@@ -1,3 +1,13 @@
+/**
+ * Queuing Tasks for Dispatch
+ *  Main: tasks execute serially on your application’s main thread
+ *  Concurrent: tasks are dequeued in FIFO order, but run concurrently
+ *  Serial: tasks execute one at a time in FIFO order
+ */
+
+
+
+
 
 print("------------------------------------------- Start: Asynchronous Demo")
 
@@ -22,7 +32,6 @@ dispatch_async(globalQueue) {
         print("In thread: dispatch_apply(\(inferiors[i])) : blocks following")
     }
     print("End: {Concurrent} ~> {Serial}")
-    
 }
 
 

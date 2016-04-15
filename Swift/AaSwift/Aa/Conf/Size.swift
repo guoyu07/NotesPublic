@@ -1,5 +1,0 @@
-extension Conf {
-    struct Size {
-        
-    }
-}
