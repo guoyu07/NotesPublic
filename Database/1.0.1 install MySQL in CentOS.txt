@@ -41,7 +41,7 @@ sh$ sudo rm -f /usr/my.cnf
 /**
  * http://dev.mysql.com/downloads/repo/yum/  
  */
-sh$ sudo rpm -Uvh http://dev.mysql.com/get/mysql57-community-release-el7-7.noarch.rpm
+sh$ sudo rpm -Uvh http://dev.mysql.com/get/mysql57-community-release-el7-8.noarch.rpm
 
 
 /* You can check that the MySQL Yum repository has been successfully added by the following command: */
