@@ -6,14 +6,14 @@ Params:
     app_key = ${app key}
     access_token = ${access token}
 GET 
-    uniform/access_token : string       // get access token
-    uniform/timestamp : int             // get unified timestamp
+    standard/access_token : string       // get access token
+    standard/time                        // adjust time
 ```
 
 
 # Signature for Products
 ```
-      --(1)--> uniform/timestamp
+      --(1)--> standard/timestamp
   APP --(2)--> cart/app_key=${app key}&sign=CSDDES203D...&params=${values}  
   
 ```

@@ -15,7 +15,7 @@ sh$ docker rm $(docker ps -a -q)
 sh$ docker ps 
 |[
 CONTAINER ID        IMAGE               COMMAND             CREATED            
-e19b324f3483        lef/nginxsrc        "/bin/bash"         16 seconds ago
+e19b324f3483        aario/nginx        "/bin/bash"         16 seconds ago
 ]|
 
 

@@ -39,13 +39,13 @@ sh$ docker pull centos
 sh$ docker images
 |[
 REPOSITORY     TAG                 IMAGE ID
-lef/nginx             latest              e7beba77db14
-nginx                  latest              ceab60537ad2
+aario/nginx             latest            e7beba77db14
+nginx                  latest             ceab60537ad2
 php                     lastest           1fab6e54xadd
 centos                latest              0f73ae75014f
 ]|
 /**
- * docker run -it lef/php /bin/bash
+ * docker run -it aario/php /bin/bash
  */
 sh$ docker run -it centos /bin/bash
 |[
@@ -64,7 +64,7 @@ cba2dc563f04        aa/redis
 ...
 ]|
 /* sh$ docker tag bb06fd8b22f0 aa/nginx:ssl */
-sh$ docker commit -m "comment" -a "Aaron Script" -p 972bce4a356a aarioai/nginx:ssl
+sh$ docker commit -m "comment" -a "Aario" -p 972bce4a356a aario/nginx:ssl
 sh$ docker images
 |[
 REPOSITORY     TAG   IMAGE ID 
@@ -82,11 +82,11 @@ Email:
 
 /**
  * Create a repository https://hub.docker.com/add/repository/
- *  aarioai/nginx 
+ *  aario/nginx 
  */
-sh$ docker push aarioai/nginx:ssl
+sh$ docker push aario/nginx:ssl
 
-sh$ docker pull -t ssl aarioai/nginx    /* to pull */   
+sh$ docker pull -t ssl aario/nginx    /* to pull */   
 
 sh$ docker logout
 
@@ -120,8 +120,8 @@ RUN <cmd>            /* run in /bin/sh -c shell form */
 RUN ["<executable>", "<param1>", "<param2>" ...]
  
 /**
- *  ADD redis.tgz /user/lef/Downloads    --> decompress it
- *  COPY redis.tgz /usr/lef/Downloads    --> /usr/lef/Downloads/redis.tgz
+ *  ADD redis.tgz /user/aario/Downloads    --> decompress it
+ *  COPY redis.tgz /usr/aario/Downloads    --> /usr/aario/Downloads/redis.tgz
  */ 
 ADD <source file or URL> <destination in docker>
 COPY <source file or URL> <destination>

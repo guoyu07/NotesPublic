@@ -40,8 +40,7 @@ subsist=$(($(extraneous) + $(substitution)))
 
 appellation="Aaron"   
 appellation=100         # redefine, never quote literal integers
-scores=(1,3,4,5)
-scores[4]=8
+
 CONST_NUM = 1000
 readonly CONST_NUM            # constant
 unset CONST_NUM               # unset a variable
@@ -57,6 +56,32 @@ declare -i sum = $RANDOM*10/32768  # $RANDOM = [0, 32767]
 
 declare -xr CONST_AND_ENV="extraneous" # both constant and environment
 
+scores=(1,3,4,5)
+scores[4]=8
+
+value=4
+
+isInArray() {
+    
+}
+isInArray2() {
+    search=$1
+    arr=$2
+    search=${search,//\./\\.}
+    search=${search,//\*/\\*}
+    search=${search,//\+/\\+}
+    search=${search,//\?/\\?}
+    # ${v/replacement/replaceTo}
+    if [ echo "${arr[@]}" | grep -E "(^$search,)|(,$search,)|(,$search$)"  ]; then 
+        return 1
+    fi
+    return 0
+}
+
+
+
+
+
 
 source "./b.sh"   # run ./b.sh
 . ./b.sh          # run ./b.sh
@@ -69,6 +94,15 @@ echo -e "\n"  # disable escape-char '\'
 echo '\n'     # 
 printf "\n"   # "\n"
 printf "%d %s\n" 100 "Aaron"
+
+
+test="I'm Aario Ai!"
+# ${var/replacement/replace}         replace once
+echo ${test/ /\\s}         #  I'm\sAario Ai!
+
+# ${var//replacement/replace}       replace all
+echo ${test// /\\s}        # I'm\sAario\sAi!
+
 
 echo ${scores[0]}
 echo ${scores[*])}   # 
@@ -126,7 +160,7 @@ command > /dev/null 2>&1
 # -eq $num -ne $num -gt -lt -ge(great and equal) -le
 # == $string != $string
 # -z $str (isempty($str))  
-# -n $str (!isempty($str))
+# -s $file   is file not empty
 # -b $file  is $file a device file
 # -c $file  is $file a character device file
 # -d $dir   is $dir a directory
@@ -138,7 +172,7 @@ command > /dev/null 2>&1
 # -r $file  is readble
 # -w $file  is writable
 # -x $file  is executable
-# -s $file  is filesize($file) == 0
+# -s $file  is filesize($file) != 0
 # -e $path  is $path exist
 
 # Put `; do` and `; then` on the same line as the while, for or if.
@@ -176,6 +210,7 @@ for skill in 1 2 3 4 5; do      # for $str in "Hello, Aaron!"
   echo $@       # all arguments seperated, e.g. "arg1" "arg2" ...
   echo $n       # *(argv+n)
   echo $#       # int argc
+  echo ${!#}   # last arg
   echo $?       # exit status, 0 on success; 1 on error
 done
 

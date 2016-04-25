@@ -71,7 +71,7 @@ sh$ sudo firewall-cmd --zone=public --add-port=80/tcp --permanent
 sh$ sudo firewall-cmd --zone=public --add-port=8080/tcp --permanent
 sh$ sudo firewall-cmd --zone=public --add-port=3306/tcp --permanent
 /*
-sh$ sudo firewall-cmd --reload  will restore all the firewall rules
+sh$ sudo firewall-cmd --reload
 */
 
 
