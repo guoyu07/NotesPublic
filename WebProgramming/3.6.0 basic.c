@@ -44,7 +44,7 @@ PHP_FUNCTION(confirm_module_sample_compiled) {
     php_error(E_WARNING, "function module_sample(): not implemented yet");
 	}
 	strg = strpprintf(0, "Congratulations! You have successfully modified ext/%.78s/config.m4. Module %.78s is now compiled into PHP.", "module_sample", arg);
-	RETURN_STR(strg);
+	RETURN_STRING(strg);
 }
 
 

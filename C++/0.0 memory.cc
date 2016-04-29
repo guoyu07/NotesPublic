@@ -1,7 +1,46 @@
-void malloc(size_t sz)              // allocate sz byte memory (may be used, need be initialized to 0 by memset(void *p, 0, sz))
-void calloc(size_t n, size_t sz)   // allocate n sz byte memory (already be initialized to 0)
-void free (void *p)
+/**
+ * allocate sz byte memory (may be used, need be initialized to 0 by memset(void *p, 0, sz))
+ */
+void *malloc(size_t sz)     
+void *emalloc(size_t sz) {
+  void *p = malloc(sz);
+  if (p == NULL) {
+    fprintf(stderr, "out of memory!\n");
+    exit(1);
+  }
+  return p;
+}       
+void *free(void *p)
+void *efree(void *p)
+
+
+/**
+ * realloc an old point and a new size.
+ * e.g.
+ *    const char *me = "Aario Ai";
+ *    char *continuous = (char *)malloc(6 * sizeof(int));
+ *    memcpy(continuous, me, 5);
+ *    continuous[6] = '\0';
+ *    print(continuous);          // Aario
+ *    continuous = (char *)realloc(continuous, strlen(me));
+                //  [A|a|r|i|o|\0| | | |\0]
+ *    continuous[strlen(me)] = '\0';      // Aario
+ */
 void *realloc(void *p, size_t sz) 
+void *erealloc(void *p, size_t sz)
+
+
+/**
+ * allocate n * sz bytes memory (already be initialized to 0)
+ */
+void *calloc(size_t n, size_t sz)
+void *ecalloc(size_t n, size_t sz)
+
+
+
+
+
+
 
 /**
  *
