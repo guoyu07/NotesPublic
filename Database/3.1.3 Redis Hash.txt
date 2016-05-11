@@ -22,10 +22,10 @@ db> HGETALL [$k]
 酒店价格
 Key RatePlay+RoomType  ==> Price
 
-db> hmset user:1 Aaron 200
+db> hmset user:1 Aario Ai 200
 db> hgetall user:1
 |[
   "Aaron"
-  "Well"
+  "Ai"
   "200"
 ]|
