@@ -1,4 +1,5 @@
-|! Error Code !|
+# Error Code
+```
 /**
  * Error Code
  * Make an alias and require another one error code constant sheet if you need
@@ -83,12 +84,14 @@ E_NETWORK_READ_TIMEOUT = 598;
 E_EXTERNAL_SERVER = 599;
 
 E_UNPARSEABLE_RESPONSE_HEADERS = 600;
-
-|~ Suggestion ~|
-|- version -|
+```
+# Suggestion
+###  version
+```
 /v1/
-
-|- response -|
+```
+### response
+```json
 /**
  * @see https://en.wikipedia.org/wiki/HATEOAS
  * @see http://svn.apache.org/viewvc/httpd/httpd/trunk/docs/conf/mime.types?view=markup
@@ -104,13 +107,16 @@ E_UNPARSEABLE_RESPONSE_HEADERS = 600;
   "errcode": 200,
   "res": [] | {}            /* response */
 }
+```
 
-|! Theory !|
+# Theory
+```
 /**
  * GET / POST / HEAD / PUT(insert) / PATCH(update) / DELETE / TRACE / CONNECT / OPTIONS
  */
-
-|- Restful -|
+```
+## Restful
+```
 Consumer(Client)   ------------->    Service(Server) 
 Stateless
   There is no consumer state session in service. Consumers should send its 
@@ -123,13 +129,14 @@ Cache
   +----------+                                  +------------------------+
 Interface / Uniform Contract
   URL  ------   HTTP Methods -------- media type (e.g. Content-type:json)
-  
-|~ Header ~|
+```
+#  Header
+```
 Accept
 Content-type  application/json
 
 
-|! !|
+
 href  URI
 rel   relationship
     http://www.w3.org/TR/2012/WD-html5-20121025/links.html#linkTypes
@@ -162,8 +169,9 @@ Location: http://www.luexu.com/hires/099
         "href": "http://www.example.com/hires/099/refs",
     }
 }  
-
-|! URI templates !|
+```
+# URI templates
+```
 http://www.luexu.com/segment1/{token}/segement2?param1={p1}&param2={p2}
 http://www.luexu.com/segment1/{token}/segement2;longitude={p1};latitude={p2}
 
@@ -181,3 +189,4 @@ http://www.luexu.com/segment1/{token}/segement2;longitude={p1};latitude={p2}
   ]
 
 ]|
+```

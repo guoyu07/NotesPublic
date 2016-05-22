@@ -113,10 +113,10 @@ echo ${#scores[0]}   # strlen(scores[0])
 echo ${#DATE}  # strlen($DATE)
 echo ${DATE:0:3}   # substr($DATE)
 
-echo ${DATE:-"2015-05-05"}   # DATE || "2015-05-05"
-echo ${USER:=1}             # if(!USER) USER = 1
-echo ${DATE_UPTIME:?"error msg"}
-echo ${DATE:+"DATE"}           # DATE && "DATE"
+echo ${DATE:-"2015-05-05"}   # exists $DATE && $DATE != "" : $DATE ? "2015-05-05"
+echo ${USER:=1}             #  USER = exists $DATE && $DATE != "" ? $USER : 1, return $USER
+echo ${DATE_UPTIME:?"error msg"}    # if [ ! -z DATE_UPTIME ]; error 
+echo ${DATE:+"2015-05-05"}           # [ ! -z $DATE ] ? "2015-05-05" && $DATE
 echo "$appellation"
 
 # Lower-case, with underscores to separate words. Separate libraries with ::. 

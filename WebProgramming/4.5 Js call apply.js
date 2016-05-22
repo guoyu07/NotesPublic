@@ -1,3 +1,12 @@
+var bonus = {
+  length:2,
+  0:'first',
+  1:'second'
+};
+var sliced = Array.prototype.slice.call(bonus);     // ['first', 'second']
+var sliced = Array.prototype.slice.call(bonus, 0);  // ['first', 'second']
+var sliced = Array.prototype.slice.call(bonus, 1);  // ['second']
+
 /**
  * objCur.call(objToOfferThis [,arg1 [,arg2...]]) 
  * objCur.apply(objToOfferThis [, argArray]) 
