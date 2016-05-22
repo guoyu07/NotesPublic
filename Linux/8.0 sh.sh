@@ -258,6 +258,22 @@ done
 echo $line;     # Last Line: Ovum
 
 
+for i in 1 2 3; do
+    for j in 4 5 6; do
+        if [ i -eq 2 ]; then
+            continue                # continue all, i and j
+            continue 1              # continue j
+        fi
+        if [ j -eq 5 ]; then
+            break 1                 # break for j...
+        fi
+        if [ i -eq 3 ]; then
+            break 2                 # break j and i       
+            break                   # break all, j and i
+        fi
+    done
+done
+
 # Using process substitution allows redirecting output but puts the commands 
 #   in an explicit subshell rather than the implicit subshell that bash creates 
 #   for the while loop.
