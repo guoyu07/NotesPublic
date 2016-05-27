@@ -8,7 +8,7 @@ read -p "Your Name:" -t 10 name
     -t 10           # 10 sec
 
 ########################## FILE ###################################
-filename="$(pwd)/lef.cc"
+filename="$(pwd)/aario.cc"
 if [ -f ${filename} -a ${filename##*.} ] then
   echo ${filename##*.}     # get the extension
 fi
@@ -16,6 +16,7 @@ fi
 ######################### STRING ##################################
 echo "Hello, $name"
 ${name^^}       # uppercase()
+
 
 
 ######################### PROCESS #################################
@@ -34,11 +35,16 @@ echo ${rand}    # e.g. 32767
 
 
 
+
+
 extraneous=100
 substitution=10
 subsist=$(($(extraneous) + $(substitution)))
 
-appellation="Aaron"   
+i=0
+i=$[ $i + 1 ]
+
+appellation="Aario"   
 appellation=100         # redefine, never quote literal integers
 
 CONST_NUM = 1000
@@ -113,10 +119,16 @@ echo ${#scores[0]}   # strlen(scores[0])
 echo ${#DATE}  # strlen($DATE)
 echo ${DATE:0:3}   # substr($DATE)
 
-echo ${DATE:-"2015-05-05"}   # exists $DATE && $DATE != "" : $DATE ? "2015-05-05"
-echo ${USER:=1}             #  USER = exists $DATE && $DATE != "" ? $USER : 1, return $USER
+
 echo ${DATE_UPTIME:?"error msg"}    # if [ ! -z DATE_UPTIME ]; error 
 echo ${DATE:+"2015-05-05"}           # [ ! -z $DATE ] ? "2015-05-05" && $DATE
+echo ${DATE:-"2015-05-05"}   # exists $DATE && $DATE != "" : $DATE ? "2015-05-05"
+echo ${USER:=1}             #  USER = exists $DATE && $DATE != "" ? $USER : 1, return $USER
+
+echo ${NAME:="Aario"}       # DO NOT USE IT to indicate NAME = NAME : NAME ? "Aario"
+                            # It'll echo the words, and there's an `echo` keyword
+NAME=${NAME:-"Aario"}       # Suggest!!!
+
 echo "$appellation"
 
 # Lower-case, with underscores to separate words. Separate libraries with ::. 
@@ -310,7 +322,7 @@ esac
 
 select opt in $@; do
     case $opt in
-      Aario)
+      Aario | 艾瑞 | AarioAi )
         echo "First Name: Aario"
         ;;
       Ai)
@@ -319,6 +331,75 @@ select opt in $@; do
     esac
 done
 
+# a:     ==> sh$ -a 100              value is required
+# bcd    ==> sh$ -b -c -d            value is not allowed
+# 
+while getopts 'a:bcedf' opt   
+do
+    case $opt in
+        a)
+            echo "$OPTARG"
+        ;;
+        b)
+            echo "$OPTARG"
+        ;;
+        \?)
+            echo "$OPTARG"
+        ;;
+    esac
+done
 
+# sh$ a.sh -op
+
+
+f() {
+    local i=0;
+    local args=""
+    local a_arg
+    local last_arg
+    for arg in $@; do
+        if [ ! -z "$last_arg" ]; then 
+            case $last_arg in
+                -a)
+                    a_arg=$arg
+                ;;
+            esac
+            unset last_arg
+            continue;
+        fi
+        case $arg in
+            -a)
+                echo "LOVE"
+                last_arg='-a'
+            ;;
+            *)
+                echo "$$($i)"
+            ;;
+        esac
+        echo "$i: $arg"
+        i=$[ $i + 1 ]
+    done
+    echo "::: $a_arg"
+}
+
+f -a 100  200
+
+
+# check whether a command ,e.g. curl, success or not
+if curl "http://127.0.0.1"; then
+    echo "Curl Success"
+fi
+
+curl "http://127.0.0.1"
+if [ $? -eq 0 ]; then
+    echo "Sucess"
+fi
+
+
+
+# ping network connection
+if ping 127.0.0.1 -c 1; then
+    echo "Success"
+fi
 
 
