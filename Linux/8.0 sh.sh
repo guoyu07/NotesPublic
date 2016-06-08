@@ -66,8 +66,9 @@ declare -i sum = $RANDOM*10/32768  # $RANDOM = [0, 32767]
 
 declare -xr CONST_AND_ENV="extraneous" # both constant and environment
 
-scores=(1,3,4,5)
+scores=(1 3 4 5)
 scores[4]=8
+echo ${scores[1]}
 
 value=4
 
