@@ -40,6 +40,10 @@ echo ${rand}    # e.g. 32767
 extraneous=100
 substitution=10
 subsist=$(($(extraneous) + $(substitution)))
+bitwiseOperate=$((3&7))
+bitwiseOperate=$((3|7))
+bitwiseOperate=$((3^7))
+bitwiseOperate=$((3<<7))
 
 i=0
 i=$[ $i + 1 ]
