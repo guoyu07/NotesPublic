@@ -123,6 +123,7 @@ echo ${#scores[0]}   # strlen(scores[0])
 
 echo ${#DATE}  # strlen($DATE)
 echo ${DATE:0:3}   # substr($DATE)
+echo ${1: -2}       # substr($1, -2)
 
 
 echo ${DATE_UPTIME:?"error msg"}    # if [ ! -z DATE_UPTIME ]; error 
@@ -327,7 +328,7 @@ esac
 
 select opt in $@; do
     case $opt in
-      Aario | 艾瑞 | AarioAi )
+      Aario | 艾睿 | AarioAi )
         echo "First Name: Aario"
         ;;
       Ai)
