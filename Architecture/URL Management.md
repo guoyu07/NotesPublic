@@ -1,4 +1,4 @@
-## Category 目录
+## Catalog 目录
 *   [Access Tokens](#AccessTokens)
 # Access Tokens <a id="AccessTokens"></a>
 [Facebook Access Tokens](https://developers.facebook.com/docs/facebook-login/access-tokens)
