@@ -1,3 +1,4 @@
+sh$ docker rmi $(docker images --filter dangling=true)
 sh$ docker rmi $(docker images | awk '/^<none>/ {print $3}')
 sh$ docker ps -a
 |[
