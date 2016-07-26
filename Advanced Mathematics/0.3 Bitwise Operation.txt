@@ -33,7 +33,7 @@
 bitwise NOT(~) -> logical negation:         ~7      ==>  !0111 = 1000 = 8
 bitwise AND(&) -> logical AND:              7 & 8   ==>  0111 & 1000 = 0
 bitwise OR(|)  -> logical inclusive OR:     6 | 12  ==>  0110 | 1100 = 1110 = 14
-bitwise XOR(^) -> logical exclusive OR:     6 ^ 12  ==>  0110 ^ 1100 = 0001 = 1
+bitwise XOR(^) -> logical exclusive OR:     6 ^ 12  ==>  0110 ^ 1100 = 1010 = 10
 
 /**
  * Get the sizeof(n) that should be n times of sizeof(int)

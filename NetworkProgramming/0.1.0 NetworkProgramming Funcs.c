@@ -28,12 +28,12 @@ ntoh{s|l}: convert unsigned short/long from BE to host endianness (LE or BE)
  * Presentation to numeric
  * Convert IP addr. from 'Dotted Decimal Notation' to Binary, 
  * and assign to 'in_addr' or 'in6_addr' struct
- * dst_strct: 'in_addr' or 'in6_addr' struct , depended on AaronAddrFamily
+ * dst_strct: 'in_addr' or 'in6_addr' struct , depended on AarioAddrFamily
  * @param const char * ip_str INADDR_ANY indicates all IP
  * @note long INADDR_ANY is not const char *
  *      i4.sin_addr.s_addr = htonl(INADDR_ANY);   // ok
  */
-int inet_pton(sa_family_t AaronAddrFamily, const char *ip_str, void *dst_struct)
+int inet_pton(sa_family_t AarioAddrFamily, const char *ip_str, void *dst_struct)
 
 /**
  * @param numeric_addr_ptr is struct sockaddr_in/sockaddr_in6;
@@ -43,7 +43,7 @@ int inet_pton(sa_family_t AaronAddrFamily, const char *ip_str, void *dst_struct)
  */
 #define INET_ADDR_STRLEN    16  /* for IPv4 dotted-decimal */
 #define INET6_ADDR_STRLEN   46  /* for IPv6 hex string */
-const char * inet_ntop(sa_family_t AaronAddrFamily, 
+const char * inet_ntop(sa_family_t AarioAddrFamily, 
     const void *numeric_addr_ptr, char *presentation_addr, socklen_t sizeof(presentation_addr)
 );
 

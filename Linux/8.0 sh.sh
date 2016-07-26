@@ -115,6 +115,18 @@ echo ${test/ /\\s}         #  I'm\sAario Ai!
 echo ${test// /\\s}        # I'm\sAario\sAi!
 
 
+terrace=/aario/is/a/considerate/boy.friend.thigh
+#       #   : remove left, the 1st from left
+#       ##  : remove left, the last from left
+#       %   : remove right, the 1st from right
+#       %%  : remove right, the last from right
+echo ${terrace##*/}         # boy.friend.thigh
+echo ${terrace##*.}         # thigh
+echo ${terrace#*.}          # friend.thigh
+echo ${terrace%/*}          # /aario/is/a/considerate
+echo ${terrace%%.*}         # /aario/is/a/considerate/boy
+
+
 echo ${scores[0]}
 echo ${scores[*])}   # 
 echo ${scores[@])}   # 
@@ -278,14 +290,14 @@ echo $line;     # Last Line: Ovum
 
 for i in 1 2 3; do
     for j in 4 5 6; do
-        if [ i -eq 2 ]; then
+        if [ $i -eq 2 ]; then
             continue                # continue all, i and j
             continue 1              # continue j
         fi
-        if [ j -eq 5 ]; then
+        if [ $j -eq 5 ]; then
             break 1                 # break for j...
         fi
-        if [ i -eq 3 ]; then
+        if [ $i -eq 3 ]; then
             break 2                 # break j and i       
             break                   # break all, j and i
         fi
