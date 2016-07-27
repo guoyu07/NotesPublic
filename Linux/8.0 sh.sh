@@ -216,6 +216,11 @@ command > /dev/null 2>&1
 
 ######################################################
 # -a -o needs quoted by []
+
+lament=1
+[ $lament -eq 1 ] || echo "lament"     # not echo
+[ $lament -eq 1 ] && echo "lament"
+
 if [ -z $appellation -a $CONST_NUM -ne 0 ]; then 
 # && || needs quoted by [[]]
 if [ -z $appellation ] && [ $CONST_NUM -ne 0 ]; then 
