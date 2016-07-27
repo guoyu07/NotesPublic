@@ -2,6 +2,8 @@
 # @see http://google.github.io/styleguide/shell.xml
 # @see http://tiswww.case.edu/php/chet/bash/FAQ
 
+
+
 ########################## Stream #################################
 read -p "Your Name:" -t 10 name
     -p "Hint: "     # hint
@@ -130,6 +132,10 @@ echo ${terrace%%.*}         # /aario/is/a/considerate/boy
 echo ${scores[0]}
 echo ${scores[*])}   # 
 echo ${scores[@])}   # 
+
+for i in ${scores[@]}; do
+done
+
 echo ${#scores[*]}   # sizeof(scores)
 echo ${#scores[0]}   # strlen(scores[0])
 
