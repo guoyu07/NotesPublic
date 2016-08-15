@@ -2,7 +2,7 @@
  * awk [$opt] $file
  *  -F $fs  to specify the file separator, default is blank chars   
  *  -v $var=$val  pass variable into awk
- *      e.g. sh$ me='Aaron Script' && echo | awk -v me=$me '{print me}'
+ *      e.g. sh$ me='Aario Script' && echo | awk -v me=$me '{print me}'
  *  -f
  *  -m
  */
@@ -92,7 +92,7 @@ sh$ cat /etc/passwd
 |[
   root:x:0:0:root:/root:/bin/bash
   ...
-  Aaron:x:500:500::/home/Aaron:/bin/bash
+  Aario:x:500:500::/home/Aario:/bin/bash
 ]|
 
 sh$ awk -F ':' '{print $1, $NF}' /etc/passwd
@@ -185,14 +185,14 @@ sh$ awk 'BEGIN{while(getline < "/etc/passwd"){print $0;};close("/etc/passwd");}'
 sh$ echo $((100*100))
 sh$ awk 'BEGIN{a=10;if(a >= 5){print 10^3}}'
 sh$ awk 'BEGIN{a=10;print a != 10 ? 10^3 : "equal 10"}'
-sh$ awk 'BEGIN{a="Aaron Script"; if(a~/^Aa\s*/){print "matched"}}'
+sh$ awk 'BEGIN{a="Aario Script"; if(a~/^Aa\s*/){print "matched"}}'
 sh$ awk 'BEGIN{a="A";arr[0]="H"; arr[1]="A"; print (a in arr)}'
 
 
 
 
 
-sh$ me='Aaron Script'
+sh$ me='Aario Script'
 sh$ echo | awk -v me=$me '{ print me }'
 
 |[aa.txt
@@ -215,8 +215,8 @@ sh$ awk '/^#/{v=$0;next;}{print v":"$0}' aa.txt
 
 sh$ awk 'BEGIN { while ("ls" | getline) print }'
 
-sh$ echo | awk '{printf("Aaron Script!\n") > "aa.txt"}'
-sh$ echo | awk '{printf("Aaron Script!\n") >> "aa.txt"}'
+sh$ echo | awk '{printf("Aario Script!\n") > "aa.txt"}'
+sh$ echo | awk '{printf("Aario Script!\n") >> "aa.txt"}'
 
 sh$ awk '
         BEGIN{
