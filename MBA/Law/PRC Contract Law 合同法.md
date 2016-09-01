@@ -1,12 +1,86 @@
-/**
- *@url http://www.falvguwen.info/908w9.html
- */
-|+ Chapter I. General Provision +|
-|- Article 2. Definition of Contract and Exclusion -|
-An agreement concerning any personal relationship such as marriage, adoption[əˈdɑ:pʃn], guardianship[ˈgɑ:rdiənʃɪp], etc[ɛtˈsɛtərə]. shall be governed by other applicable[[ˈæplɪkəbəl] laws.
+# 中华人民共和国合同法
 
-|+ Chapter II. Formation of Contract +|
-|- Article 9. Forms of Contract -|
+* [中华人民共和国合同法](http://www.gov.cn/banshi/2005-07/11/content_13695.htm)
+* [中国政法大学合同法英文](http://www.zzdzx.com/info_show.asp?news_id=36090)
+* [Contract Law of the PRC](http://www.wipo.int/edocs/lexdocs/laws/en/cn/cn137en.pdf)
+
+* １９９９年３月１５日第九届全国人民代表大会第二次会议通过
+* １９９９年３月１５日中华人民共和国主席令第十五号公布
+* 自１９９９年１０月１日起施行
+
+```
+C : Chapter N    第N章
+A : Article N    第N条
+```
+
+# C1. General Provisions 一般规定
+## A1. Purpose
+
+This Law is formulated in order to protect the lawful rights and interests of contract parties, to safeguard social and economic order, and to promote socialist modernization. 
+
+第一条　为了保护合同当事人的合法权益，维护社会经济秩序，促进社会主义现代化建设，制定本法。
+
+## A2. Definition of Contract; Exclusion
+
+For purposes of this Law, a contract is an agreement between natural persons, legal persons or other organizations with equal standing, for the purpose of establishing, altering, or discharging a relationship of civil rights and obligations. An agreement concerning any personal relationship such as marriage, adoption[əˈdɑ:pʃn], guardianship[ˈgɑ:rdiənʃɪp], etc. shall be governed by other applicable[ˈæplɪkəbəl] laws.  
+
+第二条　本法所称合同是平等主体的自然人、法人、其他组织之间设立、变更、终止民事权利义务关系的协议。
+
+婚姻、收养、监护等有关身份关系的协议，适用其他法律的规定。
+
+## A3. Equal Standing of Parties 
+
+Contract parties enjoy equal legal standing and neither party may impose its will on the other party. 
+
+第三条　合同当事人的法律地位平等，一方不得将自己的意志强加给另一方。
+
+## A4. Right to Enter into Contract Voluntarily
+
+A party is entitled to enter into a contract voluntarily under the law, and no entity or individual may unlawfully interfere with such right. 
+
+第四条　当事人依法享有自愿订立合同的权利，任何单位和个人不得非法干预。
+
+## A5. Fairness
+
+The parties shall abide by the principle of fairness in prescribing their respective rights and obligations. 
+
+第五条　当事人应当遵循公平原则确定各方的权利和义务。
+
+## A6. Good Faith
+
+The parties shall abide by the principle of good faith in exercising their rights and performing their obligations. 
+
+第六条　当事人行使权利、履行义务应当遵循诚实信用原则。
+
+## A7. Legality
+In concluding or performing a contract, the parties shall abide by the relevant laws and administrative regulations, as well as observe social ethics, and may not disrupt social and economic order or harm the public interests.  
+
+第七条　当事人订立、履行合同，应当遵守法律、行政法规，尊重社会公德，不得扰乱社会经济秩序，损害社会公共利益。
+
+## A8. Binding Effect; Legal Protection
+
+A lawfully formed contract is legally binding on the parties. The parties shall perform their respective obligations in accordance with the contract, and neither party may arbitrarily amend or terminate the contract. 
+
+A lawfully formed contract is protected by law. 
+
+第八条　依法成立的合同，对当事人具有法律约束力。当事人应当按照约定履行自己的义务，不得擅自变更或者解除合同。
+
+依法成立的合同，受法律保护。
+
+
+
+
+
+
+
+
+
+
+
+
+
+# C2. Formation of Contracts
+## A10. Forms of Contract
 A contract may be made in a writing, in an oral[ˈɔrəl] conversation[ˌkɑ:nvərˈseɪʃn], as well as in any other form. A contract shall be in writing if a relevant law or administrative regulation so requires. A contract shall be in writing if the parties have so agreed.
 |[
 Other form: a tacit['tæsɪt] declaration[ˌdɛkləˈreʃən](implied[ɪm'plaɪd]) is acceptable
@@ -21,7 +95,7 @@ Shall be in writing in Contract Law:
 Shall be in writing in relevant law:
     土地、房屋承包、租售合同；专利、版权转让……
 ]|
-|- Article 10. Definition of Writing -|
+## Article 10. Definition of Writing
 A writing means a memorandum[ˌmɛməˈrændəm] of contract, letter or electronic[ɪˌlekˈtrɑ:nɪk] message (including telegram[ˈtɛlɪˌɡræm], telex[ˈtɛlˌɛks], facsimile[fækˈsɪməli], electronic data[ˈdætə] exchange and electronic mail), etc. which is capable[ˈkepəbəl] of expressing its contents in a tangible[ˈtændʒəbəl] form.
 |- Article 11. Terms of Contract -|
 (1) names of the parties and the domiciles thereof[ˌðerˈɑ:v]
