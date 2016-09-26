@@ -1,4 +1,15 @@
 <?php
+
+$arr = ['name' => 'Aario', 'gender' => 'male'];
+key($arr)      // 'name'
+current($arr)  // 'Aario'
+
+next($arr);
+key($arr)     	// 'gender'
+current($arr)  	// 'male
+
+
+
 /**
  * @param $pad_type
  *  STR_PAD_RIGHT
