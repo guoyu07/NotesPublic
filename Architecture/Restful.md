@@ -140,7 +140,10 @@ Content-type  application/json
 href  URI
 rel   relationship
     http://www.w3.org/TR/2012/WD-html5-20121025/links.html#linkTypes
-    self          
+    self        指向当前资源本身的链接的 rel 属性。每个资源的表达中都应该包含此关系的链接。
+    edit        指向一个可以编辑当前资源的链接。
+    item        如果当前资源表示的是一个集合，则用来指向该集合中的单个资源。
+    collection   如果当前资源包含在某个集合中，则用来指向包含该资源的集合。
     alternate   相同资源的另一版本的链接
     edit        可以编辑资源的URI
     related     相关资源
@@ -148,7 +151,7 @@ rel   relationship
     next
     first
     last
-    search
+    search      指向一个可以搜索当前资源及其相关资源的链接。
 title   
 type  optional, mime type
 hreflang  optional, 
