@@ -1,5 +1,7 @@
 #!/usr/bin/expect
 
+
+# yum install -y expect
 # Run expect in bash
 ```
 #!/bin/bash
@@ -95,10 +97,6 @@ expect {
         set timeout 1000
         set passwderror 1
         send "$passwd\r"
-        exp_continue
-    }
-    "*es/no)?*" {
-        send "yes\r"
         exp_continue
     }
     timeout {

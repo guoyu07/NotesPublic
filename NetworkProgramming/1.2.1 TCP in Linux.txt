@@ -133,7 +133,7 @@ F S   UID   PID  PPID  ADDR SZ WCHAN  TTY    CMD
 .48692 > .9877: Flags [P.], seq 1:4097, ack 1, win 342, opt [nop,nop,TS val 5732826 ecr 5469683], length 4096
 .9877 > .48692: Flags [.], ack 4097, win 1024, opt [nop,nop,TS val 5732827 ecr 5732826], length 0
 /**
- * Serv: write() "Aaron Says: Love", [P.]=Push
+ * Serv: write() "Aario Says: Love", [P.]=Push
  */
 .9877 > .48692: Flags [P.], seq 1:20, ack 4097, win 1024, opt [nop,nop,TS val 5732827 ecr 5732826], length 19
 .48692 > .9877: Flags [.], ack 20, win 342, opt [nop,nop,TS val 5732827 ecr 5732827], length 0

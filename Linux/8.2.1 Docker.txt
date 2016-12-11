@@ -21,7 +21,7 @@ gpgkey=https://yum.dockerproject.org/gpg
 sh$ sudo yum clean all
 sh$ sudo yum update -y        
 sh$ sudo yum install -y docker-engine
-sh$ sudo chkconfig docker on  
+sh$ sudo systemctl enable docker
 sh$ sudo systemctl start docker.service
 
 sh$ sudo usermod -aG dockerroot $USER         /* add you to group docker */
