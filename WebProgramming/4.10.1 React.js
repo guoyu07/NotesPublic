@@ -1,14 +1,8 @@
-/*
-  function HelloMessage(props) {
-    return <div>Hello {props.name}</div>;
-  }
-  ReactDOM.render(<HelloMessage name="Sebastian" />, mountNode);
- */
-var HelloMessage = (props) => <div>Hello {props.name}</div>;
-ReactDOM.render(<HelloMessage name="Sebastian" />, mountNode);
+
+
+
  
-export class Rcc extends React.Component
-{
+class Rcc extends React.Component {
   static defaultProps = {
     autoPlay: false,
     initialCount: 10,

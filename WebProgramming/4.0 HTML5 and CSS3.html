@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="zh-cn">
 <head>
   <meta charset="utf-8">
   
@@ -169,12 +169,15 @@
  */
 
   // check wheather the browser supports localStorage or not
+  // https://developer.mozilla.org/zh-CN/docs/Web/API/Storage/key
 if('localStorage' in window && null !== window['localStorage']){
-  localStorage['name'] = 'Aario Ai';  // localStorage.setItem('name', 'Aario Ai');
-  localStorage['name'];   // localStorage.getItem('name');
+ localStorage.setItem('name', 'Aario Ai');  // localStorage['name'] = 'Aario Ai';   这种不兼容 手机浏览器
+  localStorage.getItem('name'); //localStorage['name'];  这种不兼容 手机浏览器
 
   localStorage.removeItem('name');    // remove one
   localStorage.clear();               // remove all
+  
+  localStorage.key(int $id)
 }
 
 
