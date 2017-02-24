@@ -1,2 +1,0 @@
-RewriteEngine on
-RewriteRule ^j/(\w+)\.js$ /j/$1.php?%{QUERY_STRING} [L]

@@ -1,1 +1,0 @@
-<?php define('GO_LOCAL','uploadfile');?>

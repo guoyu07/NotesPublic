@@ -1,1 +1,0 @@
-document.write ('<script language="javascript" type="text/javascript" src="http://js.users.51.la/2371048.js"></script>');
